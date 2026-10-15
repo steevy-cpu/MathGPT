@@ -1,0 +1,26 @@
+{
+  "dataset_name": "MathGPT General Pretraining Corpus",
+  "version": "0.1",
+  "target_tokens": 100000000,
+
+  "sources": [
+    {
+      "name": "FineWeb-Edu",
+      "target_percentage": 75,
+      "target_tokens": 75000000,
+      "status": "not_downloaded"
+    },
+    {
+      "name": "Wikipedia",
+      "target_percentage": 15,
+      "target_tokens": 15000000,
+      "status": "not_downloaded"
+    },
+    {
+      "name": "Open Educational Books",
+      "target_percentage": 10,
+      "target_tokens": 10000000,
+      "status": "not_downloaded"
+    }
+  ]
+}

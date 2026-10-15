@@ -1,0 +1,29 @@
+{
+  "project_name": "MathGPT POC",
+  "version": "0.1",
+
+  "model": {
+    "architecture": "decoder_only_gpt",
+    "target_parameters": 8000000,
+    "context_length": 256
+  },
+
+  "tokenizer": {
+    "type": "bpe",
+    "vocab_size": 16000
+  },
+
+  "general_pretraining": {
+    "target_tokens": 100000000
+  },
+
+  "math_pretraining": {
+    "target_tokens": 30000000
+  },
+
+  "training": {
+    "batch_size": 8,
+    "checkpoint_every": 5000,
+    "seed": 42
+  }
+}
