@@ -1,0 +1,7 @@
+{
+  "dataset_name": "MathGPT Math Continued Pretraining Corpus",
+  "version": "0.1",
+  "target_tokens": 30000000,
+
+  "sources": []
+}
