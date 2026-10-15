@@ -22,7 +22,6 @@ class DataWriter:
     def __init__(self, output_path):
         self.output_path = Path(output_path)
 
-        # Create the parent folders if they do not exist.
         self.output_path.parent.mkdir(
             parents=True,
             exist_ok=True,
@@ -30,7 +29,7 @@ class DataWriter:
 
     def validate_document(self, document):
         """
-        Check that a document contains all required fields.
+        Make sure required fields exist.
         """
 
         for field in self.REQUIRED_FIELDS:
@@ -39,9 +38,17 @@ class DataWriter:
                     f"Document is missing required field: {field}"
                 )
 
+    def clear(self):
+        """
+        Delete the existing output file if it exists.
+        """
+
+        if self.output_path.exists():
+            self.output_path.unlink()
+
     def write_document(self, document):
         """
-        Validate and append one document to the JSONL file.
+        Validate and append one document.
         """
 
         self.validate_document(document)
@@ -51,6 +58,7 @@ class DataWriter:
             "a",
             encoding="utf-8",
         ) as file:
+
             json.dump(
                 document,
                 file,

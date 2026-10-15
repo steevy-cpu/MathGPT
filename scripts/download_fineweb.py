@@ -9,20 +9,24 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 class FineWebDownloader:
-    """
-    Downloads a small streamed sample of FineWeb-Edu
-    and saves it using the MathGPT raw JSONL format.
-    """
 
-    def __init__(self, output_path, max_documents=10):
+    def __init__(
+        self,
+        output_path,
+        target_tokens=10000,
+        overwrite=True,
+    ):
+
         self.output_path = Path(output_path)
-        self.max_documents = max_documents
+        self.target_tokens = target_tokens
+        self.overwrite = overwrite
 
         self.writer = DataWriter(self.output_path)
 
     def load_stream(self):
         """
-        Open FineWeb-Edu in streaming mode.
+        Stream FineWeb-Edu instead of downloading
+        the full dataset.
         """
 
         dataset = load_dataset(
@@ -36,19 +40,26 @@ class FineWebDownloader:
 
     def convert_document(self, example, index):
         """
-        Convert a FineWeb-Edu record into
-        the MathGPT raw document format.
+        Convert FineWeb format into our
+        standard MathGPT raw format.
         """
 
-        document = {
-            # source_id belongs to MathGPT
+        return {
             "id": f"fineweb_{index:08d}",
+
             "source": "fineweb_edu",
+
             "source_version": "sample-10BT",
-            "url": example.get("url", ""),
+
+            "url": example.get(
+                "url",
+                "",
+            ),
+
             "license": "ODC-By-1.0",
+
             "category": "general",
-            
+
             "source_id": example.get(
                 "id",
                 "",
@@ -61,7 +72,7 @@ class FineWebDownloader:
 
             "token_count_source": example.get(
                 "token_count",
-                None,
+                0,
             ),
 
             "quality_score": example.get(
@@ -75,50 +86,81 @@ class FineWebDownloader:
             ),
         }
 
-        return document
-
     def download(self):
-        """
-        Stream documents and save them locally.
-        """
+
+        if self.overwrite:
+            self.writer.clear()
 
         dataset = self.load_stream()
 
-        print(
-            f"Downloading {self.max_documents} "
-            f"FineWeb-Edu documents..."
-        )
+        total_tokens = 0
+        total_documents = 0
 
-        count = 0
+        print()
+        print("Starting FineWeb-Edu download...")
+        print(
+            f"Target tokens: {self.target_tokens:,}"
+        )
+        print()
 
         for example in dataset:
+
             document = self.convert_document(
                 example,
-                count,
+                total_documents,
             )
 
-            self.writer.write_document(document)
+            document_tokens = document[
+                "token_count_source"
+            ]
 
-            count += 1
+            # Skip records with missing or invalid
+            # source token counts.
+            if not isinstance(document_tokens, int):
+                continue
+
+            if document_tokens <= 0:
+                continue
+
+            # Skip empty documents.
+            if not document["text"].strip():
+                continue
+
+            self.writer.write_document(
+                document
+            )
+
+            total_documents += 1
+            total_tokens += document_tokens
 
             print(
-                f"Saved document {count}"
+                f"\rDocuments: {total_documents:,} | "
+                f"Tokens: {total_tokens:,} / "
+                f"{self.target_tokens:,}",
+                end="",
             )
 
-            if count >= self.max_documents:
+            if total_tokens >= self.target_tokens:
                 break
 
         print()
+        print()
+        print("Download complete.")
         print(
-            f"Finished. Saved {count} documents."
+            f"Documents saved: "
+            f"{total_documents:,}"
         )
-
+        print(
+            f"Estimated source tokens: "
+            f"{total_tokens:,}"
+        )
         print(
             f"Output: {self.output_path}"
         )
 
 
 def main():
+
     output_path = (
         PROJECT_ROOT
         / "data"
@@ -129,7 +171,11 @@ def main():
 
     downloader = FineWebDownloader(
         output_path=output_path,
-        max_documents=10,
+
+        # Tiny test first.
+        target_tokens=100000,
+
+        overwrite=True,
     )
 
     downloader.download()
