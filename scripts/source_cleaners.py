@@ -72,44 +72,6 @@ class GutenbergCleaner:
 
         return text
     
-    def remove_legacy_header(self, text):
-        """
-        Remove older Project Gutenberg header blocks
-        when modern START markers are not present.
-        """
-
-        legacy_markers = [
-            r"The Project Gutenberg Etext of",
-            r"The Project Gutenberg EBook of",
-            r"Project Gutenberg EBook of",
-        ]
-
-        for marker in legacy_markers:
-            match = re.search(
-                marker,
-                text,
-                flags=re.IGNORECASE,
-            )
-
-            if match:
-                # Search later in the document for a likely
-                # repeated title/content boundary.
-                remaining_text = text[match.end():]
-
-                # If the title appears again later,
-                # keep text from that later occurrence.
-                title_match = re.search(
-                    r"\n\s*[A-Z][^\n]{3,120}\n",
-                    remaining_text,
-                )
-
-                if title_match:
-                    return remaining_text[
-                        title_match.start():
-                    ].strip()
-
-        return text
-    
     def remove_legacy_metadata_lines(self, text):
         """
         Remove obvious Gutenberg metadata lines from older files.
