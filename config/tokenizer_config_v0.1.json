@@ -1,0 +1,32 @@
+{
+  "version": "0.1",
+
+  "tokenizer_type": "byte_level_bpe",
+
+  "vocab_size": 16000,
+
+  "special_tokens": {
+    "pad_token": "<|pad|>",
+    "bos_token": "<|bos|>",
+    "eos_token": "<|eos|>"
+  },
+
+  "special_token_ids": {
+    "pad_token_id": 0,
+    "bos_token_id": 1,
+    "eos_token_id": 2
+  },
+
+  "preserve": {
+    "case": true,
+    "whitespace": true,
+    "numbers": true,
+    "unicode_math_symbols": true,
+    "latex": true
+  },
+
+  "training_mixture": {
+    "general_percentage": 70,
+    "math_percentage": 30
+  }
+}
