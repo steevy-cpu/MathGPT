@@ -2,12 +2,26 @@
 __pycache__/
 *.pyc
 
-data/raw/*
-data/cleaned/*
-data/tokenized/*
+# Training datasets
+data/raw/**
+data/cleaned/**
+data/tokenized/**
+
+# Model checkpoints
+checkpoints/**
+
+# Training logs
+logs/**
+
+# Large model/data files
+*.npz
+*.bin
 
 checkpoints/*
 logs/*
 
 *.npz
 *.bin
+
+# Finders meta data
+.DS_Store
