@@ -1,0 +1,9 @@
+{
+  "version": "0.1",
+
+  "validation_ratio": 0.05,
+
+  "random_seed": 42,
+
+  "shuffle_before_split": true
+}
