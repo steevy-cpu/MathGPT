@@ -2,7 +2,7 @@
   "version": "0.1",
 
   "generic_rules": {
-    "unicode_normalization": "NFKC",
+    "unicode_normalization": "NFC",
     "normalize_line_endings": true,
     "remove_null_characters": true,
     "remove_control_characters": true,
