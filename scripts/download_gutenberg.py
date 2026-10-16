@@ -4,7 +4,6 @@ from datasets import load_dataset
 
 from data_writer import DataWriter
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
