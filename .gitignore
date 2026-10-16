@@ -1,6 +1,12 @@
+# Python virtual environment
 .venv/
+
+# Python cache
 __pycache__/
 *.pyc
+
+# macOS Finder metadata
+.DS_Store
 
 # Training datasets
 data/raw/**
@@ -16,12 +22,3 @@ logs/**
 # Large model/data files
 *.npz
 *.bin
-
-checkpoints/*
-logs/*
-
-*.npz
-*.bin
-
-# Finders meta data
-.DS_Store
