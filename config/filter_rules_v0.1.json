@@ -1,0 +1,9 @@
+{
+  "version": "0.1",
+
+  "rules": {
+    "min_characters": 200,
+    "min_alphabetic_ratio": 0.30,
+    "max_replacement_character_ratio": 0.01
+  }
+}
