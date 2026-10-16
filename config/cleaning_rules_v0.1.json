@@ -1,0 +1,36 @@
+{
+  "version": "0.1",
+
+  "generic_rules": {
+    "unicode_normalization": "NFKC",
+    "normalize_line_endings": true,
+    "remove_null_characters": true,
+    "remove_control_characters": true,
+    "strip_trailing_spaces": true,
+    "max_consecutive_blank_lines": 2,
+    "strip_document_edges": true
+  },
+
+  "preserve": {
+    "capitalization": true,
+    "punctuation": true,
+    "numbers": true,
+    "unicode_math_symbols": true,
+    "paragraph_structure": true
+  },
+
+  "source_specific": {
+    "fineweb_edu": {
+      "remove_boilerplate": false
+    },
+
+    "wikipedia": {
+      "remove_boilerplate": false
+    },
+
+    "project_gutenberg": {
+      "remove_project_gutenberg_headers": true,
+      "remove_project_gutenberg_footers": true
+    }
+  }
+}
