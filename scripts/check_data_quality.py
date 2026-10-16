@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -49,6 +50,8 @@ def check_data_quality(file_path):
                 seen_texts.add(text)
 
             # Count domains
+            
+            documents_with_quality_score = 0
             if url:
                 domain = urlparse(url).netloc
 
@@ -57,6 +60,8 @@ def check_data_quality(file_path):
 
             # Quality score buckets
             if score is not None:
+                
+                documents_with_quality_score += 1
 
                 if score < 3:
                     quality_buckets["below_3"] += 1
@@ -80,9 +85,12 @@ def check_data_quality(file_path):
     print("Quality Score Distribution")
     print("--------------------------")
 
-    print(f"Below 3: {quality_buckets['below_3']}")
-    print(f"3 to <4: {quality_buckets['3_to_4']}")
-    print(f"4 to 5: {quality_buckets['4_to_5']}")
+    if documents_with_quality_score > 0:
+        print(f"Below 3: {quality_buckets['below_3']}")
+        print(f"3 to <4: {quality_buckets['3_to_4']}")
+        print(f"4 to 5: {quality_buckets['4_to_5']}")
+    else:
+        print("No quality scores available for this dataset.")
 
     print()
     print("Most Common Domains")
@@ -101,14 +109,23 @@ def check_data_quality(file_path):
 
 
 def main():
+    if len(sys.argv) != 2:
+        print(
+            "Usage: python scripts/check_data_quality.py "
+            "<dataset.jsonl>"
+        )
+        return
 
-    file_path = (
-        PROJECT_ROOT
-        / "data"
-        / "raw"
-        / "general"
-        / "fineweb_edu_sample.jsonl"
-    )
+    file_path = Path(sys.argv[1])
+
+    if not file_path.is_absolute():
+        file_path = PROJECT_ROOT / file_path
+
+    if not file_path.exists():
+        print(f"Dataset not found: {file_path}")
+        return
+
+    print(f"\nChecking: {file_path.name}")
 
     check_data_quality(file_path)
 

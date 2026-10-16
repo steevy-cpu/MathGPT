@@ -1,3 +1,4 @@
+import sys
 import json
 from pathlib import Path
 
@@ -126,14 +127,23 @@ def inspect_dataset(file_path):
 
 
 def main():
+    if len(sys.argv) != 2:
+        print(
+            "Usage: python scripts/inspect_dataset.py "
+            "<dataset.jsonl>"
+        )
+        return
 
-    file_path = (
-        PROJECT_ROOT
-        / "data"
-        / "raw"
-        / "general"
-        / "fineweb_edu_sample.jsonl"
-    )
+    file_path = Path(sys.argv[1])
+
+    if not file_path.is_absolute():
+        file_path = PROJECT_ROOT / file_path
+
+    if not file_path.exists():
+        print(f"Dataset not found: {file_path}")
+        return
+
+    print(f"\nInspecting: {file_path.name}")
 
     inspect_dataset(file_path)
 
