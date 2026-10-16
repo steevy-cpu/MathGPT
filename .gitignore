@@ -22,3 +22,6 @@ logs/**
 # Large model/data files
 *.npz
 *.bin
+
+tokenizer/artifacts/test_*
+tokenizer/artifacts/tmp/
