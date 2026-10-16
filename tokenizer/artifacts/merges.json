@@ -1,0 +1,122 @@
+[
+    {
+        "left": 104,
+        "right": 35,
+        "new_id": 259,
+        "frequency": 13
+    },
+    {
+        "left": 108,
+        "right": 121,
+        "new_id": 260,
+        "frequency": 10
+    },
+    {
+        "left": 119,
+        "right": 107,
+        "new_id": 261,
+        "frequency": 10
+    },
+    {
+        "left": 100,
+        "right": 119,
+        "new_id": 262,
+        "frequency": 9
+    },
+    {
+        "left": 261,
+        "right": 259,
+        "new_id": 263,
+        "frequency": 9
+    },
+    {
+        "left": 118,
+        "right": 35,
+        "new_id": 264,
+        "frequency": 7
+    },
+    {
+        "left": 120,
+        "right": 118,
+        "new_id": 265,
+        "frequency": 6
+    },
+    {
+        "left": 103,
+        "right": 104,
+        "new_id": 266,
+        "frequency": 5
+    },
+    {
+        "left": 117,
+        "right": 260,
+        "new_id": 267,
+        "frequency": 5
+    },
+    {
+        "left": 120,
+        "right": 111,
+        "new_id": 268,
+        "frequency": 5
+    },
+    {
+        "left": 262,
+        "right": 260,
+        "new_id": 269,
+        "frequency": 5
+    },
+    {
+        "left": 263,
+        "right": 266,
+        "new_id": 270,
+        "frequency": 5
+    },
+    {
+        "left": 265,
+        "right": 104,
+        "new_id": 271,
+        "frequency": 5
+    },
+    {
+        "left": 267,
+        "right": 269,
+        "new_id": 272,
+        "frequency": 5
+    },
+    {
+        "left": 270,
+        "right": 272,
+        "new_id": 273,
+        "frequency": 5
+    },
+    {
+        "left": 108,
+        "right": 123,
+        "new_id": 274,
+        "frequency": 4
+    },
+    {
+        "left": 112,
+        "right": 262,
+        "new_id": 275,
+        "frequency": 4
+    },
+    {
+        "left": 117,
+        "right": 274,
+        "new_id": 276,
+        "frequency": 4
+    },
+    {
+        "left": 264,
+        "right": 271,
+        "new_id": 277,
+        "frequency": 4
+    },
+    {
+        "left": 273,
+        "right": 259,
+        "new_id": 278,
+        "frequency": 4
+    }
+]

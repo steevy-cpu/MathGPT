@@ -1,3 +1,5 @@
+import json
+from pathlib import Path
 from collections import Counter
 
 
@@ -168,6 +170,94 @@ class BPETrainer:
             "utf-8",
             errors="replace",
         )
+        
+    def save(
+        self,
+        output_directory,
+        tokenizer_config=None,
+        ):
+        """
+        Save learned BPE merges and vocabulary.
+        """
+
+        output_directory = Path(
+            output_directory
+        )
+
+        output_directory.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        merges_path = (
+            output_directory
+            / "merges.json"
+        )
+
+        vocab_path = (
+            output_directory
+            / "vocab.json"
+        )
+
+        config_path = (
+            output_directory
+            / "tokenizer_config.json"
+        )
+
+        # Save merge rules.
+        with open(
+            merges_path,
+            "w",
+            encoding="utf-8",
+        ) as file:
+
+            json.dump(
+                self.merges,
+                file,
+                indent=4,
+            )
+
+        # Convert bytes to lists of integers
+        # because JSON cannot store raw bytes.
+        serializable_vocab = {
+            str(token_id): list(token_bytes)
+            for token_id, token_bytes
+            in self.token_bytes.items()
+        }
+
+        with open(
+            vocab_path,
+            "w",
+            encoding="utf-8",
+        ) as file:
+
+            json.dump(
+                serializable_vocab,
+                file,
+                indent=4,
+            )
+
+        if tokenizer_config is not None:
+
+            with open(
+                config_path,
+                "w",
+                encoding="utf-8",
+            ) as file:
+
+                json.dump(
+                    tokenizer_config,
+                    file,
+                    indent=4,
+                )
+
+        print()
+        print("Tokenizer artifacts saved.")
+        print(f"Merges: {merges_path}")
+        print(f"Vocabulary: {vocab_path}")
+
+        if tokenizer_config is not None:
+            print(f"Config: {config_path}")
 
     def train(self, texts):
         """

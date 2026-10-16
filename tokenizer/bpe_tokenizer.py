@@ -1,3 +1,5 @@
+import json
+
 from pathlib import Path
 
 from byte_tokenizer import ByteTokenizer
@@ -116,6 +118,45 @@ class BPETokenizer:
             )
 
         return token_ids
+    
+    @classmethod
+    def from_files(
+        cls,
+        config_path,
+        merges_path,
+        vocab_path,
+        ):
+        """
+        Load a previously trained BPE tokenizer.
+        """
+
+        with open(
+            merges_path,
+            "r",
+            encoding="utf-8",
+        ) as file:
+
+            merges = json.load(file)
+
+        with open(
+                vocab_path,
+                "r",
+                encoding="utf-8",
+        ) as file:
+
+                saved_vocab = json.load(file)
+
+        token_bytes = {
+            int(token_id): bytes(byte_values)
+            for token_id, byte_values
+            in saved_vocab.items()
+        }
+
+        return cls(
+            config_path=config_path,
+            merges=merges,
+            token_bytes=token_bytes,
+        )
 
     def decode(
         self,
