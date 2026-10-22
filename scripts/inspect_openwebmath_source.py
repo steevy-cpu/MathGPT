@@ -7,7 +7,7 @@ def main():
     dataset = load_dataset(
         "open-web-math/open-web-math",
         split="train",
-        streaming=True,
+        streaming=True, 
     )
 
     print("Dataset stream created.", flush=True)
