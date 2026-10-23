@@ -1,0 +1,602 @@
+[
+    {
+        "left": 104,
+        "right": 35,
+        "new_id": 259,
+        "frequency": 258925
+    },
+    {
+        "left": 119,
+        "right": 107,
+        "new_id": 260,
+        "frequency": 174767
+    },
+    {
+        "left": 118,
+        "right": 35,
+        "new_id": 261,
+        "frequency": 166781
+    },
+    {
+        "left": 108,
+        "right": 113,
+        "new_id": 262,
+        "frequency": 136837
+    },
+    {
+        "left": 103,
+        "right": 35,
+        "new_id": 263,
+        "frequency": 116697
+    },
+    {
+        "left": 104,
+        "right": 117,
+        "new_id": 264,
+        "frequency": 114983
+    },
+    {
+        "left": 119,
+        "right": 35,
+        "new_id": 265,
+        "frequency": 114515
+    },
+    {
+        "left": 100,
+        "right": 113,
+        "new_id": 266,
+        "frequency": 112820
+    },
+    {
+        "left": 114,
+        "right": 113,
+        "new_id": 267,
+        "frequency": 100954
+    },
+    {
+        "left": 47,
+        "right": 35,
+        "new_id": 268,
+        "frequency": 88902
+    },
+    {
+        "left": 260,
+        "right": 259,
+        "new_id": 269,
+        "frequency": 83862
+    },
+    {
+        "left": 104,
+        "right": 113,
+        "new_id": 270,
+        "frequency": 81869
+    },
+    {
+        "left": 114,
+        "right": 117,
+        "new_id": 271,
+        "frequency": 76586
+    },
+    {
+        "left": 119,
+        "right": 108,
+        "new_id": 272,
+        "frequency": 74353
+    },
+    {
+        "left": 124,
+        "right": 35,
+        "new_id": 273,
+        "frequency": 70697
+    },
+    {
+        "left": 100,
+        "right": 111,
+        "new_id": 274,
+        "frequency": 66872
+    },
+    {
+        "left": 100,
+        "right": 117,
+        "new_id": 275,
+        "frequency": 66674
+    },
+    {
+        "left": 105,
+        "right": 35,
+        "new_id": 276,
+        "frequency": 58827
+    },
+    {
+        "left": 114,
+        "right": 35,
+        "new_id": 277,
+        "frequency": 56151
+    },
+    {
+        "left": 117,
+        "right": 104,
+        "new_id": 278,
+        "frequency": 54326
+    },
+    {
+        "left": 49,
+        "right": 35,
+        "new_id": 279,
+        "frequency": 53637
+    },
+    {
+        "left": 114,
+        "right": 276,
+        "new_id": 280,
+        "frequency": 51444
+    },
+    {
+        "left": 114,
+        "right": 120,
+        "new_id": 281,
+        "frequency": 49039
+    },
+    {
+        "left": 262,
+        "right": 106,
+        "new_id": 282,
+        "frequency": 43597
+    },
+    {
+        "left": 266,
+        "right": 263,
+        "new_id": 283,
+        "frequency": 42507
+    },
+    {
+        "left": 104,
+        "right": 263,
+        "new_id": 284,
+        "frequency": 41508
+    },
+    {
+        "left": 100,
+        "right": 35,
+        "new_id": 285,
+        "frequency": 40289
+    },
+    {
+        "left": 118,
+        "right": 119,
+        "new_id": 286,
+        "frequency": 39177
+    },
+    {
+        "left": 119,
+        "right": 277,
+        "new_id": 287,
+        "frequency": 37689
+    },
+    {
+        "left": 100,
+        "right": 119,
+        "new_id": 288,
+        "frequency": 36362
+    },
+    {
+        "left": 272,
+        "right": 267,
+        "new_id": 289,
+        "frequency": 36333
+    },
+    {
+        "left": 108,
+        "right": 261,
+        "new_id": 290,
+        "frequency": 35779
+    },
+    {
+        "left": 282,
+        "right": 35,
+        "new_id": 291,
+        "frequency": 35076
+    },
+    {
+        "left": 114,
+        "right": 112,
+        "new_id": 292,
+        "frequency": 34064
+    },
+    {
+        "left": 108,
+        "right": 102,
+        "new_id": 293,
+        "frequency": 33543
+    },
+    {
+        "left": 262,
+        "right": 35,
+        "new_id": 294,
+        "frequency": 33497
+    },
+    {
+        "left": 104,
+        "right": 118,
+        "new_id": 295,
+        "frequency": 32251
+    },
+    {
+        "left": 264,
+        "right": 35,
+        "new_id": 296,
+        "frequency": 31751
+    },
+    {
+        "left": 49,
+        "right": 13,
+        "new_id": 297,
+        "frequency": 30776
+    },
+    {
+        "left": 100,
+        "right": 102,
+        "new_id": 298,
+        "frequency": 30092
+    },
+    {
+        "left": 104,
+        "right": 261,
+        "new_id": 299,
+        "frequency": 28976
+    },
+    {
+        "left": 104,
+        "right": 111,
+        "new_id": 300,
+        "frequency": 28321
+    },
+    {
+        "left": 108,
+        "right": 119,
+        "new_id": 301,
+        "frequency": 27105
+    },
+    {
+        "left": 100,
+        "right": 265,
+        "new_id": 302,
+        "frequency": 26953
+    },
+    {
+        "left": 271,
+        "right": 35,
+        "new_id": 303,
+        "frequency": 26452
+    },
+    {
+        "left": 117,
+        "right": 114,
+        "new_id": 304,
+        "frequency": 25847
+    },
+    {
+        "left": 274,
+        "right": 35,
+        "new_id": 305,
+        "frequency": 24682
+    },
+    {
+        "left": 104,
+        "right": 102,
+        "new_id": 306,
+        "frequency": 23562
+    },
+    {
+        "left": 108,
+        "right": 111,
+        "new_id": 307,
+        "frequency": 23085
+    },
+    {
+        "left": 108,
+        "right": 118,
+        "new_id": 308,
+        "frequency": 22492
+    },
+    {
+        "left": 114,
+        "right": 111,
+        "new_id": 309,
+        "frequency": 21441
+    },
+    {
+        "left": 100,
+        "right": 118,
+        "new_id": 310,
+        "frequency": 20813
+    },
+    {
+        "left": 266,
+        "right": 35,
+        "new_id": 311,
+        "frequency": 20732
+    },
+    {
+        "left": 87,
+        "right": 107,
+        "new_id": 312,
+        "frequency": 20543
+    },
+    {
+        "left": 100,
+        "right": 261,
+        "new_id": 313,
+        "frequency": 20325
+    },
+    {
+        "left": 111,
+        "right": 104,
+        "new_id": 314,
+        "frequency": 19725
+    },
+    {
+        "left": 229,
+        "right": 131,
+        "new_id": 315,
+        "frequency": 19003
+    },
+    {
+        "left": 102,
+        "right": 107,
+        "new_id": 316,
+        "frequency": 18817
+    },
+    {
+        "left": 100,
+        "right": 289,
+        "new_id": 317,
+        "frequency": 18541
+    },
+    {
+        "left": 114,
+        "right": 122,
+        "new_id": 318,
+        "frequency": 18353
+    },
+    {
+        "left": 100,
+        "right": 112,
+        "new_id": 319,
+        "frequency": 18317
+    },
+    {
+        "left": 120,
+        "right": 117,
+        "new_id": 320,
+        "frequency": 17678
+    },
+    {
+        "left": 118,
+        "right": 108,
+        "new_id": 321,
+        "frequency": 17522
+    },
+    {
+        "left": 267,
+        "right": 35,
+        "new_id": 322,
+        "frequency": 17250
+    },
+    {
+        "left": 270,
+        "right": 35,
+        "new_id": 323,
+        "frequency": 16945
+    },
+    {
+        "left": 260,
+        "right": 35,
+        "new_id": 324,
+        "frequency": 16880
+    },
+    {
+        "left": 104,
+        "right": 112,
+        "new_id": 325,
+        "frequency": 16361
+    },
+    {
+        "left": 120,
+        "right": 118,
+        "new_id": 326,
+        "frequency": 16262
+    },
+    {
+        "left": 121,
+        "right": 259,
+        "new_id": 327,
+        "frequency": 16084
+    },
+    {
+        "left": 103,
+        "right": 108,
+        "new_id": 328,
+        "frequency": 16024
+    },
+    {
+        "left": 117,
+        "right": 108,
+        "new_id": 329,
+        "frequency": 15796
+    },
+    {
+        "left": 122,
+        "right": 107,
+        "new_id": 330,
+        "frequency": 15735
+    },
+    {
+        "left": 111,
+        "right": 35,
+        "new_id": 331,
+        "frequency": 15456
+    },
+    {
+        "left": 270,
+        "right": 119,
+        "new_id": 332,
+        "frequency": 15077
+    },
+    {
+        "left": 260,
+        "right": 302,
+        "new_id": 333,
+        "frequency": 15014
+    },
+    {
+        "left": 120,
+        "right": 113,
+        "new_id": 334,
+        "frequency": 14178
+    },
+    {
+        "left": 13,
+        "right": 13,
+        "new_id": 335,
+        "frequency": 14176
+    },
+    {
+        "left": 115,
+        "right": 111,
+        "new_id": 336,
+        "frequency": 13977
+    },
+    {
+        "left": 104,
+        "right": 119,
+        "new_id": 337,
+        "frequency": 13842
+    },
+    {
+        "left": 100,
+        "right": 101,
+        "new_id": 338,
+        "frequency": 13754
+    },
+    {
+        "left": 106,
+        "right": 107,
+        "new_id": 339,
+        "frequency": 13371
+    },
+    {
+        "left": 115,
+        "right": 304,
+        "new_id": 340,
+        "frequency": 13350
+    },
+    {
+        "left": 112,
+        "right": 100,
+        "new_id": 341,
+        "frequency": 13134
+    },
+    {
+        "left": 118,
+        "right": 120,
+        "new_id": 342,
+        "frequency": 13119
+    },
+    {
+        "left": 111,
+        "right": 273,
+        "new_id": 343,
+        "frequency": 12982
+    },
+    {
+        "left": 108,
+        "right": 117,
+        "new_id": 344,
+        "frequency": 12973
+    },
+    {
+        "left": 105,
+        "right": 303,
+        "new_id": 345,
+        "frequency": 12962
+    },
+    {
+        "left": 122,
+        "right": 108,
+        "new_id": 346,
+        "frequency": 12693
+    },
+    {
+        "left": 280,
+        "right": 269,
+        "new_id": 347,
+        "frequency": 12643
+    },
+    {
+        "left": 104,
+        "right": 123,
+        "new_id": 348,
+        "frequency": 12637
+    },
+    {
+        "left": 102,
+        "right": 267,
+        "new_id": 349,
+        "frequency": 12387
+    },
+    {
+        "left": 114,
+        "right": 118,
+        "new_id": 350,
+        "frequency": 12140
+    },
+    {
+        "left": 113,
+        "right": 35,
+        "new_id": 351,
+        "frequency": 11736
+    },
+    {
+        "left": 111,
+        "right": 108,
+        "new_id": 352,
+        "frequency": 11634
+    },
+    {
+        "left": 121,
+        "right": 264,
+        "new_id": 353,
+        "frequency": 11582
+    },
+    {
+        "left": 312,
+        "right": 259,
+        "new_id": 354,
+        "frequency": 11578
+    },
+    {
+        "left": 107,
+        "right": 100,
+        "new_id": 355,
+        "frequency": 11487
+    },
+    {
+        "left": 270,
+        "right": 265,
+        "new_id": 356,
+        "frequency": 11403
+    },
+    {
+        "left": 105,
+        "right": 117,
+        "new_id": 357,
+        "frequency": 11254
+    },
+    {
+        "left": 103,
+        "right": 104,
+        "new_id": 358,
+        "frequency": 11048
+    }
+]

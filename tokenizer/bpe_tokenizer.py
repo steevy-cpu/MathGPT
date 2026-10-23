@@ -2,7 +2,10 @@ import json
 
 from pathlib import Path
 
-from byte_tokenizer import ByteTokenizer
+try:
+    from .byte_tokenizer import ByteTokenizer
+except ImportError:
+    from byte_tokenizer import ByteTokenizer
 
 
 class BPETokenizer:

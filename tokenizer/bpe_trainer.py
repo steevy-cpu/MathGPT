@@ -94,29 +94,36 @@ class BPETrainer:
 
     def choose_best_pair(self, pair_counts):
         """
-        Select the most frequent pair.
+        Select the most frequent pair without sorting
+        the entire pair-frequency table.
 
-        Ties are resolved deterministically
-        using the token IDs.
+        Ties are resolved deterministically by choosing
+        the pair with the smallest token IDs.
+        
+        complexity: o(P) linear
         """
 
         if not pair_counts:
             return None, 0
 
-        sorted_pairs = sorted(
-            pair_counts.items(),
-            key=lambda item: (
-                -item[1],
-                item[0][0],
-                item[0][1],
-            ),
-        )
+        best_pair = None
+        best_count = -1
 
-        best_pair, count = (
-            sorted_pairs[0]
-        )
+        for pair, count in pair_counts.items():
 
-        return best_pair, count
+            if count > best_count:
+
+                best_pair = pair
+                best_count = count
+
+            elif (
+                count == best_count
+                and pair < best_pair
+            ):
+
+                best_pair = pair
+
+        return best_pair, best_count
 
     def merge_pair(
         self,

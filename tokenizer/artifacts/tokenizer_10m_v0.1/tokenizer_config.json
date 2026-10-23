@@ -1,0 +1,43 @@
+{
+    "version": "0.1",
+    "tokenizer_type": "byte_level_bpe",
+    "vocab_size": 16000,
+    "special_tokens": {
+        "pad_token": "<|pad|>",
+        "bos_token": "<|bos|>",
+        "eos_token": "<|eos|>"
+    },
+    "special_token_ids": {
+        "pad_token_id": 0,
+        "bos_token_id": 1,
+        "eos_token_id": 2
+    },
+    "preserve": {
+        "case": true,
+        "whitespace": true,
+        "numbers": true,
+        "unicode_math_symbols": true,
+        "latex": true
+    },
+    "training_mixture": {
+        "general_percentage": 70,
+        "math_percentage": 30
+    },
+    "training_corpus": {
+        "name": "tokenizer_training_corpus_10m",
+        "characters": 10003816,
+        "utf8_bytes": 10060945,
+        "general_ratio": 0.7,
+        "math_ratio": 0.3
+    },
+    "training": {
+        "requested_merges": 15741,
+        "completed_merges": 15741,
+        "base_vocab_size": 259,
+        "final_vocab_size": 16000,
+        "training_seconds": 14397.168378792005,
+        "training_minutes": 239.95280631320009,
+        "training_hours": 3.9992134385533347,
+        "peak_memory_mb": 1023.34375
+    }
+}
