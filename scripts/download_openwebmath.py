@@ -18,7 +18,7 @@ class OpenWebMathDownloader:
     def __init__(
         self,
         output_path,
-        target_characters=100000,
+        target_characters=10_000_000,
         min_math_score=0.5,
         overwrite=True,
     ):
@@ -253,7 +253,7 @@ def main():
         output_path=output_path,
 
         # Keep the first test small.
-        target_characters=100000,
+        target_characters=10_000_000,
 
         min_math_score=0.5,
 

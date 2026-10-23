@@ -13,7 +13,7 @@ class WikipediaDownloader:
     def __init__(
         self,
         output_path,
-        target_tokens=100000,
+        target_tokens=2_000_000,
         overwrite=True,
     ):
         self.output_path = Path(output_path)
@@ -171,7 +171,7 @@ def main():
 
     downloader = WikipediaDownloader(
         output_path=output_path,
-        target_tokens=100000,
+        target_tokens=2_000_000,
         overwrite=True,
     )
 

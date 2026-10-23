@@ -13,7 +13,7 @@ class FineWebDownloader:
     def __init__(
         self,
         output_path,
-        target_tokens=10000,
+        target_tokens=7_000_000,
         overwrite=True,
     ):
 
@@ -173,7 +173,7 @@ def main():
         output_path=output_path,
 
         # Tiny test first.
-        target_tokens=100000,
+        target_tokens=7_000_000,
 
         overwrite=True,
     )

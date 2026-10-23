@@ -12,9 +12,9 @@ class GutenbergDownloader:
     def __init__(
         self,
         output_path,
-        target_tokens=100000,
-        max_document_tokens=100000,
-        overshoot_tokens=100000,
+        target_tokens=1_500_000,
+        max_document_tokens=1_500_000,
+        overshoot_tokens=1_000_000,
         overwrite=True,
     ):
         self.output_path = Path(output_path)
@@ -254,9 +254,9 @@ def main():
 
     downloader = GutenbergDownloader(
         output_path=output_path,
-        target_tokens=100000,
-        max_document_tokens=100000,
-        overshoot_tokens=100000,
+        target_tokens=1_500_000,
+        max_document_tokens=1_500_000,
+        overshoot_tokens=1_000_000,
         overwrite=True,
     )
 
