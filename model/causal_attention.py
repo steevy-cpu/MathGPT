@@ -93,10 +93,13 @@ def causal_attention(
     # Scale by sqrt(head_dim).
     # --------------------------------------------------------
 
-    scale = np.sqrt(
-        head_dim
+    scale = np.float32(
+        np.sqrt(
+            np.float32(
+                head_dim
+            )
+        )
     )
-
     scores = (
         scores
         / scale
@@ -126,8 +129,11 @@ def causal_attention(
     # Future positions receive -infinity.
     masked_scores = np.where(
         causal_mask,
-        -np.inf,
+        np.float32(-np.inf),
         scores,
+    ).astype(
+        np.float32,
+        copy=False,
     )
 
     # --------------------------------------------------------
