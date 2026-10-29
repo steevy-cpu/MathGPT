@@ -1,0 +1,55 @@
+{
+    "version": "0.2",
+    "tokenizer_type": "byte_level_bpe",
+    "vocab_size": 16000,
+    "special_tokens": {
+        "pad_token": "<|pad|>",
+        "bos_token": "<|bos|>",
+        "eos_token": "<|eos|>"
+    },
+    "special_token_ids": {
+        "pad_token_id": 0,
+        "bos_token_id": 1,
+        "eos_token_id": 2
+    },
+    "preserve": {
+        "case": true,
+        "whitespace": true,
+        "numbers": true,
+        "unicode_math_symbols": true,
+        "latex": true
+    },
+    "training_mixture": {
+        "general_percentage": 70,
+        "math_percentage": 30
+    },
+    "artifact_name": "tokenizer_50m_v0.2",
+    "training_corpus": {
+        "name": "tokenizer_training_corpus_50m_v0.2",
+        "path": "/home/scelestin/Steeve_project/MathGPT/data/tokenized/tokenizer_training_corpus_50m_v0.2.txt",
+        "characters": 50000000,
+        "utf8_bytes": 50301303,
+        "general_characters": 35000000,
+        "math_characters": 15000000,
+        "general_ratio": 0.7,
+        "math_ratio": 0.3,
+        "source_characters": {
+            "fineweb_edu": 29000000,
+            "wikipedia": 5400000,
+            "gutenberg": 600000,
+            "openwebmath": 15000000
+        },
+        "replacement_characters": 0,
+        "null_characters": 0
+    },
+    "training": {
+        "requested_merges": 15741,
+        "completed_merges": 15741,
+        "base_vocab_size": 259,
+        "final_vocab_size": 16000,
+        "training_seconds": 69268.496847524,
+        "training_minutes": 1154.4749474587334,
+        "training_hours": 19.241249124312223,
+        "peak_memory_mb": 1154.50390625
+    }
+}
