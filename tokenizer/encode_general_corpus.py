@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from pathlib import Path
 
@@ -14,14 +15,24 @@ except ImportError:
 # Project paths
 # ============================================================
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = (
+    Path(__file__)
+    .resolve()
+    .parent
+    .parent
+)
+
+
+TOKENIZER_NAME = (
+    "tokenizer_50m_v0.2"
+)
 
 
 TOKENIZER_DIR = (
     PROJECT_ROOT
     / "tokenizer"
     / "artifacts"
-    / "tokenizer_10m_v0.1"
+    / TOKENIZER_NAME
 )
 
 
@@ -30,6 +41,19 @@ OUTPUT_DIR = (
     / "data"
     / "tokenized"
 )
+
+
+# ============================================================
+# Tokenizer specification
+# ============================================================
+
+VOCAB_SIZE = 16_000
+
+EXPECTED_MERGES = 15_741
+
+SPECIAL_TOKEN_COUNT = 3
+
+EOS_TOKEN_ID = 2
 
 
 # ============================================================
@@ -97,27 +121,198 @@ VALIDATION_FILES = [
 
 
 # ============================================================
-# Load tokenizer
+# Tokenizer preflight validation
 # ============================================================
 
 def load_tokenizer():
 
-    return BPETokenizer.from_files(
-        config_path=(
-            TOKENIZER_DIR
-            / "tokenizer_config.json"
-        ),
-
-        merges_path=(
-            TOKENIZER_DIR
-            / "merges.json"
-        ),
-
-        vocab_path=(
-            TOKENIZER_DIR
-            / "vocab.json"
-        ),
+    config_path = (
+        TOKENIZER_DIR
+        / "tokenizer_config.json"
     )
+
+    merges_path = (
+        TOKENIZER_DIR
+        / "merges.json"
+    )
+
+    vocab_path = (
+        TOKENIZER_DIR
+        / "vocab.json"
+    )
+
+    print()
+    print("=" * 65)
+    print(
+        "TOKENIZER PREFLIGHT"
+    )
+    print("=" * 65)
+
+    for path in (
+        config_path,
+        merges_path,
+        vocab_path,
+    ):
+
+        if not path.exists():
+
+            raise FileNotFoundError(
+                f"Tokenizer artifact "
+                f"missing: {path}"
+            )
+
+    with open(
+        config_path,
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        config = json.load(
+            file
+        )
+
+    with open(
+        merges_path,
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        merges = json.load(
+            file
+        )
+
+    with open(
+        vocab_path,
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        vocab = json.load(
+            file
+        )
+
+    artifact_name = config.get(
+        "artifact_name"
+    )
+
+    merge_count = len(
+        merges
+    )
+
+    logical_vocab_size = (
+        SPECIAL_TOKEN_COUNT
+        + len(
+            vocab
+        )
+    )
+
+    artifact_passed = (
+        artifact_name
+        == TOKENIZER_NAME
+    )
+
+    merges_passed = (
+        merge_count
+        == EXPECTED_MERGES
+    )
+
+    vocab_passed = (
+        logical_vocab_size
+        == VOCAB_SIZE
+    )
+
+    print()
+
+    print(
+        f"Artifact: "
+        f"{artifact_name}"
+    )
+
+    print(
+        f"Expected artifact: "
+        f"{TOKENIZER_NAME}"
+    )
+
+    print()
+
+    print(
+        f"Merges: "
+        f"{merge_count:,}"
+    )
+
+    print(
+        f"Logical vocabulary: "
+        f"{logical_vocab_size:,}"
+    )
+
+    print()
+
+    print(
+        f"Correct tokenizer: "
+        f"{artifact_passed}"
+    )
+
+    print(
+        f"15,741 merges: "
+        f"{merges_passed}"
+    )
+
+    print(
+        f"16,000 vocabulary: "
+        f"{vocab_passed}"
+    )
+
+    if not (
+        artifact_passed
+        and
+        merges_passed
+        and
+        vocab_passed
+    ):
+
+        raise RuntimeError(
+            "SAFETY STOP: tokenizer_50m_v0.2 "
+            "failed preflight validation."
+        )
+
+    tokenizer = (
+        BPETokenizer.from_files(
+            config_path=config_path,
+            merges_path=merges_path,
+            vocab_path=vocab_path,
+        )
+    )
+
+    special_ids_passed = (
+        tokenizer.pad_token_id
+        == 0
+        and
+        tokenizer.bos_token_id
+        == 1
+        and
+        tokenizer.eos_token_id
+        == EOS_TOKEN_ID
+    )
+
+    print(
+        f"Special token IDs passed: "
+        f"{special_ids_passed}"
+    )
+
+    if not special_ids_passed:
+
+        raise RuntimeError(
+            "Unexpected special token IDs."
+        )
+
+    print()
+
+    print(
+        "SUCCESS: tokenizer_50m_v0.2 "
+        "passed encoding preflight."
+    )
+
+    return tokenizer
 
 
 # ============================================================
@@ -133,32 +328,64 @@ def encode_split(
 ):
     """
     Encode several JSONL source files into
-    one contiguous uint16 binary token stream.
+    one contiguous uint16 token stream.
 
-    Each document receives one EOS token.
+    Every document receives one EOS token.
+
+    Output is written to a temporary file first.
+    The old binary is replaced only after the
+    new encoding completes successfully.
     """
 
     print()
-    print("=" * 60)
+    print("=" * 65)
+
     print(
-        f"Encoding {split_name}"
+        f"Encoding {split_name} "
+        f"with {TOKENIZER_NAME}"
     )
-    print("=" * 60)
+
+    print("=" * 65)
 
     output_bin.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    # --------------------------------------------------------
+    temporary_bin = (
+        output_bin.with_name(
+            output_bin.name
+            + ".tmp"
+        )
+    )
+
+    temporary_metadata = (
+        metadata_path.with_name(
+            metadata_path.name
+            + ".tmp"
+        )
+    )
+
+    if temporary_bin.exists():
+
+        temporary_bin.unlink()
+
+    if temporary_metadata.exists():
+
+        temporary_metadata.unlink()
+
+    # ========================================================
     # Statistics
-    # --------------------------------------------------------
+    # ========================================================
 
     total_documents = 0
+
     total_characters = 0
+
     total_tokens = 0
 
     minimum_token_id = None
+
     maximum_token_id = None
 
     source_stats = {}
@@ -167,350 +394,394 @@ def encode_split(
         time.perf_counter()
     )
 
-    # --------------------------------------------------------
-    # Open binary output once
-    # --------------------------------------------------------
+    try:
 
-    with open(
-        output_bin,
-        "wb",
-    ) as binary_file:
+        # ====================================================
+        # Write temporary binary
+        # ====================================================
 
-        # ----------------------------------------------------
-        # Process each source
-        # ----------------------------------------------------
+        with open(
+            temporary_bin,
+            "wb",
+        ) as binary_file:
 
-        for (
-            source_name,
-            input_path,
-        ) in input_files:
+            for (
+                source_name,
+                input_path,
+            ) in input_files:
 
-            print()
-            print(
-                f"Source: {source_name}"
-            )
+                print()
 
-            print(
-                f"Input: {input_path}"
-            )
+                print(
+                    f"Source: "
+                    f"{source_name}"
+                )
 
-            if not input_path.exists():
-
-                raise FileNotFoundError(
-                    f"Input file not found: "
+                print(
+                    f"Input: "
                     f"{input_path}"
                 )
 
-            source_documents = 0
-            source_characters = 0
-            source_tokens = 0
+                if not input_path.exists():
 
-            # ------------------------------------------------
-            # Read JSONL one document at a time
-            # ------------------------------------------------
-
-            with open(
-                input_path,
-                "r",
-                encoding="utf-8",
-            ) as input_file:
-
-                for line in input_file:
-
-                    line = line.strip()
-
-                    if not line:
-                        continue
-
-                    document = json.loads(
-                        line
+                    raise FileNotFoundError(
+                        f"Input file not found: "
+                        f"{input_path}"
                     )
 
-                    text = document.get(
-                        "text",
-                        "",
-                    )
+                source_documents = 0
+                source_characters = 0
+                source_tokens = 0
 
-                    if not text:
-                        continue
+                with open(
+                    input_path,
+                    "r",
+                    encoding="utf-8",
+                ) as input_file:
 
-                    # ----------------------------------------
-                    # Encode one document.
-                    #
-                    # add_eos=True means token ID 2 is placed
-                    # after every document.
-                    # ----------------------------------------
+                    for line in input_file:
 
-                    token_ids = (
-                        tokenizer.encode(
-                            text,
-                            add_bos=False,
-                            add_eos=True,
-                        )
-                    )
-
-                    # ----------------------------------------
-                    # Safety check:
-                    # all IDs must fit our 16K vocabulary.
-                    # ----------------------------------------
-
-                    document_min = min(
-                        token_ids
-                    )
-
-                    document_max = max(
-                        token_ids
-                    )
-
-                    if document_min < 0:
-
-                        raise ValueError(
-                            "Negative token ID found."
+                        line = (
+                            line.strip()
                         )
 
-                    if document_max >= 16_000:
+                        if not line:
 
-                        raise ValueError(
-                            f"Token ID outside "
-                            f"16K vocabulary: "
-                            f"{document_max}"
+                            continue
+
+                        document = json.loads(
+                            line
                         )
 
-                    # ----------------------------------------
-                    # Convert Python ints → uint16
-                    # ----------------------------------------
-
-                    token_array = np.asarray(
-                        token_ids,
-                        dtype=np.uint16,
-                    )
-
-                    # ----------------------------------------
-                    # Append directly to binary file.
-                    # ----------------------------------------
-
-                    token_array.tofile(
-                        binary_file
-                    )
-
-                    # ----------------------------------------
-                    # Update statistics
-                    # ----------------------------------------
-
-                    document_tokens = len(
-                        token_ids
-                    )
-
-                    characters = len(
-                        text
-                    )
-
-                    total_documents += 1
-                    total_characters += (
-                        characters
-                    )
-                    total_tokens += (
-                        document_tokens
-                    )
-
-                    source_documents += 1
-
-                    source_characters += (
-                        characters
-                    )
-
-                    source_tokens += (
-                        document_tokens
-                    )
-
-                    if (
-                        minimum_token_id
-                        is None
-                        or document_min
-                        < minimum_token_id
-                    ):
-
-                        minimum_token_id = (
-                            document_min
+                        text = document.get(
+                            "text",
+                            "",
                         )
 
-                    if (
-                        maximum_token_id
-                        is None
-                        or document_max
-                        > maximum_token_id
-                    ):
+                        if not text:
 
-                        maximum_token_id = (
+                            continue
+
+                        # ------------------------------------
+                        # FINAL v0.2 ENCODING
+                        # ------------------------------------
+
+                        token_ids = (
+                            tokenizer.encode(
+                                text,
+                                add_bos=False,
+                                add_eos=True,
+                            )
+                        )
+
+                        if not token_ids:
+
+                            raise RuntimeError(
+                                "Tokenizer produced "
+                                "an empty token list."
+                            )
+
+                        # Every document MUST end in EOS.
+                        if (
+                            token_ids[-1]
+                            != EOS_TOKEN_ID
+                        ):
+
+                            raise RuntimeError(
+                                "Document is missing EOS."
+                            )
+
+                        document_min = min(
+                            token_ids
+                        )
+
+                        document_max = max(
+                            token_ids
+                        )
+
+                        if document_min < 0:
+
+                            raise ValueError(
+                                "Negative token ID found."
+                            )
+
+                        if (
                             document_max
+                            >= VOCAB_SIZE
+                        ):
+
+                            raise ValueError(
+                                "Token ID outside "
+                                "16K vocabulary: "
+                                f"{document_max}"
+                            )
+
+                        token_array = (
+                            np.asarray(
+                                token_ids,
+                                dtype=np.uint16,
+                            )
                         )
 
-                    # ----------------------------------------
-                    # Progress
-                    # ----------------------------------------
-
-                    if (
-                        total_documents
-                        % 500
-                        == 0
-                    ):
-
-                        elapsed = (
-                            time.perf_counter()
-                            - start_time
+                        token_array.tofile(
+                            binary_file
                         )
 
-                        print(
-                            f"\rDocuments: "
-                            f"{total_documents:,} | "
-                            f"Tokens: "
-                            f"{total_tokens:,} | "
-                            f"Elapsed: "
-                            f"{elapsed:,.1f}s",
-                            end="",
+                        # ------------------------------------
+                        # Statistics
+                        # ------------------------------------
+
+                        document_tokens = len(
+                            token_ids
                         )
 
-            print()
+                        character_count = len(
+                            text
+                        )
 
-            print(
-                f"{source_name} complete:"
-            )
+                        total_documents += 1
 
-            print(
-                f"  Documents: "
-                f"{source_documents:,}"
-            )
+                        total_characters += (
+                            character_count
+                        )
 
-            print(
-                f"  Characters: "
-                f"{source_characters:,}"
-            )
+                        total_tokens += (
+                            document_tokens
+                        )
 
-            print(
-                f"  Tokens: "
-                f"{source_tokens:,}"
-            )
+                        source_documents += 1
 
-            source_stats[
-                source_name
-            ] = {
-                "documents": (
-                    source_documents
-                ),
+                        source_characters += (
+                            character_count
+                        )
 
-                "characters": (
-                    source_characters
-                ),
+                        source_tokens += (
+                            document_tokens
+                        )
 
-                "tokens": (
-                    source_tokens
-                ),
-            }
+                        if (
+                            minimum_token_id
+                            is None
+                            or
+                            document_min
+                            < minimum_token_id
+                        ):
 
-    # ========================================================
-    # Final statistics
-    # ========================================================
+                            minimum_token_id = (
+                                document_min
+                            )
 
-    elapsed = (
-        time.perf_counter()
-        - start_time
-    )
+                        if (
+                            maximum_token_id
+                            is None
+                            or
+                            document_max
+                            > maximum_token_id
+                        ):
 
-    file_size_bytes = (
-        output_bin.stat().st_size
-    )
+                            maximum_token_id = (
+                                document_max
+                            )
 
-    expected_file_size = (
-        total_tokens
-        * 2
-    )
+                        # ------------------------------------
+                        # Progress
+                        # ------------------------------------
 
-    if (
-        file_size_bytes
-        != expected_file_size
-    ):
+                        if (
+                            total_documents
+                            % 500
+                            == 0
+                        ):
 
-        raise ValueError(
-            "Binary file size does not "
-            "match uint16 token count."
+                            elapsed = (
+                                time.perf_counter()
+                                - start_time
+                            )
+
+                            print(
+                                f"\rDocuments: "
+                                f"{total_documents:,} | "
+                                f"Tokens: "
+                                f"{total_tokens:,} | "
+                                f"Elapsed: "
+                                f"{elapsed:,.1f}s",
+                                end="",
+                            )
+
+                print()
+
+                print(
+                    f"{source_name} complete:"
+                )
+
+                print(
+                    f"  Documents: "
+                    f"{source_documents:,}"
+                )
+
+                print(
+                    f"  Characters: "
+                    f"{source_characters:,}"
+                )
+
+                print(
+                    f"  Tokens: "
+                    f"{source_tokens:,}"
+                )
+
+                source_stats[
+                    source_name
+                ] = {
+                    "documents":
+                        source_documents,
+
+                    "characters":
+                        source_characters,
+
+                    "tokens":
+                        source_tokens,
+                }
+
+        # ====================================================
+        # Validate temporary binary size
+        # ====================================================
+
+        elapsed = (
+            time.perf_counter()
+            - start_time
         )
 
-    metadata = {
-        "split": split_name,
+        file_size_bytes = (
+            temporary_bin
+            .stat()
+            .st_size
+        )
 
-        "dtype": "uint16",
-
-        "bytes_per_token": 2,
-
-        "tokenizer": (
-            "tokenizer_10m_v0.1"
-        ),
-
-        "vocab_size": 16_000,
-
-        "eos_token_id": (
-            tokenizer.eos_token_id
-        ),
-
-        "documents": (
-            total_documents
-        ),
-
-        "characters": (
-            total_characters
-        ),
-
-        "tokens": (
+        expected_file_size = (
             total_tokens
-        ),
-
-        "minimum_token_id": (
-            minimum_token_id
-        ),
-
-        "maximum_token_id": (
-            maximum_token_id
-        ),
-
-        "file_size_bytes": (
-            file_size_bytes
-        ),
-
-        "encoding_seconds": (
-            elapsed
-        ),
-
-        "sources": (
-            source_stats
-        ),
-    }
-
-    with open(
-        metadata_path,
-        "w",
-        encoding="utf-8",
-    ) as file:
-
-        json.dump(
-            metadata,
-            file,
-            indent=4,
+            * np.dtype(
+                np.uint16
+            ).itemsize
         )
+
+        if (
+            file_size_bytes
+            != expected_file_size
+        ):
+
+            raise RuntimeError(
+                "Binary size mismatch: "
+                f"{file_size_bytes:,} actual "
+                f"vs "
+                f"{expected_file_size:,} expected."
+            )
+
+        # ====================================================
+        # Metadata
+        # ====================================================
+
+        metadata = {
+            "stage": "5M.10",
+
+            "split":
+                split_name,
+
+            "dtype":
+                "uint16",
+
+            "bytes_per_token":
+                2,
+
+            "tokenizer":
+                TOKENIZER_NAME,
+
+            "tokenizer_merges":
+                EXPECTED_MERGES,
+
+            "vocab_size":
+                VOCAB_SIZE,
+
+            "eos_token_id":
+                tokenizer.eos_token_id,
+
+            "documents":
+                total_documents,
+
+            "characters":
+                total_characters,
+
+            "tokens":
+                total_tokens,
+
+            "minimum_token_id":
+                minimum_token_id,
+
+            "maximum_token_id":
+                maximum_token_id,
+
+            "file_size_bytes":
+                file_size_bytes,
+
+            "encoding_seconds":
+                elapsed,
+
+            "sources":
+                source_stats,
+        }
+
+        with open(
+            temporary_metadata,
+            "w",
+            encoding="utf-8",
+        ) as file:
+
+            json.dump(
+                metadata,
+                file,
+                indent=4,
+            )
+
+        # ====================================================
+        # Replace obsolete v0.1 output only after success.
+        # ====================================================
+
+        os.replace(
+            temporary_bin,
+            output_bin,
+        )
+
+        os.replace(
+            temporary_metadata,
+            metadata_path,
+        )
+
+    finally:
+
+        if temporary_bin.exists():
+
+            temporary_bin.unlink()
+
+        if temporary_metadata.exists():
+
+            temporary_metadata.unlink()
 
     # ========================================================
     # Report
     # ========================================================
 
     print()
+
     print(
         f"{split_name} encoding complete"
     )
 
     print(
-        "-" * (
-            len(split_name)
-            + 18
-        )
+        "-" * 40
+    )
+
+    print(
+        f"Tokenizer: "
+        f"{TOKENIZER_NAME}"
     )
 
     print(
@@ -572,18 +843,16 @@ def encode_split(
 
 def main():
 
-    tokenizer = (
-        load_tokenizer()
-    )
+    tokenizer = load_tokenizer()
 
     OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    # --------------------------------------------------------
-    # Training split
-    # --------------------------------------------------------
+    # ========================================================
+    # Train
+    # ========================================================
 
     encode_split(
         tokenizer=tokenizer,
@@ -600,19 +869,19 @@ def main():
             / "general_train_metadata.json"
         ),
 
-        split_name="general_train",
+        split_name=(
+            "general_train"
+        ),
     )
 
-    # --------------------------------------------------------
-    # Validation split
-    # --------------------------------------------------------
+    # ========================================================
+    # Validation
+    # ========================================================
 
     encode_split(
         tokenizer=tokenizer,
 
-        input_files=(
-            VALIDATION_FILES
-        ),
+        input_files=VALIDATION_FILES,
 
         output_bin=(
             OUTPUT_DIR
@@ -628,6 +897,17 @@ def main():
             "general_validation"
         ),
     )
+
+    print()
+    print("=" * 65)
+
+    print(
+        "SUCCESS: GENERAL CORPUS "
+        "RE-ENCODED WITH "
+        "tokenizer_50m_v0.2."
+    )
+
+    print("=" * 65)
 
 
 if __name__ == "__main__":
