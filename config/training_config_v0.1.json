@@ -1,0 +1,50 @@
+{
+    "version": "0.1",
+
+    "data": {
+        "train_binary": "data/tokenized/general_train.bin",
+        "validation_binary": "data/tokenized/general_validation.bin",
+        "tokenizer": "tokenizer_50m_v0.2"
+    },
+
+    "training": {
+        "batch_size": 4,
+        "context_length": 256,
+        "seed": 42,
+        "max_steps": 8197
+    },
+
+    "optimizer": {
+        "name": "adamw",
+        "learning_rate": 0.0003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-8,
+        "weight_decay": 0.01
+    },
+
+    "scheduler": {
+        "name": "warmup_cosine",
+        "warmup_steps": 400,
+        "min_learning_rate": 0.00003
+    },
+
+    "gradient_clipping": {
+        "enabled": true,
+        "max_norm": 1.0
+    },
+
+    "logging": {
+        "log_every_steps": 10
+    },
+
+    "validation": {
+        "eval_every_steps": 200,
+        "eval_batches": 20
+    },
+
+    "checkpointing": {
+        "save_every_steps": 1000,
+        "directory": "checkpoints/general_pretraining"
+    }
+}
