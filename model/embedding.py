@@ -3,16 +3,17 @@ import numpy as np
 
 class TokenEmbedding:
     """
-    Convert token IDs into learned vector representations.
+    Trainable token embedding table.
 
     Weight shape:
         (vocab_size, d_model)
 
-    Input shape:
-        (batch_size, sequence_length)
+    Forward input:
+        token_ids
+        (batch, sequence)
 
-    Output shape:
-        (batch_size, sequence_length, d_model)
+    Forward output:
+        (batch, sequence, d_model)
     """
 
     def __init__(
@@ -28,10 +29,6 @@ class TokenEmbedding:
             seed
         )
 
-        # Small random initialization.
-        #
-        # Each vocabulary token receives
-        # its own d_model-dimensional vector.
         self.weight = rng.normal(
             loc=0.0,
             scale=0.02,
@@ -43,12 +40,21 @@ class TokenEmbedding:
             np.float32
         )
 
+        # Gradient for embedding matrix
+        self.dweight = np.zeros_like(
+            self.weight,
+            dtype=np.float32,
+        )
+
+        # Forward cache
+        self.token_ids_cache = None
+
     def forward(
         self,
         token_ids,
     ):
         """
-        Look up embedding vectors for token IDs.
+        Look up embedding rows.
         """
 
         if token_ids.ndim != 2:
@@ -64,22 +70,120 @@ class TokenEmbedding:
                 "Token IDs cannot be negative."
             )
 
-        if token_ids.max() >= self.vocab_size:
+        if (
+            token_ids.max()
+            >= self.vocab_size
+        ):
 
             raise ValueError(
                 "Token ID exceeds vocabulary size."
             )
 
-        # NumPy advanced indexing does the lookup.
-        embeddings = self.weight[
-            token_ids
-        ]
+        token_ids = np.asarray(
+            token_ids,
+            dtype=np.int64,
+        )
 
-        return embeddings
+        # Save IDs for backward.
+        self.token_ids_cache = (
+            token_ids.copy()
+        )
 
-    def parameter_count(self):
+        embeddings = (
+            self.weight[
+                token_ids
+            ]
+        )
+
+        return embeddings.astype(
+            np.float32,
+            copy=False,
+        )
+
+    def backward(
+        self,
+        grad_output,
+    ):
         """
-        Number of trainable embedding parameters.
+        Backward through the embedding lookup.
+
+        grad_output:
+            (batch, sequence, d_model)
+
+        Stores:
+            dL/dEmbeddingWeight
+
+        There is no gradient with respect
+        to integer token IDs.
         """
 
+        if (
+            self.token_ids_cache
+            is None
+        ):
+
+            raise RuntimeError(
+                "forward() must be called "
+                "before backward()."
+            )
+
+        grad_output = np.asarray(
+            grad_output,
+            dtype=np.float32,
+        )
+
+        expected_shape = (
+            self.token_ids_cache.shape
+            + (
+                self.d_model,
+            )
+        )
+
+        if (
+            grad_output.shape
+            != expected_shape
+        ):
+
+            raise ValueError(
+                "grad_output has "
+                "incorrect shape."
+            )
+
+        # Start fresh for this backward pass.
+        self.dweight.fill(
+            0.0
+        )
+
+        # ----------------------------------------------------
+        # Scatter-add.
+        #
+        # If the same token ID appears multiple
+        # times, all of its gradients accumulate
+        # into the same embedding row.
+        # ----------------------------------------------------
+
+        np.add.at(
+            self.dweight,
+            self.token_ids_cache,
+            grad_output,
+        )
+
+        # Token IDs themselves are discrete,
+        # so there is no dTokenIDs to return.
+        return None
+
+    def zero_grad(
+        self,
+    ):
+        """
+        Reset embedding gradients.
+        """
+
+        self.dweight.fill(
+            0.0
+        )
+
+    def parameter_count(
+        self,
+    ):
         return self.weight.size

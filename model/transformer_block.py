@@ -1,11 +1,15 @@
 try:
     from .layer_norm import LayerNorm
-    from .multi_head_attention import MultiHeadAttention
+    from .multi_head_attention import (
+        MultiHeadAttention
+    )
     from .mlp import MLP
 
 except ImportError:
     from layer_norm import LayerNorm
-    from multi_head_attention import MultiHeadAttention
+    from multi_head_attention import (
+        MultiHeadAttention
+    )
     from mlp import MLP
 
 
@@ -13,7 +17,7 @@ class TransformerBlock:
     """
     Pre-LayerNorm decoder-only Transformer block.
 
-    Architecture:
+    Forward:
 
         x
         ↓
@@ -31,10 +35,8 @@ class TransformerBlock:
         ↓
         Residual Add
 
-    Input shape:
-        (batch, sequence, d_model)
+    Input / output shape:
 
-    Output shape:
         (batch, sequence, d_model)
     """
 
@@ -51,18 +53,10 @@ class TransformerBlock:
         self.num_heads = num_heads
         self.d_ff = d_ff
 
-        # ----------------------------------------------------
-        # LayerNorm before attention
-        # ----------------------------------------------------
-
         self.norm1 = LayerNorm(
             d_model=d_model,
             epsilon=epsilon,
         )
-
-        # ----------------------------------------------------
-        # Multi-head causal self-attention
-        # ----------------------------------------------------
 
         self.attention = MultiHeadAttention(
             d_model=d_model,
@@ -71,18 +65,10 @@ class TransformerBlock:
             seed=seed,
         )
 
-        # ----------------------------------------------------
-        # LayerNorm before MLP
-        # ----------------------------------------------------
-
         self.norm2 = LayerNorm(
             d_model=d_model,
             epsilon=epsilon,
         )
-
-        # ----------------------------------------------------
-        # Feed-forward network
-        # ----------------------------------------------------
 
         self.mlp = MLP(
             d_model=d_model,
@@ -96,11 +82,7 @@ class TransformerBlock:
         x,
     ):
         """
-        Run one Transformer block.
-
-        Returns:
-            output
-            attention_weights
+        Forward through one Transformer block.
         """
 
         if x.ndim != 3:
@@ -134,11 +116,7 @@ class TransformerBlock:
             normalized_x
         )
 
-        # Residual connection:
-        #
-        # original input
-        # +
-        # attention result
+        # First residual connection
         attention_residual = (
             x
             + attention_output
@@ -171,17 +149,135 @@ class TransformerBlock:
             attention_weights,
         )
 
-    def parameter_count(
+    def backward(
+        self,
+        grad_output,
+    ):
+        """
+        Backpropagate through one Transformer block.
+
+        grad_output:
+            dL/dOutput
+
+        Returns:
+            dL/dInput
+        """
+
+        # ====================================================
+        # SECOND RESIDUAL
+        #
+        # output =
+        #     attention_residual
+        #     + mlp_output
+        #
+        # Therefore grad_output branches into:
+        #
+        # 1. residual path
+        # 2. MLP path
+        # ====================================================
+
+        grad_attention_residual_direct = (
+            grad_output
+        )
+
+        grad_mlp_output = (
+            grad_output
+        )
+
+        # ====================================================
+        # MLP backward
+        # ====================================================
+
+        grad_normalized_attention = (
+            self.mlp.backward(
+                grad_mlp_output
+            )
+        )
+
+        # ====================================================
+        # LayerNorm 2 backward
+        # ====================================================
+
+        grad_attention_residual_norm = (
+            self.norm2.backward(
+                grad_normalized_attention
+            )
+        )
+
+        # ====================================================
+        # Merge second residual gradients
+        # ====================================================
+
+        grad_attention_residual = (
+            grad_attention_residual_direct
+            + grad_attention_residual_norm
+        )
+
+        # ====================================================
+        # FIRST RESIDUAL
+        #
+        # attention_residual =
+        #     x
+        #     + attention_output
+        #
+        # grad_attention_residual again splits.
+        # ====================================================
+
+        grad_x_direct = (
+            grad_attention_residual
+        )
+
+        grad_attention_output = (
+            grad_attention_residual
+        )
+
+        # ====================================================
+        # Multi-head attention backward
+        # ====================================================
+
+        grad_normalized_x = (
+            self.attention.backward(
+                grad_attention_output
+            )
+        )
+
+        # ====================================================
+        # LayerNorm 1 backward
+        # ====================================================
+
+        grad_x_norm = (
+            self.norm1.backward(
+                grad_normalized_x
+            )
+        )
+
+        # ====================================================
+        # Merge first residual gradients
+        # ====================================================
+
+        grad_input = (
+            grad_x_direct
+            + grad_x_norm
+        )
+
+        return grad_input
+
+    def zero_grad(
         self,
     ):
         """
-        Attention
-        +
-        MLP
-        +
-        two LayerNorms
+        Reset every parameter gradient
+        in the Transformer block.
         """
 
+        self.norm1.zero_grad()
+        self.attention.zero_grad()
+        self.norm2.zero_grad()
+        self.mlp.zero_grad()
+
+    def parameter_count(
+        self,
+    ):
         return (
             self.norm1.parameter_count()
             + self.attention.parameter_count()

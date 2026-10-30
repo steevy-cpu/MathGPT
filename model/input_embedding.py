@@ -1,28 +1,19 @@
-import numpy as np
-
 try:
     from .embedding import TokenEmbedding
-    from .position_embedding import PositionEmbedding
+    from .position_embedding import (
+        PositionEmbedding
+    )
+
 except ImportError:
     from embedding import TokenEmbedding
-    from position_embedding import PositionEmbedding
+    from position_embedding import (
+        PositionEmbedding
+    )
 
 
 class InputEmbedding:
     """
-    Combine learned token embeddings with learned
-    positional embeddings.
-
-    Input:
-        token_ids
-        shape = (batch_size, sequence_length)
-
-    Output:
-        shape = (
-            batch_size,
-            sequence_length,
-            d_model,
-        )
+    Token embedding + positional embedding.
     """
 
     def __init__(
@@ -42,10 +33,12 @@ class InputEmbedding:
             seed=seed,
         )
 
-        self.position_embedding = PositionEmbedding(
-            context_length=context_length,
-            d_model=d_model,
-            seed=seed + 1,
+        self.position_embedding = (
+            PositionEmbedding(
+                context_length=context_length,
+                d_model=d_model,
+                seed=seed + 1,
+            )
         )
 
     def forward(
@@ -53,8 +46,7 @@ class InputEmbedding:
         token_ids,
     ):
         """
-        Convert token IDs into vectors containing
-        both token identity and position information.
+        Combine token and position vectors.
         """
 
         if token_ids.ndim != 2:
@@ -90,17 +82,6 @@ class InputEmbedding:
             )
         )
 
-        # NumPy broadcasting:
-        #
-        # token_vectors:
-        #     (batch, sequence, d_model)
-        #
-        # position_vectors:
-        #     (sequence, d_model)
-        #
-        # result:
-        #     (batch, sequence, d_model)
-
         output = (
             token_vectors
             + position_vectors
@@ -108,8 +89,42 @@ class InputEmbedding:
 
         return output
 
-    def parameter_count(self):
+    def backward(
+        self,
+        grad_output,
+    ):
+        """
+        Backward through:
 
+            token_embedding
+            +
+            position_embedding
+
+        Both branches receive the same gradient.
+
+        Token IDs are discrete, therefore this
+        method does not return an input gradient.
+        """
+
+        self.token_embedding.backward(
+            grad_output
+        )
+
+        self.position_embedding.backward(
+            grad_output
+        )
+
+        return None
+
+    def zero_grad(
+        self,
+    ):
+        self.token_embedding.zero_grad()
+        self.position_embedding.zero_grad()
+
+    def parameter_count(
+        self,
+    ):
         return (
             self.token_embedding.parameter_count()
             + self.position_embedding.parameter_count()

@@ -15,29 +15,31 @@ class GPT:
     """
     Decoder-only GPT model.
 
-    Architecture:
+    Forward:
 
-        Token IDs
+        token IDs
             ↓
-        Token + Position Embeddings
+        token + position embeddings
             ↓
-        Transformer Blocks × N
+        Transformer blocks
             ↓
-        Final LayerNorm
+        final LayerNorm
             ↓
-        Tied token-embedding projection
+        tied embedding projection
             ↓
-        Vocabulary logits
+        vocabulary logits
 
-    Input:
-        token_ids
-        shape:
-            (batch, sequence)
+    Backward:
 
-    Output:
-        logits
-        shape:
-            (batch, sequence, vocab_size)
+        dLogits
+            ↓
+        output projection
+            ↓
+        final LayerNorm
+            ↓
+        Transformer blocks in reverse
+            ↓
+        input embeddings
     """
 
     def __init__(
@@ -72,7 +74,7 @@ class GPT:
             )
 
         # ====================================================
-        # Input representation
+        # Input embeddings
         # ====================================================
 
         self.input_embedding = InputEmbedding(
@@ -92,8 +94,6 @@ class GPT:
             num_layers
         ):
 
-            # Different deterministic seed for
-            # every Transformer block.
             block_seed = (
                 seed
                 + 100
@@ -125,59 +125,56 @@ class GPT:
             epsilon=epsilon,
         )
 
+        # ====================================================
+        # Forward cache
+        #
+        # Needed because output projection backward uses
+        # the hidden states that entered E^T.
+        # ====================================================
+
+        self.hidden_states_cache = None
+
     @classmethod
     def from_config(
         cls,
         config,
         seed=42,
     ):
-        """
-        Build GPT directly from our model config.
-        """
-
         return cls(
-            vocab_size=(
-                config[
-                    "vocab_size"
-                ]
+            vocab_size=config[
+                "vocab_size"
+            ],
+
+            context_length=config[
+                "context_length"
+            ],
+
+            d_model=config[
+                "d_model"
+            ],
+
+            num_layers=config[
+                "num_layers"
+            ],
+
+            num_heads=config[
+                "num_heads"
+            ],
+
+            d_ff=config[
+                "d_ff"
+            ],
+
+            use_bias=config.get(
+                "use_bias",
+                True,
             ),
-            context_length=(
-                config[
-                    "context_length"
-                ]
+
+            tie_embeddings=config.get(
+                "tie_embeddings",
+                True,
             ),
-            d_model=(
-                config[
-                    "d_model"
-                ]
-            ),
-            num_layers=(
-                config[
-                    "num_layers"
-                ]
-            ),
-            num_heads=(
-                config[
-                    "num_heads"
-                ]
-            ),
-            d_ff=(
-                config[
-                    "d_ff"
-                ]
-            ),
-            use_bias=(
-                config.get(
-                    "use_bias",
-                    True,
-                )
-            ),
-            tie_embeddings=(
-                config.get(
-                    "tie_embeddings",
-                    True,
-                )
-            ),
+
             seed=seed,
         )
 
@@ -187,7 +184,7 @@ class GPT:
         return_attention=False,
     ):
         """
-        Run the full GPT forward pass.
+        Full GPT forward pass.
         """
 
         if token_ids.ndim != 2:
@@ -212,7 +209,7 @@ class GPT:
             )
 
         # ====================================================
-        # 1. Token + position embeddings
+        # 1. Input embeddings
         # ====================================================
 
         x = (
@@ -222,7 +219,7 @@ class GPT:
         )
 
         # ====================================================
-        # 2. Transformer stack
+        # 2. Transformer blocks
         # ====================================================
 
         attention_maps = (
@@ -256,20 +253,13 @@ class GPT:
             )
         )
 
+        # Cache for output projection backward.
+        self.hidden_states_cache = (
+            hidden_states
+        )
+
         # ====================================================
-        # 4. Tied vocabulary projection
-        #
-        # Hidden:
-        #   (B, T, 256)
-        #
-        # Embedding weight:
-        #   (16000, 256)
-        #
-        # Transpose:
-        #   (256, 16000)
-        #
-        # Logits:
-        #   (B, T, 16000)
+        # 4. Weight-tied vocabulary projection
         # ====================================================
 
         embedding_weight = (
@@ -297,15 +287,204 @@ class GPT:
 
         return logits
 
+    def backward(
+        self,
+        grad_logits,
+    ):
+        """
+        Full GPT backward pass.
+
+        grad_logits:
+            dL/dLogits
+
+            shape:
+                (
+                    batch,
+                    sequence,
+                    vocab_size,
+                )
+
+        Returns:
+            None
+
+        Parameter gradients are stored
+        inside the model components.
+        """
+
+        if (
+            self.hidden_states_cache
+            is None
+        ):
+
+            raise RuntimeError(
+                "forward() must be called "
+                "before backward()."
+            )
+
+        grad_logits = np.asarray(
+            grad_logits,
+            dtype=np.float32,
+        )
+
+        hidden_states = (
+            self.hidden_states_cache
+        )
+
+        expected_shape = (
+            hidden_states.shape[0],
+            hidden_states.shape[1],
+            self.vocab_size,
+        )
+
+        if (
+            grad_logits.shape
+            != expected_shape
+        ):
+
+            raise ValueError(
+                "grad_logits has "
+                "incorrect shape."
+            )
+
+        embedding_weight = (
+            self.input_embedding
+            .token_embedding
+            .weight
+        )
+
+        # ====================================================
+        # 1. Backward through tied output projection
+        #
+        # logits =
+        #     hidden @ E^T
+        #
+        # dHidden =
+        #     dLogits @ E
+        #
+        # dE_output =
+        #     dLogits^T @ hidden
+        # ====================================================
+
+        grad_hidden = (
+            grad_logits
+            @ embedding_weight
+        )
+
+        batch_size = (
+            grad_logits.shape[0]
+        )
+
+        sequence_length = (
+            grad_logits.shape[1]
+        )
+
+        grad_logits_flat = (
+            grad_logits.reshape(
+                batch_size
+                * sequence_length,
+                self.vocab_size,
+            )
+        )
+
+        hidden_flat = (
+            hidden_states.reshape(
+                batch_size
+                * sequence_length,
+                self.d_model,
+            )
+        )
+
+        grad_embedding_output = (
+            grad_logits_flat.T
+            @ hidden_flat
+        ).astype(
+            np.float32,
+            copy=False,
+        )
+
+        # ====================================================
+        # 2. Final LayerNorm backward
+        # ====================================================
+
+        grad_x = (
+            self.final_norm.backward(
+                grad_hidden
+            )
+        )
+
+        # ====================================================
+        # 3. Transformer stack backward
+        #
+        # Reverse order:
+        #
+        # block 5 → 4 → 3 → 2 → 1
+        # ====================================================
+
+        for block in reversed(
+            self.blocks
+        ):
+
+            grad_x = (
+                block.backward(
+                    grad_x
+                )
+            )
+
+        # ====================================================
+        # 4. Input embedding backward
+        #
+        # This computes:
+        #
+        # dE_input
+        # dPosition
+        # ====================================================
+
+        self.input_embedding.backward(
+            grad_x
+        )
+
+        # ====================================================
+        # 5. Weight tying
+        #
+        # E participates in TWO places:
+        #
+        # input lookup
+        # +
+        # output vocabulary projection
+        #
+        # Therefore gradients ADD.
+        # ====================================================
+
+        self.input_embedding.token_embedding.dweight += (
+            grad_embedding_output
+        )
+
+        return None
+
+    def zero_grad(
+        self,
+    ):
+        """
+        Reset every trainable gradient
+        in the GPT model.
+        """
+
+        self.input_embedding.zero_grad()
+
+        for block in self.blocks:
+
+            block.zero_grad()
+
+        self.final_norm.zero_grad()
+
     def parameter_count(
         self,
     ):
         """
-        Count all unique trainable parameters.
+        Count unique trainable parameters.
 
-        The output vocabulary projection does NOT
-        add parameters because it reuses the token
-        embedding matrix.
+        Tied output projection adds no
+        additional parameters.
         """
 
         input_parameters = (

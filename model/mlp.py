@@ -1,29 +1,33 @@
 try:
     from .linear import Linear
-    from .gelu import gelu
+    from .gelu import (
+        gelu,
+        gelu_backward,
+    )
 
 except ImportError:
     from linear import Linear
-    from gelu import gelu
+    from gelu import (
+        gelu,
+        gelu_backward,
+    )
 
 
 class MLP:
     """
     Transformer feed-forward network.
 
-    Architecture:
+    Forward:
 
-        d_model
-           ↓
+        x
+        ↓
         Linear
-           ↓
-          d_ff
-           ↓
-          GELU
-           ↓
+        ↓
+        GELU
+        ↓
         Linear
-           ↓
-        d_model
+        ↓
+        output
 
     Input:
         (batch, sequence, d_model)
@@ -39,23 +43,15 @@ class MLP:
         use_bias=True,
         seed=42,
     ):
-        self.d_model = (
-            d_model
-        )
+        self.d_model = d_model
+        self.d_ff = d_ff
+        self.use_bias = use_bias
 
-        self.d_ff = (
-            d_ff
-        )
-
-        self.use_bias = (
-            use_bias
-        )
-
-        # ----------------------------------------------------
-        # Expansion:
+        # ====================================================
+        # Expansion projection
         #
-        # 256 → 1024
-        # ----------------------------------------------------
+        # d_model → d_ff
+        # ====================================================
 
         self.fc_in = Linear(
             input_dim=d_model,
@@ -64,11 +60,11 @@ class MLP:
             seed=seed,
         )
 
-        # ----------------------------------------------------
-        # Compression:
+        # ====================================================
+        # Compression projection
         #
-        # 1024 → 256
-        # ----------------------------------------------------
+        # d_ff → d_model
+        # ====================================================
 
         self.fc_out = Linear(
             input_dim=d_ff,
@@ -76,6 +72,15 @@ class MLP:
             use_bias=use_bias,
             seed=seed + 1,
         )
+
+        # ====================================================
+        # Forward cache
+        #
+        # GELU backward needs the values that
+        # entered GELU.
+        # ====================================================
+
+        self.pre_activation_cache = None
 
     def forward(
         self,
@@ -102,9 +107,9 @@ class MLP:
                 f"equal d_model={self.d_model}."
             )
 
-        # ----------------------------------------------------
-        # 1. Expand features
-        # ----------------------------------------------------
+        # ====================================================
+        # 1. Expansion Linear
+        # ====================================================
 
         hidden = (
             self.fc_in.forward(
@@ -112,33 +117,99 @@ class MLP:
             )
         )
 
-        # ----------------------------------------------------
-        # 2. Nonlinear activation
-        # ----------------------------------------------------
-
-        hidden = gelu(
+        # Save the input to GELU.
+        self.pre_activation_cache = (
             hidden
         )
 
-        # ----------------------------------------------------
-        # 3. Compress back to d_model
-        # ----------------------------------------------------
+        # ====================================================
+        # 2. GELU
+        # ====================================================
+
+        activated = gelu(
+            hidden
+        )
+
+        # ====================================================
+        # 3. Compression Linear
+        # ====================================================
 
         output = (
             self.fc_out.forward(
-                hidden
+                activated
             )
         )
 
         return output
 
-    def parameter_count(
+    def backward(
+        self,
+        grad_output,
+    ):
+        """
+        Backpropagate through the MLP.
+
+        grad_output:
+            dL/dOutput
+
+        Returns:
+            dL/dInput
+        """
+
+        if (
+            self.pre_activation_cache
+            is None
+        ):
+
+            raise RuntimeError(
+                "forward() must be called "
+                "before backward()."
+            )
+
+        # ====================================================
+        # 1. Backward through second Linear
+        # ====================================================
+
+        grad_activated = (
+            self.fc_out.backward(
+                grad_output
+            )
+        )
+
+        # ====================================================
+        # 2. Backward through GELU
+        # ====================================================
+
+        grad_hidden = gelu_backward(
+            self.pre_activation_cache,
+            grad_activated,
+        )
+
+        # ====================================================
+        # 3. Backward through first Linear
+        # ====================================================
+
+        grad_input = (
+            self.fc_in.backward(
+                grad_hidden
+            )
+        )
+
+        return grad_input
+
+    def zero_grad(
         self,
     ):
         """
-        Count both Linear layers.
+        Reset gradients in both Linear layers.
         """
 
+        self.fc_in.zero_grad()
+        self.fc_out.zero_grad()
+
+    def parameter_count(
+        self,
+    ):
         return (
             self.fc_in.parameter_count()
             + self.fc_out.parameter_count()

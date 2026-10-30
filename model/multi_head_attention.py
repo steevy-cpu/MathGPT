@@ -2,34 +2,34 @@ import numpy as np
 
 try:
     from .linear import Linear
-    from .causal_attention import causal_attention
+    from .causal_attention import (
+        causal_attention,
+        causal_attention_backward,
+    )
 
 except ImportError:
     from linear import Linear
-    from causal_attention import causal_attention
+    from causal_attention import (
+        causal_attention,
+        causal_attention_backward,
+    )
 
 
 class MultiHeadAttention:
     """
     Multi-head causal self-attention.
 
-    Input:
-        x
-        shape:
-            (batch_size, sequence_length, d_model)
+    Forward input:
+        (batch, sequence, d_model)
 
-    Output:
-        shape:
-            (batch_size, sequence_length, d_model)
+    Forward output:
+        (batch, sequence, d_model)
 
-    Attention weights:
-        shape:
-            (
-                batch_size,
-                num_heads,
-                sequence_length,
-                sequence_length,
-            )
+    Backward input:
+        dL/dOutput
+
+    Backward output:
+        dL/dInput
     """
 
     def __init__(
@@ -58,9 +58,9 @@ class MultiHeadAttention:
             // num_heads
         )
 
-        # ----------------------------------------------------
-        # Q, K, V projections
-        # ----------------------------------------------------
+        # ====================================================
+        # Q / K / V projections
+        # ====================================================
 
         self.query_projection = Linear(
             input_dim=d_model,
@@ -83,9 +83,9 @@ class MultiHeadAttention:
             seed=seed + 2,
         )
 
-        # ----------------------------------------------------
-        # Final output projection
-        # ----------------------------------------------------
+        # ====================================================
+        # Output projection
+        # ====================================================
 
         self.output_projection = Linear(
             input_dim=d_model,
@@ -94,18 +94,27 @@ class MultiHeadAttention:
             seed=seed + 3,
         )
 
+        # ====================================================
+        # Forward caches needed by backward
+        # ====================================================
+
+        self.query_flat_cache = None
+        self.key_flat_cache = None
+        self.value_flat_cache = None
+
+        self.attention_weights_cache = None
+
+        self.batch_size_cache = None
+        self.sequence_length_cache = None
+
     def split_heads(
         self,
         x,
     ):
         """
-        Convert:
-
-            (batch, sequence, d_model)
-
-        into:
-
-            (batch, heads, sequence, head_dim)
+        (B, T, D)
+            ↓
+        (B, H, T, head_dim)
         """
 
         batch_size = (
@@ -140,13 +149,9 @@ class MultiHeadAttention:
         x,
     ):
         """
-        Convert:
-
-            (batch, heads, sequence, head_dim)
-
-        back into:
-
-            (batch, sequence, d_model)
+        (B, H, T, head_dim)
+            ↓
+        (B, T, D)
         """
 
         batch_size = (
@@ -167,7 +172,6 @@ class MultiHeadAttention:
             ),
         )
 
-        # transpose can create a non-contiguous view.
         x = np.ascontiguousarray(
             x
         )
@@ -213,12 +217,9 @@ class MultiHeadAttention:
             x.shape[1]
         )
 
-        # ----------------------------------------------------
-        # 1. Generate Q, K, V
-        #
-        # each:
-        # (batch, sequence, d_model)
-        # ----------------------------------------------------
+        # ====================================================
+        # 1. Q / K / V projections
+        # ====================================================
 
         query = (
             self.query_projection.forward(
@@ -238,13 +239,9 @@ class MultiHeadAttention:
             )
         )
 
-        # ----------------------------------------------------
-        # 2. Split into heads
-        #
-        # (B, T, D)
-        #      ↓
-        # (B, H, T, head_dim)
-        # ----------------------------------------------------
+        # ====================================================
+        # 2. Split heads
+        # ====================================================
 
         query = self.split_heads(
             query
@@ -258,23 +255,9 @@ class MultiHeadAttention:
             value
         )
 
-        # ----------------------------------------------------
-        # 3. Flatten batch and head dimensions
-        #
-        # Our causal_attention() function expects:
-        #
-        # (batch, sequence, head_dim)
-        #
-        # So:
-        #
-        # B * H
-        #
-        # Example:
-        #
-        # 8 batches
-        # × 4 heads
-        # = 32 independent attention calculations
-        # ----------------------------------------------------
+        # ====================================================
+        # 3. Flatten batch × heads
+        # ====================================================
 
         query_flat = query.reshape(
             batch_size
@@ -297,9 +280,9 @@ class MultiHeadAttention:
             self.head_dim,
         )
 
-        # ----------------------------------------------------
-        # 4. Run causal attention
-        # ----------------------------------------------------
+        # ====================================================
+        # 4. Causal attention
+        # ====================================================
 
         (
             attention_output,
@@ -310,9 +293,34 @@ class MultiHeadAttention:
             value_flat,
         )
 
-        # ----------------------------------------------------
+        # Save for backward.
+        self.query_flat_cache = (
+            query_flat
+        )
+
+        self.key_flat_cache = (
+            key_flat
+        )
+
+        self.value_flat_cache = (
+            value_flat
+        )
+
+        self.attention_weights_cache = (
+            attention_weights
+        )
+
+        self.batch_size_cache = (
+            batch_size
+        )
+
+        self.sequence_length_cache = (
+            sequence_length
+        )
+
+        # ====================================================
         # 5. Restore head dimension
-        # ----------------------------------------------------
+        # ====================================================
 
         attention_output = (
             attention_output.reshape(
@@ -323,7 +331,10 @@ class MultiHeadAttention:
             )
         )
 
-        attention_weights = (
+        # Return weights in intuitive form:
+        #
+        # (B, H, T, T)
+        returned_attention_weights = (
             attention_weights.reshape(
                 batch_size,
                 self.num_heads,
@@ -332,13 +343,9 @@ class MultiHeadAttention:
             )
         )
 
-        # ----------------------------------------------------
-        # 6. Concatenate heads
-        #
-        # (B, H, T, head_dim)
-        #          ↓
-        # (B, T, D)
-        # ----------------------------------------------------
+        # ====================================================
+        # 6. Combine heads
+        # ====================================================
 
         combined = (
             self.combine_heads(
@@ -346,9 +353,9 @@ class MultiHeadAttention:
             )
         )
 
-        # ----------------------------------------------------
-        # 7. Final output projection
-        # ----------------------------------------------------
+        # ====================================================
+        # 7. Output projection
+        # ====================================================
 
         output = (
             self.output_projection.forward(
@@ -357,17 +364,236 @@ class MultiHeadAttention:
         )
 
         return (
-            output,
-            attention_weights,
+            output.astype(
+                np.float32,
+                copy=False,
+            ),
+            returned_attention_weights,
         )
+
+    def backward(
+        self,
+        grad_output,
+    ):
+        """
+        Backpropagate through the complete
+        multi-head attention module.
+
+        grad_output:
+            dL/dOutput
+
+        Returns:
+            dL/dInput
+        """
+
+        if (
+            self.query_flat_cache is None
+            or self.key_flat_cache is None
+            or self.value_flat_cache is None
+            or self.attention_weights_cache is None
+        ):
+
+            raise RuntimeError(
+                "forward() must be called "
+                "before backward()."
+            )
+
+        grad_output = np.asarray(
+            grad_output,
+            dtype=np.float32,
+        )
+
+        batch_size = (
+            self.batch_size_cache
+        )
+
+        sequence_length = (
+            self.sequence_length_cache
+        )
+
+        expected_shape = (
+            batch_size,
+            sequence_length,
+            self.d_model,
+        )
+
+        if (
+            grad_output.shape
+            != expected_shape
+        ):
+
+            raise ValueError(
+                "grad_output has incorrect shape."
+            )
+
+        # ====================================================
+        # 1. Backward through output projection Wo
+        #
+        # output = combined @ Wo + bo
+        # ====================================================
+
+        grad_combined = (
+            self.output_projection.backward(
+                grad_output
+            )
+        )
+
+        # ====================================================
+        # 2. Undo combine_heads()
+        #
+        # (B, T, D)
+        #     ↓
+        # (B, H, T, head_dim)
+        # ====================================================
+
+        grad_attention_heads = (
+            self.split_heads(
+                grad_combined
+            )
+        )
+
+        grad_attention_flat = (
+            grad_attention_heads.reshape(
+                batch_size
+                * self.num_heads,
+                sequence_length,
+                self.head_dim,
+            )
+        )
+
+        # ====================================================
+        # 3. Backward through causal attention
+        #
+        # Gives gradients for Q, K, V
+        # ====================================================
+
+        (
+            grad_query_flat,
+            grad_key_flat,
+            grad_value_flat,
+        ) = causal_attention_backward(
+            self.query_flat_cache,
+            self.key_flat_cache,
+            self.value_flat_cache,
+            self.attention_weights_cache,
+            grad_attention_flat,
+        )
+
+        # ====================================================
+        # 4. Restore heads
+        # ====================================================
+
+        grad_query_heads = (
+            grad_query_flat.reshape(
+                batch_size,
+                self.num_heads,
+                sequence_length,
+                self.head_dim,
+            )
+        )
+
+        grad_key_heads = (
+            grad_key_flat.reshape(
+                batch_size,
+                self.num_heads,
+                sequence_length,
+                self.head_dim,
+            )
+        )
+
+        grad_value_heads = (
+            grad_value_flat.reshape(
+                batch_size,
+                self.num_heads,
+                sequence_length,
+                self.head_dim,
+            )
+        )
+
+        # ====================================================
+        # 5. Combine head gradients back into d_model
+        # ====================================================
+
+        grad_query = (
+            self.combine_heads(
+                grad_query_heads
+            )
+        )
+
+        grad_key = (
+            self.combine_heads(
+                grad_key_heads
+            )
+        )
+
+        grad_value = (
+            self.combine_heads(
+                grad_value_heads
+            )
+        )
+
+        # ====================================================
+        # 6. Backward through Q/K/V projections
+        #
+        # All three projections received the same x.
+        # ====================================================
+
+        grad_input_query = (
+            self.query_projection.backward(
+                grad_query
+            )
+        )
+
+        grad_input_key = (
+            self.key_projection.backward(
+                grad_key
+            )
+        )
+
+        grad_input_value = (
+            self.value_projection.backward(
+                grad_value
+            )
+        )
+
+        # ====================================================
+        # 7. Branch gradients ADD together
+        #
+        # x feeds Q, K, and V.
+        #
+        # Therefore:
+        #
+        # dX =
+        # dX_Q + dX_K + dX_V
+        # ====================================================
+
+        grad_input = (
+            grad_input_query
+            + grad_input_key
+            + grad_input_value
+        )
+
+        return grad_input.astype(
+            np.float32,
+            copy=False,
+        )
+
+    def zero_grad(
+        self,
+    ):
+        """
+        Reset gradients for all four
+        Linear projections.
+        """
+
+        self.query_projection.zero_grad()
+        self.key_projection.zero_grad()
+        self.value_projection.zero_grad()
+        self.output_projection.zero_grad()
 
     def parameter_count(
         self,
     ):
-        """
-        Q + K + V + output projection
-        """
-
         return (
             self.query_projection.parameter_count()
             + self.key_projection.parameter_count()
