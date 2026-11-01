@@ -16,6 +16,10 @@ try:
         set_optimizer_learning_rate,
     )
 
+    from .checkpoint_manager import (
+        save_training_checkpoint,
+    )
+
 except ImportError:
     from loss import (
         cross_entropy_loss_and_backward,
@@ -27,6 +31,10 @@ except ImportError:
 
     from lr_scheduler import (
         set_optimizer_learning_rate,
+    )
+
+    from checkpoint_manager import (
+        save_training_checkpoint,
     )
 
 
@@ -43,26 +51,7 @@ def train_one_step(
 ):
     """
     Run one complete GPT training step.
-
-    Returns a dictionary of metrics.
-
-    Order matters:
-
-        batch
-        forward
-        loss
-        zero_grad
-        backward
-        clip
-        set LR
-        optimizer step
     """
-
-    # ========================================================
-    # Determine NEXT optimizer step.
-    #
-    # AdamW step_count increments inside optimizer.step().
-    # ========================================================
 
     next_step = (
         optimizer.step_count
@@ -70,7 +59,6 @@ def train_one_step(
     )
 
     if next_step > total_steps:
-
         raise RuntimeError(
             "Training attempted to go "
             "past total_steps."
@@ -86,29 +74,28 @@ def train_one_step(
         Y.size
     )
 
-    # ========================================================
-    # Forward
-    # ========================================================
-
     step_start = (
         time.perf_counter()
     )
+
+    # ========================================================
+    # Forward
+    # ========================================================
 
     forward_start = (
         time.perf_counter()
     )
 
-    logits = model.forward(
-        X
-    )
+    logits = model.forward(X)
 
     forward_seconds = (
         time.perf_counter()
-        - forward_start
+        -
+        forward_start
     )
 
     # ========================================================
-    # Loss + dLogits
+    # Loss
     # ========================================================
 
     loss_start = (
@@ -125,26 +112,20 @@ def train_one_step(
 
     loss_seconds = (
         time.perf_counter()
-        - loss_start
+        -
+        loss_start
     )
 
-    if not np.isfinite(
-        loss
-    ):
-
+    if not np.isfinite(loss):
         raise FloatingPointError(
             "Non-finite training loss."
         )
 
     # ========================================================
-    # Clear old gradients
+    # Backward
     # ========================================================
 
     optimizer.zero_grad()
-
-    # ========================================================
-    # Backward
-    # ========================================================
 
     backward_start = (
         time.perf_counter()
@@ -156,11 +137,12 @@ def train_one_step(
 
     backward_seconds = (
         time.perf_counter()
-        - backward_start
+        -
+        backward_start
     )
 
     # ========================================================
-    # Global gradient clipping
+    # Gradient clipping
     # ========================================================
 
     clipping_start = (
@@ -177,44 +159,34 @@ def train_one_step(
 
     clipping_seconds = (
         time.perf_counter()
-        - clipping_start
+        -
+        clipping_start
     )
 
     if not np.isfinite(
         gradient_norm
     ):
-
         raise FloatingPointError(
             "Non-finite gradient norm."
         )
 
     # ========================================================
-    # Learning-rate scheduler
-    #
-    # Set LR BEFORE optimizer.step().
+    # Learning rate
     # ========================================================
 
     learning_rate = (
         set_optimizer_learning_rate(
             optimizer=optimizer,
             step=next_step,
-            max_learning_rate=(
-                max_learning_rate
-            ),
-            min_learning_rate=(
-                min_learning_rate
-            ),
-            warmup_steps=(
-                warmup_steps
-            ),
-            total_steps=(
-                total_steps
-            ),
+            max_learning_rate=max_learning_rate,
+            min_learning_rate=min_learning_rate,
+            warmup_steps=warmup_steps,
+            total_steps=total_steps,
         )
     )
 
     # ========================================================
-    # AdamW
+    # Optimizer
     # ========================================================
 
     optimizer_start = (
@@ -225,16 +197,14 @@ def train_one_step(
 
     optimizer_seconds = (
         time.perf_counter()
-        - optimizer_start
+        -
+        optimizer_start
     )
-
-    # ========================================================
-    # Timing
-    # ========================================================
 
     total_seconds = (
         time.perf_counter()
-        - step_start
+        -
+        step_start
     )
 
     tokens_per_second = (
@@ -245,10 +215,6 @@ def train_one_step(
         else 0.0
     )
 
-    # ========================================================
-    # Metrics
-    # ========================================================
-
     return {
         "step":
             int(
@@ -256,9 +222,7 @@ def train_one_step(
             ),
 
         "loss":
-            float(
-                loss
-            ),
+            float(loss),
 
         "learning_rate":
             float(
@@ -328,36 +292,63 @@ def run_training_steps(
     max_grad_norm,
     starting_tokens_seen=0,
     progress_every=1,
+    logger=None,
+    log_every=1,
+    checkpoint_every=None,
+    checkpoint_directory=None,
+    checkpoint_prefix="mathgpt",
 ):
     """
-    Run several training steps.
+    Run several GPT training steps.
 
-    This is the reusable core loop that the
-    final trainer will eventually call.
+    Supports:
 
-    Returns:
-
-        history,
-        tokens_seen
+        persistent logging
+        periodic checkpoints
+        deterministic loader-state checkpointing
     """
 
     if num_steps <= 0:
-
         raise ValueError(
             "num_steps must be positive."
         )
 
     if progress_every <= 0:
-
         raise ValueError(
             "progress_every must be positive."
         )
+
+    if log_every <= 0:
+        raise ValueError(
+            "log_every must be positive."
+        )
+
+    checkpointing_enabled = (
+        checkpoint_every
+        is not None
+    )
+
+    if checkpointing_enabled:
+
+        if checkpoint_every <= 0:
+            raise ValueError(
+                "checkpoint_every must "
+                "be positive."
+            )
+
+        if checkpoint_directory is None:
+            raise ValueError(
+                "checkpoint_directory is required "
+                "when checkpointing is enabled."
+            )
 
     tokens_seen = int(
         starting_tokens_seen
     )
 
     history = []
+
+    saved_checkpoints = []
 
     for _ in range(
         num_steps
@@ -367,22 +358,16 @@ def run_training_steps(
             model=model,
             optimizer=optimizer,
             train_loader=train_loader,
-            max_learning_rate=(
-                max_learning_rate
-            ),
-            min_learning_rate=(
-                min_learning_rate
-            ),
-            warmup_steps=(
-                warmup_steps
-            ),
-            total_steps=(
-                total_steps
-            ),
-            max_grad_norm=(
-                max_grad_norm
-            ),
+            max_learning_rate=max_learning_rate,
+            min_learning_rate=min_learning_rate,
+            warmup_steps=warmup_steps,
+            total_steps=total_steps,
+            max_grad_norm=max_grad_norm,
         )
+
+        # ====================================================
+        # Token accounting
+        # ====================================================
 
         tokens_seen += (
             metrics[
@@ -394,13 +379,65 @@ def run_training_steps(
             "tokens_seen"
         ] = tokens_seen
 
+        step = metrics[
+            "step"
+        ]
+
         history.append(
             metrics
         )
 
-        step = metrics[
-            "step"
-        ]
+        # ====================================================
+        # Persistent logging
+        # ====================================================
+
+        if (
+            logger is not None
+            and
+            (
+                step == 1
+                or
+                step % log_every == 0
+            )
+        ):
+            logger.log_training(
+                metrics
+            )
+
+        # ====================================================
+        # Periodic checkpoint
+        # ====================================================
+
+        if (
+            checkpointing_enabled
+            and
+            step % checkpoint_every == 0
+        ):
+
+            (
+                checkpoint_path,
+                _,
+            ) = save_training_checkpoint(
+                model=model,
+                optimizer=optimizer,
+                directory=checkpoint_directory,
+                step=step,
+                tokens_seen=tokens_seen,
+
+                # Critical Stage 9H addition:
+                train_loader=train_loader,
+
+                logger=logger,
+                prefix=checkpoint_prefix,
+            )
+
+            saved_checkpoints.append(
+                checkpoint_path
+            )
+
+        # ====================================================
+        # Terminal progress
+        # ====================================================
 
         if (
             step == 1
@@ -419,10 +456,12 @@ def run_training_steps(
                 f"{metrics['gradient_norm']:.4f} | "
                 f"Clip "
                 f"{metrics['clip_scale']:.4f} | "
-                f"{metrics['tokens_per_second']:,.0f} tok/s"
+                f"{metrics['tokens_per_second']:,.0f} "
+                f"tok/s"
             )
 
     return (
         history,
         tokens_seen,
+        saved_checkpoints,
     )

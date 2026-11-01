@@ -6,6 +6,10 @@ from pathlib import Path
 import numpy as np
 
 
+# ============================================================
+# Project root
+# ============================================================
+
 PROJECT_ROOT = (
     Path(__file__)
     .resolve()
@@ -20,6 +24,10 @@ if str(PROJECT_ROOT) not in sys.path:
         str(PROJECT_ROOT),
     )
 
+
+# ============================================================
+# Imports
+# ============================================================
 
 from model.gpt import GPT
 
@@ -44,6 +52,10 @@ from training.train_loop import (
 )
 
 
+# ============================================================
+# Paths
+# ============================================================
+
 MODEL_CONFIG_PATH = (
     PROJECT_ROOT
     / "config"
@@ -58,8 +70,16 @@ TRAINING_CONFIG_PATH = (
 )
 
 
+# ============================================================
+# Test settings
+# ============================================================
+
 TEST_STEPS = 10
 
+
+# ============================================================
+# JSON loader
+# ============================================================
 
 def load_json(
     path,
@@ -76,6 +96,10 @@ def load_json(
         )
 
 
+# ============================================================
+# Main
+# ============================================================
+
 def main():
 
     print()
@@ -86,6 +110,10 @@ def main():
     print(
         "============================"
     )
+
+    # ========================================================
+    # Load configs
+    # ========================================================
 
     model_config = load_json(
         MODEL_CONFIG_PATH
@@ -214,7 +242,7 @@ def main():
         seed=seed,
     )
 
-    # Save one weight matrix before training.
+    # Save one parameter matrix before training.
     embedding_before = (
         model
         .input_embedding
@@ -224,7 +252,7 @@ def main():
     )
 
     # ========================================================
-    # Loader
+    # Data loader
     # ========================================================
 
     train_loader = TokenBatchLoader(
@@ -249,6 +277,9 @@ def main():
 
     # ========================================================
     # Run real training
+    #
+    # Periodic checkpointing is NOT enabled in this test.
+    # Therefore saved_checkpoints should remain [].
     # ========================================================
 
     print()
@@ -256,6 +287,7 @@ def main():
     (
         history,
         tokens_seen,
+        saved_checkpoints,
     ) = run_training_steps(
         model=model,
         optimizer=optimizer,
@@ -325,6 +357,7 @@ def main():
             metrics[
                 "step"
             ]
+
             for metrics
             in history
         ]
@@ -407,10 +440,12 @@ def main():
         )
     )
 
-    final_lr_passed = np.isclose(
-        optimizer.learning_rate,
-        expected_final_lr,
-        atol=1e-12,
+    final_lr_passed = (
+        np.isclose(
+            optimizer.learning_rate,
+            expected_final_lr,
+            atol=1e-12,
+        )
     )
 
     parameters_changed = (
@@ -449,14 +484,23 @@ def main():
         in history
     )
 
+    # Since this particular test did not enable
+    # checkpointing, none should have been created.
+    no_checkpoints_passed = (
+        saved_checkpoints
+        ==
+        []
+    )
+
     # ========================================================
-    # Summary
+    # Summary statistics
     # ========================================================
 
     losses = [
         metrics[
             "loss"
         ]
+
         for metrics
         in history
     ]
@@ -479,6 +523,10 @@ def main():
             ]
         )
     )
+
+    # ========================================================
+    # Report
+    # ========================================================
 
     print()
     print(
@@ -526,8 +574,16 @@ def main():
         f"tokens/s"
     )
 
-    print()
+    print(
+        f"Checkpoints created: "
+        f"{len(saved_checkpoints)}"
+    )
 
+    # ========================================================
+    # Final checks
+    # ========================================================
+
+    print()
     print(
         "Final Checks"
     )
@@ -601,6 +657,11 @@ def main():
         f"{throughput_positive}"
     )
 
+    print(
+        f"No checkpoints created: "
+        f"{no_checkpoints_passed}"
+    )
+
     all_passed = (
         history_length_passed
         and
@@ -627,6 +688,8 @@ def main():
         parameters_finite
         and
         throughput_positive
+        and
+        no_checkpoints_passed
     )
 
     print()
@@ -644,7 +707,8 @@ def main():
     else:
 
         raise AssertionError(
-            "Core training loop validation failed."
+            "Core training loop "
+            "validation failed."
         )
 
     print(
@@ -653,4 +717,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
