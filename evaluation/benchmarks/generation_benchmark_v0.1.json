@@ -1,0 +1,103 @@
+{
+    "version": "0.1",
+    "name": "MathGPT Fixed Generation Benchmark",
+    "description": "Versioned qualitative generation benchmark for comparing MathGPT checkpoints across training stages.",
+
+    "decoding_profiles": [
+        {
+            "name": "greedy",
+            "strategy": "greedy",
+            "temperature": 1.0,
+            "top_k": null,
+            "top_p": null,
+            "seed": 42,
+            "max_new_tokens": 50
+        },
+        {
+            "name": "conservative_sample",
+            "strategy": "sample",
+            "temperature": 0.5,
+            "top_k": 10,
+            "top_p": 0.80,
+            "seed": 42,
+            "max_new_tokens": 50
+        },
+        {
+            "name": "balanced_sample",
+            "strategy": "sample",
+            "temperature": 0.8,
+            "top_k": 40,
+            "top_p": 0.95,
+            "seed": 42,
+            "max_new_tokens": 50
+        }
+    ],
+
+    "prompts": [
+        {
+            "id": "fact_geography_01",
+            "category": "factual_completion",
+            "prompt": "The capital of France is"
+        },
+        {
+            "id": "fact_astronomy_01",
+            "category": "factual_completion",
+            "prompt": "The largest planet in the solar system is"
+        },
+        {
+            "id": "fact_science_01",
+            "category": "factual_completion",
+            "prompt": "Water freezes at"
+        },
+        {
+            "id": "definition_computer_01",
+            "category": "definition",
+            "prompt": "A computer is"
+        },
+        {
+            "id": "definition_ai_01",
+            "category": "definition",
+            "prompt": "Artificial intelligence is"
+        },
+        {
+            "id": "narrative_story_01",
+            "category": "narrative",
+            "prompt": "Once upon a time"
+        },
+        {
+            "id": "causal_student_01",
+            "category": "causal_continuation",
+            "prompt": "The student studied all night because"
+        },
+        {
+            "id": "conversation_greeting_01",
+            "category": "conversation",
+            "prompt": "Hello, how are you?"
+        },
+        {
+            "id": "conversation_emotion_01",
+            "category": "conversation",
+            "prompt": "I had a difficult day today, but"
+        },
+        {
+            "id": "math_arithmetic_01",
+            "category": "math",
+            "prompt": "Two plus two equals"
+        },
+        {
+            "id": "math_algebra_01",
+            "category": "math",
+            "prompt": "To solve x + 5 = 12, we"
+        },
+        {
+            "id": "qa_science_01",
+            "category": "question_answer",
+            "prompt": "Question: What is photosynthesis?\nAnswer:"
+        },
+        {
+            "id": "long_context_object_01",
+            "category": "context_tracking",
+            "prompt": "Maria put the book on the table. She left the room and came back five minutes later. The book was"
+        }
+    ]
+}

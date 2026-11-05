@@ -1,0 +1,55 @@
+{
+    "version": "0.2",
+    "experiment": "general_pretraining_50m_tokens",
+
+    "objective": {
+        "target_training_tokens": 50000000,
+        "validation_ratio": 0.10,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "vocab_size": 16000
+    },
+
+    "reproducibility": {
+        "seed": 42,
+        "preserve_general_v0_1": true
+    },
+
+    "paths": {
+        "raw_directory": "data/raw/general_v0.2",
+        "cleaned_directory": "data/cleaned/general_v0.2",
+        "tokenized_directory": "data/tokenized"
+    },
+
+    "sources": {
+        "fineweb_edu": {
+            "dataset": "HuggingFaceFW/fineweb-edu",
+            "dataset_config": "sample-10BT",
+            "split": "train",
+            "target_raw_characters": 215000000,
+            "shuffle_seed": 42,
+            "shuffle_buffer": 5000,
+            "output_file": "fineweb_edu_general_v0.2_source.jsonl"
+        },
+
+        "wikipedia": {
+            "dataset": "wikimedia/wikipedia",
+            "dataset_config": "20231101.en",
+            "split": "train",
+            "target_raw_characters": 43000000,
+            "shuffle_seed": 42,
+            "shuffle_buffer": 2000,
+            "output_file": "wikipedia_general_v0.2_source.jsonl"
+        },
+
+        "gutenberg": {
+            "dataset": "common-pile/project_gutenberg",
+            "dataset_config": null,
+            "split": "train",
+            "target_raw_characters": 7500000,
+            "max_characters_per_book": 100000,
+            "shuffle_seed": 42,
+            "shuffle_buffer": 1000,
+            "output_file": "gutenberg_general_v0.2_source.jsonl"
+        }
+    }
+}
