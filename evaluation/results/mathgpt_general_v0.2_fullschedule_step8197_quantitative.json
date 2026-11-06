@@ -1,0 +1,1965 @@
+{
+    "created_at_utc": "2026-11-06T23:03:59.695671+00:00",
+    "model": {
+        "label": "MathGPT-General-v0.2-FullSchedule-Step8197",
+        "checkpoint": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.2/general_pretraining_v0_2_fullschedule_step8197/mathgpt_step_008197.npz",
+        "checkpoint_name": "mathgpt_step_008197.npz",
+        "checkpoint_sha256": "efa833bb9137a832dfef495fdc4e2c52b99246d34ad85d8317c8eb825c7e81a7",
+        "training_step": 8197,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256
+    },
+    "benchmark": {
+        "name": "MathGPT Quantitative Capability Benchmark",
+        "version": "0.1",
+        "definition_path": "/home/scelestin/Steeve_project/MathGPT/evaluation/benchmarks/quantitative_benchmark_v0.1.json",
+        "definition_sha256": "8fa71c156cdb291a0e967e0ed61ff0539023a1e78cf5ae866a3b85cce47f933c",
+        "target_test_count": 9,
+        "preference_test_count": 10
+    },
+    "aggregate": {
+        "target_test_count": 9,
+        "target_token_count": 35,
+        "first_token_top1_accuracy": 0.0,
+        "first_token_top10_accuracy": 0.0,
+        "first_token_top100_accuracy": 0.1111111111111111,
+        "median_first_token_rank": 844.0,
+        "mean_first_token_rank": 901.6666666666666,
+        "all_target_tokens_top1": 0.08571428571428572,
+        "all_target_tokens_top10": 0.11428571428571428,
+        "all_target_tokens_top100": 0.2571428571428571,
+        "mean_target_nll": 7.251628167706709,
+        "preference_test_count": 10,
+        "preference_correct": 4,
+        "preference_accuracy": 0.4,
+        "mean_preference_margin": 0.24668830052577997,
+        "median_preference_margin": -0.035701930125367376
+    },
+    "target_results": [
+        {
+            "id": "target_geography_01",
+            "category": "factual",
+            "prompt": "The capital of France is",
+            "target": " Paris.",
+            "score": {
+                "prompt": "The capital of France is",
+                "continuation": " Paris.",
+                "prompt_token_ids": [
+                    356,
+                    7519,
+                    280,
+                    10840,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    1224,
+                    310,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -23.043619354188728,
+                "mean_log_probability": -5.760904838547182,
+                "mean_nll": 5.760904838547182,
+                "perplexity": 317.6356078696735,
+                "first_token_probability": 0.00042091472165489566,
+                "first_token_rank": 477,
+                "mean_token_rank": 210.5,
+                "median_token_rank": 182.0,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00042091472165489566,
+                        "log_probability": -7.773080306190018,
+                        "rank": 477
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 1224,
+                        "probability": 0.000912745701947488,
+                        "log_probability": -6.999053246344038,
+                        "rank": 155
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 310,
+                        "probability": 0.24194562517863188,
+                        "log_probability": -1.4190422674163796,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0010568700370039502,
+                        "log_probability": -6.852443534238292,
+                        "rank": 209
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_astronomy_01",
+            "category": "factual",
+            "prompt": "The largest planet in the solar system is",
+            "target": " Jupiter.",
+            "score": {
+                "prompt": "The largest planet in the solar system is",
+                "continuation": " Jupiter.",
+                "prompt_token_ids": [
+                    356,
+                    4146,
+                    8752,
+                    399,
+                    5002,
+                    1399,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    77,
+                    717,
+                    4597,
+                    49
+                ],
+                "continuation_token_count": 5,
+                "sum_log_probability": -36.90673965516767,
+                "mean_log_probability": -7.381347931033534,
+                "mean_nll": 7.381347931033534,
+                "perplexity": 1605.752753696022,
+                "first_token_probability": 0.00021311623612376075,
+                "first_token_rank": 741,
+                "mean_token_rank": 405.0,
+                "median_token_rank": 204.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.0,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00021311623612376075,
+                        "log_probability": -8.453672831598906,
+                        "rank": 741
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 77,
+                        "probability": 0.0002283509075489267,
+                        "log_probability": -8.384627043964432,
+                        "rank": 851
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 717,
+                        "probability": 0.0019767581677038863,
+                        "log_probability": -6.2262970651366665,
+                        "rank": 111
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 4597,
+                        "probability": 0.0007947138996318837,
+                        "log_probability": -7.1375283827572495,
+                        "rank": 204
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 49,
+                        "probability": 0.0012252451510388577,
+                        "log_probability": -6.704614331710416,
+                        "rank": 118
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_science_01",
+            "category": "factual",
+            "prompt": "Water freezes at",
+            "target": " 0 degrees Celsius.",
+            "score": {
+                "prompt": "Water freezes at",
+                "continuation": " 0 degrees Celsius.",
+                "prompt_token_ids": [
+                    8292,
+                    2292,
+                    5712,
+                    297,
+                    290
+                ],
+                "continuation_token_ids": [
+                    35,
+                    478,
+                    12171,
+                    11878,
+                    321,
+                    323,
+                    49
+                ],
+                "continuation_token_count": 7,
+                "sum_log_probability": -49.850681845804544,
+                "mean_log_probability": -7.121525977972078,
+                "mean_nll": 7.121525977972078,
+                "perplexity": 1238.3386699278783,
+                "first_token_probability": 8.313874937973898e-05,
+                "first_token_rank": 1638,
+                "mean_token_rank": 908.1428571428571,
+                "median_token_rank": 117.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.14285714285714285,
+                "top100_fraction": 0.42857142857142855,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 8.313874937973898e-05,
+                        "log_probability": -9.394999666594284,
+                        "rank": 1638
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 478,
+                        "probability": 4.6712608602030035e-05,
+                        "log_probability": -9.971496438252403,
+                        "rank": 3602
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 12171,
+                        "probability": 0.0015380727063496703,
+                        "log_probability": -6.477225135706754,
+                        "rank": 87
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 11878,
+                        "probability": 0.00019762092360116787,
+                        "log_probability": -8.529159889586438,
+                        "rank": 882
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 321,
+                        "probability": 0.03488067828738233,
+                        "log_probability": -3.3558222338178685,
+                        "rank": 2
+                    },
+                    {
+                        "position": 5,
+                        "token_id": 323,
+                        "probability": 0.001312114007516437,
+                        "log_probability": -6.636115696262582,
+                        "rank": 117
+                    },
+                    {
+                        "position": 6,
+                        "token_id": 49,
+                        "probability": 0.004144957326659869,
+                        "log_probability": -5.485862785584215,
+                        "rank": 29
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_animal_01",
+            "category": "semantic",
+            "prompt": "A dog is a",
+            "target": " mammal.",
+            "score": {
+                "prompt": "A dog is a",
+                "continuation": " mammal.",
+                "prompt_token_ids": [
+                    628,
+                    6393,
+                    291,
+                    100
+                ],
+                "continuation_token_ids": [
+                    35,
+                    14919,
+                    3312,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -30.025165945256397,
+                "mean_log_probability": -7.506291486314099,
+                "mean_nll": 7.506291486314099,
+                "perplexity": 1819.4535474149861,
+                "first_token_probability": 5.622611510621235e-05,
+                "first_token_rank": 1735,
+                "mean_token_rank": 2200.5,
+                "median_token_rank": 1005.0,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 5.622611510621235e-05,
+                        "log_probability": -9.78612922739049,
+                        "rank": 1735
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 14919,
+                        "probability": 1.5558284758323027e-05,
+                        "log_probability": -11.070917279331184,
+                        "rank": 6791
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 3312,
+                        "probability": 0.18791231764251393,
+                        "log_probability": -1.67177982046695,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0005551125799299755,
+                        "log_probability": -7.496339618067777,
+                        "rank": 275
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_opposite_01",
+            "category": "semantic",
+            "prompt": "The opposite of hot is",
+            "target": " cold.",
+            "score": {
+                "prompt": "The opposite of hot is",
+                "continuation": " cold.",
+                "prompt_token_ids": [
+                    356,
+                    3779,
+                    300,
+                    450,
+                    6578,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    832,
+                    103,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -25.40966401273547,
+                "mean_log_probability": -6.352416003183867,
+                "mean_nll": 6.352416003183867,
+                "perplexity": 573.877525408192,
+                "first_token_probability": 0.00019626189397579233,
+                "first_token_rank": 844,
+                "mean_token_rank": 343.0,
+                "median_token_rank": 263.5,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00019626189397579233,
+                        "log_probability": -8.536060596892165,
+                        "rank": 844
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 832,
+                        "probability": 0.0003511705462023069,
+                        "log_probability": -7.954238565886828,
+                        "rank": 422
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 103,
+                        "probability": 0.08072461167094742,
+                        "log_probability": -2.516711772867208,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0016571548761715863,
+                        "log_probability": -6.402653077089269,
+                        "rank": 105
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_math_01",
+            "category": "math",
+            "prompt": "Two plus two equals",
+            "target": " four.",
+            "score": {
+                "prompt": "Two plus two equals",
+                "continuation": " four.",
+                "prompt_token_ids": [
+                    6498,
+                    5912,
+                    722,
+                    5001,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3996,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -20.012726146948637,
+                "mean_log_probability": -6.670908715649546,
+                "mean_nll": 6.670908715649546,
+                "perplexity": 789.112357499469,
+                "first_token_probability": 0.0007318133207217278,
+                "first_token_rank": 260,
+                "mean_token_rank": 362.3333333333333,
+                "median_token_rank": 260.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0007318133207217278,
+                        "log_probability": -7.219985102864146,
+                        "rank": 260
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3996,
+                        "probability": 0.0002067675017514375,
+                        "log_probability": -8.483915575882953,
+                        "rank": 816
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.013449336994997155,
+                        "log_probability": -4.308825468201537,
+                        "rank": 11
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_algebra_01",
+            "category": "math",
+            "prompt": "To solve x + 5 = 12, x =",
+            "target": " 7.",
+            "score": {
+                "prompt": "To solve x + 5 = 12, x =",
+                "continuation": " 7.",
+                "prompt_token_ids": [
+                    1336,
+                    3252,
+                    3949,
+                    701,
+                    512,
+                    13849,
+                    549,
+                    64
+                ],
+                "continuation_token_ids": [
+                    35,
+                    4218
+                ],
+                "continuation_token_count": 2,
+                "sum_log_probability": -14.738014373732724,
+                "mean_log_probability": -7.369007186866362,
+                "mean_nll": 7.369007186866362,
+                "perplexity": 1586.0583415621393,
+                "first_token_probability": 0.0017625380142653525,
+                "first_token_rank": 79,
+                "mean_token_rank": 340.5,
+                "median_token_rank": 340.5,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.5,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0017625380142653525,
+                        "log_probability": -6.3410004551329395,
+                        "rank": 79
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 4218,
+                        "probability": 0.00022553979984694938,
+                        "log_probability": -8.397013918599786,
+                        "rank": 602
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_language_01",
+            "category": "language",
+            "prompt": "She opened the door and walked into the",
+            "target": " room.",
+            "score": {
+                "prompt": "She opened the door and walked into the",
+                "continuation": " room.",
+                "prompt_token_ids": [
+                    86,
+                    634,
+                    2597,
+                    725,
+                    608,
+                    4520,
+                    10696,
+                    4631,
+                    363
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3902,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -25.242386768876692,
+                "mean_log_probability": -8.414128922958897,
+                "mean_nll": 8.414128922958897,
+                "perplexity": 4510.344985178268,
+                "first_token_probability": 0.00010589705393340178,
+                "first_token_rank": 892,
+                "mean_token_rank": 1136.0,
+                "median_token_rank": 892.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00010589705393340178,
+                        "log_probability": -9.15304312506964,
+                        "rank": 892
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3902,
+                        "probability": 6.200503447016321e-05,
+                        "log_probability": -9.688294975084151,
+                        "rank": 2433
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.0016598157633232976,
+                        "log_probability": -6.401048668722902,
+                        "rank": 83
+                    }
+                ]
+            }
+        },
+        {
+            "id": "target_direction_01",
+            "category": "factual",
+            "prompt": "The sun rises in the",
+            "target": " east.",
+            "score": {
+                "prompt": "The sun rises in the",
+                "continuation": " east.",
+                "prompt_token_ids": [
+                    356,
+                    10614,
+                    916,
+                    1114,
+                    363
+                ],
+                "continuation_token_ids": [
+                    35,
+                    12354,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -26.064367340504482,
+                "mean_log_probability": -8.688122446834827,
+                "mean_nll": 8.688122446834827,
+                "perplexity": 5932.034070996633,
+                "first_token_probability": 6.194143580552916e-05,
+                "first_token_rank": 1449,
+                "mean_token_rank": 1240.3333333333333,
+                "median_token_rank": 1449.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.0,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 6.194143580552916e-05,
+                        "log_probability": -9.689321203101361,
+                        "rank": 1449
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 12354,
+                        "probability": 7.866870463062784e-05,
+                        "log_probability": -9.450265135620796,
+                        "rank": 2143
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.000983118395751605,
+                        "log_probability": -6.924781001782326,
+                        "rank": 129
+                    }
+                ]
+            }
+        }
+    ],
+    "preference_results": [
+        {
+            "id": "preference_geography_01",
+            "category": "factual",
+            "prompt": "The capital of France is",
+            "preferred": " Paris.",
+            "rejected": " London.",
+            "preferred_score": {
+                "prompt": "The capital of France is",
+                "continuation": " Paris.",
+                "prompt_token_ids": [
+                    356,
+                    7519,
+                    280,
+                    10840,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    1224,
+                    310,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -23.043619354188728,
+                "mean_log_probability": -5.760904838547182,
+                "mean_nll": 5.760904838547182,
+                "perplexity": 317.6356078696735,
+                "first_token_probability": 0.00042091472165489566,
+                "first_token_rank": 477,
+                "mean_token_rank": 210.5,
+                "median_token_rank": 182.0,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00042091472165489566,
+                        "log_probability": -7.773080306190018,
+                        "rank": 477
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 1224,
+                        "probability": 0.000912745701947488,
+                        "log_probability": -6.999053246344038,
+                        "rank": 155
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 310,
+                        "probability": 0.24194562517863188,
+                        "log_probability": -1.4190422674163796,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0010568700370039502,
+                        "log_probability": -6.852443534238292,
+                        "rank": 209
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "The capital of France is",
+                "continuation": " London.",
+                "prompt_token_ids": [
+                    356,
+                    7519,
+                    280,
+                    10840,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    7316,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -22.036729407491066,
+                "mean_log_probability": -7.345576469163689,
+                "mean_nll": 7.345576469163689,
+                "perplexity": 1549.327847618591,
+                "first_token_probability": 0.00042091472165489566,
+                "first_token_rank": 477,
+                "mean_token_rank": 478.6666666666667,
+                "median_token_rank": 477.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00042091472165489566,
+                        "log_probability": -7.773080306190018,
+                        "rank": 477
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 7316,
+                        "probability": 0.0001971438763117716,
+                        "log_probability": -8.531576759184308,
+                        "rank": 921
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.0032403551463410707,
+                        "log_probability": -5.732072342116741,
+                        "rank": 38
+                    }
+                ]
+            },
+            "margin": 1.5846716306165067,
+            "correct": true
+        },
+        {
+            "id": "preference_astronomy_01",
+            "category": "factual",
+            "prompt": "The largest planet in the solar system is",
+            "preferred": " Jupiter.",
+            "rejected": " Mercury.",
+            "preferred_score": {
+                "prompt": "The largest planet in the solar system is",
+                "continuation": " Jupiter.",
+                "prompt_token_ids": [
+                    356,
+                    4146,
+                    8752,
+                    399,
+                    5002,
+                    1399,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    77,
+                    717,
+                    4597,
+                    49
+                ],
+                "continuation_token_count": 5,
+                "sum_log_probability": -36.90673965516767,
+                "mean_log_probability": -7.381347931033534,
+                "mean_nll": 7.381347931033534,
+                "perplexity": 1605.752753696022,
+                "first_token_probability": 0.00021311623612376075,
+                "first_token_rank": 741,
+                "mean_token_rank": 405.0,
+                "median_token_rank": 204.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.0,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00021311623612376075,
+                        "log_probability": -8.453672831598906,
+                        "rank": 741
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 77,
+                        "probability": 0.0002283509075489267,
+                        "log_probability": -8.384627043964432,
+                        "rank": 851
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 717,
+                        "probability": 0.0019767581677038863,
+                        "log_probability": -6.2262970651366665,
+                        "rank": 111
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 4597,
+                        "probability": 0.0007947138996318837,
+                        "log_probability": -7.1375283827572495,
+                        "rank": 204
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 49,
+                        "probability": 0.0012252451510388577,
+                        "log_probability": -6.704614331710416,
+                        "rank": 118
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "The largest planet in the solar system is",
+                "continuation": " Mercury.",
+                "prompt_token_ids": [
+                    356,
+                    4146,
+                    8752,
+                    399,
+                    5002,
+                    1399,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    12950,
+                    124,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -26.837922042115125,
+                "mean_log_probability": -6.709480510528781,
+                "mean_nll": 6.709480510528781,
+                "perplexity": 820.1444723472881,
+                "first_token_probability": 0.00021311623612376075,
+                "first_token_rank": 741,
+                "mean_token_rank": 2097.5,
+                "median_token_rank": 380.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.5,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00021311623612376075,
+                        "log_probability": -8.453672831598906,
+                        "rank": 741
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 12950,
+                        "probability": 1.6311096881903013e-05,
+                        "log_probability": -11.023664891483353,
+                        "rank": 7627
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 124,
+                        "probability": 0.1145718860086694,
+                        "log_probability": -2.166552827584535,
+                        "rank": 3
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.005549588537006983,
+                        "log_probability": -5.194031491448332,
+                        "rank": 19
+                    }
+                ]
+            },
+            "margin": -0.6718674205047526,
+            "correct": false
+        },
+        {
+            "id": "preference_science_01",
+            "category": "factual",
+            "prompt": "Water freezes at",
+            "preferred": " 0 degrees Celsius.",
+            "rejected": " 100 degrees Celsius.",
+            "preferred_score": {
+                "prompt": "Water freezes at",
+                "continuation": " 0 degrees Celsius.",
+                "prompt_token_ids": [
+                    8292,
+                    2292,
+                    5712,
+                    297,
+                    290
+                ],
+                "continuation_token_ids": [
+                    35,
+                    478,
+                    12171,
+                    11878,
+                    321,
+                    323,
+                    49
+                ],
+                "continuation_token_count": 7,
+                "sum_log_probability": -49.850681845804544,
+                "mean_log_probability": -7.121525977972078,
+                "mean_nll": 7.121525977972078,
+                "perplexity": 1238.3386699278783,
+                "first_token_probability": 8.313874937973898e-05,
+                "first_token_rank": 1638,
+                "mean_token_rank": 908.1428571428571,
+                "median_token_rank": 117.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.14285714285714285,
+                "top100_fraction": 0.42857142857142855,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 8.313874937973898e-05,
+                        "log_probability": -9.394999666594284,
+                        "rank": 1638
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 478,
+                        "probability": 4.6712608602030035e-05,
+                        "log_probability": -9.971496438252403,
+                        "rank": 3602
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 12171,
+                        "probability": 0.0015380727063496703,
+                        "log_probability": -6.477225135706754,
+                        "rank": 87
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 11878,
+                        "probability": 0.00019762092360116787,
+                        "log_probability": -8.529159889586438,
+                        "rank": 882
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 321,
+                        "probability": 0.03488067828738233,
+                        "log_probability": -3.3558222338178685,
+                        "rank": 2
+                    },
+                    {
+                        "position": 5,
+                        "token_id": 323,
+                        "probability": 0.001312114007516437,
+                        "log_probability": -6.636115696262582,
+                        "rank": 117
+                    },
+                    {
+                        "position": 6,
+                        "token_id": 49,
+                        "probability": 0.004144957326659869,
+                        "log_probability": -5.485862785584215,
+                        "rank": 29
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "Water freezes at",
+                "continuation": " 100 degrees Celsius.",
+                "prompt_token_ids": [
+                    8292,
+                    2292,
+                    5712,
+                    297,
+                    290
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3624,
+                    12171,
+                    11878,
+                    321,
+                    323,
+                    49
+                ],
+                "continuation_token_count": 7,
+                "sum_log_probability": -48.158856368632556,
+                "mean_log_probability": -6.879836624090365,
+                "mean_nll": 6.879836624090365,
+                "perplexity": 972.4674690554313,
+                "first_token_probability": 8.313874937973898e-05,
+                "first_token_rank": 1638,
+                "mean_token_rank": 582.4285714285714,
+                "median_token_rank": 100.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.14285714285714285,
+                "top100_fraction": 0.5714285714285714,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 8.313874937973898e-05,
+                        "log_probability": -9.394999666594284,
+                        "rank": 1638
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3624,
+                        "probability": 0.00016419052952048048,
+                        "log_probability": -8.714483039098456,
+                        "rank": 1142
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 12171,
+                        "probability": 0.0017173802698205493,
+                        "log_probability": -6.3669552481926335,
+                        "rank": 80
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 11878,
+                        "probability": 0.00016736406294339895,
+                        "log_probability": -8.69533910071294,
+                        "rank": 1084
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 321,
+                        "probability": 0.04769776795715712,
+                        "log_probability": -3.0428706755336883,
+                        "rank": 2
+                    },
+                    {
+                        "position": 5,
+                        "token_id": 323,
+                        "probability": 0.001570000849949904,
+                        "log_probability": -6.456679118252701,
+                        "rank": 100
+                    },
+                    {
+                        "position": 6,
+                        "token_id": 49,
+                        "probability": 0.004138054536761816,
+                        "log_probability": -5.487529520247854,
+                        "rank": 31
+                    }
+                ]
+            },
+            "margin": -0.24168935388171242,
+            "correct": false
+        },
+        {
+            "id": "preference_animal_01",
+            "category": "semantic",
+            "prompt": "A dog is a",
+            "preferred": " mammal.",
+            "rejected": " planet.",
+            "preferred_score": {
+                "prompt": "A dog is a",
+                "continuation": " mammal.",
+                "prompt_token_ids": [
+                    628,
+                    6393,
+                    291,
+                    100
+                ],
+                "continuation_token_ids": [
+                    35,
+                    14919,
+                    3312,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -30.025165945256397,
+                "mean_log_probability": -7.506291486314099,
+                "mean_nll": 7.506291486314099,
+                "perplexity": 1819.4535474149861,
+                "first_token_probability": 5.622611510621235e-05,
+                "first_token_rank": 1735,
+                "mean_token_rank": 2200.5,
+                "median_token_rank": 1005.0,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 5.622611510621235e-05,
+                        "log_probability": -9.78612922739049,
+                        "rank": 1735
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 14919,
+                        "probability": 1.5558284758323027e-05,
+                        "log_probability": -11.070917279331184,
+                        "rank": 6791
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 3312,
+                        "probability": 0.18791231764251393,
+                        "log_probability": -1.67177982046695,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0005551125799299755,
+                        "log_probability": -7.496339618067777,
+                        "rank": 275
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "A dog is a",
+                "continuation": " planet.",
+                "prompt_token_ids": [
+                    628,
+                    6393,
+                    291,
+                    100
+                ],
+                "continuation_token_ids": [
+                    35,
+                    6231,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -27.53802304766547,
+                "mean_log_probability": -9.17934101588849,
+                "mean_nll": 9.17934101588849,
+                "perplexity": 9694.761973334796,
+                "first_token_probability": 5.622611510621235e-05,
+                "first_token_rank": 1735,
+                "mean_token_rank": 3022.3333333333335,
+                "median_token_rank": 1735.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.0,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 5.622611510621235e-05,
+                        "log_probability": -9.78612922739049,
+                        "rank": 1735
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 6231,
+                        "probability": 1.3757163026717526e-05,
+                        "log_probability": -11.193950922100043,
+                        "rank": 7221
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.0014188013292599697,
+                        "log_probability": -6.557942898174938,
+                        "rank": 111
+                    }
+                ]
+            },
+            "margin": 1.6730495295743903,
+            "correct": true
+        },
+        {
+            "id": "preference_opposite_01",
+            "category": "semantic",
+            "prompt": "The opposite of hot is",
+            "preferred": " cold.",
+            "rejected": " loud.",
+            "preferred_score": {
+                "prompt": "The opposite of hot is",
+                "continuation": " cold.",
+                "prompt_token_ids": [
+                    356,
+                    3779,
+                    300,
+                    450,
+                    6578,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    832,
+                    103,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -25.40966401273547,
+                "mean_log_probability": -6.352416003183867,
+                "mean_nll": 6.352416003183867,
+                "perplexity": 573.877525408192,
+                "first_token_probability": 0.00019626189397579233,
+                "first_token_rank": 844,
+                "mean_token_rank": 343.0,
+                "median_token_rank": 263.5,
+                "top1_fraction": 0.25,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00019626189397579233,
+                        "log_probability": -8.536060596892165,
+                        "rank": 844
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 832,
+                        "probability": 0.0003511705462023069,
+                        "log_probability": -7.954238565886828,
+                        "rank": 422
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 103,
+                        "probability": 0.08072461167094742,
+                        "log_probability": -2.516711772867208,
+                        "rank": 1
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0016571548761715863,
+                        "log_probability": -6.402653077089269,
+                        "rank": 105
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "The opposite of hot is",
+                "continuation": " loud.",
+                "prompt_token_ids": [
+                    356,
+                    3779,
+                    300,
+                    450,
+                    6578,
+                    310
+                ],
+                "continuation_token_ids": [
+                    35,
+                    111,
+                    7734,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -28.580713948963137,
+                "mean_log_probability": -7.145178487240784,
+                "mean_nll": 7.145178487240784,
+                "perplexity": 1267.9776228423552,
+                "first_token_probability": 0.00019626189397579233,
+                "first_token_rank": 844,
+                "mean_token_rank": 306.5,
+                "median_token_rank": 163.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00019626189397579233,
+                        "log_probability": -8.536060596892165,
+                        "rank": 844
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 111,
+                        "probability": 0.0018393617233733535,
+                        "log_probability": -6.2983366570123165,
+                        "rank": 56
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 7734,
+                        "probability": 0.0019183884087620158,
+                        "log_probability": -6.25626981584751,
+                        "rank": 110
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.0005586167723520067,
+                        "log_probability": -7.490046879211144,
+                        "rank": 216
+                    }
+                ]
+            },
+            "margin": 0.792762484056917,
+            "correct": true
+        },
+        {
+            "id": "preference_math_01",
+            "category": "math",
+            "prompt": "Two plus two equals",
+            "preferred": " four.",
+            "rejected": " five.",
+            "preferred_score": {
+                "prompt": "Two plus two equals",
+                "continuation": " four.",
+                "prompt_token_ids": [
+                    6498,
+                    5912,
+                    722,
+                    5001,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3996,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -20.012726146948637,
+                "mean_log_probability": -6.670908715649546,
+                "mean_nll": 6.670908715649546,
+                "perplexity": 789.112357499469,
+                "first_token_probability": 0.0007318133207217278,
+                "first_token_rank": 260,
+                "mean_token_rank": 362.3333333333333,
+                "median_token_rank": 260.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0007318133207217278,
+                        "log_probability": -7.219985102864146,
+                        "rank": 260
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3996,
+                        "probability": 0.0002067675017514375,
+                        "log_probability": -8.483915575882953,
+                        "rank": 816
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.013449336994997155,
+                        "log_probability": -4.308825468201537,
+                        "rank": 11
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "Two plus two equals",
+                "continuation": " five.",
+                "prompt_token_ids": [
+                    6498,
+                    5912,
+                    722,
+                    5001,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    11563,
+                    1509
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -19.47906788870156,
+                "mean_log_probability": -6.493022629567187,
+                "mean_nll": 6.493022629567187,
+                "perplexity": 660.5168466668161,
+                "first_token_probability": 0.0007318133207217278,
+                "first_token_rank": 260,
+                "mean_token_rank": 1191.6666666666667,
+                "median_token_rank": 260.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.3333333333333333,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0007318133207217278,
+                        "log_probability": -7.219985102864146,
+                        "rank": 260
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 11563,
+                        "probability": 5.822978063630605e-05,
+                        "log_probability": -9.751113639316124,
+                        "rank": 3313
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 1509,
+                        "probability": 0.0814334508307458,
+                        "log_probability": -2.5079691465212917,
+                        "rank": 2
+                    }
+                ]
+            },
+            "margin": -0.177886086082359,
+            "correct": false
+        },
+        {
+            "id": "preference_algebra_01",
+            "category": "math",
+            "prompt": "To solve x + 5 = 12, x =",
+            "preferred": " 7.",
+            "rejected": " 17.",
+            "preferred_score": {
+                "prompt": "To solve x + 5 = 12, x =",
+                "continuation": " 7.",
+                "prompt_token_ids": [
+                    1336,
+                    3252,
+                    3949,
+                    701,
+                    512,
+                    13849,
+                    549,
+                    64
+                ],
+                "continuation_token_ids": [
+                    35,
+                    4218
+                ],
+                "continuation_token_count": 2,
+                "sum_log_probability": -14.738014373732724,
+                "mean_log_probability": -7.369007186866362,
+                "mean_nll": 7.369007186866362,
+                "perplexity": 1586.0583415621393,
+                "first_token_probability": 0.0017625380142653525,
+                "first_token_rank": 79,
+                "mean_token_rank": 340.5,
+                "median_token_rank": 340.5,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.5,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0017625380142653525,
+                        "log_probability": -6.3410004551329395,
+                        "rank": 79
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 4218,
+                        "probability": 0.00022553979984694938,
+                        "log_probability": -8.397013918599786,
+                        "rank": 602
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "To solve x + 5 = 12, x =",
+                "continuation": " 17.",
+                "prompt_token_ids": [
+                    1336,
+                    3252,
+                    3949,
+                    701,
+                    512,
+                    13849,
+                    549,
+                    64
+                ],
+                "continuation_token_ids": [
+                    35,
+                    1130,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -17.010710109221357,
+                "mean_log_probability": -5.670236703073786,
+                "mean_nll": 5.670236703073786,
+                "perplexity": 290.1031945832479,
+                "first_token_probability": 0.0017625380142653525,
+                "first_token_rank": 79,
+                "mean_token_rank": 87.33333333333333,
+                "median_token_rank": 79.0,
+                "top1_fraction": 0.3333333333333333,
+                "top10_fraction": 0.3333333333333333,
+                "top100_fraction": 0.6666666666666666,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.0017625380142653525,
+                        "log_probability": -6.3410004551329395,
+                        "rank": 79
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 1130,
+                        "probability": 0.0006637841503313857,
+                        "log_probability": -7.317553536138237,
+                        "rank": 182
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.03500878958747354,
+                        "log_probability": -3.3521561179501798,
+                        "rank": 1
+                    }
+                ]
+            },
+            "margin": -1.6987704837925763,
+            "correct": false
+        },
+        {
+            "id": "preference_grammar_01",
+            "category": "language",
+            "prompt": "The students",
+            "preferred": " are studying.",
+            "rejected": " is studying.",
+            "preferred_score": {
+                "prompt": "The students",
+                "continuation": " are studying.",
+                "prompt_token_ids": [
+                    356,
+                    2587,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    357,
+                    10342,
+                    282,
+                    49
+                ],
+                "continuation_token_count": 5,
+                "sum_log_probability": -33.831262554687676,
+                "mean_log_probability": -6.7662525109375355,
+                "mean_nll": 6.7662525109375355,
+                "perplexity": 868.0527727727747,
+                "first_token_probability": 0.00013379593961923615,
+                "first_token_rank": 979,
+                "mean_token_rank": 569.0,
+                "median_token_rank": 78.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.2,
+                "top100_fraction": 0.6,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00013379593961923615,
+                        "log_probability": -8.919194757373095,
+                        "rank": 979
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 357,
+                        "probability": 0.0015105319034242328,
+                        "log_probability": -6.495293436258819,
+                        "rank": 78
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 10342,
+                        "probability": 0.0001103401679643164,
+                        "log_probability": -9.111942527877932,
+                        "rank": 1754
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 282,
+                        "probability": 0.0061493253571451014,
+                        "log_probability": -5.091412901206166,
+                        "rank": 30
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 49,
+                        "probability": 0.014795696286220962,
+                        "log_probability": -4.213418931971662,
+                        "rank": 4
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "The students",
+                "continuation": " is studying.",
+                "prompt_token_ids": [
+                    356,
+                    2587,
+                    118
+                ],
+                "continuation_token_ids": [
+                    9536,
+                    10342,
+                    282,
+                    49
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -32.177076305838625,
+                "mean_log_probability": -8.044269076459656,
+                "mean_nll": 8.044269076459656,
+                "perplexity": 3115.8867961218493,
+                "first_token_probability": 2.6101350222723194e-06,
+                "first_token_rank": 10326,
+                "mean_token_rank": 3223.75,
+                "median_token_rank": 1282.5,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.5,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 9536,
+                        "probability": 2.6101350222723194e-06,
+                        "log_probability": -12.856108605296374,
+                        "rank": 10326
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 10342,
+                        "probability": 6.3350845154698e-05,
+                        "log_probability": -9.666822310249053,
+                        "rank": 2484
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 282,
+                        "probability": 0.0028584204127558243,
+                        "log_probability": -5.8574861099582165,
+                        "rank": 81
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 49,
+                        "probability": 0.02244563130622381,
+                        "log_probability": -3.7966592803349797,
+                        "rank": 4
+                    }
+                ]
+            },
+            "margin": 1.2780165655221207,
+            "correct": true
+        },
+        {
+            "id": "preference_context_01",
+            "category": "context_tracking",
+            "prompt": "Maria put the book on the table. She left the room and came back five minutes later. The book was",
+            "preferred": " still on the table.",
+            "rejected": " floating in the ocean.",
+            "preferred_score": {
+                "prompt": "Maria put the book on the table. She left the room and came back five minutes later. The book was",
+                "continuation": " still on the table.",
+                "prompt_token_ids": [
+                    6451,
+                    285,
+                    13420,
+                    2062,
+                    569,
+                    4702,
+                    3731,
+                    1978,
+                    268,
+                    3902,
+                    579,
+                    2900,
+                    1495,
+                    2853,
+                    9244,
+                    1514,
+                    10601,
+                    2062,
+                    5135
+                ],
+                "continuation_token_ids": [
+                    35,
+                    1518,
+                    569,
+                    4702,
+                    49
+                ],
+                "continuation_token_count": 5,
+                "sum_log_probability": -34.91953514800292,
+                "mean_log_probability": -6.9839070296005845,
+                "mean_nll": 6.9839070296005845,
+                "perplexity": 1079.1263198191325,
+                "first_token_probability": 4.850930051809123e-05,
+                "first_token_rank": 1057,
+                "mean_token_rank": 297.8,
+                "median_token_rank": 181.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.4,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 4.850930051809123e-05,
+                        "log_probability": -9.933755015145447,
+                        "rank": 1057
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 1518,
+                        "probability": 0.0006800946704532668,
+                        "log_probability": -7.293278548229697,
+                        "rank": 207
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 569,
+                        "probability": 0.0034537615553372337,
+                        "log_probability": -5.668291335995804,
+                        "rank": 20
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 4702,
+                        "probability": 0.0009224676722910897,
+                        "log_probability": -6.988458226250527,
+                        "rank": 181
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 49,
+                        "probability": 0.006501307149460373,
+                        "log_probability": -5.035752022381443,
+                        "rank": 24
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "Maria put the book on the table. She left the room and came back five minutes later. The book was",
+                "continuation": " floating in the ocean.",
+                "prompt_token_ids": [
+                    6451,
+                    285,
+                    13420,
+                    2062,
+                    569,
+                    4702,
+                    3731,
+                    1978,
+                    268,
+                    3902,
+                    579,
+                    2900,
+                    1495,
+                    2853,
+                    9244,
+                    1514,
+                    10601,
+                    2062,
+                    5135
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3399,
+                    865,
+                    399,
+                    11801,
+                    49
+                ],
+                "continuation_token_count": 6,
+                "sum_log_probability": -41.55880335484899,
+                "mean_log_probability": -6.926467225808165,
+                "mean_nll": 6.926467225808165,
+                "perplexity": 1018.8881123877204,
+                "first_token_probability": 4.850930051809123e-05,
+                "first_token_rank": 1057,
+                "mean_token_rank": 854.5,
+                "median_token_rank": 550.5,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.3333333333333333,
+                "top100_fraction": 0.5,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 4.850930051809123e-05,
+                        "log_probability": -9.933755015145447,
+                        "rank": 1057
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3399,
+                        "probability": 7.664095599161622e-05,
+                        "log_probability": -9.476378950584891,
+                        "rank": 2190
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 865,
+                        "probability": 0.0421093459714677,
+                        "log_probability": -3.167485568359271,
+                        "rank": 3
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 399,
+                        "probability": 0.012852574198344404,
+                        "log_probability": -4.354211160984217,
+                        "rank": 2
+                    },
+                    {
+                        "position": 4,
+                        "token_id": 11801,
+                        "probability": 0.00010127932167199373,
+                        "log_probability": -9.197628297142241,
+                        "rank": 1831
+                    },
+                    {
+                        "position": 5,
+                        "token_id": 49,
+                        "probability": 0.004385970466325982,
+                        "log_probability": -5.429344362632919,
+                        "rank": 44
+                    }
+                ]
+            },
+            "margin": -0.05743980379241975,
+            "correct": false
+        },
+        {
+            "id": "preference_language_01",
+            "category": "language",
+            "prompt": "She opened the door and walked into the",
+            "preferred": " room.",
+            "rejected": " banana.",
+            "preferred_score": {
+                "prompt": "She opened the door and walked into the",
+                "continuation": " room.",
+                "prompt_token_ids": [
+                    86,
+                    634,
+                    2597,
+                    725,
+                    608,
+                    4520,
+                    10696,
+                    4631,
+                    363
+                ],
+                "continuation_token_ids": [
+                    35,
+                    3902,
+                    49
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -25.242386768876692,
+                "mean_log_probability": -8.414128922958897,
+                "mean_nll": 8.414128922958897,
+                "perplexity": 4510.344985178268,
+                "first_token_probability": 0.00010589705393340178,
+                "first_token_rank": 892,
+                "mean_token_rank": 1136.0,
+                "median_token_rank": 892.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00010589705393340178,
+                        "log_probability": -9.15304312506964,
+                        "rank": 892
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 3902,
+                        "probability": 6.200503447016321e-05,
+                        "log_probability": -9.688294975084151,
+                        "rank": 2433
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "probability": 0.0016598157633232976,
+                        "log_probability": -6.401048668722902,
+                        "rank": 83
+                    }
+                ]
+            },
+            "rejected_score": {
+                "prompt": "She opened the door and walked into the",
+                "continuation": " banana.",
+                "prompt_token_ids": [
+                    86,
+                    634,
+                    2597,
+                    725,
+                    608,
+                    4520,
+                    10696,
+                    4631,
+                    363
+                ],
+                "continuation_token_ids": [
+                    35,
+                    4953,
+                    265,
+                    5119
+                ],
+                "continuation_token_count": 4,
+                "sum_log_probability": -33.60065946600233,
+                "mean_log_probability": -8.400164866500582,
+                "mean_nll": 8.400164866500582,
+                "perplexity": 4447.799980473503,
+                "first_token_probability": 0.00010589705393340178,
+                "first_token_rank": 892,
+                "mean_token_rank": 1863.5,
+                "median_token_rank": 971.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.25,
+                "top100_fraction": 0.25,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "probability": 0.00010589705393340178,
+                        "log_probability": -9.15304312506964,
+                        "rank": 892
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 4953,
+                        "probability": 1.710048790598151e-05,
+                        "log_probability": -10.976403562349166,
+                        "rank": 5506
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 265,
+                        "probability": 0.014487829284036026,
+                        "log_probability": -4.234446341736874,
+                        "rank": 6
+                    },
+                    {
+                        "position": 3,
+                        "token_id": 5119,
+                        "probability": 9.739200480785945e-05,
+                        "log_probability": -9.236766436846645,
+                        "rank": 1050
+                    }
+                ]
+            },
+            "margin": -0.013964056458315,
+            "correct": false
+        }
+    ]
+}
