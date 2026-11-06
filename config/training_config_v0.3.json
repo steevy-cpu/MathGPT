@@ -1,0 +1,58 @@
+{
+    "version": "0.3",
+
+    "experiment": "general_pretraining_v0.3_300m_exposure",
+
+    "data": {
+        "train_binary": "data/tokenized/general_v0_2_train.bin",
+        "validation_binary": "data/tokenized/general_v0_2_validation.bin",
+        "dataset_version": "general_pretraining_v0.2",
+        "tokenizer": "tokenizer_50m_v0.2",
+        "training_tokens": 51776327,
+        "validation_tokens": 5778078
+    },
+
+    "training": {
+        "batch_size": 4,
+        "context_length": 256,
+        "tokens_per_step": 1024,
+        "seed": 42,
+        "max_steps": 292969,
+        "requested_token_exposures": 300000000,
+        "target_token_exposures": 300000256
+    },
+
+    "optimizer": {
+        "name": "adamw",
+        "learning_rate": 0.0003,
+        "beta1": 0.9,
+        "beta2": 0.999,
+        "epsilon": 1e-8,
+        "weight_decay": 0.01
+    },
+
+    "scheduler": {
+        "name": "warmup_cosine",
+        "warmup_steps": 14294,
+        "min_learning_rate": 0.00003
+    },
+
+    "gradient_clipping": {
+        "enabled": true,
+        "max_norm": 1.0
+    },
+
+    "logging": {
+        "log_every_steps": 50
+    },
+
+    "validation": {
+        "eval_every_steps": 5000,
+        "eval_batches": 20
+    },
+
+    "checkpointing": {
+        "save_every_steps": 25000,
+        "directory": "checkpoints/general_pretraining_v0.3"
+    }
+}
