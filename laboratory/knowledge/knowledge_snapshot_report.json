@@ -1,9 +1,9 @@
 {
     "stage": "L7D",
     "snapshot_version": "L7D.1",
-    "created_at_utc": "2026-11-10T22:20:34.604609+00:00",
+    "created_at_utc": "2026-11-10T22:30:33.138308+00:00",
     "snapshot_path": "laboratory/knowledge/scientist_context.json",
-    "snapshot_sha256": "9c917a6d8272b1745c9480522bfeeb17af74203f51fcb87538d97fda294601bb",
+    "snapshot_sha256": "c032a5d6266e9d11e0ef86f7901cc70e21f39edad5fedd1bb4a2934c6ef37ad0",
     "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd",
     "knowledge_counts": {
         "hypotheses": 2,
@@ -25,6 +25,7 @@
             "evidence_inventory_present": true,
             "model_inventory_present": true,
             "source_fingerprints_present": true,
+            "finding_model_scope_contract": true,
             "handoff_checks_passed": true
         },
         "passed": true
