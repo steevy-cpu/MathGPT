@@ -1,0 +1,337 @@
+{
+    "engine_version": "L9B.1",
+    "created_at_utc": "2026-11-10T23:02:02.135755+00:00",
+    "mode": "deterministic_blocked_execution_specification",
+    "policy": {
+        "executes_experiment": false,
+        "grants_p3_approval": false,
+        "mutates_knowledge_store": false,
+        "mutates_experiment_registry": false,
+        "changes_model_weights": false
+    },
+    "source_plan_path": "laboratory/scientist/state/experiment_plan.json",
+    "plan_checks": {
+        "plan_version": true,
+        "plan_checks_present": true,
+        "plan_checks_passed": true,
+        "experiment_is_exp_0005": true,
+        "permission_is_p3": true,
+        "execution_not_authorized": true,
+        "human_approval_required": true,
+        "approval_still_pending": true,
+        "fixed_four_five_candidates": true,
+        "probe_count_is_12": true,
+        "balanced_correctness": true,
+        "checkpoint_sha256_present": true,
+        "checkpoint_path_present": true,
+        "source_handoff_present": true
+    },
+    "execution_spec": {
+        "execution_spec_id": "SPEC-75B00B21CC378004",
+        "experiment_payload": {
+            "experiment_id": "EXP-0005",
+            "plan_id": "PLAN-8F8884D2BE306398",
+            "hypothesis_id": "HYP-V03-002",
+            "checkpoint": {
+                "path": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "fixed_candidates": {
+                "four": " four.",
+                "five": " five."
+            },
+            "measurement_definition": {
+                "candidate_four": " four.",
+                "candidate_five": " five.",
+                "canonical_margin": "logit(four_discriminative_token) - logit(five_discriminative_token)",
+                "ablation_delta": "ablated_canonical_margin - baseline_canonical_margin",
+                "negative_delta_interpretation": "The intact head causally supports four relative to five.",
+                "positive_delta_interpretation": "The intact head causally supports five relative to four.",
+                "zero_delta_interpretation": "No measured directional effect on the fixed four-versus-five margin."
+            },
+            "target_heads": [
+                {
+                    "layer": 1,
+                    "head": 0,
+                    "head_id": "L1H0",
+                    "role": "primary_four_direction_candidate"
+                },
+                {
+                    "layer": 4,
+                    "head": 0,
+                    "head_id": "L4H0",
+                    "role": "primary_five_direction_candidate"
+                },
+                {
+                    "layer": 3,
+                    "head": 3,
+                    "head_id": "L3H3",
+                    "role": "secondary_context_sensitive_candidate"
+                },
+                {
+                    "layer": 4,
+                    "head": 1,
+                    "head_id": "L4H1",
+                    "role": "weak_control"
+                }
+            ],
+            "probes": [
+                {
+                    "probe_id": "F01",
+                    "category": "arithmetic_words",
+                    "prompt": "Two plus two equals",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F02",
+                    "category": "arithmetic_words",
+                    "prompt": "Two plus three equals",
+                    "semantically_correct": "five"
+                },
+                {
+                    "probe_id": "F03",
+                    "category": "arithmetic_words",
+                    "prompt": "Three plus two equals",
+                    "semantically_correct": "five"
+                },
+                {
+                    "probe_id": "F04",
+                    "category": "arithmetic_words",
+                    "prompt": "One plus three equals",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F05",
+                    "category": "numeric_successor",
+                    "prompt": "Three is followed by",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F06",
+                    "category": "numeric_successor",
+                    "prompt": "Four is followed by",
+                    "semantically_correct": "five"
+                },
+                {
+                    "probe_id": "F07",
+                    "category": "number_sequence",
+                    "prompt": "One, two, three,",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F08",
+                    "category": "number_sequence",
+                    "prompt": "Two, three, four,",
+                    "semantically_correct": "five"
+                },
+                {
+                    "probe_id": "F09",
+                    "category": "quantity_language",
+                    "prompt": "Two groups of two make",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F10",
+                    "category": "quantity_language",
+                    "prompt": "Two and three make",
+                    "semantically_correct": "five"
+                },
+                {
+                    "probe_id": "F11",
+                    "category": "arithmetic_symbolic",
+                    "prompt": "2 + 2 =",
+                    "semantically_correct": "four"
+                },
+                {
+                    "probe_id": "F12",
+                    "category": "arithmetic_symbolic",
+                    "prompt": "2 + 3 =",
+                    "semantically_correct": "five"
+                }
+            ],
+            "intervention": {
+                "type": "attention_head_ablation",
+                "baseline_scale": 1.0,
+                "ablation_scale": 0.0,
+                "scale_one_exactness_control": true,
+                "model_weights_persistently_modified": false
+            },
+            "decision_rules": {
+                "directional_consistency_threshold": 0.75,
+                "minimum_consistent_probes": 9,
+                "total_probe_count": 12,
+                "primary_tests": {
+                    "L1H0": {
+                        "predicted_direction": "four",
+                        "passing_sign": "negative",
+                        "criterion": "At least 9 of 12 probes must have negative ablation delta."
+                    },
+                    "L4H0": {
+                        "predicted_direction": "five",
+                        "passing_sign": "positive",
+                        "criterion": "At least 9 of 12 probes must have positive ablation delta."
+                    }
+                },
+                "balance_checks": {
+                    "four_correct_subset_size": 6,
+                    "five_correct_subset_size": 6,
+                    "purpose": "A fixed lexical/numerical direction should remain similar even when semantic correctness flips between four and five."
+                },
+                "weak_control": {
+                    "head_id": "L4H1",
+                    "criterion": "Its mean absolute ablation delta should remain smaller than both primary-head mean absolute deltas."
+                },
+                "outcome_labels": {
+                    "both_primary_heads_pass": "supports_fixed_four_five_direction_hypothesis",
+                    "exactly_one_primary_head_passes": "partial_support_fixed_direction_hypothesis",
+                    "neither_primary_head_passes": "does_not_support_fixed_direction_hypothesis"
+                }
+            }
+        },
+        "runner_contract": {
+            "runner_path": "laboratory/experiments/run_exp_0005.py",
+            "runner_must_exist_before_execution": true,
+            "runner_required_arguments": [
+                "--execution-spec",
+                "--approval"
+            ],
+            "execution_spec_argument": "laboratory/scientist/state/experiment_execution_spec.json",
+            "approval_argument": "laboratory/scientist/state/p3_approval_exp_0005.json",
+            "must_verify_before_model_load": [
+                "Execution specification identity and SHA-256.",
+                "P3 approval artifact identity and approval status.",
+                "Experiment ID EXP-0005.",
+                "Checkpoint path and SHA-256.",
+                "Plan ID and source plan SHA-256."
+            ],
+            "must_verify_after_model_load": [
+                "Runtime model identity matches the registered checkpoint.",
+                "Scale=1 head intervention reproduces the baseline within the established exactness tolerance."
+            ],
+            "must_not": [
+                "Modify checkpoint weights persistently.",
+                "Update the knowledge store during experiment execution.",
+                "Update hypothesis status during experiment execution.",
+                "Change preregistered probes, heads, margin orientation, or decision thresholds."
+            ]
+        },
+        "runtime_constraints": {
+            "load_model_once": true,
+            "environment": {
+                "OMP_NUM_THREADS": "1",
+                "OPENBLAS_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+            },
+            "nice_value": 15,
+            "checkpoint_sha256_must_match": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "deterministic_probe_order": [
+                "F01",
+                "F02",
+                "F03",
+                "F04",
+                "F05",
+                "F06",
+                "F07",
+                "F08",
+                "F09",
+                "F10",
+                "F11",
+                "F12"
+            ],
+            "deterministic_head_order": [
+                "L1H0",
+                "L4H0",
+                "L3H3",
+                "L4H1"
+            ]
+        },
+        "artifact_contract": {
+            "artifact_directory": "laboratory/artifacts/exp_0005_fixed_four_five",
+            "summary_artifact": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+            "per_probe_filename_template": "{probe_id_lower}_fixed_four_five_heads.json",
+            "required_summary_fields": [
+                "experiment_id",
+                "title",
+                "question",
+                "status",
+                "evidence_level",
+                "checkpoint",
+                "checkpoint_sha256",
+                "model",
+                "plan_id",
+                "execution_spec_id",
+                "selected_probe_ids",
+                "probe_count",
+                "head_count",
+                "heads",
+                "probes",
+                "head_summaries",
+                "subset_summaries",
+                "preregistered_tests",
+                "hypothesis_diagnostics",
+                "interpretation_rule",
+                "checks"
+            ],
+            "required_evidence_level": "E3",
+            "ingestion_target": "Stage L7B evidence ledger after successful completion."
+        },
+        "approval_contract": {
+            "required_permission": "P3",
+            "human_approval_required": true,
+            "approval_artifact_path": "laboratory/scientist/state/p3_approval_exp_0005.json",
+            "approval_artifact_exists_at_L9B": false,
+            "approval_status_required_for_execution": "approved",
+            "approval_must_bind_to": [
+                "EXP-0005",
+                "PLAN-8F8884D2BE306398",
+                "443e60280abbde735153512226f8552f14e6b7cb5fb5b1256919434f084a0d36",
+                "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+            ],
+            "execution_authorized": false,
+            "may_execute_now": false
+        },
+        "execution_command": {
+            "environment_prefix": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1",
+            "nice_prefix": "nice -n 15",
+            "python": "python",
+            "runner": "laboratory/experiments/run_exp_0005.py",
+            "arguments": [
+                "--execution-spec",
+                "laboratory/scientist/state/experiment_execution_spec.json",
+                "--approval",
+                "laboratory/scientist/state/p3_approval_exp_0005.json"
+            ],
+            "shell_preview": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 nice -n 15 python laboratory/experiments/run_exp_0005.py --execution-spec laboratory/scientist/state/experiment_execution_spec.json --approval laboratory/scientist/state/p3_approval_exp_0005.json",
+            "executed_by_L9B": false
+        },
+        "source_plan": {
+            "path": "laboratory/scientist/state/experiment_plan.json",
+            "sha256": "443e60280abbde735153512226f8552f14e6b7cb5fb5b1256919434f084a0d36",
+            "plan_id": "PLAN-8F8884D2BE306398",
+            "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd"
+        }
+    },
+    "overall_checks": {
+        "execution_spec_id_present": true,
+        "experiment_id": true,
+        "plan_id_present": true,
+        "checkpoint_sha_valid": true,
+        "four_target_heads": true,
+        "primary_heads_present": true,
+        "weak_control_present": true,
+        "twelve_unique_probes": true,
+        "probe_order_frozen": true,
+        "head_order_frozen": true,
+        "thread_limits_are_one": true,
+        "nice_value_is_15": true,
+        "p3_required": true,
+        "human_approval_required": true,
+        "execution_not_authorized": true,
+        "command_not_executed": true,
+        "runner_contract_requires_approval": true,
+        "artifact_summary_registered": true,
+        "evidence_level_e3": true
+    }
+}
