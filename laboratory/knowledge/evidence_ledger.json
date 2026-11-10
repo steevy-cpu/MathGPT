@@ -1,0 +1,285 @@
+{
+    "schema_version": "L7.1",
+    "collection": "evidence_ledger",
+    "updated_at_utc": "2026-11-10T22:06:14.159918+00:00",
+    "records": [
+        {
+            "evidence_record_id": "EVR-EXP-0002",
+            "experiment_id": "EXP-0002",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0002_systematic_summary.json",
+            "artifact_sha256": "5b14423605a57d8ccc87260babb07775fbe908ac9b5ec407b1e8c65e9e055738",
+            "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+            "source_created_at_utc": "2026-11-09T02:28:40.501728+00:00",
+            "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00",
+            "extraction_adapter": "exp_0002_v1",
+            "facts": {
+                "target_component": {
+                    "layer": 0,
+                    "head": 1,
+                    "head_id": "L0H1"
+                },
+                "probe_count": 10,
+                "result_count": 10,
+                "group_summary": {
+                    "four_comparison_probe_count": 8,
+                    "contains_two_four_probe_count": 6,
+                    "no_two_four_probe_count": 2,
+                    "mean_four_support_effect_with_two": 0.37745501411457855,
+                    "mean_four_support_effect_without_two": 0.24299733340740204
+                }
+            }
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0003",
+            "experiment_id": "EXP-0003",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0003_signature_summary.json",
+            "artifact_sha256": "dc56a134fa2622630e9c060b7ec8e5d3af82de87be3cb9332f84dc934a02b90a",
+            "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+            "source_created_at_utc": "2026-11-09T02:50:01.318151+00:00",
+            "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00",
+            "extraction_adapter": "exp_0003_v1",
+            "facts": {
+                "target_component": {
+                    "layer": 0,
+                    "head": 1,
+                    "head_id": "L0H1"
+                },
+                "context_count": 10,
+                "group_summary": {
+                    "centered_cosine": {
+                        "addition_vs_addition": {
+                            "count": 15,
+                            "mean": 0.9930459251016914,
+                            "min": 0.9780779331274757,
+                            "max": 0.9992816645712236
+                        },
+                        "control_vs_control": {
+                            "count": 6,
+                            "mean": 0.7536754643668724,
+                            "min": 0.535035350887024,
+                            "max": 0.9973816268995166
+                        },
+                        "addition_vs_control": {
+                            "count": 24,
+                            "mean": 0.8369198320153511,
+                            "min": 0.5695105829972129,
+                            "max": 0.9814570261956093
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0004",
+            "experiment_id": "EXP-0004",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0004_competing_heads_summary.json",
+            "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "source_created_at_utc": "2026-11-10T21:23:04.275482+00:00",
+            "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00",
+            "extraction_adapter": "exp_0004_v1",
+            "facts": {
+                "anchor_probe_id": "A03",
+                "probe_count": 10,
+                "head_count": 4,
+                "heads": [
+                    {
+                        "layer": 1,
+                        "head": 0,
+                        "head_id": "L1H0",
+                        "anchor_role": "supports_preferred_margin"
+                    },
+                    {
+                        "layer": 3,
+                        "head": 3,
+                        "head_id": "L3H3",
+                        "anchor_role": "suppresses_preferred_margin"
+                    },
+                    {
+                        "layer": 4,
+                        "head": 0,
+                        "head_id": "L4H0",
+                        "anchor_role": "suppresses_preferred_margin"
+                    },
+                    {
+                        "layer": 4,
+                        "head": 1,
+                        "head_id": "L4H1",
+                        "anchor_role": "weak_control"
+                    }
+                ],
+                "head_summaries": {
+                    "L1H0": {
+                        "anchor_role": "supports_preferred_margin",
+                        "all": {
+                            "count": 10,
+                            "mean_delta": -0.1636389123275876,
+                            "median_delta": -0.12891697883605957,
+                            "mean_absolute_delta": 0.8283173574134708,
+                            "supports_preferred_count": 5,
+                            "suppresses_preferred_count": 5,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.5,
+                            "suppresses_preferred_rate": 0.5
+                        },
+                        "addition": {
+                            "count": 6,
+                            "mean_delta": 0.17256971914321184,
+                            "median_delta": 0.5480367681011558,
+                            "mean_absolute_delta": 0.8528190823271871,
+                            "supports_preferred_count": 2,
+                            "suppresses_preferred_count": 4,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.3333333333333333,
+                            "suppresses_preferred_rate": 0.6666666666666666
+                        },
+                        "controls": {
+                            "count": 4,
+                            "mean_delta": -0.6679518595337868,
+                            "median_delta": -0.8800896853208542,
+                            "mean_absolute_delta": 0.7915647700428963,
+                            "supports_preferred_count": 3,
+                            "suppresses_preferred_count": 1,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.75,
+                            "suppresses_preferred_rate": 0.25
+                        },
+                        "anchor_probe_delta": -0.5050597786903381
+                    },
+                    "L3H3": {
+                        "anchor_role": "suppresses_preferred_margin",
+                        "all": {
+                            "count": 10,
+                            "mean_delta": -0.04628955814987421,
+                            "median_delta": -0.10459480434656143,
+                            "mean_absolute_delta": 0.31762430276721715,
+                            "supports_preferred_count": 6,
+                            "suppresses_preferred_count": 4,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.6,
+                            "suppresses_preferred_rate": 0.4
+                        },
+                        "addition": {
+                            "count": 6,
+                            "mean_delta": -0.06815508908281724,
+                            "median_delta": -0.13436554092913866,
+                            "mean_absolute_delta": 0.4189502904191613,
+                            "supports_preferred_count": 3,
+                            "suppresses_preferred_count": 3,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.5,
+                            "suppresses_preferred_rate": 0.5
+                        },
+                        "controls": {
+                            "count": 4,
+                            "mean_delta": -0.013491261750459671,
+                            "median_delta": -0.10459480434656143,
+                            "mean_absolute_delta": 0.16563532128930092,
+                            "supports_preferred_count": 3,
+                            "suppresses_preferred_count": 1,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.75,
+                            "suppresses_preferred_rate": 0.25
+                        },
+                        "anchor_probe_delta": 0.49808311462402344
+                    },
+                    "L4H0": {
+                        "anchor_role": "suppresses_preferred_margin",
+                        "all": {
+                            "count": 10,
+                            "mean_delta": -0.05784763339906931,
+                            "median_delta": -0.08890464156866074,
+                            "mean_absolute_delta": 0.2809960613027215,
+                            "supports_preferred_count": 6,
+                            "suppresses_preferred_count": 4,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.6,
+                            "suppresses_preferred_rate": 0.4
+                        },
+                        "addition": {
+                            "count": 6,
+                            "mean_delta": -0.12598871967444816,
+                            "median_delta": -0.1515821749344468,
+                            "mean_absolute_delta": 0.2945943254356583,
+                            "supports_preferred_count": 4,
+                            "suppresses_preferred_count": 2,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.6666666666666666,
+                            "suppresses_preferred_rate": 0.3333333333333333
+                        },
+                        "controls": {
+                            "count": 4,
+                            "mean_delta": 0.044363996013998985,
+                            "median_delta": -0.01981891691684723,
+                            "mean_absolute_delta": 0.2605986651033163,
+                            "supports_preferred_count": 2,
+                            "suppresses_preferred_count": 2,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.5,
+                            "suppresses_preferred_rate": 0.5
+                        },
+                        "anchor_probe_delta": 0.4733119010925293
+                    },
+                    "L4H1": {
+                        "anchor_role": "weak_control",
+                        "all": {
+                            "count": 10,
+                            "mean_delta": -0.022522912360727787,
+                            "median_delta": -0.014608465135097504,
+                            "mean_absolute_delta": 0.050598057173192504,
+                            "supports_preferred_count": 7,
+                            "suppresses_preferred_count": 3,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.7,
+                            "suppresses_preferred_rate": 0.3
+                        },
+                        "addition": {
+                            "count": 6,
+                            "mean_delta": -0.007848453087111315,
+                            "median_delta": -0.008071288466453552,
+                            "mean_absolute_delta": 0.04277985139439503,
+                            "supports_preferred_count": 4,
+                            "suppresses_preferred_count": 2,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.6666666666666666,
+                            "suppresses_preferred_rate": 0.3333333333333333
+                        },
+                        "controls": {
+                            "count": 4,
+                            "mean_delta": -0.044534601271152496,
+                            "median_delta": -0.025243893265724182,
+                            "mean_absolute_delta": 0.0623253658413887,
+                            "supports_preferred_count": 3,
+                            "suppresses_preferred_count": 1,
+                            "no_effect_count": 0,
+                            "supports_preferred_rate": 0.75,
+                            "suppresses_preferred_rate": 0.25
+                        },
+                        "anchor_probe_delta": 0.04903137683868408
+                    }
+                },
+                "hypothesis_diagnostics": {
+                    "L1H0_mean_addition_supports_preferred": false,
+                    "L3H3_mean_addition_suppresses_preferred": false,
+                    "L4H0_mean_addition_suppresses_preferred": false,
+                    "L4H1_weaker_than_L4H0_on_addition": true
+                },
+                "interpretation_rule": {
+                    "negative_logit_margin_delta": "The intact head causally supports the preferred discriminative-token margin.",
+                    "positive_logit_margin_delta": "The intact head causally suppresses the preferred discriminative-token margin."
+                },
+                "integrity_checks": {
+                    "checkpoint_sha256_verified": true,
+                    "runtime_identity": true,
+                    "definition_checks": true,
+                    "all_selected_probes_completed": true,
+                    "expected_effect_record_count": true,
+                    "all_effects_finite": true
+                }
+            }
+        }
+    ]
+}

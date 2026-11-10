@@ -1,0 +1,91 @@
+{
+    "schema_version": "L7.1",
+    "collection": "hypotheses",
+    "updated_at_utc": "2026-11-10T22:02:07.657926+00:00",
+    "records": [
+        {
+            "hypothesis_id": "HYP-V03-001",
+            "title": "General arithmetic competing-head circuit",
+            "statement": "Across addition contexts, L1H0 generally supports the preferred arithmetic answer while L3H3 and L4H0 generally suppress the preferred arithmetic answer.",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "status": "weakened",
+            "confidence": {
+                "score": null,
+                "label": "unscored",
+                "method": "L8_pending",
+                "note": "The knowledge layer does not assign calibrated confidence scores yet."
+            },
+            "created_from": "EXP-0004",
+            "tested_by": [
+                "EXP-0004"
+            ],
+            "evidence_for": [
+                "FND-0003"
+            ],
+            "evidence_against": [
+                "FND-0004"
+            ],
+            "open_questions": [
+                "Are the observed head effects tied to candidate token identity rather than arithmetic correctness?"
+            ],
+            "tags": [
+                "arithmetic",
+                "attention-heads",
+                "causal",
+                "mature-v0.3"
+            ],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
+            "updated_at_utc": "2026-11-10T22:02:07.657926+00:00"
+        },
+        {
+            "hypothesis_id": "HYP-V03-002",
+            "title": "Four-versus-five causal token preference",
+            "statement": "In mature MathGPT v0.3, L1H0 may causally bias the four-versus-five decision toward 'four', while L4H0 may bias the same decision toward 'five', across multiple numerical contexts.",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "status": "active",
+            "confidence": {
+                "score": null,
+                "label": "preliminary",
+                "method": "L8_pending",
+                "note": "Pattern observed in four fixed four/five comparisons. Requires a dedicated controlled experiment."
+            },
+            "created_from": "EXP-0004",
+            "tested_by": [
+                "EXP-0004",
+                "EXP-0005"
+            ],
+            "evidence_for": [
+                "FND-0005"
+            ],
+            "evidence_against": [],
+            "open_questions": [
+                "Does L1H0 continue to favor four when prompt semantics change while four/five candidates remain fixed?",
+                "Does L4H0 continue to favor five under the same controlled changes?",
+                "Is the effect lexical, numerical-semantic, or task-dependent?"
+            ],
+            "tags": [
+                "four-vs-five",
+                "numerical",
+                "attention-heads",
+                "causal",
+                "mature-v0.3"
+            ],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
+            "updated_at_utc": "2026-11-10T22:02:07.657926+00:00"
+        }
+    ]
+}

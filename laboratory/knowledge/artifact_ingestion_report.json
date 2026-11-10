@@ -1,0 +1,29 @@
+{
+    "stage": "L7B",
+    "created_at_utc": "2026-11-10T22:06:14.159918+00:00",
+    "selected_experiment_count": 3,
+    "ingested_or_updated": [
+        "EXP-0002",
+        "EXP-0003",
+        "EXP-0004"
+    ],
+    "already_current": [],
+    "evidence_record_count": 3,
+    "verified_experiments": [
+        "EXP-0002",
+        "EXP-0003",
+        "EXP-0004"
+    ],
+    "knowledge_validation": {
+        "schema_version": "L7.1",
+        "hypotheses": 2,
+        "findings": 6,
+        "experiments": 4,
+        "evidence_records": 3,
+        "active_hypotheses": 1,
+        "last_completed_experiment": "EXP-0004",
+        "next_recommended_experiment": "EXP-0005",
+        "passed": true
+    },
+    "passed": true
+}

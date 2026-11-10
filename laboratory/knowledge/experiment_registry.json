@@ -1,0 +1,116 @@
+{
+    "schema_version": "L7.1",
+    "collection": "experiments",
+    "updated_at_utc": "2026-11-10T22:06:14.159918+00:00",
+    "records": [
+        {
+            "experiment_id": "EXP-0002",
+            "title": "L0H1 arithmetic and lexical generalization",
+            "question": "Does the step-1000 L0H1 causal effect generalize across arithmetic and control contexts?",
+            "status": "completed",
+            "evidence_level": "E3",
+            "model_scope": {
+                "model": "MathGPT",
+                "stage": "step_1000_instrument_checkpoint",
+                "checkpoint": "checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+                "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+                "training_step": 1000
+            },
+            "summary_artifact": "laboratory/artifacts/exp_0002_systematic_summary.json",
+            "hypothesis_ids": [],
+            "finding_ids": [
+                "FND-0001"
+            ],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
+            "artifact_ingestion": {
+                "status": "verified",
+                "evidence_record_id": "EVR-EXP-0002",
+                "artifact_sha256": "5b14423605a57d8ccc87260babb07775fbe908ac9b5ec407b1e8c65e9e055738",
+                "adapter": "exp_0002_v1",
+                "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00"
+            }
+        },
+        {
+            "experiment_id": "EXP-0003",
+            "title": "L0H1 causal vocabulary signature similarity",
+            "question": "How similar is the full vocabulary-wide causal effect direction of L0H1 across contexts?",
+            "status": "completed",
+            "evidence_level": "E3",
+            "model_scope": {
+                "model": "MathGPT",
+                "stage": "step_1000_instrument_checkpoint",
+                "checkpoint": "checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+                "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+                "training_step": 1000
+            },
+            "summary_artifact": "laboratory/artifacts/exp_0003_signature_summary.json",
+            "hypothesis_ids": [],
+            "finding_ids": [
+                "FND-0002"
+            ],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
+            "artifact_ingestion": {
+                "status": "verified",
+                "evidence_record_id": "EVR-EXP-0003",
+                "artifact_sha256": "dc56a134fa2622630e9c060b7ec8e5d3af82de87be3cb9332f84dc934a02b90a",
+                "adapter": "exp_0003_v1",
+                "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00"
+            }
+        },
+        {
+            "experiment_id": "EXP-0004",
+            "title": "Mature v0.3 competing attention-head generalization",
+            "question": "Do the competing causal head directions observed on Two plus two equals generalize across arithmetic and control contexts?",
+            "status": "completed",
+            "evidence_level": "E3",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "summary_artifact": "laboratory/artifacts/exp_0004_competing_heads_summary.json",
+            "hypothesis_ids": [
+                "HYP-V03-001",
+                "HYP-V03-002"
+            ],
+            "finding_ids": [
+                "FND-0003",
+                "FND-0004",
+                "FND-0005",
+                "FND-0006"
+            ],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
+            "artifact_ingestion": {
+                "status": "verified",
+                "evidence_record_id": "EVR-EXP-0004",
+                "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
+                "adapter": "exp_0004_v1",
+                "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00"
+            }
+        },
+        {
+            "experiment_id": "EXP-0005",
+            "title": "Fixed four-vs-five causal context transfer",
+            "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
+            "status": "planned",
+            "evidence_level": null,
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "summary_artifact": null,
+            "hypothesis_ids": [
+                "HYP-V03-002"
+            ],
+            "finding_ids": [],
+            "created_at_utc": "2026-11-10T22:02:07.657926+00:00"
+        }
+    ]
+}
