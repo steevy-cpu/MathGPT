@@ -1,0 +1,404 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T21:23:04.275482+00:00",
+    "experiment_id": "EXP-0004",
+    "title": "Mature v0.3 competing attention-head generalization",
+    "question": "Do the competing causal head directions observed on Two plus two equals generalize across arithmetic and control contexts?",
+    "status": "success",
+    "tool_version": "0.1",
+    "evidence_level": "E3",
+    "checkpoint": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+    "model": {
+        "checkpoint_path": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "anchor_probe_id": "A03",
+    "selected_probe_ids": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+    ],
+    "probe_count": 10,
+    "head_count": 4,
+    "heads": [
+        {
+            "layer": 1,
+            "head": 0,
+            "head_id": "L1H0",
+            "anchor_role": "supports_preferred_margin"
+        },
+        {
+            "layer": 3,
+            "head": 3,
+            "head_id": "L3H3",
+            "anchor_role": "suppresses_preferred_margin"
+        },
+        {
+            "layer": 4,
+            "head": 0,
+            "head_id": "L4H0",
+            "anchor_role": "suppresses_preferred_margin"
+        },
+        {
+            "layer": 4,
+            "head": 1,
+            "head_id": "L4H1",
+            "anchor_role": "weak_control"
+        }
+    ],
+    "probes": [
+        {
+            "probe_id": "A01",
+            "category": "addition",
+            "prompt": "One plus one equals",
+            "preferred": " two.",
+            "comparison": " three.",
+            "baseline_margin": -0.023721843957901,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a01_competing_heads.json",
+            "head_effects": {
+                "L1H0": -1.5356883108615875,
+                "L3H3": -0.4743286669254303,
+                "L4H0": -0.05009855329990387,
+                "L4H1": -0.07568076252937317
+            }
+        },
+        {
+            "probe_id": "A02",
+            "category": "addition",
+            "prompt": "Two plus one equals",
+            "preferred": " three.",
+            "comparison": " four.",
+            "baseline_margin": -0.3651305641978979,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a02_competing_heads.json",
+            "head_effects": {
+                "L1H0": 0.4229461010545492,
+                "L3H3": 0.15578523837029934,
+                "L4H0": -0.25306579656898975,
+                "L4H1": 0.055762818083167076
+            }
+        },
+        {
+            "probe_id": "A03",
+            "category": "addition",
+            "prompt": "Two plus two equals",
+            "preferred": " four.",
+            "comparison": " five.",
+            "baseline_margin": -0.5697602033615112,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a03_competing_heads.json",
+            "head_effects": {
+                "L1H0": -0.5050597786903381,
+                "L3H3": 0.49808311462402344,
+                "L4H0": 0.4733119010925293,
+                "L4H1": 0.04903137683868408
+            }
+        },
+        {
+            "probe_id": "A04",
+            "category": "addition",
+            "prompt": "Two plus three equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "baseline_margin": 0.6178529262542725,
+            "baseline_preferred_wins": true,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a04_competing_heads.json",
+            "head_effects": {
+                "L1H0": 0.9667401313781738,
+                "L3H3": -0.42451632022857666,
+                "L4H0": -0.48275113105773926,
+                "L4H1": -0.06006157398223877
+            }
+        },
+        {
+            "probe_id": "A05",
+            "category": "addition",
+            "prompt": "Three plus two equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "baseline_margin": 0.6176270246505737,
+            "baseline_preferred_wins": true,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a05_competing_heads.json",
+            "head_effects": {
+                "L1H0": 0.6731274351477623,
+                "L3H3": -0.5624711513519287,
+                "L4H0": -0.4758336544036865,
+                "L4H1": -0.0069348812103271484
+            }
+        },
+        {
+            "probe_id": "A06",
+            "category": "addition",
+            "prompt": "Three plus three equals",
+            "preferred": " six.",
+            "comparison": " four.",
+            "baseline_margin": -0.43400275707244873,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/a06_competing_heads.json",
+            "head_effects": {
+                "L1H0": 1.0133527368307114,
+                "L3H3": 0.3985172510147095,
+                "L4H0": 0.032504916191101074,
+                "L4H1": -0.009207695722579956
+            }
+        },
+        {
+            "probe_id": "C01",
+            "category": "numeric_nonaddition",
+            "prompt": "Two is followed by",
+            "preferred": " three.",
+            "comparison": " four.",
+            "baseline_margin": -1.7827492356300354,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/c01_competing_heads.json",
+            "head_effects": {
+                "L1H0": 0.247225821018219,
+                "L3H3": 0.3042881190776825,
+                "L4H0": -0.30475860834121704,
+                "L4H1": 0.03558152914047241
+            }
+        },
+        {
+            "probe_id": "C02",
+            "category": "ordinary_language_two",
+            "prompt": "Two people entered the room. The number of people is",
+            "preferred": " two.",
+            "comparison": " four.",
+            "baseline_margin": -1.77309188246727,
+            "baseline_preferred_wins": false,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/c02_competing_heads.json",
+            "head_effects": {
+                "L1H0": -1.1436871588230133,
+                "L3H3": -0.11556760966777802,
+                "L4H0": -0.1277107298374176,
+                "L4H1": -0.02000923454761505
+            }
+        },
+        {
+            "probe_id": "C03",
+            "category": "numeric_no_two",
+            "prompt": "Three is followed by",
+            "preferred": " four.",
+            "comparison": " five.",
+            "baseline_margin": 0.43527036905288696,
+            "baseline_preferred_wins": true,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/c03_competing_heads.json",
+            "head_effects": {
+                "L1H0": -1.1588538885116577,
+                "L3H3": -0.09362199902534485,
+                "L4H0": 0.5218524262309074,
+                "L4H1": -0.030478551983833313
+            }
+        },
+        {
+            "probe_id": "C04",
+            "category": "language_control",
+            "prompt": "Paris is in",
+            "preferred": " France.",
+            "comparison": " London.",
+            "baseline_margin": 1.1848713755607605,
+            "baseline_preferred_wins": true,
+            "artifact": "/home/scelestin/Steeve_project/MathGPT/laboratory/artifacts/exp_0004_competing_heads/c04_competing_heads.json",
+            "head_effects": {
+                "L1H0": -0.6164922118186951,
+                "L3H3": -0.14906355738639832,
+                "L4H0": 0.08807289600372314,
+                "L4H1": -0.16323214769363403
+            }
+        }
+    ],
+    "head_summaries": {
+        "L1H0": {
+            "anchor_role": "supports_preferred_margin",
+            "all": {
+                "count": 10,
+                "mean_delta": -0.1636389123275876,
+                "median_delta": -0.12891697883605957,
+                "mean_absolute_delta": 0.8283173574134708,
+                "supports_preferred_count": 5,
+                "suppresses_preferred_count": 5,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.5,
+                "suppresses_preferred_rate": 0.5
+            },
+            "addition": {
+                "count": 6,
+                "mean_delta": 0.17256971914321184,
+                "median_delta": 0.5480367681011558,
+                "mean_absolute_delta": 0.8528190823271871,
+                "supports_preferred_count": 2,
+                "suppresses_preferred_count": 4,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.3333333333333333,
+                "suppresses_preferred_rate": 0.6666666666666666
+            },
+            "controls": {
+                "count": 4,
+                "mean_delta": -0.6679518595337868,
+                "median_delta": -0.8800896853208542,
+                "mean_absolute_delta": 0.7915647700428963,
+                "supports_preferred_count": 3,
+                "suppresses_preferred_count": 1,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.75,
+                "suppresses_preferred_rate": 0.25
+            },
+            "anchor_probe_delta": -0.5050597786903381
+        },
+        "L3H3": {
+            "anchor_role": "suppresses_preferred_margin",
+            "all": {
+                "count": 10,
+                "mean_delta": -0.04628955814987421,
+                "median_delta": -0.10459480434656143,
+                "mean_absolute_delta": 0.31762430276721715,
+                "supports_preferred_count": 6,
+                "suppresses_preferred_count": 4,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.6,
+                "suppresses_preferred_rate": 0.4
+            },
+            "addition": {
+                "count": 6,
+                "mean_delta": -0.06815508908281724,
+                "median_delta": -0.13436554092913866,
+                "mean_absolute_delta": 0.4189502904191613,
+                "supports_preferred_count": 3,
+                "suppresses_preferred_count": 3,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.5,
+                "suppresses_preferred_rate": 0.5
+            },
+            "controls": {
+                "count": 4,
+                "mean_delta": -0.013491261750459671,
+                "median_delta": -0.10459480434656143,
+                "mean_absolute_delta": 0.16563532128930092,
+                "supports_preferred_count": 3,
+                "suppresses_preferred_count": 1,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.75,
+                "suppresses_preferred_rate": 0.25
+            },
+            "anchor_probe_delta": 0.49808311462402344
+        },
+        "L4H0": {
+            "anchor_role": "suppresses_preferred_margin",
+            "all": {
+                "count": 10,
+                "mean_delta": -0.05784763339906931,
+                "median_delta": -0.08890464156866074,
+                "mean_absolute_delta": 0.2809960613027215,
+                "supports_preferred_count": 6,
+                "suppresses_preferred_count": 4,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.6,
+                "suppresses_preferred_rate": 0.4
+            },
+            "addition": {
+                "count": 6,
+                "mean_delta": -0.12598871967444816,
+                "median_delta": -0.1515821749344468,
+                "mean_absolute_delta": 0.2945943254356583,
+                "supports_preferred_count": 4,
+                "suppresses_preferred_count": 2,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.6666666666666666,
+                "suppresses_preferred_rate": 0.3333333333333333
+            },
+            "controls": {
+                "count": 4,
+                "mean_delta": 0.044363996013998985,
+                "median_delta": -0.01981891691684723,
+                "mean_absolute_delta": 0.2605986651033163,
+                "supports_preferred_count": 2,
+                "suppresses_preferred_count": 2,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.5,
+                "suppresses_preferred_rate": 0.5
+            },
+            "anchor_probe_delta": 0.4733119010925293
+        },
+        "L4H1": {
+            "anchor_role": "weak_control",
+            "all": {
+                "count": 10,
+                "mean_delta": -0.022522912360727787,
+                "median_delta": -0.014608465135097504,
+                "mean_absolute_delta": 0.050598057173192504,
+                "supports_preferred_count": 7,
+                "suppresses_preferred_count": 3,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.7,
+                "suppresses_preferred_rate": 0.3
+            },
+            "addition": {
+                "count": 6,
+                "mean_delta": -0.007848453087111315,
+                "median_delta": -0.008071288466453552,
+                "mean_absolute_delta": 0.04277985139439503,
+                "supports_preferred_count": 4,
+                "suppresses_preferred_count": 2,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.6666666666666666,
+                "suppresses_preferred_rate": 0.3333333333333333
+            },
+            "controls": {
+                "count": 4,
+                "mean_delta": -0.044534601271152496,
+                "median_delta": -0.025243893265724182,
+                "mean_absolute_delta": 0.0623253658413887,
+                "supports_preferred_count": 3,
+                "suppresses_preferred_count": 1,
+                "no_effect_count": 0,
+                "supports_preferred_rate": 0.75,
+                "suppresses_preferred_rate": 0.25
+            },
+            "anchor_probe_delta": 0.04903137683868408
+        }
+    },
+    "hypothesis_diagnostics": {
+        "L1H0_mean_addition_supports_preferred": false,
+        "L3H3_mean_addition_suppresses_preferred": false,
+        "L4H0_mean_addition_suppresses_preferred": false,
+        "L4H1_weaker_than_L4H0_on_addition": true
+    },
+    "interpretation_rule": {
+        "negative_logit_margin_delta": "The intact head causally supports the preferred discriminative-token margin.",
+        "positive_logit_margin_delta": "The intact head causally suppresses the preferred discriminative-token margin."
+    },
+    "checks": {
+        "checkpoint_sha256_verified": true,
+        "runtime_identity": true,
+        "definition_checks": true,
+        "all_selected_probes_completed": true,
+        "expected_effect_record_count": true,
+        "all_effects_finite": true
+    }
+}

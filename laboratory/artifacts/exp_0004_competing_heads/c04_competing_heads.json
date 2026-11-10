@@ -1,0 +1,450 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T21:23:04.266950+00:00",
+    "experiment_id": "EXP-0004",
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "probe": {
+        "id": "C04",
+        "category": "language_control",
+        "prompt": "Paris is in",
+        "preferred": " France.",
+        "comparison": " London.",
+        "contains_two": false
+    },
+    "continuation_scoring": {
+        "candidates": [
+            {
+                "prompt": "Paris is in",
+                "continuation": " France.",
+                "prompt_token_ids": [
+                    1224,
+                    291,
+                    13240
+                ],
+                "continuation_token_ids": [
+                    35,
+                    4648,
+                    1509
+                ],
+                "continuation_tokens": [
+                    " ",
+                    "Franc",
+                    "e."
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -28.35893177395512,
+                "mean_log_probability": -9.45297725798504,
+                "mean_nll": 9.45297725798504,
+                "perplexity": 12746.057129112296,
+                "first_token_id": 35,
+                "first_token_text": " ",
+                "first_token_probability": 5.188705861095755e-06,
+                "first_token_rank": 2633,
+                "mean_token_rank": 1650.6666666666667,
+                "median_token_rank": 2279.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "probability": 5.188705861095755e-06,
+                        "log_probability": -12.16902624426998,
+                        "logit": -0.06460432708263397,
+                        "rank": 2633
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 4648,
+                        "token_text": "Franc",
+                        "probability": 5.306767342887383e-05,
+                        "log_probability": -9.843942601752428,
+                        "logit": -0.23489350080490112,
+                        "rank": 2279
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 1509,
+                        "token_text": "e.",
+                        "probability": 0.0017538131337072281,
+                        "log_probability": -6.3459629279327086,
+                        "logit": 7.298885822296143,
+                        "rank": 40
+                    }
+                ],
+                "candidate_index": 0
+            },
+            {
+                "prompt": "Paris is in",
+                "continuation": " London.",
+                "prompt_token_ids": [
+                    1224,
+                    291,
+                    13240
+                ],
+                "continuation_token_ids": [
+                    35,
+                    7316,
+                    49
+                ],
+                "continuation_tokens": [
+                    " ",
+                    "London",
+                    "."
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -28.27084407503407,
+                "mean_log_probability": -9.423614691678024,
+                "mean_nll": 9.423614691678024,
+                "perplexity": 12377.241367938514,
+                "first_token_id": 35,
+                "first_token_text": " ",
+                "first_token_probability": 5.188705861095755e-06,
+                "first_token_rank": 2633,
+                "mean_token_rank": 2380.6666666666665,
+                "median_token_rank": 2633.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "probability": 5.188705861095755e-06,
+                        "log_probability": -12.16902624426998,
+                        "logit": -0.06460432708263397,
+                        "rank": 2633
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 7316,
+                        "token_text": "London",
+                        "probability": 1.6227325502177867e-05,
+                        "log_probability": -11.028813977313188,
+                        "logit": -1.4197648763656616,
+                        "rank": 4482
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "token_text": ".",
+                        "probability": 0.006263576986586776,
+                        "log_probability": -5.073003853450899,
+                        "logit": 7.5924224853515625,
+                        "rank": 27
+                    }
+                ],
+                "candidate_index": 1
+            }
+        ],
+        "discriminative_analysis": {
+            "shared_prefix_token_count": 1,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "shared_prefix_tokens": [
+                " "
+            ],
+            "scoring_context_token_ids": [
+                1224,
+                291,
+                13240,
+                35
+            ],
+            "candidates": [
+                {
+                    "candidate_index": 0,
+                    "has_discriminative_token": true,
+                    "token_position": 1,
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "rank": 2279,
+                    "probability": 5.306767342887383e-05,
+                    "log_probability": -9.843942601752428,
+                    "logit": -0.23489350080490112
+                },
+                {
+                    "candidate_index": 1,
+                    "has_discriminative_token": true,
+                    "token_position": 1,
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "rank": 4482,
+                    "probability": 1.6227325502177867e-05,
+                    "log_probability": -11.028813977313188,
+                    "logit": -1.4197648763656616
+                }
+            ]
+        },
+        "preference_comparisons": [
+            {
+                "preferred_index": 0,
+                "comparison_index": 1,
+                "preferred_continuation": " France.",
+                "comparison_continuation": " London.",
+                "preferred_mean_nll": 9.45297725798504,
+                "comparison_mean_nll": 9.423614691678024,
+                "margin": -0.02936256630701628,
+                "preferred_wins": false
+            }
+        ]
+    },
+    "baseline": {
+        "preferred": {
+            "token_id": 4648,
+            "token_text": "Franc",
+            "probability": 5.306767342887383e-05,
+            "log_probability": -9.843942601752428,
+            "rank": 2279,
+            "logit": -0.23489350080490112
+        },
+        "comparison": {
+            "token_id": 7316,
+            "token_text": "London",
+            "probability": 1.6227325502177867e-05,
+            "log_probability": -11.028813977313188,
+            "rank": 4482,
+            "logit": -1.4197648763656616
+        },
+        "logit_margin": 1.1848713755607605,
+        "probability_ratio": 3.2702661582619776,
+        "preferred_wins": true
+    },
+    "head_results": [
+        {
+            "layer": 1,
+            "head": 0,
+            "head_id": "L1H0",
+            "anchor_role": "supports_preferred_margin",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 0,
+                "scale": 0.0,
+                "original_last_token_l2": 4.358812232711288,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 1.4928807797686206e-05,
+                    "log_probability": -11.112217802402236,
+                    "rank": 3064,
+                    "logit": -1.068619728088379
+                },
+                "comparison": {
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 8.456315780435317e-06,
+                    "log_probability": -11.680596966144302,
+                    "rank": 3934,
+                    "logit": -1.6369988918304443
+                },
+                "logit_margin": 0.5683791637420654,
+                "probability_ratio": 1.765403301544836,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.6164922118186951,
+                "absolute_logit_margin_delta": 0.6164922118186951,
+                "preferred_rank_delta": 785,
+                "comparison_rank_delta": -548,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.5719368296063544,
+                    "probability_l1_distance": 0.7578018490452508,
+                    "logit_l2_difference": 204.44212870271517,
+                    "baseline_top1_token_id": 268,
+                    "intervention_top1_token_id": 268,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 3,
+            "head": 3,
+            "head_id": "L3H3",
+            "anchor_role": "suppresses_preferred_margin",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 3,
+                "scale": 0.0,
+                "original_last_token_l2": 6.185692260804302,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 5.519524704938118e-05,
+                    "log_probability": -9.804633712566279,
+                    "rank": 2774,
+                    "logit": -0.43397095799446106
+                },
+                "comparison": {
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 1.95909755135719e-05,
+                    "log_probability": -10.840441530740641,
+                    "rank": 5322,
+                    "logit": -1.4697787761688232
+                },
+                "logit_margin": 1.0358078181743622,
+                "probability_ratio": 2.8173812483785694,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.14906355738639832,
+                "absolute_logit_margin_delta": 0.14906355738639832,
+                "preferred_rank_delta": 495,
+                "comparison_rank_delta": 840,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.35267613794897446,
+                    "probability_l1_distance": 0.6565972833862244,
+                    "logit_l2_difference": 130.25327611108273,
+                    "baseline_top1_token_id": 268,
+                    "intervention_top1_token_id": 268,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 0,
+            "head_id": "L4H0",
+            "anchor_role": "suppresses_preferred_margin",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 0,
+                "scale": 0.0,
+                "original_last_token_l2": 2.4196523224285076,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 5.553669377865176e-05,
+                    "log_probability": -9.798466606509812,
+                    "rank": 2477,
+                    "logit": -0.2762748599052429
+                },
+                "comparison": {
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 1.55506071035176e-05,
+                    "log_probability": -11.071410878074296,
+                    "rank": 5065,
+                    "logit": -1.5492191314697266
+                },
+                "logit_margin": 1.2729442715644836,
+                "probability_ratio": 3.571352128502377,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": 0.08807289600372314,
+                "absolute_logit_margin_delta": 0.08807289600372314,
+                "preferred_rank_delta": 198,
+                "comparison_rank_delta": 583,
+                "causal_direction": "suppresses_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.029422152251622122,
+                    "probability_l1_distance": 0.19463581882744946,
+                    "logit_l2_difference": 37.430664906795364,
+                    "baseline_top1_token_id": 268,
+                    "intervention_top1_token_id": 268,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 1,
+            "head_id": "L4H1",
+            "anchor_role": "weak_control",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 1,
+                "scale": 0.0,
+                "original_last_token_l2": 0.8544090034385061,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 4.098514385507127e-05,
+                    "log_probability": -10.102300901921039,
+                    "rank": 2695,
+                    "logit": -0.510368824005127
+                },
+                "comparison": {
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 1.4754829134861022e-05,
+                    "log_probability": -11.123940129788165,
+                    "rank": 4661,
+                    "logit": -1.5320080518722534
+                },
+                "logit_margin": 1.0216392278671265,
+                "probability_ratio": 2.7777443900205023,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.16323214769363403,
+                "absolute_logit_margin_delta": 0.16323214769363403,
+                "preferred_rank_delta": 416,
+                "comparison_rank_delta": 179,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.004146821718449338,
+                    "probability_l1_distance": 0.07424519922625239,
+                    "logit_l2_difference": 14.097941661416204,
+                    "baseline_top1_token_id": 268,
+                    "intervention_top1_token_id": 268,
+                    "top1_changed": false
+                }
+            }
+        }
+    ],
+    "checks": {
+        "runtime_identity": true,
+        "two_discriminative_candidates": true,
+        "all_scale_1_controls_exact": true,
+        "all_effects_finite": true,
+        "all_heads_zeroed": true
+    }
+}
