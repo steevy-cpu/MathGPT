@@ -1,0 +1,572 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T12:20:31.337314+00:00",
+    "tool": {
+        "name": "gradient_attribution",
+        "version": "0.1",
+        "permission_level": "P2",
+        "evidence_level": "E2"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "objective": {
+        "type": "next_token_logit_margin",
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "rank": 547,
+            "probability": 0.00029888034039013157,
+            "logit": 1.390161156654358
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "rank": 293,
+            "probability": 0.0005283744856479748,
+            "logit": 1.9599231481552124
+        },
+        "logit_margin": -0.5697619915008545
+    },
+    "attribution": {
+        "interpretation": "Gradient quantities represent local sensitivity of the preferred minus comparison logit margin. They are correlational/local and do not establish causality.",
+        "residual_stream": [
+            {
+                "stage": "embedding_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 1.482916550578191,
+                "gradient_last_token_l2": 9.243694190226377,
+                "gradient_dot_activation": 1.2806896061171182,
+                "absolute_gradient_dot_activation": 1.2806896061171182,
+                "gradient_activation_cosine": 0.09342897909886483,
+                "mean_abs_gradient_x_activation": 0.03262849676656526,
+                "max_abs_gradient_x_activation": 0.243952832409434,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_0.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 24.821689085221188,
+                "gradient_last_token_l2": 1.0257165810023279,
+                "gradient_dot_activation": 2.1533007714732824,
+                "absolute_gradient_dot_activation": 2.1533007714732824,
+                "gradient_activation_cosine": 0.08457577548171577,
+                "mean_abs_gradient_x_activation": 0.046324600044238176,
+                "max_abs_gradient_x_activation": 0.5151875102349663,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_1.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 35.60564459502876,
+                "gradient_last_token_l2": 1.1400946725700167,
+                "gradient_dot_activation": 2.175567957918686,
+                "absolute_gradient_dot_activation": 2.175567957918686,
+                "gradient_activation_cosine": 0.053593594380576544,
+                "mean_abs_gradient_x_activation": 0.0700308788933413,
+                "max_abs_gradient_x_activation": 4.1374674713611626,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_2.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 36.64300608288831,
+                "gradient_last_token_l2": 0.8643038197249227,
+                "gradient_dot_activation": 1.9770974684021256,
+                "absolute_gradient_dot_activation": 1.9770974684021256,
+                "gradient_activation_cosine": 0.06242672517344709,
+                "mean_abs_gradient_x_activation": 0.04820718600992568,
+                "max_abs_gradient_x_activation": 1.545443118254454,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_3.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 30.79775503491817,
+                "gradient_last_token_l2": 0.7705939533655923,
+                "gradient_dot_activation": 0.52489966398313,
+                "absolute_gradient_dot_activation": 0.52489966398313,
+                "gradient_activation_cosine": 0.02211727600307362,
+                "mean_abs_gradient_x_activation": 0.04714951940218885,
+                "max_abs_gradient_x_activation": 0.6668973311905191,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_4.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 64.60503223717232,
+                "gradient_last_token_l2": 0.6334614781631945,
+                "gradient_dot_activation": -6.49387369600074e-07,
+                "absolute_gradient_dot_activation": 6.49387369600074e-07,
+                "gradient_activation_cosine": -1.586782053944882e-08,
+                "mean_abs_gradient_x_activation": 0.07163747953400963,
+                "max_abs_gradient_x_activation": 0.6525455079352298,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "final_layernorm",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 28.495316235502926,
+                "gradient_last_token_l2": 1.0355868475365866,
+                "gradient_dot_activation": -0.5697628317734571,
+                "absolute_gradient_dot_activation": 0.5697628317734571,
+                "gradient_activation_cosine": -0.019307858515302444,
+                "mean_abs_gradient_x_activation": 0.0682116526414976,
+                "max_abs_gradient_x_activation": 0.6147393955641576,
+                "gradient_finite": true,
+                "activation_finite": true
+            }
+        ],
+        "subcomponents": [
+            {
+                "layer": 0,
+                "component": "attention_output",
+                "component_id": "block_0.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 0.9189639626746555,
+                "gradient_last_token_l2": 9.015904556805953,
+                "gradient_dot_activation": -1.3725894180925322,
+                "absolute_gradient_dot_activation": 1.3725894180925322,
+                "gradient_activation_cosine": -0.16566579923002492,
+                "mean_abs_gradient_x_activation": 0.019747870791341167,
+                "max_abs_gradient_x_activation": 0.15571180905037352,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 0,
+                "component": "mlp_output",
+                "component_id": "block_0.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 24.704155616075372,
+                "gradient_last_token_l2": 1.0257165810023279,
+                "gradient_dot_activation": 2.246622991521106,
+                "absolute_gradient_dot_activation": 2.246622991521106,
+                "gradient_activation_cosine": 0.08866103741317546,
+                "mean_abs_gradient_x_activation": 0.046419729443166385,
+                "max_abs_gradient_x_activation": 0.5200777619416783,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 1,
+                "component": "attention_output",
+                "component_id": "block_1.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 21.14383774851146,
+                "gradient_last_token_l2": 1.1456429171428415,
+                "gradient_dot_activation": 0.18980246411561286,
+                "absolute_gradient_dot_activation": 0.18980246411561286,
+                "gradient_activation_cosine": 0.0078355367960896,
+                "mean_abs_gradient_x_activation": 0.04622564066018152,
+                "max_abs_gradient_x_activation": 3.566185352211562,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 1,
+                "component": "mlp_output",
+                "component_id": "block_1.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 7.8591236762107535,
+                "gradient_last_token_l2": 1.1400946725700167,
+                "gradient_dot_activation": -0.1675332978648585,
+                "absolute_gradient_dot_activation": 0.1675332978648585,
+                "gradient_activation_cosine": -0.018697610052428502,
+                "mean_abs_gradient_x_activation": 0.01798966848826519,
+                "max_abs_gradient_x_activation": 0.19221353272106256,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 2,
+                "component": "attention_output",
+                "component_id": "block_2.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 8.141502550995547,
+                "gradient_last_token_l2": 0.9083661536713711,
+                "gradient_dot_activation": -0.18785554309975433,
+                "absolute_gradient_dot_activation": 0.18785554309975433,
+                "gradient_activation_cosine": -0.025401449945670458,
+                "mean_abs_gradient_x_activation": 0.01827068610607851,
+                "max_abs_gradient_x_activation": 0.18094984806626968,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 2,
+                "component": "mlp_output",
+                "component_id": "block_2.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 8.048513678833023,
+                "gradient_last_token_l2": 0.8643038197249227,
+                "gradient_dot_activation": -0.010617487160437727,
+                "absolute_gradient_dot_activation": 0.010617487160437727,
+                "gradient_activation_cosine": -0.0015262990209692683,
+                "mean_abs_gradient_x_activation": 0.017800023509417506,
+                "max_abs_gradient_x_activation": 0.2577451944740794,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 3,
+                "component": "attention_output",
+                "component_id": "block_3.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 20.802550133079066,
+                "gradient_last_token_l2": 0.8461740058394759,
+                "gradient_dot_activation": -0.8808452045495188,
+                "absolute_gradient_dot_activation": 0.8808452045495188,
+                "gradient_activation_cosine": -0.05004069549890803,
+                "mean_abs_gradient_x_activation": 0.0233089186324261,
+                "max_abs_gradient_x_activation": 1.2722093160818275,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 3,
+                "component": "mlp_output",
+                "component_id": "block_3.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 11.72441117668865,
+                "gradient_last_token_l2": 0.7705939533655923,
+                "gradient_dot_activation": -0.5713503458246652,
+                "absolute_gradient_dot_activation": 0.5713503458246652,
+                "gradient_activation_cosine": -0.06323912567554793,
+                "mean_abs_gradient_x_activation": 0.01950873943793046,
+                "max_abs_gradient_x_activation": 0.2431727473757732,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 4,
+                "component": "attention_output",
+                "component_id": "block_4.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 24.802797078946345,
+                "gradient_last_token_l2": 0.7303015300073596,
+                "gradient_dot_activation": -1.1279168284308083,
+                "absolute_gradient_dot_activation": 1.1279168284308083,
+                "gradient_activation_cosine": -0.06226933183781558,
+                "mean_abs_gradient_x_activation": 0.039788153552169,
+                "max_abs_gradient_x_activation": 0.4486249882469835,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 4,
+                "component": "mlp_output",
+                "component_id": "block_4.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 27.410300695785946,
+                "gradient_last_token_l2": 0.6334614781631945,
+                "gradient_dot_activation": 0.6030150419295852,
+                "absolute_gradient_dot_activation": 0.6030150419295852,
+                "gradient_activation_cosine": 0.03472914854502952,
+                "mean_abs_gradient_x_activation": 0.034338435542645554,
+                "max_abs_gradient_x_activation": 0.27492392146763045,
+                "gradient_finite": true,
+                "activation_finite": true
+            }
+        ],
+        "residual_ranking_by_gradient_norm": [
+            {
+                "rank": 1,
+                "stage": "embedding_output",
+                "gradient_last_token_l2": 9.243694190226377,
+                "gradient_dot_activation": 1.2806896061171182
+            },
+            {
+                "rank": 2,
+                "stage": "block_1.output",
+                "gradient_last_token_l2": 1.1400946725700167,
+                "gradient_dot_activation": 2.175567957918686
+            },
+            {
+                "rank": 3,
+                "stage": "final_layernorm",
+                "gradient_last_token_l2": 1.0355868475365866,
+                "gradient_dot_activation": -0.5697628317734571
+            },
+            {
+                "rank": 4,
+                "stage": "block_0.output",
+                "gradient_last_token_l2": 1.0257165810023279,
+                "gradient_dot_activation": 2.1533007714732824
+            },
+            {
+                "rank": 5,
+                "stage": "block_2.output",
+                "gradient_last_token_l2": 0.8643038197249227,
+                "gradient_dot_activation": 1.9770974684021256
+            },
+            {
+                "rank": 6,
+                "stage": "block_3.output",
+                "gradient_last_token_l2": 0.7705939533655923,
+                "gradient_dot_activation": 0.52489966398313
+            },
+            {
+                "rank": 7,
+                "stage": "block_4.output",
+                "gradient_last_token_l2": 0.6334614781631945,
+                "gradient_dot_activation": -6.49387369600074e-07
+            }
+        ],
+        "component_ranking_by_gradient_norm": [
+            {
+                "rank": 1,
+                "component_id": "block_0.attention_output",
+                "gradient_last_token_l2": 9.015904556805953,
+                "gradient_dot_activation": -1.3725894180925322
+            },
+            {
+                "rank": 2,
+                "component_id": "block_1.attention_output",
+                "gradient_last_token_l2": 1.1456429171428415,
+                "gradient_dot_activation": 0.18980246411561286
+            },
+            {
+                "rank": 3,
+                "component_id": "block_1.mlp_output",
+                "gradient_last_token_l2": 1.1400946725700167,
+                "gradient_dot_activation": -0.1675332978648585
+            },
+            {
+                "rank": 4,
+                "component_id": "block_0.mlp_output",
+                "gradient_last_token_l2": 1.0257165810023279,
+                "gradient_dot_activation": 2.246622991521106
+            },
+            {
+                "rank": 5,
+                "component_id": "block_2.attention_output",
+                "gradient_last_token_l2": 0.9083661536713711,
+                "gradient_dot_activation": -0.18785554309975433
+            },
+            {
+                "rank": 6,
+                "component_id": "block_2.mlp_output",
+                "gradient_last_token_l2": 0.8643038197249227,
+                "gradient_dot_activation": -0.010617487160437727
+            },
+            {
+                "rank": 7,
+                "component_id": "block_3.attention_output",
+                "gradient_last_token_l2": 0.8461740058394759,
+                "gradient_dot_activation": -0.8808452045495188
+            },
+            {
+                "rank": 8,
+                "component_id": "block_3.mlp_output",
+                "gradient_last_token_l2": 0.7705939533655923,
+                "gradient_dot_activation": -0.5713503458246652
+            },
+            {
+                "rank": 9,
+                "component_id": "block_4.attention_output",
+                "gradient_last_token_l2": 0.7303015300073596,
+                "gradient_dot_activation": -1.1279168284308083
+            },
+            {
+                "rank": 10,
+                "component_id": "block_4.mlp_output",
+                "gradient_last_token_l2": 0.6334614781631945,
+                "gradient_dot_activation": 0.6030150419295852
+            }
+        ],
+        "component_ranking_by_abs_gradient_dot_activation": [
+            {
+                "rank": 1,
+                "component_id": "block_0.mlp_output",
+                "absolute_gradient_dot_activation": 2.246622991521106,
+                "gradient_dot_activation": 2.246622991521106
+            },
+            {
+                "rank": 2,
+                "component_id": "block_0.attention_output",
+                "absolute_gradient_dot_activation": 1.3725894180925322,
+                "gradient_dot_activation": -1.3725894180925322
+            },
+            {
+                "rank": 3,
+                "component_id": "block_4.attention_output",
+                "absolute_gradient_dot_activation": 1.1279168284308083,
+                "gradient_dot_activation": -1.1279168284308083
+            },
+            {
+                "rank": 4,
+                "component_id": "block_3.attention_output",
+                "absolute_gradient_dot_activation": 0.8808452045495188,
+                "gradient_dot_activation": -0.8808452045495188
+            },
+            {
+                "rank": 5,
+                "component_id": "block_4.mlp_output",
+                "absolute_gradient_dot_activation": 0.6030150419295852,
+                "gradient_dot_activation": 0.6030150419295852
+            },
+            {
+                "rank": 6,
+                "component_id": "block_3.mlp_output",
+                "absolute_gradient_dot_activation": 0.5713503458246652,
+                "gradient_dot_activation": -0.5713503458246652
+            },
+            {
+                "rank": 7,
+                "component_id": "block_1.attention_output",
+                "absolute_gradient_dot_activation": 0.18980246411561286,
+                "gradient_dot_activation": 0.18980246411561286
+            },
+            {
+                "rank": 8,
+                "component_id": "block_2.attention_output",
+                "absolute_gradient_dot_activation": 0.18785554309975433,
+                "gradient_dot_activation": -0.18785554309975433
+            },
+            {
+                "rank": 9,
+                "component_id": "block_1.mlp_output",
+                "absolute_gradient_dot_activation": 0.1675332978648585,
+                "gradient_dot_activation": -0.1675332978648585
+            },
+            {
+                "rank": 10,
+                "component_id": "block_2.mlp_output",
+                "absolute_gradient_dot_activation": 0.010617487160437727,
+                "gradient_dot_activation": -0.010617487160437727
+            }
+        ]
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_2_arithmetic_score.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_6_arithmetic_gradient.json",
+        "raw_gradient_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_6_arithmetic_gradient.npz",
+        "raw_gradient_npz_sha256": "f21ea6dbe007f31caef3cc9bd69771ea816a92bd90f679b021fd29253e5f82ee"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "scorer_checkpoint_matches": true,
+        "scorer_prompt_matches": true,
+        "shared_prefix_matches": true,
+        "preferred_and_comparison_distinct": true,
+        "residual_gradients_finite": true,
+        "component_gradients_finite": true,
+        "expected_residual_stage_count": true,
+        "expected_subcomponent_count": true
+    }
+}

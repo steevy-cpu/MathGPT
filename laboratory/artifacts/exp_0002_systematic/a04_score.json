@@ -1,0 +1,225 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:28:36.754455+00:00",
+    "tool": {
+        "name": "continuation_scorer",
+        "version": "0.1",
+        "permission_level": "P1",
+        "evidence_level": "E1"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "prompt": "Two plus three equals",
+    "candidate_count": 2,
+    "preferred_index": 0,
+    "candidates": [
+        {
+            "prompt": "Two plus three equals",
+            "continuation": " five.",
+            "prompt_token_ids": [
+                6498,
+                5912,
+                1349,
+                5001,
+                118
+            ],
+            "continuation_token_ids": [
+                35,
+                11563,
+                1509
+            ],
+            "continuation_tokens": [
+                " ",
+                "fiv",
+                "e."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -24.411780424638806,
+            "mean_log_probability": -8.13726014154627,
+            "mean_nll": 8.13726014154627,
+            "perplexity": 3419.535976776517,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0012456765546290068,
+            "first_token_rank": 124,
+            "mean_token_rank": 2511.0,
+            "median_token_rank": 322.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.0,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0012456765546290068,
+                    "log_probability": -6.688076479290522,
+                    "logit": 3.1080949306488037,
+                    "rank": 124
+                },
+                {
+                    "position": 1,
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.928431605911798e-05,
+                    "log_probability": -10.144685201208851,
+                    "logit": -0.6917404532432556,
+                    "rank": 7087
+                },
+                {
+                    "position": 2,
+                    "token_id": 1509,
+                    "token_text": "e.",
+                    "probability": 0.0005110624600873727,
+                    "log_probability": -7.579018744139432,
+                    "logit": 2.5809707641601562,
+                    "rank": 322
+                }
+            ],
+            "candidate_index": 0
+        },
+        {
+            "prompt": "Two plus three equals",
+            "continuation": " four.",
+            "prompt_token_ids": [
+                6498,
+                5912,
+                1349,
+                5001,
+                118
+            ],
+            "continuation_token_ids": [
+                35,
+                3996,
+                49
+            ],
+            "continuation_tokens": [
+                " ",
+                "four",
+                "."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -22.774668325371415,
+            "mean_log_probability": -7.591556108457138,
+            "mean_nll": 7.591556108457138,
+            "perplexity": 1981.3943805955064,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0012456765546290068,
+            "first_token_rank": 124,
+            "mean_token_rank": 1716.3333333333333,
+            "median_token_rank": 124.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.3333333333333333,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0012456765546290068,
+                    "log_probability": -6.688076479290522,
+                    "logit": 3.1080949306488037,
+                    "rank": 124
+                },
+                {
+                    "position": 1,
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.648634687761481e-05,
+                    "log_probability": -9.781511597197316,
+                    "logit": -0.32856684923171997,
+                    "rank": 4951
+                },
+                {
+                    "position": 2,
+                    "token_id": 49,
+                    "token_text": ".",
+                    "probability": 0.0018269995481878716,
+                    "log_probability": -6.305080248883577,
+                    "logit": 3.526620864868164,
+                    "rank": 74
+                }
+            ],
+            "candidate_index": 1
+        }
+    ],
+    "discriminative_analysis": {
+        "shared_prefix_token_count": 1,
+        "shared_prefix_token_ids": [
+            35
+        ],
+        "shared_prefix_tokens": [
+            " "
+        ],
+        "scoring_context_token_ids": [
+            6498,
+            5912,
+            1349,
+            5001,
+            118,
+            35
+        ],
+        "candidates": [
+            {
+                "candidate_index": 0,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 11563,
+                "token_text": "fiv",
+                "rank": 7087,
+                "probability": 3.928431605911798e-05,
+                "log_probability": -10.144685201208851,
+                "logit": -0.6917404532432556
+            },
+            {
+                "candidate_index": 1,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 3996,
+                "token_text": "four",
+                "rank": 4951,
+                "probability": 5.648634687761481e-05,
+                "log_probability": -9.781511597197316,
+                "logit": -0.32856684923171997
+            }
+        ]
+    },
+    "comparisons": [
+        {
+            "preferred_index": 0,
+            "comparison_index": 1,
+            "preferred_continuation": " five.",
+            "comparison_continuation": " four.",
+            "preferred_mean_nll": 8.13726014154627,
+            "comparison_mean_nll": 7.591556108457138,
+            "margin": -0.5457040330891312,
+            "preferred_wins": false
+        }
+    ],
+    "checks": {
+        "candidate_count_positive": true,
+        "checkpoint_identity_valid": true,
+        "discriminative_analysis_created": true
+    }
+}

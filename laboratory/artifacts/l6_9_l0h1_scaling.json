@@ -1,0 +1,385 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T00:38:20.592152+00:00",
+    "tool": {
+        "name": "activation_scaler",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "target_head": {
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1",
+        "attention_focus_mass": 0.47729256749153137
+    },
+    "targets": {
+        "preferred_token_id": 3996,
+        "preferred_token_text": "four",
+        "comparison_token_id": 11563,
+        "comparison_token_text": "fiv"
+    },
+    "baseline": {
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 5.688314749353489e-05,
+            "log_probability": -9.774511438319259,
+            "rank": 4857,
+            "logit": -0.3386191129684448
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "probability": 3.516983571920058e-05,
+            "log_probability": -10.255321782538466,
+            "rank": 7687,
+            "logit": -0.8194294571876526
+        },
+        "logit_margin": 0.48081034421920776,
+        "probability_ratio": 1.6173845094897665,
+        "preferred_wins": true
+    },
+    "scale_results": [
+        {
+            "scale": 1.0,
+            "intervention": {
+                "head": 1,
+                "scale": 1.0,
+                "original_last_token_l2": 2.538314270478087,
+                "intervened_last_token_l2": 2.538314270478087
+            },
+            "targets": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.688314749353489e-05,
+                    "log_probability": -9.774511438319259,
+                    "rank": 4857,
+                    "logit": -0.3386191129684448
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.516983571920058e-05,
+                    "log_probability": -10.255321782538466,
+                    "rank": 7687,
+                    "logit": -0.8194294571876526
+                },
+                "logit_margin": 0.48081034421920776,
+                "probability_ratio": 1.6173845094897665,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": 0.0,
+                "preferred_rank_delta": 0,
+                "comparison_rank_delta": 0,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.0,
+                    "probability_l1_distance": 0.0,
+                    "logit_l2_difference": 0.0,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            },
+            "baseline_control": {
+                "applicable": true,
+                "exact": true,
+                "max_absolute_difference": 0.0
+            }
+        },
+        {
+            "scale": 0.75,
+            "intervention": {
+                "head": 1,
+                "scale": 0.75,
+                "original_last_token_l2": 2.538314270478087,
+                "intervened_last_token_l2": 1.9037356721338263
+            },
+            "targets": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.496549321461763e-05,
+                    "log_probability": -9.808804965724955,
+                    "rank": 5050,
+                    "logit": -0.3526742160320282
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.895425027995984e-05,
+                    "log_probability": -10.153122670164118,
+                    "rank": 7042,
+                    "logit": -0.6969919204711914
+                },
+                "logit_margin": 0.3443177044391632,
+                "probability_ratio": 1.4110268537986683,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.13649263978004456,
+                "preferred_rank_delta": 193,
+                "comparison_rank_delta": -645,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.003550658913752598,
+                    "probability_l1_distance": 0.06609504182131477,
+                    "logit_l2_difference": 9.773556606716129,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            },
+            "baseline_control": {
+                "applicable": false,
+                "exact": null,
+                "max_absolute_difference": null
+            }
+        },
+        {
+            "scale": 0.5,
+            "intervention": {
+                "head": 1,
+                "scale": 0.5,
+                "original_last_token_l2": 2.538314270478087,
+                "intervened_last_token_l2": 1.2691571352390436
+            },
+            "targets": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.190457410122071e-05,
+                    "log_probability": -9.866103638704416,
+                    "rank": 5343,
+                    "logit": -0.39056992530822754
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 4.392832518487921e-05,
+                    "log_probability": -10.032951225336191,
+                    "rank": 6267,
+                    "logit": -0.5574175119400024
+                },
+                "logit_margin": 0.1668475866317749,
+                "probability_ratio": 1.1815741638856525,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.31396275758743286,
+                "preferred_rank_delta": 486,
+                "comparison_rank_delta": -1420,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.016711635469737814,
+                    "probability_l1_distance": 0.14392608054642092,
+                    "logit_l2_difference": 20.79058091368023,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            },
+            "baseline_control": {
+                "applicable": false,
+                "exact": null,
+                "max_absolute_difference": null
+            }
+        },
+        {
+            "scale": 0.25,
+            "intervention": {
+                "head": 1,
+                "scale": 0.25,
+                "original_last_token_l2": 2.538314270478087,
+                "intervened_last_token_l2": 0.6345785676195218
+            },
+            "targets": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 4.827878524859285e-05,
+                    "log_probability": -9.938518322602576,
+                    "rank": 5709,
+                    "logit": -0.4457699656486511
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 5.077033235441133e-05,
+                    "log_probability": -9.888198382750815,
+                    "rank": 5421,
+                    "logit": -0.39545002579689026
+                },
+                "logit_margin": -0.050319939851760864,
+                "probability_ratio": 0.9509251369790965,
+                "preferred_wins": false
+            },
+            "effect": {
+                "logit_margin_delta": -0.5311302840709686,
+                "preferred_rank_delta": 852,
+                "comparison_rank_delta": -2266,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.0457265217608838,
+                    "probability_l1_distance": 0.23878886352936818,
+                    "logit_l2_difference": 33.168593219911266,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            },
+            "baseline_control": {
+                "applicable": false,
+                "exact": null,
+                "max_absolute_difference": null
+            }
+        },
+        {
+            "scale": 0.0,
+            "intervention": {
+                "head": 1,
+                "scale": 0.0,
+                "original_last_token_l2": 2.538314270478087,
+                "intervened_last_token_l2": 0.0
+            },
+            "targets": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 4.4867006793811054e-05,
+                    "log_probability": -10.011807848607749,
+                    "rank": 6067,
+                    "logit": -0.5091376304626465
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 5.708942691714384e-05,
+                    "log_probability": -9.77089162627384,
+                    "rank": 4775,
+                    "logit": -0.2682214081287384
+                },
+                "logit_margin": -0.24091622233390808,
+                "probability_ratio": 0.7859074651235916,
+                "preferred_wins": false
+            },
+            "effect": {
+                "logit_margin_delta": -0.7217265665531158,
+                "preferred_rank_delta": 1210,
+                "comparison_rank_delta": -2912,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.0862305172839421,
+                    "probability_l1_distance": 0.32741752719933853,
+                    "logit_l2_difference": 43.854807899870835,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            },
+            "baseline_control": {
+                "applicable": false,
+                "exact": null,
+                "max_absolute_difference": null
+            }
+        }
+    ],
+    "dose_response": {
+        "scales_sorted": [
+            0.0,
+            0.25,
+            0.5,
+            0.75,
+            1.0
+        ],
+        "margins_sorted": [
+            -0.24091622233390808,
+            -0.050319939851760864,
+            0.1668475866317749,
+            0.3443177044391632,
+            0.48081034421920776
+        ],
+        "margin_nondecreasing_with_scale": true,
+        "margin_nonincreasing_with_scale": false,
+        "linear_slope": 0.7352363109588621,
+        "linear_intercept": -0.22747026085853558,
+        "linear_r_squared": 0.9938836422870062,
+        "scale_margin_correlation": 0.9969371305588965,
+        "zero_to_one_margin_change": 0.7217265665531158,
+        "preference_flip_intervals": [
+            {
+                "lower_scale": 0.25,
+                "lower_margin": -0.050319939851760864,
+                "upper_scale": 0.5,
+                "upper_margin": 0.1668475866317749
+            }
+        ]
+    },
+    "crosschecks": {
+        "l6_8_ablation": {
+            "available": true,
+            "passed": true,
+            "previous_margin": -0.24091622233390808,
+            "current_margin": -0.24091622233390808,
+            "margin_difference": 0.0,
+            "previous_margin_delta": -0.7217265665531158,
+            "current_margin_delta": -0.7217265665531158,
+            "margin_delta_difference": 0.0
+        }
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_2_arithmetic_score.json",
+        "attention_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_5_arithmetic_attention.json",
+        "head_ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_8_block0_head_ablation.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_9_l0h1_scaling.json"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "scale_count_at_least_three": true,
+        "scale_one_control_exact": true,
+        "scale_zero_fully_ablates_head": true,
+        "all_measurements_finite": true,
+        "l6_8_zero_scale_crosscheck": true
+    }
+}

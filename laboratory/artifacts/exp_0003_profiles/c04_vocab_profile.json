@@ -1,0 +1,1246 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:50:01.292154+00:00",
+    "tool": {
+        "name": "causal_vocabulary_profiler",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Paris is in",
+        "prompt_token_ids": [
+            1224,
+            291,
+            13240
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context": [
+            {
+                "position": 0,
+                "token_id": 1224,
+                "token_text": "Par"
+            },
+            {
+                "position": 1,
+                "token_id": 291,
+                "token_text": "is "
+            },
+            {
+                "position": 2,
+                "token_id": 13240,
+                "token_text": "is in"
+            },
+            {
+                "position": 3,
+                "token_id": 35,
+                "token_text": " "
+            }
+        ]
+    },
+    "intervention": {
+        "type": "attention_head_ablation",
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1",
+        "scale": 0.0,
+        "record": {
+            "head": 1,
+            "scale": 0.0,
+            "original_last_token_l2": 2.540320582902855,
+            "intervened_last_token_l2": 0.0
+        }
+    },
+    "control_verification": {
+        "scale": 1.0,
+        "exact": true,
+        "max_absolute_difference": 0.0,
+        "record": {
+            "head": 1,
+            "scale": 1.0,
+            "original_last_token_l2": 2.540320582902855,
+            "intervened_last_token_l2": 2.540320582902855
+        }
+    },
+    "effect_definition": {
+        "formula": "baseline_next_token_logit - ablated_next_token_logit",
+        "positive": "The intact head increases this vocabulary token's logit.",
+        "negative": "The intact head suppresses this vocabulary token's logit."
+    },
+    "effect_statistics": {
+        "vocabulary_size": 16000,
+        "mean": -0.07729108548125077,
+        "std": 0.1746774458507134,
+        "l2_norm": 24.161497299231744,
+        "mean_absolute_effect": 0.15772480639437708,
+        "maximum_support_effect": 0.7492733001708984,
+        "maximum_suppression_effect": -0.6269862651824951
+    },
+    "top_supported_tokens": [
+        {
+            "token_id": 2570,
+            "token_text": "4, ",
+            "causal_logit_effect": 0.7492733001708984,
+            "causal_effect_z": 4.731946827059548,
+            "baseline_logit": 0.41453954577445984,
+            "ablated_logit": -0.3347337543964386,
+            "baseline_probability": 0.00011550281056287187,
+            "ablated_probability": 5.318664143576729e-05,
+            "probability_delta": 6.231616912710458e-05,
+            "baseline_rank": 1939,
+            "ablated_rank": 5202,
+            "rank_delta_ablation_minus_baseline": 3263
+        },
+        {
+            "token_id": 2,
+            "token_text": "<EOS>",
+            "causal_logit_effect": 0.7368486523628235,
+            "causal_effect_z": 4.660817736823745,
+            "baseline_logit": 1.4157710075378418,
+            "ablated_logit": 0.6789223551750183,
+            "baseline_probability": 0.00031435607030729857,
+            "ablated_probability": 0.00014656417300816358,
+            "probability_delta": 0.00016779189729913498,
+            "baseline_rank": 402,
+            "ablated_rank": 1431,
+            "rank_delta_ablation_minus_baseline": 1029
+        },
+        {
+            "token_id": 51,
+            "token_text": "0",
+            "causal_logit_effect": 0.6998588144779205,
+            "causal_effect_z": 4.449056924174148,
+            "baseline_logit": 0.9625828862190247,
+            "ablated_logit": 0.2627240717411041,
+            "baseline_probability": 0.00019980426333264504,
+            "ablated_probability": 9.666632406225954e-05,
+            "probability_delta": 0.0001031379392703855,
+            "baseline_rank": 829,
+            "ablated_rank": 2551,
+            "rank_delta_ablation_minus_baseline": 1722
+        },
+        {
+            "token_id": 2578,
+            "token_text": "ER",
+            "causal_logit_effect": 0.682326078414917,
+            "causal_effect_z": 4.348684858521278,
+            "baseline_logit": 0.36368849873542786,
+            "ablated_logit": -0.31863757967948914,
+            "baseline_probability": 0.00010977620753786019,
+            "ablated_probability": 5.404967000504524e-05,
+            "probability_delta": 5.5726537532814946e-05,
+            "baseline_rank": 2080,
+            "ablated_rank": 5130,
+            "rank_delta_ablation_minus_baseline": 3050
+        },
+        {
+            "token_id": 1405,
+            "token_text": "ick",
+            "causal_logit_effect": 0.6787088960409164,
+            "causal_effect_z": 4.327977077065096,
+            "baseline_logit": -0.18944700062274933,
+            "ablated_logit": -0.8681558966636658,
+            "baseline_probability": 6.313708514708005e-05,
+            "ablated_probability": 3.1198971256315434e-05,
+            "probability_delta": 3.1938113890764615e-05,
+            "baseline_rank": 4082,
+            "ablated_rank": 7990,
+            "rank_delta_ablation_minus_baseline": 3908
+        },
+        {
+            "token_id": 53,
+            "token_text": "2",
+            "causal_logit_effect": 0.676085352897644,
+            "causal_effect_z": 4.3129577187816315,
+            "baseline_logit": 2.3144407272338867,
+            "ablated_logit": 1.6383553743362427,
+            "baseline_probability": 0.0007721632913901495,
+            "ablated_probability": 0.0003825641657214779,
+            "probability_delta": 0.0003895991256686716,
+            "baseline_rank": 92,
+            "ablated_rank": 288,
+            "rank_delta_ablation_minus_baseline": 196
+        },
+        {
+            "token_id": 52,
+            "token_text": "1",
+            "causal_logit_effect": 0.6625775098800659,
+            "causal_effect_z": 4.23562751194358,
+            "baseline_logit": 2.1450841426849365,
+            "ablated_logit": 1.4825066328048706,
+            "baseline_probability": 0.0006518662875525695,
+            "ablated_probability": 0.0003273557994819397,
+            "probability_delta": 0.00032451048807062983,
+            "baseline_rank": 120,
+            "ablated_rank": 385,
+            "rank_delta_ablation_minus_baseline": 265
+        },
+        {
+            "token_id": 58,
+            "token_text": "7",
+            "causal_logit_effect": 0.6588007211685181,
+            "causal_effect_z": 4.214006010134035,
+            "baseline_logit": 2.3800933361053467,
+            "ablated_logit": 1.7212926149368286,
+            "baseline_probability": 0.0008245589636489623,
+            "ablated_probability": 0.0004156458740047629,
+            "probability_delta": 0.00040891308964419935,
+            "baseline_rank": 83,
+            "ablated_rank": 254,
+            "rank_delta_ablation_minus_baseline": 171
+        },
+        {
+            "token_id": 71,
+            "token_text": "D",
+            "causal_logit_effect": 0.6533253192901611,
+            "causal_effect_z": 4.182660223895344,
+            "baseline_logit": 3.1871445178985596,
+            "ablated_logit": 2.5338191986083984,
+            "baseline_probability": 0.0018480749997669091,
+            "ablated_probability": 0.000936697336754757,
+            "probability_delta": 0.0009113776630121521,
+            "baseline_rank": 20,
+            "ablated_rank": 68,
+            "rank_delta_ablation_minus_baseline": 48
+        },
+        {
+            "token_id": 1506,
+            "token_text": "ash",
+            "causal_logit_effect": 0.6527878865599632,
+            "causal_effect_z": 4.179583508824429,
+            "baseline_logit": 0.11274763196706772,
+            "ablated_logit": -0.5400402545928955,
+            "baseline_probability": 8.541339595015091e-05,
+            "ablated_probability": 4.331507660032805e-05,
+            "probability_delta": 4.209831934982286e-05,
+            "baseline_rank": 2833,
+            "ablated_rank": 6301,
+            "rank_delta_ablation_minus_baseline": 3468
+        },
+        {
+            "token_id": 409,
+            "token_text": "uc",
+            "causal_logit_effect": 0.6424338519573212,
+            "causal_effect_z": 4.120308342805051,
+            "baseline_logit": 0.276580810546875,
+            "ablated_logit": -0.36585304141044617,
+            "baseline_probability": 0.00010061849908808162,
+            "ablated_probability": 5.155699923861229e-05,
+            "probability_delta": 4.906149984946933e-05,
+            "baseline_rank": 2324,
+            "ablated_rank": 5387,
+            "rank_delta_ablation_minus_baseline": 3063
+        },
+        {
+            "token_id": 1215,
+            "token_text": "D ",
+            "causal_logit_effect": 0.6398965716362,
+            "causal_effect_z": 4.10578282516444,
+            "baseline_logit": 0.4288526773452759,
+            "ablated_logit": -0.21104389429092407,
+            "baseline_probability": 0.00011716790542150892,
+            "ablated_probability": 6.0189452185067814e-05,
+            "probability_delta": 5.697845323644111e-05,
+            "baseline_rank": 1892,
+            "ablated_rank": 4567,
+            "rank_delta_ablation_minus_baseline": 2675
+        },
+        {
+            "token_id": 83,
+            "token_text": "P",
+            "causal_logit_effect": 0.6372621059417725,
+            "causal_effect_z": 4.090700937050053,
+            "baseline_logit": 3.491847038269043,
+            "ablated_logit": 2.8545849323272705,
+            "baseline_probability": 0.002506399038545305,
+            "ablated_probability": 0.0012909400471741309,
+            "probability_delta": 0.001215458991371174,
+            "baseline_rank": 10,
+            "ablated_rank": 25,
+            "rank_delta_ablation_minus_baseline": 15
+        },
+        {
+            "token_id": 701,
+            "token_text": "5 ",
+            "causal_logit_effect": 0.6356099247932434,
+            "causal_effect_z": 4.081242468382374,
+            "baseline_logit": 1.2561477422714233,
+            "ablated_logit": 0.6205378174781799,
+            "baseline_probability": 0.0002679775102576127,
+            "ablated_probability": 0.00013825210078792448,
+            "probability_delta": 0.00012972540946968824,
+            "baseline_rank": 522,
+            "ablated_rank": 1579,
+            "rank_delta_ablation_minus_baseline": 1057
+        },
+        {
+            "token_id": 57,
+            "token_text": "6",
+            "causal_logit_effect": 0.6290546655654907,
+            "causal_effect_z": 4.043714674248293,
+            "baseline_logit": 2.235884428024292,
+            "ablated_logit": 1.6068297624588013,
+            "baseline_probability": 0.0007138263645023184,
+            "ablated_probability": 0.00037069172261483167,
+            "probability_delta": 0.0003431346418874867,
+            "baseline_rank": 105,
+            "ablated_rank": 303,
+            "rank_delta_ablation_minus_baseline": 198
+        },
+        {
+            "token_id": 90,
+            "token_text": "W",
+            "causal_logit_effect": 0.618980884552002,
+            "causal_effect_z": 3.986043914497786,
+            "baseline_logit": 3.359988212585449,
+            "ablated_logit": 2.7410073280334473,
+            "baseline_probability": 0.0021967703331648705,
+            "ablated_probability": 0.0011523381675678345,
+            "probability_delta": 0.001044432165597036,
+            "baseline_rank": 13,
+            "ablated_rank": 37,
+            "rank_delta_ablation_minus_baseline": 24
+        },
+        {
+            "token_id": 432,
+            "token_text": "og",
+            "causal_logit_effect": 0.6161757111549377,
+            "causal_effect_z": 3.9699847525183873,
+            "baseline_logit": -0.2878251075744629,
+            "ablated_logit": -0.9040008187294006,
+            "baseline_probability": 5.722152908603325e-05,
+            "ablated_probability": 3.010045234310678e-05,
+            "probability_delta": 2.7121076742926474e-05,
+            "baseline_rank": 4605,
+            "ablated_rank": 8160,
+            "rank_delta_ablation_minus_baseline": 3555
+        },
+        {
+            "token_id": 1705,
+            "token_text": "ale ",
+            "causal_logit_effect": 0.6099944859743118,
+            "causal_effect_z": 3.934598242539826,
+            "baseline_logit": -0.10865722596645355,
+            "ablated_logit": -0.7186517119407654,
+            "baseline_probability": 6.844962626868114e-05,
+            "ablated_probability": 3.623006526962663e-05,
+            "probability_delta": 3.2219560999054514e-05,
+            "baseline_rank": 3726,
+            "ablated_rank": 7239,
+            "rank_delta_ablation_minus_baseline": 3513
+        },
+        {
+            "token_id": 294,
+            "token_text": "ro",
+            "causal_logit_effect": 0.608968198299408,
+            "causal_effect_z": 3.928722912328157,
+            "baseline_logit": 1.505892276763916,
+            "ablated_logit": 0.8969240784645081,
+            "baseline_probability": 0.0003440020423889381,
+            "ablated_probability": 0.00018226562422539894,
+            "probability_delta": 0.00016173641816353917,
+            "baseline_rank": 344,
+            "ablated_rank": 1015,
+            "rank_delta_ablation_minus_baseline": 671
+        },
+        {
+            "token_id": 110,
+            "token_text": "k",
+            "causal_logit_effect": 0.6027063131332397,
+            "causal_effect_z": 3.8928746370361087,
+            "baseline_logit": 1.6048469543457031,
+            "ablated_logit": 1.0021406412124634,
+            "baseline_probability": 0.00037978384886855663,
+            "ablated_probability": 0.0002024882093853621,
+            "probability_delta": 0.00017729563948319454,
+            "baseline_rank": 295,
+            "ablated_rank": 847,
+            "rank_delta_ablation_minus_baseline": 552
+        },
+        {
+            "token_id": 1138,
+            "token_text": "\n ",
+            "causal_logit_effect": 0.6013371795415878,
+            "causal_effect_z": 3.8850365696486224,
+            "baseline_logit": -0.1982342153787613,
+            "ablated_logit": -0.7995713949203491,
+            "baseline_probability": 6.258471646620006e-05,
+            "ablated_probability": 3.341382122306697e-05,
+            "probability_delta": 2.9170895243133084e-05,
+            "baseline_rank": 4128,
+            "ablated_rank": 7630,
+            "rank_delta_ablation_minus_baseline": 3502
+        },
+        {
+            "token_id": 3638,
+            "token_text": "RE",
+            "causal_logit_effect": 0.5999013185501099,
+            "causal_effect_z": 3.8768164987374347,
+            "baseline_logit": 1.1100318431854248,
+            "ablated_logit": 0.5101305246353149,
+            "baseline_probability": 0.00023154799201351286,
+            "ablated_probability": 0.0001238005178275537,
+            "probability_delta": 0.00010774747418595916,
+            "baseline_rank": 642,
+            "ablated_rank": 1844,
+            "rank_delta_ablation_minus_baseline": 1202
+        },
+        {
+            "token_id": 1946,
+            "token_text": "ich",
+            "causal_logit_effect": 0.599642276763916,
+            "causal_effect_z": 3.87533352659451,
+            "baseline_logit": -0.7547297477722168,
+            "ablated_logit": -1.3543720245361328,
+            "baseline_probability": 3.587445814511453e-05,
+            "ablated_probability": 1.918577259831595e-05,
+            "probability_delta": 1.6688685546798576e-05,
+            "baseline_rank": 7038,
+            "ablated_rank": 10133,
+            "rank_delta_ablation_minus_baseline": 3095
+        },
+        {
+            "token_id": 854,
+            "token_text": "-1",
+            "causal_logit_effect": 0.5989677011966705,
+            "causal_effect_z": 3.8714716910612497,
+            "baseline_logit": 0.28601258993148804,
+            "ablated_logit": -0.3129551112651825,
+            "baseline_probability": 0.00010157200011064696,
+            "ablated_probability": 5.4357679846937347e-05,
+            "probability_delta": 4.7214320263709614e-05,
+            "baseline_rank": 2301,
+            "ablated_rank": 5094,
+            "rank_delta_ablation_minus_baseline": 2793
+        },
+        {
+            "token_id": 86,
+            "token_text": "S",
+            "causal_logit_effect": 0.5965762138366699,
+            "causal_effect_z": 3.8577808144380334,
+            "baseline_logit": 4.090153694152832,
+            "ablated_logit": 3.493577480316162,
+            "baseline_probability": 0.004559229923956246,
+            "ablated_probability": 0.002445777870360827,
+            "probability_delta": 0.0021134520535954194,
+            "baseline_rank": 1,
+            "ablated_rank": 1,
+            "rank_delta_ablation_minus_baseline": 0
+        }
+    ],
+    "top_suppressed_tokens": [
+        {
+            "token_id": 1043,
+            "token_text": "make ",
+            "causal_logit_effect": -0.6269862651824951,
+            "causal_effect_z": -3.146915602206805,
+            "baseline_logit": 1.5019378662109375,
+            "ablated_logit": 2.1289241313934326,
+            "baseline_probability": 0.00034264440318282856,
+            "ablated_probability": 0.0006248209631723306,
+            "probability_delta": -0.00028217655998950207,
+            "baseline_rank": 347,
+            "ablated_rank": 126,
+            "rank_delta_ablation_minus_baseline": -221
+        },
+        {
+            "token_id": 13382,
+            "token_text": "they're ",
+            "causal_logit_effect": -0.5873972177505493,
+            "causal_effect_z": -2.920274737159006,
+            "baseline_logit": -0.9214493632316589,
+            "ablated_logit": -0.3340521454811096,
+            "baseline_probability": 3.0365465352893513e-05,
+            "ablated_probability": 5.322290628256374e-05,
+            "probability_delta": -2.2857440929670225e-05,
+            "baseline_rank": 7945,
+            "ablated_rank": 5199,
+            "rank_delta_ablation_minus_baseline": -2746
+        },
+        {
+            "token_id": 8463,
+            "token_text": "pollu",
+            "causal_logit_effect": -0.5686341859400272,
+            "causal_effect_z": -2.8128594282211954,
+            "baseline_logit": -0.6091948747634888,
+            "ablated_logit": -0.04056068882346153,
+            "baseline_probability": 4.149448152135121e-05,
+            "ablated_probability": 7.137733125847687e-05,
+            "probability_delta": -2.9882849737125664e-05,
+            "baseline_rank": 6273,
+            "ablated_rank": 3781,
+            "rank_delta_ablation_minus_baseline": -2492
+        },
+        {
+            "token_id": 14335,
+            "token_text": "colon ",
+            "causal_logit_effect": -0.5586168766021729,
+            "causal_effect_z": -2.755511959639501,
+            "baseline_logit": -3.8117542266845703,
+            "ablated_logit": -3.2531373500823975,
+            "baseline_probability": 1.6870831500963688e-06,
+            "ablated_probability": 2.873134713249725e-06,
+            "probability_delta": -1.186051563153356e-06,
+            "baseline_rank": 14679,
+            "ablated_rank": 14552,
+            "rank_delta_ablation_minus_baseline": -127
+        },
+        {
+            "token_id": 5267,
+            "token_text": "rm ",
+            "causal_logit_effect": -0.5388813018798828,
+            "causal_effect_z": -2.6425290005277855,
+            "baseline_logit": -4.852756977081299,
+            "ablated_logit": -4.313875675201416,
+            "baseline_probability": 5.957097904309211e-07,
+            "ablated_probability": 9.946795471927117e-07,
+            "probability_delta": -3.989697567617905e-07,
+            "baseline_rank": 15972,
+            "ablated_rank": 15776,
+            "rank_delta_ablation_minus_baseline": -196
+        },
+        {
+            "token_id": 10992,
+            "token_text": "Finally, ",
+            "causal_logit_effect": -0.5254840105772018,
+            "causal_effect_z": -2.5658316842976703,
+            "baseline_logit": -0.3771566152572632,
+            "ablated_logit": 0.14832739531993866,
+            "baseline_probability": 5.2331511423564994e-05,
+            "ablated_probability": 8.621708963977591e-05,
+            "probability_delta": -3.388557821621092e-05,
+            "baseline_rank": 5051,
+            "ablated_rank": 2973,
+            "rank_delta_ablation_minus_baseline": -2078
+        },
+        {
+            "token_id": 2083,
+            "token_text": "cdo",
+            "causal_logit_effect": -0.5165603160858154,
+            "causal_effect_z": -2.51474498304711,
+            "baseline_logit": -4.454250812530518,
+            "ablated_logit": -3.937690496444702,
+            "baseline_probability": 8.873680056145346e-07,
+            "ablated_probability": 1.448966468496857e-06,
+            "probability_delta": -5.615984628823223e-07,
+            "baseline_rank": 15575,
+            "ablated_rank": 14974,
+            "rank_delta_ablation_minus_baseline": -601
+        },
+        {
+            "token_id": 5032,
+            "token_text": "legal ",
+            "causal_logit_effect": -0.5131561607122421,
+            "causal_effect_z": -2.4952567465607425,
+            "baseline_logit": 0.09172619879245758,
+            "ablated_logit": 0.6048823595046997,
+            "baseline_probability": 8.363662452508013e-05,
+            "ablated_probability": 0.0001361045551021625,
+            "probability_delta": -5.246793057708236e-05,
+            "baseline_rank": 2905,
+            "ablated_rank": 1616,
+            "rank_delta_ablation_minus_baseline": -1289
+        },
+        {
+            "token_id": 11297,
+            "token_text": "gravity ",
+            "causal_logit_effect": -0.5080000162124634,
+            "causal_effect_z": -2.465738656948959,
+            "baseline_logit": -1.6249712705612183,
+            "ablated_logit": -1.1169712543487549,
+            "baseline_probability": 1.502603025128747e-05,
+            "ablated_probability": 2.432658448384641e-05,
+            "probability_delta": -9.30055423255894e-06,
+            "baseline_rank": 10982,
+            "ablated_rank": 9157,
+            "rank_delta_ablation_minus_baseline": -1825
+        },
+        {
+            "token_id": 11944,
+            "token_text": "sector ",
+            "causal_logit_effect": -0.49763375520706177,
+            "causal_effect_z": -2.4063934967600416,
+            "baseline_logit": -1.1606906652450562,
+            "ablated_logit": -0.6630569100379944,
+            "baseline_probability": 2.390445044102585e-05,
+            "ablated_probability": 3.8301310348024384e-05,
+            "probability_delta": -1.4396859906998535e-05,
+            "baseline_rank": 9103,
+            "ablated_rank": 6951,
+            "rank_delta_ablation_minus_baseline": -2152
+        },
+        {
+            "token_id": 15401,
+            "token_text": "equation of the ",
+            "causal_logit_effect": -0.49762892723083496,
+            "causal_effect_z": -2.4063658573804796,
+            "baseline_logit": -3.5861494541168213,
+            "ablated_logit": -3.0885205268859863,
+            "baseline_probability": 2.1140506863031733e-06,
+            "ablated_probability": 3.3872571428747406e-06,
+            "probability_delta": -1.2732064565715673e-06,
+            "baseline_rank": 14621,
+            "ablated_rank": 14478,
+            "rank_delta_ablation_minus_baseline": -143
+        },
+        {
+            "token_id": 13480,
+            "token_text": "divide ",
+            "causal_logit_effect": -0.4964911937713623,
+            "causal_effect_z": -2.399852518157252,
+            "baseline_logit": -0.9528011083602905,
+            "ablated_logit": -0.4563099145889282,
+            "baseline_probability": 2.9428223869614626e-05,
+            "ablated_probability": 4.709802668181513e-05,
+            "probability_delta": -1.7669802812200506e-05,
+            "baseline_rank": 8099,
+            "ablated_rank": 5840,
+            "rank_delta_ablation_minus_baseline": -2259
+        },
+        {
+            "token_id": 15436,
+            "token_text": "robust ",
+            "causal_logit_effect": -0.4961393475532532,
+            "causal_effect_z": -2.3978382557183,
+            "baseline_logit": -1.2698932886123657,
+            "ablated_logit": -0.7737539410591125,
+            "baseline_probability": 2.143150486038756e-05,
+            "ablated_probability": 3.4287713305212604e-05,
+            "probability_delta": -1.2856208444825044e-05,
+            "baseline_rank": 9601,
+            "ablated_rank": 7521,
+            "rank_delta_ablation_minus_baseline": -2080
+        },
+        {
+            "token_id": 4841,
+            "token_text": "problems ",
+            "causal_logit_effect": -0.4960865378379822,
+            "causal_effect_z": -2.397535928677658,
+            "baseline_logit": 0.42218804359436035,
+            "ablated_logit": 0.9182745814323425,
+            "baseline_probability": 0.00011638962061687751,
+            "ablated_probability": 0.0001861989265546719,
+            "probability_delta": -6.98093059377944e-05,
+            "baseline_rank": 1917,
+            "ablated_rank": 984,
+            "rank_delta_ablation_minus_baseline": -933
+        },
+        {
+            "token_id": 13868,
+            "token_text": "devices ",
+            "causal_logit_effect": -0.49346545338630676,
+            "causal_effect_z": -2.382530646004155,
+            "baseline_logit": -0.7194617986679077,
+            "ablated_logit": -0.22599634528160095,
+            "baseline_probability": 3.716225215582224e-05,
+            "ablated_probability": 5.9296167392663596e-05,
+            "probability_delta": -2.213391523684136e-05,
+            "baseline_rank": 6871,
+            "ablated_rank": 4646,
+            "rank_delta_ablation_minus_baseline": -2225
+        },
+        {
+            "token_id": 6726,
+            "token_text": "task",
+            "causal_logit_effect": -0.4927701950073242,
+            "causal_effect_z": -2.3785504047337582,
+            "baseline_logit": 0.4141671657562256,
+            "ablated_logit": 0.9069373607635498,
+            "baseline_probability": 0.0001154598076313815,
+            "ablated_probability": 0.0001840998694558447,
+            "probability_delta": -6.864006182446321e-05,
+            "baseline_rank": 1941,
+            "ablated_rank": 998,
+            "rank_delta_ablation_minus_baseline": -943
+        },
+        {
+            "token_id": 11727,
+            "token_text": "∥",
+            "causal_logit_effect": -0.4922337532043457,
+            "causal_effect_z": -2.375479362560191,
+            "baseline_logit": -4.701854705810547,
+            "ablated_logit": -4.209620952606201,
+            "baseline_probability": 6.927407914722756e-07,
+            "ablated_probability": 1.1039780504023224e-06,
+            "probability_delta": -4.1123725893004676e-07,
+            "baseline_rank": 15912,
+            "ablated_rank": 15563,
+            "rank_delta_ablation_minus_baseline": -349
+        },
+        {
+            "token_id": 13663,
+            "token_text": "harm ",
+            "causal_logit_effect": -0.49175193905830383,
+            "causal_effect_z": -2.3727210548479656,
+            "baseline_logit": -0.878474771976471,
+            "ablated_logit": -0.3867228329181671,
+            "baseline_probability": 3.1698854538320524e-05,
+            "ablated_probability": 5.0492165491473034e-05,
+            "probability_delta": -1.879331095315251e-05,
+            "baseline_rank": 7734,
+            "ablated_rank": 5493,
+            "rank_delta_ablation_minus_baseline": -2241
+        },
+        {
+            "token_id": 7410,
+            "token_text": "estimate ",
+            "causal_logit_effect": -0.49121028184890747,
+            "causal_effect_z": -2.369620155319933,
+            "baseline_logit": -0.729530394077301,
+            "ablated_logit": -0.23832011222839355,
+            "baseline_probability": 3.6789957859839077e-05,
+            "ablated_probability": 5.856989961411763e-05,
+            "probability_delta": -2.1779941754278554e-05,
+            "baseline_rank": 6924,
+            "ablated_rank": 4713,
+            "rank_delta_ablation_minus_baseline": -2211
+        },
+        {
+            "token_id": 14457,
+            "token_text": "Maths ",
+            "causal_logit_effect": -0.4892611503601074,
+            "causal_effect_z": -2.3584616941957313,
+            "baseline_logit": -4.643821716308594,
+            "ablated_logit": -4.154560565948486,
+            "baseline_probability": 7.341320231137178e-07,
+            "ablated_probability": 1.166468084942556e-06,
+            "probability_delta": -4.323360618288383e-07,
+            "baseline_rank": 15855,
+            "ablated_rank": 15432,
+            "rank_delta_ablation_minus_baseline": -423
+        },
+        {
+            "token_id": 8262,
+            "token_text": "health and ",
+            "causal_logit_effect": -0.4888124126009643,
+            "causal_effect_z": -2.355892743425026,
+            "baseline_logit": -0.4847133159637451,
+            "ablated_logit": 0.004099096637219191,
+            "baseline_probability": 4.699503706652163e-05,
+            "ablated_probability": 7.463728005447966e-05,
+            "probability_delta": -2.7642242987958026e-05,
+            "baseline_rank": 5628,
+            "ablated_rank": 3574,
+            "rank_delta_ablation_minus_baseline": -2054
+        },
+        {
+            "token_id": 8276,
+            "token_text": "Alge",
+            "causal_logit_effect": -0.48755788803100586,
+            "causal_effect_z": -2.348710794067748,
+            "baseline_logit": -4.634592056274414,
+            "ablated_logit": -4.147034168243408,
+            "baseline_probability": 7.409391776451837e-07,
+            "ablated_probability": 1.1752805089645874e-06,
+            "probability_delta": -4.3434133131940365e-07,
+            "baseline_rank": 15845,
+            "ablated_rank": 15416,
+            "rank_delta_ablation_minus_baseline": -429
+        },
+        {
+            "token_id": 5833,
+            "token_text": "domain ",
+            "causal_logit_effect": -0.48492324352264404,
+            "causal_effect_z": -2.3336278822726357,
+            "baseline_logit": -0.9091001152992249,
+            "ablated_logit": -0.4241768717765808,
+            "baseline_probability": 3.0742781000194554e-05,
+            "ablated_probability": 4.8636007255069165e-05,
+            "probability_delta": -1.789322625487461e-05,
+            "baseline_rank": 7877,
+            "ablated_rank": 5678,
+            "rank_delta_ablation_minus_baseline": -2199
+        },
+        {
+            "token_id": 13421,
+            "token_text": ". I think ",
+            "causal_logit_effect": -0.4844636917114258,
+            "causal_effect_z": -2.3309970228106134,
+            "baseline_logit": -2.8723626136779785,
+            "ablated_logit": -2.3878989219665527,
+            "baseline_probability": 4.316274751040987e-06,
+            "ablated_probability": 6.825339588670408e-06,
+            "probability_delta": -2.5090648376294205e-06,
+            "baseline_rank": 14195,
+            "ablated_rank": 13568,
+            "rank_delta_ablation_minus_baseline": -627
+        },
+        {
+            "token_id": 11379,
+            "token_text": "you want to ",
+            "causal_logit_effect": -0.48425327241420746,
+            "causal_effect_z": -2.3297924065180315,
+            "baseline_logit": -0.4301470220088959,
+            "ablated_logit": 0.054106250405311584,
+            "baseline_probability": 4.963063557382803e-05,
+            "ablated_probability": 7.846457654877351e-05,
+            "probability_delta": -2.8833940974945484e-05,
+            "baseline_rank": 5331,
+            "ablated_rank": 3352,
+            "rank_delta_ablation_minus_baseline": -1979
+        }
+    ],
+    "tracked_texts": [
+        {
+            "text": "one",
+            "token_ids": [
+                2259
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "one"
+            ],
+            "first_token": {
+                "token_id": 2259,
+                "token_text": "one",
+                "causal_logit_effect": 0.07137954235076904,
+                "causal_effect_z": 0.8511151918209287,
+                "baseline_logit": -0.5882366895675659,
+                "ablated_logit": -0.659616231918335,
+                "baseline_probability": 4.2373307682266054e-05,
+                "ablated_probability": 3.8433319799278153e-05,
+                "probability_delta": 3.939987882987901e-06,
+                "baseline_rank": 6158,
+                "ablated_rank": 6932,
+                "rank_delta_ablation_minus_baseline": 774
+            },
+            "warning": null
+        },
+        {
+            "text": "two",
+            "token_ids": [
+                9316
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "two"
+            ],
+            "first_token": {
+                "token_id": 9316,
+                "token_text": "two",
+                "causal_logit_effect": -0.13955962657928467,
+                "causal_effect_z": -0.3564772818538415,
+                "baseline_logit": -1.2810291051864624,
+                "ablated_logit": -1.1414694786071777,
+                "baseline_probability": 2.1194171456548348e-05,
+                "ablated_probability": 2.37378670708958e-05,
+                "probability_delta": -2.5436956143474507e-06,
+                "baseline_rank": 9649,
+                "ablated_rank": 9275,
+                "rank_delta_ablation_minus_baseline": -374
+            },
+            "warning": null
+        },
+        {
+            "text": "three",
+            "token_ids": [
+                2495,
+                104
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "thre",
+                "e"
+            ],
+            "first_token": {
+                "token_id": 2495,
+                "token_text": "thre",
+                "causal_logit_effect": -0.048848812468349934,
+                "causal_effect_z": 0.16282739236529017,
+                "baseline_logit": -0.057620879262685776,
+                "ablated_logit": -0.008772066794335842,
+                "baseline_probability": 7.203372690016478e-05,
+                "ablated_probability": 7.368276744625556e-05,
+                "probability_delta": -1.6490405460907741e-06,
+                "baseline_rank": 3515,
+                "ablated_rank": 3635,
+                "rank_delta_ablation_minus_baseline": 120
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "four",
+            "token_ids": [
+                3996
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "four"
+            ],
+            "first_token": {
+                "token_id": 3996,
+                "token_text": "four",
+                "causal_logit_effect": 0.04223299026489258,
+                "causal_effect_z": 0.684255916177602,
+                "baseline_logit": -0.5053041577339172,
+                "ablated_logit": -0.5475371479988098,
+                "baseline_probability": 4.6037264208678224e-05,
+                "ablated_probability": 4.2991562279591244e-05,
+                "probability_delta": 3.04570192908698e-06,
+                "baseline_rank": 5723,
+                "ablated_rank": 6344,
+                "rank_delta_ablation_minus_baseline": 621
+            },
+            "warning": null
+        },
+        {
+            "text": "five",
+            "token_ids": [
+                11563,
+                104
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "fiv",
+                "e"
+            ],
+            "first_token": {
+                "token_id": 11563,
+                "token_text": "fiv",
+                "causal_logit_effect": -0.33746981620788574,
+                "causal_effect_z": -1.4894809656708317,
+                "baseline_logit": -0.49559712409973145,
+                "ablated_logit": -0.1581273078918457,
+                "baseline_probability": 4.648632548109816e-05,
+                "ablated_probability": 6.346024903876287e-05,
+                "probability_delta": -1.6973923557664713e-05,
+                "baseline_rank": 5676,
+                "ablated_rank": 4327,
+                "rank_delta_ablation_minus_baseline": -1349
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "six",
+            "token_ids": [
+                9262
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "six"
+            ],
+            "first_token": {
+                "token_id": 9262,
+                "token_text": "six",
+                "causal_logit_effect": 0.11686670780181885,
+                "causal_effect_z": 1.1115218243401894,
+                "baseline_logit": 1.232802391052246,
+                "ablated_logit": 1.1159356832504272,
+                "baseline_probability": 0.000261793940799558,
+                "ablated_probability": 0.00022689258272532448,
+                "probability_delta": 3.4901358074233537e-05,
+                "baseline_rank": 533,
+                "ablated_rank": 704,
+                "rank_delta_ablation_minus_baseline": 171
+            },
+            "warning": null
+        },
+        {
+            "text": "seven",
+            "token_ids": [
+                15254
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "seven"
+            ],
+            "first_token": {
+                "token_id": 15254,
+                "token_text": "seven",
+                "causal_logit_effect": -0.1056029200553894,
+                "causal_effect_z": -0.1620806534939554,
+                "baseline_logit": -0.4032643735408783,
+                "ablated_logit": -0.2976614534854889,
+                "baseline_probability": 5.0982933742793034e-05,
+                "ablated_probability": 5.519539715295031e-05,
+                "probability_delta": -4.2124634101572796e-06,
+                "baseline_rank": 5197,
+                "ablated_rank": 5024,
+                "rank_delta_ablation_minus_baseline": -173
+            },
+            "warning": null
+        },
+        {
+            "text": "eight",
+            "token_ids": [
+                104,
+                1112
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "e",
+                "ight"
+            ],
+            "first_token": {
+                "token_id": 104,
+                "token_text": "e",
+                "causal_logit_effect": 0.20240038633346558,
+                "causal_effect_z": 1.6011882384274858,
+                "baseline_logit": 0.26640915870666504,
+                "ablated_logit": 0.06400877237319946,
+                "baseline_probability": 9.960023026402366e-05,
+                "ablated_probability": 7.92454335878512e-05,
+                "probability_delta": 2.0354796676172462e-05,
+                "baseline_rank": 2348,
+                "ablated_rank": 3317,
+                "rank_delta_ablation_minus_baseline": 969
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "nine",
+            "token_ids": [
+                113,
+                1612
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "n",
+                "ine"
+            ],
+            "first_token": {
+                "token_id": 113,
+                "token_text": "n",
+                "causal_logit_effect": 0.2205568552017212,
+                "causal_effect_z": 1.7051310730609444,
+                "baseline_logit": 1.816197156906128,
+                "ablated_logit": 1.5956403017044067,
+                "baseline_probability": 0.0004691640409027223,
+                "ablated_probability": 0.0003665670018689909,
+                "probability_delta": 0.00010259703903373139,
+                "baseline_rank": 220,
+                "ablated_rank": 308,
+                "rank_delta_ablation_minus_baseline": 88
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "ten",
+            "token_ids": [
+                2296
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "ten"
+            ],
+            "first_token": {
+                "token_id": 2296,
+                "token_text": "ten",
+                "causal_logit_effect": 0.2651175260543823,
+                "causal_effect_z": 1.9602336745195466,
+                "baseline_logit": 1.0542271137237549,
+                "ablated_logit": 0.7891095876693726,
+                "baseline_probability": 0.0002189804445402482,
+                "ablated_probability": 0.00016363700754099255,
+                "probability_delta": 5.5343436999255645e-05,
+                "baseline_rank": 695,
+                "ablated_rank": 1208,
+                "rank_delta_ablation_minus_baseline": 513
+            },
+            "warning": null
+        },
+        {
+            "text": "plus",
+            "token_ids": [
+                332,
+                323
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "pl",
+                "us"
+            ],
+            "first_token": {
+                "token_id": 332,
+                "token_text": "pl",
+                "causal_logit_effect": 0.11726558208465576,
+                "causal_effect_z": 1.1138053148096907,
+                "baseline_logit": 1.2862658500671387,
+                "ablated_logit": 1.169000267982483,
+                "baseline_probability": 0.00027617125649473373,
+                "ablated_probability": 0.00023925771737986354,
+                "probability_delta": 3.6913539114870195e-05,
+                "baseline_rank": 501,
+                "ablated_rank": 645,
+                "rank_delta_ablation_minus_baseline": 144
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "minus",
+            "token_ids": [
+                561,
+                323
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "min",
+                "us"
+            ],
+            "first_token": {
+                "token_id": 561,
+                "token_text": "min",
+                "causal_logit_effect": -0.11119604110717773,
+                "causal_effect_z": -0.19410036287628998,
+                "baseline_logit": 0.8423786759376526,
+                "ablated_logit": 0.9535747170448303,
+                "baseline_probability": 0.00017717429998478912,
+                "ablated_probability": 0.00019288916231723367,
+                "probability_delta": -1.5714862332444552e-05,
+                "baseline_rank": 1010,
+                "ablated_rank": 909,
+                "rank_delta_ablation_minus_baseline": -101
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "equal",
+            "token_ids": [
+                5001
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "equal"
+            ],
+            "first_token": {
+                "token_id": 5001,
+                "token_text": "equal",
+                "causal_logit_effect": -0.21494948863983154,
+                "causal_effect_z": -0.7880719945735258,
+                "baseline_logit": -1.1979843378067017,
+                "ablated_logit": -0.9830348491668701,
+                "baseline_probability": 2.3029384327196857e-05,
+                "ablated_probability": 2.781307320173396e-05,
+                "probability_delta": -4.783688874537103e-06,
+                "baseline_rank": 9290,
+                "ablated_rank": 8568,
+                "rank_delta_ablation_minus_baseline": -722
+            },
+            "warning": null
+        },
+        {
+            "text": "equals",
+            "token_ids": [
+                5001,
+                118
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "equal",
+                "s"
+            ],
+            "first_token": {
+                "token_id": 5001,
+                "token_text": "equal",
+                "causal_logit_effect": -0.21494948863983154,
+                "causal_effect_z": -0.7880719945735258,
+                "baseline_logit": -1.1979843378067017,
+                "ablated_logit": -0.9830348491668701,
+                "baseline_probability": 2.3029384327196857e-05,
+                "ablated_probability": 2.781307320173396e-05,
+                "probability_delta": -4.783688874537103e-06,
+                "baseline_rank": 9290,
+                "ablated_rank": 8568,
+                "rank_delta_ablation_minus_baseline": -722
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "France",
+            "token_ids": [
+                1380,
+                3108
+            ],
+            "token_count": 2,
+            "token_texts": [
+                "Fr",
+                "ance"
+            ],
+            "first_token": {
+                "token_id": 1380,
+                "token_text": "Fr",
+                "causal_logit_effect": -0.018737435340881348,
+                "causal_effect_z": 0.3352101346295835,
+                "baseline_logit": 1.057495355606079,
+                "ablated_logit": 1.0762327909469604,
+                "baseline_probability": 0.00021969729638503393,
+                "ablated_probability": 0.00021806077521563068,
+                "probability_delta": 1.6365211694032431e-06,
+                "baseline_rank": 693,
+                "ablated_rank": 746,
+                "rank_delta_ablation_minus_baseline": 53
+            },
+            "warning": "Tracked text uses multiple BPE tokens. The reported causal measurement refers only to its first token at this next-token decision point."
+        },
+        {
+            "text": "London",
+            "token_ids": [
+                7316
+            ],
+            "token_count": 1,
+            "token_texts": [
+                "London"
+            ],
+            "first_token": {
+                "token_id": 7316,
+                "token_text": "London",
+                "causal_logit_effect": 0.01720985770225525,
+                "causal_effect_z": 0.5410025474283066,
+                "baseline_logit": 0.18511934578418732,
+                "ablated_logit": 0.16790948808193207,
+                "baseline_probability": 9.182408835191845e-05,
+                "ablated_probability": 8.792203944833445e-05,
+                "probability_delta": 3.902048903584e-06,
+                "baseline_rank": 2593,
+                "ablated_rank": 2916,
+                "rank_delta_ablation_minus_baseline": 323
+            },
+            "warning": null
+        }
+    ],
+    "tracked_token_ids": [],
+    "distribution_change": {
+        "kl_baseline_to_intervention": 0.025999117900184783,
+        "probability_l1_distance": 0.1755265714183988,
+        "logit_l2_difference": 24.161497299231744,
+        "baseline_top1_token_id": 86,
+        "intervention_top1_token_id": 86,
+        "top1_changed": false
+    },
+    "artifacts": {
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c04_vocab_profile.json",
+        "raw_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c04_vocab_profile.npz",
+        "raw_npz_sha256": "73013ef7562b96c53bbace51af712187da697aea32642b13cd7dac704ea8ce7e"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "scale_one_control_exact": true,
+        "scale_zero_fully_ablates_head": true,
+        "vocabulary_size_matches": true,
+        "all_measurements_finite": true
+    }
+}

@@ -1,0 +1,237 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:28:39.054017+00:00",
+    "tool": {
+        "name": "continuation_scorer",
+        "version": "0.1",
+        "permission_level": "P1",
+        "evidence_level": "E1"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "prompt": "Two people entered the room. The number of people is",
+    "candidate_count": 2,
+    "preferred_index": 0,
+    "candidates": [
+        {
+            "prompt": "Two people entered the room. The number of people is",
+            "continuation": " two.",
+            "prompt_token_ids": [
+                6498,
+                979,
+                4287,
+                725,
+                3902,
+                466,
+                1321,
+                979,
+                310
+            ],
+            "continuation_token_ids": [
+                35,
+                9316,
+                49
+            ],
+            "continuation_tokens": [
+                " ",
+                "two",
+                "."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -25.22412883343609,
+            "mean_log_probability": -8.408042944478696,
+            "mean_nll": 8.408042944478696,
+            "perplexity": 4482.978483100796,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0006059591453340069,
+            "first_token_rank": 291,
+            "mean_token_rank": 3328.0,
+            "median_token_rank": 291.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.0,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0006059591453340069,
+                    "log_probability": -7.408697991108166,
+                    "logit": 2.712000608444214,
+                    "rank": 291
+                },
+                {
+                    "position": 1,
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "probability": 1.678891974394114e-05,
+                    "log_probability": -10.994791428197743,
+                    "logit": -1.4287707805633545,
+                    "rank": 9534
+                },
+                {
+                    "position": 2,
+                    "token_id": 49,
+                    "token_text": ".",
+                    "probability": 0.0010910230836233177,
+                    "log_probability": -6.82063941413018,
+                    "logit": 3.308457612991333,
+                    "rank": 159
+                }
+            ],
+            "candidate_index": 0
+        },
+        {
+            "prompt": "Two people entered the room. The number of people is",
+            "continuation": " four.",
+            "prompt_token_ids": [
+                6498,
+                979,
+                4287,
+                725,
+                3902,
+                466,
+                1321,
+                979,
+                310
+            ],
+            "continuation_token_ids": [
+                35,
+                3996,
+                49
+            ],
+            "continuation_tokens": [
+                " ",
+                "four",
+                "."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -24.301657200811515,
+            "mean_log_probability": -8.100552400270505,
+            "mean_nll": 8.100552400270505,
+            "perplexity": 3296.28844307934,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0006059591453340069,
+            "first_token_rank": 291,
+            "mean_token_rank": 2477.0,
+            "median_token_rank": 291.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.3333333333333333,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0006059591453340069,
+                    "log_probability": -7.408697991108166,
+                    "logit": 2.712000608444214,
+                    "rank": 291
+                },
+                {
+                    "position": 1,
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 2.8370502877993202e-05,
+                    "log_probability": -10.470160583604695,
+                    "logit": -0.9041399359703064,
+                    "rank": 7074
+                },
+                {
+                    "position": 2,
+                    "token_id": 49,
+                    "token_text": ".",
+                    "probability": 0.0016241046070667464,
+                    "log_probability": -6.422798626098653,
+                    "logit": 3.077855348587036,
+                    "rank": 66
+                }
+            ],
+            "candidate_index": 1
+        }
+    ],
+    "discriminative_analysis": {
+        "shared_prefix_token_count": 1,
+        "shared_prefix_token_ids": [
+            35
+        ],
+        "shared_prefix_tokens": [
+            " "
+        ],
+        "scoring_context_token_ids": [
+            6498,
+            979,
+            4287,
+            725,
+            3902,
+            466,
+            1321,
+            979,
+            310,
+            35
+        ],
+        "candidates": [
+            {
+                "candidate_index": 0,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 9316,
+                "token_text": "two",
+                "rank": 9534,
+                "probability": 1.678891974394114e-05,
+                "log_probability": -10.994791428197743,
+                "logit": -1.4287707805633545
+            },
+            {
+                "candidate_index": 1,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 3996,
+                "token_text": "four",
+                "rank": 7074,
+                "probability": 2.8370502877993202e-05,
+                "log_probability": -10.470160583604695,
+                "logit": -0.9041399359703064
+            }
+        ]
+    },
+    "comparisons": [
+        {
+            "preferred_index": 0,
+            "comparison_index": 1,
+            "preferred_continuation": " two.",
+            "comparison_continuation": " four.",
+            "preferred_mean_nll": 8.408042944478696,
+            "comparison_mean_nll": 8.100552400270505,
+            "margin": -0.307490544208191,
+            "preferred_wins": false
+        }
+    ],
+    "checks": {
+        "candidate_count_positive": true,
+        "checkpoint_identity_valid": true,
+        "discriminative_analysis_created": true
+    }
+}

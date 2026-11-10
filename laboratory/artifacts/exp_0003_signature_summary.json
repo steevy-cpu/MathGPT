@@ -1,0 +1,565 @@
+{
+    "experiment_id": "EXP-0003",
+    "title": "L0H1 causal vocabulary signature similarity",
+    "created_at_utc": "2026-11-09T02:50:01.318151+00:00",
+    "checkpoint": "checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+    "expected_checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+    "target_component": {
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1"
+    },
+    "context_count": 10,
+    "contexts": [
+        {
+            "id": "A01",
+            "category": "addition",
+            "prompt": "One plus one equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.031237821164445904,
+            "effect_std": 0.3199857687425737,
+            "effect_l2": 40.66776485992368,
+            "effect_four": 0.16247612237930298,
+            "effect_five_first_token": -0.4990804195404053,
+            "effect_two": 0.005184769630432129,
+            "effect_three_first_token": 0.009714961051940918,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a01_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a01_vocab_profile.npz"
+        },
+        {
+            "id": "A02",
+            "category": "addition",
+            "prompt": "Two plus one equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.02471044452149215,
+            "effect_std": 0.33838912810233096,
+            "effect_l2": 42.91718687636559,
+            "effect_four": 0.15370449423789978,
+            "effect_five_first_token": -0.549394428730011,
+            "effect_two": -0.004424452781677246,
+            "effect_three_first_token": -0.022105831652879715,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a02_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a02_vocab_profile.npz"
+        },
+        {
+            "id": "A03",
+            "category": "addition",
+            "prompt": "Two plus two equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.03190753022797418,
+            "effect_std": 0.3452313289819766,
+            "effect_l2": 43.854807899870835,
+            "effect_four": 0.17051851749420166,
+            "effect_five_first_token": -0.5512080490589142,
+            "effect_two": 0.007694363594055176,
+            "effect_three_first_token": -0.023018670501187444,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a03_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a03_vocab_profile.npz"
+        },
+        {
+            "id": "A04",
+            "category": "addition",
+            "prompt": "Two plus three equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.016425581227906834,
+            "effect_std": 0.2993704664187544,
+            "effect_l2": 37.92465707319334,
+            "effect_four": 0.15528681874275208,
+            "effect_five_first_token": -0.49435488879680634,
+            "effect_two": 0.004640460014343262,
+            "effect_three_first_token": 0.0004288814961910248,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a04_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a04_vocab_profile.npz"
+        },
+        {
+            "id": "A05",
+            "category": "addition",
+            "prompt": "Three plus two equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.0323306586100307,
+            "effect_std": 0.28053111946153236,
+            "effect_l2": 35.71957009203753,
+            "effect_four": 0.17508554458618164,
+            "effect_five_first_token": -0.44704683125019073,
+            "effect_two": 0.049005866050720215,
+            "effect_three_first_token": 0.026240022387355566,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a05_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a05_vocab_profile.npz"
+        },
+        {
+            "id": "A06",
+            "category": "addition",
+            "prompt": "Three plus three equals",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.013866624708862218,
+            "effect_std": 0.23926431511807522,
+            "effect_l2": 30.315592230992422,
+            "effect_four": 0.14817211031913757,
+            "effect_five_first_token": -0.3926045298576355,
+            "effect_two": 0.02910447120666504,
+            "effect_three_first_token": 0.03606383502483368,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a06_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/a06_vocab_profile.npz"
+        },
+        {
+            "id": "C01",
+            "category": "numeric_nonaddition",
+            "prompt": "Two is followed by",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.038729728034723396,
+            "effect_std": 0.2675207953550404,
+            "effect_l2": 34.19178094947077,
+            "effect_four": 0.18696564435958862,
+            "effect_five_first_token": -0.31295907497406006,
+            "effect_two": 0.08694183826446533,
+            "effect_three_first_token": 0.11686468124389648,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c01_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c01_vocab_profile.npz"
+        },
+        {
+            "id": "C02",
+            "category": "ordinary_language_two",
+            "prompt": "Two people entered the room. The number of people is",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": -0.0388272484472252,
+            "effect_std": 0.07521171014255973,
+            "effect_l2": 10.706526282264269,
+            "effect_four": -0.003210783004760742,
+            "effect_five_first_token": -0.1574949026107788,
+            "effect_two": -0.028528928756713867,
+            "effect_three_first_token": -0.08051586151123047,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c02_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c02_vocab_profile.npz"
+        },
+        {
+            "id": "C03",
+            "category": "numeric_no_two",
+            "prompt": "Three is followed by",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": 0.040629940492392394,
+            "effect_std": 0.2398089485426468,
+            "effect_l2": 30.765987418718137,
+            "effect_four": 0.18301814794540405,
+            "effect_five_first_token": -0.28138893842697144,
+            "effect_two": 0.11349809169769287,
+            "effect_three_first_token": 0.11766159534454346,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c03_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c03_vocab_profile.npz"
+        },
+        {
+            "id": "C04",
+            "category": "language_control",
+            "prompt": "Paris is in",
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "effect_mean": -0.07729108548125077,
+            "effect_std": 0.1746774458507134,
+            "effect_l2": 24.161497299231744,
+            "effect_four": 0.04223299026489258,
+            "effect_five_first_token": -0.33746981620788574,
+            "effect_two": -0.13955962657928467,
+            "effect_three_first_token": -0.048848812468349934,
+            "profile_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c04_vocab_profile.json",
+            "profile_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_profiles/c04_vocab_profile.npz"
+        }
+    ],
+    "similarity": {
+        "definition": {
+            "raw_cosine": "Cosine similarity between the full 16,000-dimensional causal logit effect vectors.",
+            "centered_cosine": "Cosine similarity after subtracting each effect vector's vocabulary-wide mean."
+        },
+        "context_order": [
+            "A01",
+            "A02",
+            "A03",
+            "A04",
+            "A05",
+            "A06",
+            "C01",
+            "C02",
+            "C03",
+            "C04"
+        ],
+        "raw_cosine_matrix": [
+            [
+                0.9999999999999999,
+                0.9988170727112164,
+                0.9982573237090505,
+                0.9955122842818421,
+                0.99490186987974,
+                0.9829110974472052,
+                0.9726675974686081,
+                0.4590922353232482,
+                0.9623509655030912,
+                0.6781170419628463
+            ],
+            [
+                0.9988170727112164,
+                1.0,
+                0.9991010014450399,
+                0.996836789243816,
+                0.9930176668301182,
+                0.9821890941925935,
+                0.9639576203942569,
+                0.4928969221649004,
+                0.9526360234235309,
+                0.6977221023554699
+            ],
+            [
+                0.9982573237090505,
+                0.9991010014450399,
+                1.0000000000000002,
+                0.994303939479202,
+                0.9928026261494792,
+                0.9776203322544894,
+                0.9604246986718816,
+                0.4733933530760434,
+                0.9497025250085758,
+                0.6727865669221075
+            ],
+            [
+                0.9955122842818421,
+                0.996836789243816,
+                0.994303939479202,
+                1.0,
+                0.9958074307078086,
+                0.993399069196379,
+                0.9697195562137283,
+                0.5331002369563003,
+                0.9618749030696825,
+                0.7308335161554781
+            ],
+            [
+                0.99490186987974,
+                0.9930176668301182,
+                0.9928026261494792,
+                0.9958074307078086,
+                0.9999999999999998,
+                0.9924568716969473,
+                0.9777931002940311,
+                0.4786545165977823,
+                0.9745979934173042,
+                0.6771376302819904
+            ],
+            [
+                0.9829110974472052,
+                0.9821890941925935,
+                0.9776203322544894,
+                0.993399069196379,
+                0.9924568716969473,
+                0.9999999999999999,
+                0.9773435880277916,
+                0.5493946012977607,
+                0.9757106596055,
+                0.7470509831274325
+            ],
+            [
+                0.9726675974686081,
+                0.9639576203942569,
+                0.9604246986718816,
+                0.9697195562137283,
+                0.9777931002940311,
+                0.9773435880277916,
+                0.9999999999999998,
+                0.4047918073947533,
+                0.997155658060371,
+                0.6637505807123354
+            ],
+            [
+                0.4590922353232482,
+                0.4928969221649004,
+                0.4733933530760434,
+                0.5331002369563003,
+                0.4786545165977823,
+                0.5493946012977607,
+                0.4047918073947533,
+                1.0,
+                0.4020314687737135,
+                0.8806015292159397
+            ],
+            [
+                0.9623509655030912,
+                0.9526360234235309,
+                0.9497025250085758,
+                0.9618749030696825,
+                0.9745979934173042,
+                0.9757106596055,
+                0.997155658060371,
+                0.4020314687737135,
+                0.9999999999999999,
+                0.6451930736171545
+            ],
+            [
+                0.6781170419628463,
+                0.6977221023554699,
+                0.6727865669221075,
+                0.7308335161554781,
+                0.6771376302819904,
+                0.7470509831274325,
+                0.6637505807123354,
+                0.8806015292159397,
+                0.6451930736171545,
+                1.0
+            ]
+        ],
+        "centered_cosine_matrix": [
+            [
+                1.0000000000000002,
+                0.9991086482208893,
+                0.9982549702450901,
+                0.9963929031064741,
+                0.9949973180576324,
+                0.9835830652920036,
+                0.9733468539108118,
+                0.5695105829972129,
+                0.9641656903674098,
+                0.7882560482548271
+            ],
+            [
+                0.9991086482208893,
+                1.0000000000000002,
+                0.9992816645712236,
+                0.9969877575771694,
+                0.99383635280864,
+                0.9822247480422966,
+                0.9660287323993487,
+                0.5938761069978619,
+                0.9564127014236341,
+                0.7973166144382515
+            ],
+            [
+                0.9982549702450901,
+                0.9992816645712236,
+                0.9999999999999999,
+                0.9949725033980931,
+                0.9929818061888628,
+                0.9780779331274757,
+                0.9611929132508912,
+                0.5827355406603474,
+                0.9516831237001663,
+                0.7797371259892117
+            ],
+            [
+                0.9963929031064741,
+                0.9969877575771694,
+                0.9949725033980931,
+                1.0000000000000002,
+                0.9975831797260852,
+                0.9933828012594221,
+                0.9733595808700498,
+                0.6291726907130961,
+                0.9677540829482473,
+                0.8246611442193083
+            ],
+            [
+                0.9949973180576324,
+                0.99383635280864,
+                0.9929818061888628,
+                0.9975831797260852,
+                1.0000000000000002,
+                0.9940232249040097,
+                0.9778416771464885,
+                0.601734237106888,
+                0.9755039701422827,
+                0.7963600976754451
+            ],
+            [
+                0.9835830652920036,
+                0.9822247480422966,
+                0.9780779331274757,
+                0.9933828012594221,
+                0.9940232249040097,
+                1.0,
+                0.9807993595633987,
+                0.6492395703733481,
+                0.9814570261956093,
+                0.8439304970242896
+            ],
+            [
+                0.9733468539108118,
+                0.9660287323993487,
+                0.9611929132508912,
+                0.9733595808700498,
+                0.9778416771464885,
+                0.9807993595633987,
+                0.9999999999999998,
+                0.535035350887024,
+                0.9973816268995166,
+                0.7974508150224667
+            ],
+            [
+                0.5695105829972129,
+                0.5938761069978619,
+                0.5827355406603474,
+                0.6291726907130961,
+                0.601734237106888,
+                0.6492395703733481,
+                0.535035350887024,
+                1.0,
+                0.5463546001093236,
+                0.855276235351151
+            ],
+            [
+                0.9641656903674098,
+                0.9564127014236341,
+                0.9516831237001663,
+                0.9677540829482473,
+                0.9755039701422827,
+                0.9814570261956093,
+                0.9973816268995166,
+                0.5463546001093236,
+                0.9999999999999999,
+                0.7905541579317521
+            ],
+            [
+                0.7882560482548271,
+                0.7973166144382515,
+                0.7797371259892117,
+                0.8246611442193083,
+                0.7963600976754451,
+                0.8439304970242896,
+                0.7974508150224667,
+                0.855276235351151,
+                0.7905541579317521,
+                0.9999999999999999
+            ]
+        ],
+        "nearest_neighbors": [
+            {
+                "id": "A01",
+                "nearest": {
+                    "id": "A02",
+                    "category": "addition",
+                    "raw_cosine": 0.9988170727112164,
+                    "centered_cosine": 0.9991086482208893
+                }
+            },
+            {
+                "id": "A02",
+                "nearest": {
+                    "id": "A03",
+                    "category": "addition",
+                    "raw_cosine": 0.9991010014450399,
+                    "centered_cosine": 0.9992816645712236
+                }
+            },
+            {
+                "id": "A03",
+                "nearest": {
+                    "id": "A02",
+                    "category": "addition",
+                    "raw_cosine": 0.9991010014450399,
+                    "centered_cosine": 0.9992816645712236
+                }
+            },
+            {
+                "id": "A04",
+                "nearest": {
+                    "id": "A05",
+                    "category": "addition",
+                    "raw_cosine": 0.9958074307078086,
+                    "centered_cosine": 0.9975831797260852
+                }
+            },
+            {
+                "id": "A05",
+                "nearest": {
+                    "id": "A04",
+                    "category": "addition",
+                    "raw_cosine": 0.9958074307078086,
+                    "centered_cosine": 0.9975831797260852
+                }
+            },
+            {
+                "id": "A06",
+                "nearest": {
+                    "id": "A05",
+                    "category": "addition",
+                    "raw_cosine": 0.9924568716969473,
+                    "centered_cosine": 0.9940232249040097
+                }
+            },
+            {
+                "id": "C01",
+                "nearest": {
+                    "id": "C03",
+                    "category": "numeric_no_two",
+                    "raw_cosine": 0.997155658060371,
+                    "centered_cosine": 0.9973816268995166
+                }
+            },
+            {
+                "id": "C02",
+                "nearest": {
+                    "id": "C04",
+                    "category": "language_control",
+                    "raw_cosine": 0.8806015292159397,
+                    "centered_cosine": 0.855276235351151
+                }
+            },
+            {
+                "id": "C03",
+                "nearest": {
+                    "id": "C01",
+                    "category": "numeric_nonaddition",
+                    "raw_cosine": 0.997155658060371,
+                    "centered_cosine": 0.9973816268995166
+                }
+            },
+            {
+                "id": "C04",
+                "nearest": {
+                    "id": "C02",
+                    "category": "ordinary_language_two",
+                    "raw_cosine": 0.8806015292159397,
+                    "centered_cosine": 0.855276235351151
+                }
+            }
+        ],
+        "group_summary": {
+            "centered_cosine": {
+                "addition_vs_addition": {
+                    "count": 15,
+                    "mean": 0.9930459251016914,
+                    "min": 0.9780779331274757,
+                    "max": 0.9992816645712236
+                },
+                "control_vs_control": {
+                    "count": 6,
+                    "mean": 0.7536754643668724,
+                    "min": 0.535035350887024,
+                    "max": 0.9973816268995166
+                },
+                "addition_vs_control": {
+                    "count": 24,
+                    "mean": 0.8369198320153511,
+                    "min": 0.5695105829972129,
+                    "max": 0.9814570261956093
+                }
+            }
+        }
+    },
+    "artifacts": {
+        "summary_json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_signature_summary.json",
+        "matrix_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0003_signature_matrix.npz"
+    }
+}

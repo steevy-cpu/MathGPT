@@ -1,0 +1,88 @@
+{
+    "experiment_id": "EXP-0002",
+    "title": "L0H1 arithmetic and lexical generalization",
+    "target_layer": 0,
+    "target_head": 1,
+    "probes": [
+        {
+            "id": "A01",
+            "category": "addition",
+            "prompt": "One plus one equals",
+            "preferred": " two.",
+            "comparison": " three.",
+            "contains_two": false
+        },
+        {
+            "id": "A02",
+            "category": "addition",
+            "prompt": "Two plus one equals",
+            "preferred": " three.",
+            "comparison": " four.",
+            "contains_two": true
+        },
+        {
+            "id": "A03",
+            "category": "addition",
+            "prompt": "Two plus two equals",
+            "preferred": " four.",
+            "comparison": " five.",
+            "contains_two": true
+        },
+        {
+            "id": "A04",
+            "category": "addition",
+            "prompt": "Two plus three equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "contains_two": true
+        },
+        {
+            "id": "A05",
+            "category": "addition",
+            "prompt": "Three plus two equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "contains_two": true
+        },
+        {
+            "id": "A06",
+            "category": "addition",
+            "prompt": "Three plus three equals",
+            "preferred": " six.",
+            "comparison": " four.",
+            "contains_two": false
+        },
+        {
+            "id": "C01",
+            "category": "numeric_nonaddition",
+            "prompt": "Two is followed by",
+            "preferred": " three.",
+            "comparison": " four.",
+            "contains_two": true
+        },
+        {
+            "id": "C02",
+            "category": "ordinary_language_two",
+            "prompt": "Two people entered the room. The number of people is",
+            "preferred": " two.",
+            "comparison": " four.",
+            "contains_two": true
+        },
+        {
+            "id": "C03",
+            "category": "numeric_no_two",
+            "prompt": "Three is followed by",
+            "preferred": " four.",
+            "comparison": " five.",
+            "contains_two": false
+        },
+        {
+            "id": "C04",
+            "category": "language_control",
+            "prompt": "Paris is in",
+            "preferred": " France.",
+            "comparison": " London.",
+            "contains_two": false
+        }
+    ]
+}

@@ -1,0 +1,232 @@
+{
+    "experiment_id": "EXP-0002",
+    "title": "L0H1 arithmetic and lexical generalization",
+    "created_at_utc": "2026-11-09T02:28:40.501728+00:00",
+    "checkpoint": "checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+    "expected_checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+    "target_component": {
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1"
+    },
+    "probe_count": 10,
+    "results": [
+        {
+            "id": "A01",
+            "category": "addition",
+            "prompt": "One plus one equals",
+            "preferred": " two.",
+            "comparison": " three.",
+            "contains_two": false,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.16657127508203917,
+            "baseline_discriminative_margin": -1.1413396447896957,
+            "ablated_discriminative_margin": -1.136809453368187,
+            "ablation_margin_delta": 0.004530191421508789,
+            "intact_l0h1_four_support_effect": null,
+            "preferred_rank_baseline": 9687,
+            "preferred_rank_ablated": 9397,
+            "kl_baseline_to_ablation": 0.07680661323257665,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a01_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a01_l0h1_ablation.json"
+        },
+        {
+            "id": "A02",
+            "category": "addition",
+            "prompt": "Two plus one equals",
+            "preferred": " three.",
+            "comparison": " four.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.3197106574751478,
+            "baseline_discriminative_margin": 0.3143269196152687,
+            "ablated_discriminative_margin": 0.4901372455060482,
+            "ablation_margin_delta": 0.1758103258907795,
+            "intact_l0h1_four_support_effect": 0.1758103258907795,
+            "preferred_rank_baseline": 3391,
+            "preferred_rank_ablated": 3677,
+            "kl_baseline_to_ablation": 0.08491914571281274,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a02_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a02_l0h1_ablation.json"
+        },
+        {
+            "id": "A03",
+            "category": "addition",
+            "prompt": "Two plus two equals",
+            "preferred": " four.",
+            "comparison": " five.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": 0.5906703822435384,
+            "baseline_discriminative_margin": 0.48081034421920776,
+            "ablated_discriminative_margin": -0.24091622233390808,
+            "ablation_margin_delta": -0.7217265665531158,
+            "intact_l0h1_four_support_effect": 0.7217265665531158,
+            "preferred_rank_baseline": 4857,
+            "preferred_rank_ablated": 6067,
+            "kl_baseline_to_ablation": 0.0862305172839421,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a03_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a03_l0h1_ablation.json"
+        },
+        {
+            "id": "A04",
+            "category": "addition",
+            "prompt": "Two plus three equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.5457040330891312,
+            "baseline_discriminative_margin": -0.36317360401153564,
+            "ablated_discriminative_margin": 0.28646810352802277,
+            "ablation_margin_delta": 0.6496417075395584,
+            "intact_l0h1_four_support_effect": 0.6496417075395584,
+            "preferred_rank_baseline": 7087,
+            "preferred_rank_ablated": 4525,
+            "kl_baseline_to_ablation": 0.06792060192281034,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a04_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a04_l0h1_ablation.json"
+        },
+        {
+            "id": "A05",
+            "category": "addition",
+            "prompt": "Three plus two equals",
+            "preferred": " five.",
+            "comparison": " four.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.5517244726182087,
+            "baseline_discriminative_margin": -0.35657280683517456,
+            "ablated_discriminative_margin": 0.2655595690011978,
+            "ablation_margin_delta": 0.6221323758363724,
+            "intact_l0h1_four_support_effect": 0.6221323758363724,
+            "preferred_rank_baseline": 7085,
+            "preferred_rank_ablated": 4702,
+            "kl_baseline_to_ablation": 0.0589377192544752,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a05_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a05_l0h1_ablation.json"
+        },
+        {
+            "id": "A06",
+            "category": "addition",
+            "prompt": "Three plus three equals",
+            "preferred": " six.",
+            "comparison": " four.",
+            "contains_two": false,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": 0.46897928930598454,
+            "baseline_discriminative_margin": 1.638104498386383,
+            "ablated_discriminative_margin": 1.6596920788288116,
+            "ablation_margin_delta": 0.02158758044242859,
+            "intact_l0h1_four_support_effect": 0.02158758044242859,
+            "preferred_rank_baseline": 431,
+            "preferred_rank_ablated": 625,
+            "kl_baseline_to_ablation": 0.04492194710211588,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a06_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/a06_l0h1_ablation.json"
+        },
+        {
+            "id": "C01",
+            "category": "numeric_nonaddition",
+            "prompt": "Two is followed by",
+            "preferred": " three.",
+            "comparison": " four.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.39846313763841756,
+            "baseline_discriminative_margin": 0.05741387605667114,
+            "ablated_discriminative_margin": 0.12751483917236328,
+            "ablation_margin_delta": 0.07010096311569214,
+            "intact_l0h1_four_support_effect": 0.07010096311569214,
+            "preferred_rank_baseline": 5745,
+            "preferred_rank_ablated": 6293,
+            "kl_baseline_to_ablation": 0.06564846150878072,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c01_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c01_l0h1_ablation.json"
+        },
+        {
+            "id": "C02",
+            "category": "ordinary_language_two",
+            "prompt": "Two people entered the room. The number of people is",
+            "preferred": " two.",
+            "comparison": " four.",
+            "contains_two": true,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.307490544208191,
+            "baseline_discriminative_margin": -0.5246308445930481,
+            "ablated_discriminative_margin": -0.49931269884109497,
+            "ablation_margin_delta": 0.025318145751953125,
+            "intact_l0h1_four_support_effect": 0.025318145751953125,
+            "preferred_rank_baseline": 9534,
+            "preferred_rank_ablated": 9525,
+            "kl_baseline_to_ablation": 0.0055165760291261325,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c02_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c02_l0h1_ablation.json"
+        },
+        {
+            "id": "C03",
+            "category": "numeric_no_two",
+            "prompt": "Three is followed by",
+            "preferred": " four.",
+            "comparison": " five.",
+            "contains_two": false,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": 0.5547144502331554,
+            "baseline_discriminative_margin": 0.3642386794090271,
+            "ablated_discriminative_margin": -0.10016840696334839,
+            "ablation_margin_delta": -0.4644070863723755,
+            "intact_l0h1_four_support_effect": 0.4644070863723755,
+            "preferred_rank_baseline": 6188,
+            "preferred_rank_ablated": 7007,
+            "kl_baseline_to_ablation": 0.051305433324881536,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c03_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c03_l0h1_ablation.json"
+        },
+        {
+            "id": "C04",
+            "category": "language_control",
+            "prompt": "Paris is in",
+            "preferred": " France.",
+            "comparison": " London.",
+            "contains_two": false,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "full_continuation_margin": -0.187896598677745,
+            "baseline_discriminative_margin": 0.39345215260982513,
+            "ablated_discriminative_margin": 0.2650447338819504,
+            "ablation_margin_delta": -0.12840741872787476,
+            "intact_l0h1_four_support_effect": null,
+            "preferred_rank_baseline": 1509,
+            "preferred_rank_ablated": 2040,
+            "kl_baseline_to_ablation": 0.025999117900184783,
+            "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c04_score.json",
+            "ablation_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c04_l0h1_ablation.json"
+        }
+    ],
+    "group_summary": {
+        "four_comparison_probe_count": 8,
+        "contains_two_four_probe_count": 6,
+        "no_two_four_probe_count": 2,
+        "mean_four_support_effect_with_two": 0.37745501411457855,
+        "mean_four_support_effect_without_two": 0.24299733340740204
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T12:25:32.536391+00:00",
+    "tool": {
+        "name": "component_ablation",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "targets": {
+        "preferred_token_id": 3996,
+        "preferred_token_text": "four",
+        "comparison_token_id": 11563,
+        "comparison_token_text": "fiv"
+    },
+    "intervention": {
+        "type": "component_ablation",
+        "component": "block_4.attention_output",
+        "block_index": 4,
+        "component_type": "attention_output",
+        "scale": 0.0,
+        "record": {
+            "block_index": 4,
+            "component": "attention_output",
+            "scale": 0.0,
+            "original_last_token_l2": 24.802797078946345,
+            "intervened_last_token_l2": 0.0
+        }
+    },
+    "control_verification": {
+        "scale": 1.0,
+        "exact": true,
+        "max_absolute_difference": 0.0,
+        "record": {
+            "block_index": 4,
+            "component": "attention_output",
+            "scale": 1.0,
+            "original_last_token_l2": 24.802797078946345,
+            "intervened_last_token_l2": 24.802797078946345
+        }
+    },
+    "baseline": {
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 0.00029888034039013157,
+            "log_probability": -8.115467264038834,
+            "rank": 547,
+            "logit": 1.390161156654358
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "probability": 0.0005283744856479748,
+            "log_probability": -7.545705272537979,
+            "rank": 293,
+            "logit": 1.9599231481552124
+        },
+        "logit_margin": -0.5697619915008545,
+        "probability_ratio": 0.5656600545796568,
+        "preferred_wins": false
+    },
+    "ablated": {
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 6.308029837095143e-05,
+            "log_probability": -9.671102065840175,
+            "rank": 2313,
+            "logit": -0.36299434304237366
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "probability": 3.978953746184699e-05,
+            "log_probability": -10.13190655807536,
+            "rank": 3010,
+            "logit": -0.8237988352775574
+        },
+        "logit_margin": 0.4608044922351837,
+        "probability_ratio": 1.5853488729653433,
+        "preferred_wins": true
+    },
+    "effect": {
+        "logit_margin_delta": 1.0305664837360382,
+        "preferred_rank_delta": 1766,
+        "comparison_rank_delta": 2717,
+        "causal_direction": "suppresses_preferred_margin",
+        "preferred_still_wins": true,
+        "distribution_change": {
+            "kl_baseline_to_intervention": 1.611642025104178,
+            "probability_l1_distance": 1.0897257676811076,
+            "logit_l2_difference": 191.93816455879966,
+            "baseline_top1_token_id": 5001,
+            "intervention_top1_token_id": 6265,
+            "top1_changed": true
+        }
+    },
+    "interpretation_rule": {
+        "negative_margin_delta": "Ablation reduced the preferred minus comparison margin. The component causally supports that margin for this prompt.",
+        "positive_margin_delta": "Ablation increased the preferred minus comparison margin. The component causally suppresses that margin for this prompt.",
+        "scope_warning": "This result applies to this specific intervention and prompt. It does not establish the component's general function."
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_2_arithmetic_score.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_7_ablate_block4_attention.json"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "control_forward_matches_gpt": true,
+        "intervention_record_created": true,
+        "ablation_zeroed_component": true,
+        "measurements_finite": true
+    }
+}

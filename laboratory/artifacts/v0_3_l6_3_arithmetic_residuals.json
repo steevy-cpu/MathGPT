@@ -1,0 +1,305 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T11:44:57.942702+00:00",
+    "tool": {
+        "name": "activation_capture",
+        "version": "0.1",
+        "permission_level": "P2",
+        "evidence_level": "E2"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "prompt_tokens": [
+            {
+                "position": 0,
+                "token_id": 6498,
+                "token_text": "Two "
+            },
+            {
+                "position": 1,
+                "token_id": 5912,
+                "token_text": "plus "
+            },
+            {
+                "position": 2,
+                "token_id": 722,
+                "token_text": "two "
+            },
+            {
+                "position": 3,
+                "token_id": 5001,
+                "token_text": "equal"
+            },
+            {
+                "position": 4,
+                "token_id": 118,
+                "token_text": "s"
+            }
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "appended_tokens": [
+            {
+                "append_index": 0,
+                "token_id": 35,
+                "token_text": " "
+            }
+        ],
+        "context_token_count": 6,
+        "context_tokens": [
+            {
+                "position": 0,
+                "token_id": 6498,
+                "token_text": "Two "
+            },
+            {
+                "position": 1,
+                "token_id": 5912,
+                "token_text": "plus "
+            },
+            {
+                "position": 2,
+                "token_id": 722,
+                "token_text": "two "
+            },
+            {
+                "position": 3,
+                "token_id": 5001,
+                "token_text": "equal"
+            },
+            {
+                "position": 4,
+                "token_id": 118,
+                "token_text": "s"
+            },
+            {
+                "position": 5,
+                "token_id": 35,
+                "token_text": " "
+            }
+        ]
+    },
+    "capture": {
+        "preset": "residuals",
+        "capture_point_count": 7,
+        "capture_points": [
+            "embedding_output",
+            "block_0.output",
+            "block_1.output",
+            "block_2.output",
+            "block_3.output",
+            "block_4.output",
+            "final_layernorm"
+        ],
+        "summaries": {
+            "embedding_output": {
+                "artifact_key": "embedding_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": 0.0008917805294004211,
+                "std": 0.11857907672396674,
+                "min": -0.551548182964325,
+                "max": 0.7749423384666443,
+                "l2_norm": 4.64746313609516,
+                "last_token": {
+                    "mean": -0.001493709683927591,
+                    "std": 0.09267024697845053,
+                    "min": -0.19177120923995972,
+                    "max": 0.35077136754989624,
+                    "l2_norm": 1.482916550578191
+                }
+            },
+            "block_0.output": {
+                "artifact_key": "block_0__output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": -0.025998989796183498,
+                "std": 1.8362330734734065,
+                "min": -5.426239490509033,
+                "max": 35.01016616821289,
+                "l2_norm": 71.97255847818104,
+                "last_token": {
+                    "mean": -0.030607626264099963,
+                    "std": 1.5510536003118056,
+                    "min": -3.2254478931427,
+                    "max": 17.544185638427734,
+                    "l2_norm": 24.821689085221188
+                }
+            },
+            "block_1.output": {
+                "artifact_key": "block_1__output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": -0.01752657163888216,
+                "std": 2.430310355020346,
+                "min": -3.9914169311523438,
+                "max": 35.59585189819336,
+                "l2_norm": 95.25080138947057,
+                "last_token": {
+                    "mean": -0.024566769061493687,
+                    "std": 2.225217180705976,
+                    "min": -3.080770492553711,
+                    "max": 22.989852905273438,
+                    "l2_norm": 35.60564459502876
+                }
+            },
+            "block_2.output": {
+                "artifact_key": "block_2__output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": -0.009759729381282037,
+                "std": 2.974114828362354,
+                "min": -6.061000823974609,
+                "max": 59.8587646484375,
+                "l2_norm": 116.56164785395467,
+                "last_token": {
+                    "mean": -0.02789957809727639,
+                    "std": 2.290017934442378,
+                    "min": -3.32851243019104,
+                    "max": 23.528505325317383,
+                    "l2_norm": 36.64300608288831
+                }
+            },
+            "block_3.output": {
+                "artifact_key": "block_3__output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": -0.005491170588356908,
+                "std": 7.621214129711457,
+                "min": -17.0572509765625,
+                "max": 268.80731201171875,
+                "l2_norm": 298.689450942783,
+                "last_token": {
+                    "mean": -0.036472439096542075,
+                    "std": 1.9245141169008135,
+                    "min": -3.985893487930298,
+                    "max": 20.856103897094727,
+                    "l2_norm": 30.79775503491817
+                }
+            },
+            "block_4.output": {
+                "artifact_key": "block_4__output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": -0.028070282574238565,
+                "std": 3.487714894583712,
+                "min": -9.081517219543457,
+                "max": 63.99599075317383,
+                "l2_norm": 136.69437677738335,
+                "last_token": {
+                    "mean": 0.002453738881740719,
+                    "std": 4.037813769267099,
+                    "min": -9.081517219543457,
+                    "max": 48.004241943359375,
+                    "l2_norm": 64.60503223717232
+                }
+            },
+            "final_layernorm": {
+                "artifact_key": "final_layernorm",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "dtype": "float32",
+                "element_count": 1536,
+                "finite": true,
+                "mean": 0.021809364259145998,
+                "std": 1.9141588464387316,
+                "min": -6.876656532287598,
+                "max": 14.13248348236084,
+                "l2_norm": 75.02426858832581,
+                "last_token": {
+                    "mean": 0.013508846051990986,
+                    "std": 1.7809060306016957,
+                    "min": -5.621977806091309,
+                    "max": 11.531463623046875,
+                    "l2_norm": 28.495316235502926
+                }
+            }
+        }
+    },
+    "forward_verification": {
+        "exact": true,
+        "max_absolute_difference": 0.0
+    },
+    "artifacts": {
+        "raw_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_3_arithmetic_residuals.npz",
+        "raw_npz_sha256": "cb49ff916b7bf67a8330461b885d03648fa66cadfbc260f17e4fef063ae374e1",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_3_arithmetic_residuals.json"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "trace_matches_gpt_forward": true,
+        "all_capture_points_present": true,
+        "all_captures_finite": true,
+        "next_token_logits_finite": true,
+        "context_within_limit": true
+    }
+}

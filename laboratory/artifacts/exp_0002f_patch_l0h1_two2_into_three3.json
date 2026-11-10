@@ -1,0 +1,237 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:03:13.462090+00:00",
+    "tool": {
+        "name": "activation_patching",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "patch_site": {
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1",
+        "position": "last_token",
+        "activation_space": "per-head causal-attention output before combine_heads and before Wo",
+        "dimension": 64
+    },
+    "donor": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "recipient": {
+        "prompt": "Three plus three equals",
+        "prompt_token_ids": [
+            14635,
+            5912,
+            1349,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            14635,
+            5912,
+            1349,
+            5001,
+            118,
+            35
+        ]
+    },
+    "targets": {
+        "preferred_token_id": 9262,
+        "preferred_token_text": "six",
+        "comparison_token_id": 3996,
+        "comparison_token_text": "four"
+    },
+    "activation_comparison": {
+        "dimension": 64,
+        "donor_l2": 2.538314270478087,
+        "recipient_l2": 2.0798840569999575,
+        "l2_distance": 0.8423311525945472,
+        "dot_product": 5.0297176278220235,
+        "cosine_similarity": 0.9527064090257696,
+        "exactly_equal": false
+    },
+    "controls": {
+        "contexts_identical": false,
+        "manual_unpatched": {
+            "exact": true,
+            "max_absolute_difference": 0.0,
+            "record": {
+                "layer": 0,
+                "head": 1,
+                "head_id": "L0H1",
+                "position": 5,
+                "applied": false,
+                "original_last_token_l2": 2.0798840569999575,
+                "patched_last_token_l2": 2.0798840569999575,
+                "patch_l2_distance": 0.0,
+                "attention_row_sum": 1.0000000018626451
+            }
+        },
+        "self_patch": {
+            "exact": true,
+            "max_absolute_difference": 0.0,
+            "record": {
+                "layer": 0,
+                "head": 1,
+                "head_id": "L0H1",
+                "position": 5,
+                "applied": true,
+                "original_last_token_l2": 2.0798840569999575,
+                "patched_last_token_l2": 2.0798840569999575,
+                "patch_l2_distance": 0.0,
+                "attention_row_sum": 1.0000000018626451
+            }
+        },
+        "actual_patch_exact": false,
+        "actual_patch_max_absolute_difference": 0.2681606411933899,
+        "recipient_l6_2_crosscheck": {
+            "passed": true,
+            "details": [
+                {
+                    "token_id": 9262,
+                    "token_text": "six",
+                    "rank_match": true,
+                    "probability_difference": 0.0,
+                    "probability_match": true
+                },
+                {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "rank_match": true,
+                    "probability_difference": 0.0,
+                    "probability_match": true
+                }
+            ]
+        }
+    },
+    "baseline": {
+        "preferred": {
+            "token_id": 9262,
+            "token_text": "six",
+            "probability": 0.00028167798809773366,
+            "log_probability": -8.17474602565316,
+            "rank": 431,
+            "logit": 1.2989614009857178
+        },
+        "comparison": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 5.4743576298108736e-05,
+            "log_probability": -9.812850524039543,
+            "rank": 5162,
+            "logit": -0.3391430974006653
+        },
+        "logit_margin": 1.638104498386383,
+        "probability_ratio": 5.145407135329319,
+        "preferred_wins": true
+    },
+    "patched": {
+        "preferred": {
+            "token_id": 9262,
+            "token_text": "six",
+            "probability": 0.00028080003174322615,
+            "log_probability": -8.177867772766948,
+            "rank": 426,
+            "logit": 1.2799735069274902
+        },
+        "comparison": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 5.685732673880709e-05,
+            "log_probability": -9.774965467640758,
+            "rank": 4948,
+            "logit": -0.3171241879463196
+        },
+        "logit_margin": 1.5970976948738098,
+        "probability_ratio": 4.938678053457804,
+        "preferred_wins": true
+    },
+    "effect": {
+        "logit_margin_delta": -0.04100680351257324,
+        "preferred_rank_delta": -5,
+        "comparison_rank_delta": -214,
+        "preferred_still_wins": true,
+        "distribution_change": {
+            "kl_baseline_to_intervention": 0.002776132185593428,
+            "probability_l1_distance": 0.05921884675585026,
+            "logit_l2_difference": 8.473483538855724,
+            "baseline_top1_token_id": 86,
+            "intervention_top1_token_id": 86,
+            "top1_changed": false
+        }
+    },
+    "patch_record": {
+        "layer": 0,
+        "head": 1,
+        "head_id": "L0H1",
+        "position": 5,
+        "applied": true,
+        "original_last_token_l2": 2.0798840569999575,
+        "patched_last_token_l2": 2.538314270478087,
+        "patch_l2_distance": 0.8423311495825041,
+        "attention_row_sum": 1.0000000018626451
+    },
+    "interpretation": {
+        "scope": "The intervention tests whether replacing this recipient head activation with the donor head activation changes the recipient next-token behavior.",
+        "warning": "A patch effect demonstrates causal dependence on the transplanted activation for these contexts. It does not by itself establish a general semantic function for the head."
+    },
+    "artifacts": {
+        "recipient_scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002c_three_plus_three_vs_four_score.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002f_patch_l0h1_two2_into_three3.json",
+        "raw_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002f_patch_l0h1_two2_into_three3.npz",
+        "raw_npz_sha256": "186a4d52c5975063aa7eeeda89656b04023ff950bd7de29ebe03f67ee8dca9d7"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "recipient_l6_2_crosscheck": true,
+        "manual_unpatched_forward_matches_gpt": true,
+        "self_patch_matches_gpt": true,
+        "patch_record_created": true,
+        "attention_rows_valid": true,
+        "measurements_finite": true
+    }
+}

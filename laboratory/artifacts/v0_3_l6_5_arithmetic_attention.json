@@ -1,0 +1,1903 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T11:51:05.437705+00:00",
+    "tool": {
+        "name": "attention_inspector",
+        "version": "0.1",
+        "permission_level": "P2",
+        "evidence_level": "E2"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context": [
+            {
+                "position": 0,
+                "token_id": 6498,
+                "token_text": "Two ",
+                "is_query": false,
+                "is_focus": true
+            },
+            {
+                "position": 1,
+                "token_id": 5912,
+                "token_text": "plus ",
+                "is_query": false,
+                "is_focus": false
+            },
+            {
+                "position": 2,
+                "token_id": 722,
+                "token_text": "two ",
+                "is_query": false,
+                "is_focus": true
+            },
+            {
+                "position": 3,
+                "token_id": 5001,
+                "token_text": "equal",
+                "is_query": false,
+                "is_focus": false
+            },
+            {
+                "position": 4,
+                "token_id": 118,
+                "token_text": "s",
+                "is_query": false,
+                "is_focus": false
+            },
+            {
+                "position": 5,
+                "token_id": 35,
+                "token_text": " ",
+                "is_query": true,
+                "is_focus": false
+            }
+        ],
+        "query_position": 5,
+        "focus_positions": [
+            0,
+            2
+        ]
+    },
+    "attention": {
+        "head_count": 20,
+        "heads": [
+            {
+                "layer": 0,
+                "head": 0,
+                "head_id": "L0H0",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999180436134,
+                "entropy": 1.66449354879042,
+                "normalized_entropy": 0.9289715374059304,
+                "self_attention_weight": 0.08966795355081558,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.3319395184516907,
+                "focus_mass": 0.4656323790550232,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3319395184516907
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.13369286060333252
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3319395184516907
+                    },
+                    {
+                        "rank": 2,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.23460742831230164
+                    },
+                    {
+                        "rank": 3,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.13369286060333252
+                    },
+                    {
+                        "rank": 4,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.11145615577697754
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.09863600134849548
+                    },
+                    {
+                        "rank": 6,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.08966795355081558
+                    }
+                ]
+            },
+            {
+                "layer": 0,
+                "head": 1,
+                "head_id": "L0H1",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999776482582,
+                "entropy": 1.5553193654287563,
+                "normalized_entropy": 0.8680402655267314,
+                "self_attention_weight": 0.06507629156112671,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.4209034740924835,
+                "focus_mass": 0.5126811116933823,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.4209034740924835
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.09177763760089874
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.4209034740924835
+                    },
+                    {
+                        "rank": 2,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.18964987993240356
+                    },
+                    {
+                        "rank": 3,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.1656998097896576
+                    },
+                    {
+                        "rank": 4,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.09177763760089874
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.06689288467168808
+                    },
+                    {
+                        "rank": 6,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.06507629156112671
+                    }
+                ]
+            },
+            {
+                "layer": 0,
+                "head": 2,
+                "head_id": "L0H2",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000149011612,
+                "entropy": 1.6375712134224387,
+                "normalized_entropy": 0.9139458959454836,
+                "self_attention_weight": 0.17343340814113617,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.3254127502441406,
+                "focus_mass": 0.4499082937836647,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3254127502441406
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.12449554353952408
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3254127502441406
+                    },
+                    {
+                        "rank": 2,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.21217331290245056
+                    },
+                    {
+                        "rank": 3,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.17343340814113617
+                    },
+                    {
+                        "rank": 4,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.130952849984169
+                    },
+                    {
+                        "rank": 5,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.12449554353952408
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.03353215008974075
+                    }
+                ]
+            },
+            {
+                "layer": 0,
+                "head": 3,
+                "head_id": "L0H3",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999776482582,
+                "entropy": 1.7014557755412723,
+                "normalized_entropy": 0.9496005489365777,
+                "self_attention_weight": 0.13490082323551178,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.33927732706069946,
+                "focus_mass": 0.48948900401592255,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.33927732706069946
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.15021167695522308
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.33927732706069946
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.15021167695522308
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.1352548897266388
+                    },
+                    {
+                        "rank": 4,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.13490082323551178
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.12406960129737854
+                    },
+                    {
+                        "rank": 6,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.11628565937280655
+                    }
+                ]
+            },
+            {
+                "layer": 1,
+                "head": 0,
+                "head_id": "L1H0",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999776482582,
+                "entropy": 1.1263546607494623,
+                "normalized_entropy": 0.6286305054298,
+                "self_attention_weight": 0.06810512393712997,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.6855779886245728,
+                "focus_mass": 0.7495919540524483,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6855779886245728
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.06401396542787552
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6855779886245728
+                    },
+                    {
+                        "rank": 2,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.07332346588373184
+                    },
+                    {
+                        "rank": 3,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.06810512393712997
+                    },
+                    {
+                        "rank": 4,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.06401396542787552
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.056355662643909454
+                    },
+                    {
+                        "rank": 6,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.052623771131038666
+                    }
+                ]
+            },
+            {
+                "layer": 1,
+                "head": 1,
+                "head_id": "L1H1",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999552965164,
+                "entropy": 1.6955931929122985,
+                "normalized_entropy": 0.9463285792723127,
+                "self_attention_weight": 0.14594963192939758,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.3094446063041687,
+                "focus_mass": 0.5317970514297485,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3094446063041687
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.22235244512557983
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3094446063041687
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.22235244512557983
+                    },
+                    {
+                        "rank": 3,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.14594963192939758
+                    },
+                    {
+                        "rank": 4,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.11592365056276321
+                    },
+                    {
+                        "rank": 5,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.11341395974159241
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.09291566163301468
+                    }
+                ]
+            },
+            {
+                "layer": 1,
+                "head": 2,
+                "head_id": "L1H2",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999776482582,
+                "entropy": 1.209687084211893,
+                "normalized_entropy": 0.6751392165004511,
+                "self_attention_weight": 0.12705975770950317,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.6375166773796082,
+                "focus_mass": 0.7066622897982597,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6375166773796082
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.06914561241865158
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6375166773796082
+                    },
+                    {
+                        "rank": 2,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.12705975770950317
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.07105124741792679
+                    },
+                    {
+                        "rank": 4,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.06914561241865158
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.05730050802230835
+                    },
+                    {
+                        "rank": 6,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.03792617470026016
+                    }
+                ]
+            },
+            {
+                "layer": 1,
+                "head": 3,
+                "head_id": "L1H3",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999928986654,
+                "entropy": 0.5281849609303977,
+                "normalized_entropy": 0.2947856394798103,
+                "self_attention_weight": 0.0012159552425146103,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.8449745178222656,
+                "focus_mass": 0.8466692698420957,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8449745178222656
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.001694752019830048
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8449745178222656
+                    },
+                    {
+                        "rank": 2,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.12541857361793518
+                    },
+                    {
+                        "rank": 3,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.02350670099258423
+                    },
+                    {
+                        "rank": 4,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.003189493203535676
+                    },
+                    {
+                        "rank": 5,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.001694752019830048
+                    },
+                    {
+                        "rank": 6,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.0012159552425146103
+                    }
+                ]
+            },
+            {
+                "layer": 2,
+                "head": 0,
+                "head_id": "L2H0",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000577419996,
+                "entropy": 1.2224984418527787,
+                "normalized_entropy": 0.6822893713403778,
+                "self_attention_weight": 0.023325512185692787,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.551506519317627,
+                "focus_mass": 0.7667321264743805,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.551506519317627
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.21522560715675354
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.551506519317627
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.21522560715675354
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.15880230069160461
+                    },
+                    {
+                        "rank": 4,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.03514644131064415
+                    },
+                    {
+                        "rank": 5,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.023325512185692787
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.015993677079677582
+                    }
+                ]
+            },
+            {
+                "layer": 2,
+                "head": 1,
+                "head_id": "L2H1",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000670552254,
+                "entropy": 1.668611007748138,
+                "normalized_entropy": 0.9312695350046214,
+                "self_attention_weight": 0.08247967064380646,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.3184967339038849,
+                "focus_mass": 0.5126878172159195,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3184967339038849
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.1941910833120346
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.3184967339038849
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.1941910833120346
+                    },
+                    {
+                        "rank": 3,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.19111314415931702
+                    },
+                    {
+                        "rank": 4,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.14518900215625763
+                    },
+                    {
+                        "rank": 5,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.08247967064380646
+                    },
+                    {
+                        "rank": 6,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.06853043287992477
+                    }
+                ]
+            },
+            {
+                "layer": 2,
+                "head": 2,
+                "head_id": "L2H2",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000008149073,
+                "entropy": 0.9694242752718933,
+                "normalized_entropy": 0.5410459896659852,
+                "self_attention_weight": 0.349529892206192,
+                "strongest_position": 4,
+                "strongest_token_id": 118,
+                "strongest_token_text": "s",
+                "strongest_attention_weight": 0.5492773652076721,
+                "focus_mass": 0.009152223356068134,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.000976034440100193
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.008176188915967941
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.5492773652076721
+                    },
+                    {
+                        "rank": 2,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.349529892206192
+                    },
+                    {
+                        "rank": 3,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.09063323587179184
+                    },
+                    {
+                        "rank": 4,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.008176188915967941
+                    },
+                    {
+                        "rank": 5,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.0014072841731831431
+                    },
+                    {
+                        "rank": 6,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.000976034440100193
+                    }
+                ]
+            },
+            {
+                "layer": 2,
+                "head": 3,
+                "head_id": "L2H3",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999925494194,
+                "entropy": 1.719784174671845,
+                "normalized_entropy": 0.9598298232590231,
+                "self_attention_weight": 0.22684937715530396,
+                "strongest_position": 5,
+                "strongest_token_id": 35,
+                "strongest_token_text": " ",
+                "strongest_attention_weight": 0.22684937715530396,
+                "focus_mass": 0.43658608198165894,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.21372336149215698
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.22286272048950195
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.22684937715530396
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.22286272048950195
+                    },
+                    {
+                        "rank": 3,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.21372336149215698
+                    },
+                    {
+                        "rank": 4,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.13689441978931427
+                    },
+                    {
+                        "rank": 5,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.13599520921707153
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.06367490440607071
+                    }
+                ]
+            },
+            {
+                "layer": 3,
+                "head": 0,
+                "head_id": "L3H0",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999590218067,
+                "entropy": 1.5887719165502607,
+                "normalized_entropy": 0.8867104897928919,
+                "self_attention_weight": 0.10732388496398926,
+                "strongest_position": 3,
+                "strongest_token_id": 5001,
+                "strongest_token_text": "equal",
+                "strongest_attention_weight": 0.36013561487197876,
+                "focus_mass": 0.31273287162184715,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.26121485233306885
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.051518019288778305
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.36013561487197876
+                    },
+                    {
+                        "rank": 2,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.26121485233306885
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.13822568953037262
+                    },
+                    {
+                        "rank": 4,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.10732388496398926
+                    },
+                    {
+                        "rank": 5,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.08158189803361893
+                    },
+                    {
+                        "rank": 6,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.051518019288778305
+                    }
+                ]
+            },
+            {
+                "layer": 3,
+                "head": 1,
+                "head_id": "L3H1",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000149011612,
+                "entropy": 1.1486606310240872,
+                "normalized_entropy": 0.6410797044756044,
+                "self_attention_weight": 0.02984813041985035,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.6253159046173096,
+                "focus_mass": 0.7255377098917961,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6253159046173096
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.10022180527448654
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.6253159046173096
+                    },
+                    {
+                        "rank": 2,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.18407286703586578
+                    },
+                    {
+                        "rank": 3,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.10022180527448654
+                    },
+                    {
+                        "rank": 4,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.040554314851760864
+                    },
+                    {
+                        "rank": 5,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.02984813041985035
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.019986992701888084
+                    }
+                ]
+            },
+            {
+                "layer": 3,
+                "head": 2,
+                "head_id": "L3H2",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.000000013038516,
+                "entropy": 1.2071952128970085,
+                "normalized_entropy": 0.6737484766396158,
+                "self_attention_weight": 0.047434937208890915,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.5948628783226013,
+                "focus_mass": 0.6471924334764481,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.5948628783226013
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.05232955515384674
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.5948628783226013
+                    },
+                    {
+                        "rank": 2,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.2129378467798233
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.0712532326579094
+                    },
+                    {
+                        "rank": 4,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.05232955515384674
+                    },
+                    {
+                        "rank": 5,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.047434937208890915
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.021181562915444374
+                    }
+                ]
+            },
+            {
+                "layer": 3,
+                "head": 3,
+                "head_id": "L3H3",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.0000000484287739,
+                "entropy": 1.565095888184687,
+                "normalized_entropy": 0.8734966467675365,
+                "self_attention_weight": 0.12801116704940796,
+                "strongest_position": 2,
+                "strongest_token_id": 722,
+                "strongest_token_text": "two ",
+                "strongest_attention_weight": 0.41771745681762695,
+                "focus_mass": 0.5462381094694138,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.1285206526517868
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.41771745681762695
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.41771745681762695
+                    },
+                    {
+                        "rank": 2,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.18490302562713623
+                    },
+                    {
+                        "rank": 3,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.1285206526517868
+                    },
+                    {
+                        "rank": 4,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.12801116704940796
+                    },
+                    {
+                        "rank": 5,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.09928020089864731
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.041567545384168625
+                    }
+                ]
+            },
+            {
+                "layer": 4,
+                "head": 0,
+                "head_id": "L4H0",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999998728744686,
+                "entropy": 0.7225183353886868,
+                "normalized_entropy": 0.4032451608585442,
+                "self_attention_weight": 0.09451289474964142,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.8112481832504272,
+                "focus_mass": 0.8205805001780391,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8112481832504272
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.009332316927611828
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8112481832504272
+                    },
+                    {
+                        "rank": 2,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.09451289474964142
+                    },
+                    {
+                        "rank": 3,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.039435166865587234
+                    },
+                    {
+                        "rank": 4,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.03921926021575928
+                    },
+                    {
+                        "rank": 5,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.009332316927611828
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.006252050865441561
+                    }
+                ]
+            },
+            {
+                "layer": 4,
+                "head": 1,
+                "head_id": "L4H1",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 0.9999999159845174,
+                "entropy": 0.4960305881889561,
+                "normalized_entropy": 0.276839942362722,
+                "self_attention_weight": 0.028522709384560585,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.8890425562858582,
+                "focus_mass": 0.9327831938862801,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8890425562858582
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.043740637600421906
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.8890425562858582
+                    },
+                    {
+                        "rank": 2,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.043740637600421906
+                    },
+                    {
+                        "rank": 3,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.028522709384560585
+                    },
+                    {
+                        "rank": 4,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.021350953727960587
+                    },
+                    {
+                        "rank": 5,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.017230423167347908
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.00011263581836828962
+                    }
+                ]
+            },
+            {
+                "layer": 4,
+                "head": 2,
+                "head_id": "L4H2",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.000000056461431,
+                "entropy": 0.9843132310571285,
+                "normalized_entropy": 0.5493556741079766,
+                "self_attention_weight": 0.02085704728960991,
+                "strongest_position": 0,
+                "strongest_token_id": 6498,
+                "strongest_token_text": "Two ",
+                "strongest_attention_weight": 0.4644513428211212,
+                "focus_mass": 0.47936183772981167,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.4644513428211212
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.014910494908690453
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.4644513428211212
+                    },
+                    {
+                        "rank": 2,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.4624399244785309
+                    },
+                    {
+                        "rank": 3,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.036148108541965485
+                    },
+                    {
+                        "rank": 4,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.02085704728960991
+                    },
+                    {
+                        "rank": 5,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.014910494908690453
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.0011931384215131402
+                    }
+                ]
+            },
+            {
+                "layer": 4,
+                "head": 3,
+                "head_id": "L4H3",
+                "query": {
+                    "position": 5,
+                    "token_id": 35,
+                    "token_text": " "
+                },
+                "row_sum": 1.000000006519258,
+                "entropy": 1.059620332973629,
+                "normalized_entropy": 0.5913853679423533,
+                "self_attention_weight": 0.026874354109168053,
+                "strongest_position": 3,
+                "strongest_token_id": 5001,
+                "strongest_token_text": "equal",
+                "strongest_attention_weight": 0.657175600528717,
+                "focus_mass": 0.26381389796733856,
+                "focus_positions": [
+                    {
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.18261024355888367
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.0812036544084549
+                    }
+                ],
+                "top_positions": [
+                    {
+                        "rank": 1,
+                        "position": 3,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "attention_weight": 0.657175600528717
+                    },
+                    {
+                        "rank": 2,
+                        "position": 0,
+                        "token_id": 6498,
+                        "token_text": "Two ",
+                        "attention_weight": 0.18261024355888367
+                    },
+                    {
+                        "rank": 3,
+                        "position": 2,
+                        "token_id": 722,
+                        "token_text": "two ",
+                        "attention_weight": 0.0812036544084549
+                    },
+                    {
+                        "rank": 4,
+                        "position": 1,
+                        "token_id": 5912,
+                        "token_text": "plus ",
+                        "attention_weight": 0.046365316957235336
+                    },
+                    {
+                        "rank": 5,
+                        "position": 5,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "attention_weight": 0.026874354109168053
+                    },
+                    {
+                        "rank": 6,
+                        "position": 4,
+                        "token_id": 118,
+                        "token_text": "s",
+                        "attention_weight": 0.00577083695679903
+                    }
+                ]
+            }
+        ],
+        "layer_summaries": [
+            {
+                "layer": 0,
+                "mean_focus_mass": 0.4794276971369982,
+                "max_focus_mass": 0.5126811116933823,
+                "max_focus_head": "L0H1",
+                "mean_normalized_entropy": 0.9151395619536807,
+                "mean_self_attention": 0.11576961912214756
+            },
+            {
+                "layer": 1,
+                "mean_focus_mass": 0.708680141280638,
+                "max_focus_mass": 0.8466692698420957,
+                "max_focus_head": "L1H3",
+                "mean_normalized_entropy": 0.6362209851705936,
+                "mean_self_attention": 0.08558261720463634
+            },
+            {
+                "layer": 2,
+                "mean_focus_mass": 0.43128956225700676,
+                "max_focus_mass": 0.7667321264743805,
+                "max_focus_head": "L2H0",
+                "mean_normalized_entropy": 0.7786086798175019,
+                "mean_self_attention": 0.1705461130477488
+            },
+            {
+                "layer": 3,
+                "mean_focus_mass": 0.5579252811148763,
+                "max_focus_mass": 0.7255377098917961,
+                "max_focus_head": "L3H1",
+                "mean_normalized_entropy": 0.7687588294189123,
+                "mean_self_attention": 0.07815452991053462
+            },
+            {
+                "layer": 4,
+                "mean_focus_mass": 0.6241348574403673,
+                "max_focus_mass": 0.9327831938862801,
+                "max_focus_head": "L4H1",
+                "mean_normalized_entropy": 0.45520653631789904,
+                "mean_self_attention": 0.04269175138324499
+            }
+        ],
+        "focus_ranking": [
+            {
+                "rank": 1,
+                "head_id": "L4H1",
+                "layer": 4,
+                "head": 1,
+                "focus_mass": 0.9327831938862801,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.276839942362722
+            },
+            {
+                "rank": 2,
+                "head_id": "L1H3",
+                "layer": 1,
+                "head": 3,
+                "focus_mass": 0.8466692698420957,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.2947856394798103
+            },
+            {
+                "rank": 3,
+                "head_id": "L4H0",
+                "layer": 4,
+                "head": 0,
+                "focus_mass": 0.8205805001780391,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.4032451608585442
+            },
+            {
+                "rank": 4,
+                "head_id": "L2H0",
+                "layer": 2,
+                "head": 0,
+                "focus_mass": 0.7667321264743805,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.6822893713403778
+            },
+            {
+                "rank": 5,
+                "head_id": "L1H0",
+                "layer": 1,
+                "head": 0,
+                "focus_mass": 0.7495919540524483,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.6286305054298
+            },
+            {
+                "rank": 6,
+                "head_id": "L3H1",
+                "layer": 3,
+                "head": 1,
+                "focus_mass": 0.7255377098917961,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.6410797044756044
+            },
+            {
+                "rank": 7,
+                "head_id": "L1H2",
+                "layer": 1,
+                "head": 2,
+                "focus_mass": 0.7066622897982597,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.6751392165004511
+            },
+            {
+                "rank": 8,
+                "head_id": "L3H2",
+                "layer": 3,
+                "head": 2,
+                "focus_mass": 0.6471924334764481,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.6737484766396158
+            },
+            {
+                "rank": 9,
+                "head_id": "L3H3",
+                "layer": 3,
+                "head": 3,
+                "focus_mass": 0.5462381094694138,
+                "strongest_position": 2,
+                "strongest_token_text": "two ",
+                "normalized_entropy": 0.8734966467675365
+            },
+            {
+                "rank": 10,
+                "head_id": "L1H1",
+                "layer": 1,
+                "head": 1,
+                "focus_mass": 0.5317970514297485,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.9463285792723127
+            },
+            {
+                "rank": 11,
+                "head_id": "L2H1",
+                "layer": 2,
+                "head": 1,
+                "focus_mass": 0.5126878172159195,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.9312695350046214
+            },
+            {
+                "rank": 12,
+                "head_id": "L0H1",
+                "layer": 0,
+                "head": 1,
+                "focus_mass": 0.5126811116933823,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.8680402655267314
+            },
+            {
+                "rank": 13,
+                "head_id": "L0H3",
+                "layer": 0,
+                "head": 3,
+                "focus_mass": 0.48948900401592255,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.9496005489365777
+            },
+            {
+                "rank": 14,
+                "head_id": "L4H2",
+                "layer": 4,
+                "head": 2,
+                "focus_mass": 0.47936183772981167,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.5493556741079766
+            },
+            {
+                "rank": 15,
+                "head_id": "L0H0",
+                "layer": 0,
+                "head": 0,
+                "focus_mass": 0.4656323790550232,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.9289715374059304
+            },
+            {
+                "rank": 16,
+                "head_id": "L0H2",
+                "layer": 0,
+                "head": 2,
+                "focus_mass": 0.4499082937836647,
+                "strongest_position": 0,
+                "strongest_token_text": "Two ",
+                "normalized_entropy": 0.9139458959454836
+            },
+            {
+                "rank": 17,
+                "head_id": "L2H3",
+                "layer": 2,
+                "head": 3,
+                "focus_mass": 0.43658608198165894,
+                "strongest_position": 5,
+                "strongest_token_text": " ",
+                "normalized_entropy": 0.9598298232590231
+            },
+            {
+                "rank": 18,
+                "head_id": "L3H0",
+                "layer": 3,
+                "head": 0,
+                "focus_mass": 0.31273287162184715,
+                "strongest_position": 3,
+                "strongest_token_text": "equal",
+                "normalized_entropy": 0.8867104897928919
+            },
+            {
+                "rank": 19,
+                "head_id": "L4H3",
+                "layer": 4,
+                "head": 3,
+                "focus_mass": 0.26381389796733856,
+                "strongest_position": 3,
+                "strongest_token_text": "equal",
+                "normalized_entropy": 0.5913853679423533
+            },
+            {
+                "rank": 20,
+                "head_id": "L2H2",
+                "layer": 2,
+                "head": 2,
+                "focus_mass": 0.009152223356068134,
+                "strongest_position": 4,
+                "strongest_token_text": "s",
+                "normalized_entropy": 0.5410459896659852
+            }
+        ]
+    },
+    "forward_verification": {
+        "exact": true,
+        "max_absolute_difference": 0.0
+    },
+    "integrity": {
+        "maximum_attention_row_sum_error": 1.2712553143501282e-07
+    },
+    "artifacts": {
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_5_arithmetic_attention.json",
+        "raw_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/v0_3_l6_5_arithmetic_attention.npz",
+        "raw_npz_sha256": "9dc067551dd4fbdeb5b3a3e88c63dcbd631ec51b066692f4338df00c18c28fd3"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "trace_matches_gpt_forward": true,
+        "expected_head_count": true,
+        "attention_values_finite": true,
+        "attention_rows_sum_to_one": true,
+        "focus_positions_valid": true
+    }
+}

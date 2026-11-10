@@ -1,0 +1,219 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:28:40.198587+00:00",
+    "tool": {
+        "name": "continuation_scorer",
+        "version": "0.1",
+        "permission_level": "P1",
+        "evidence_level": "E1"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "prompt": "Paris is in",
+    "candidate_count": 2,
+    "preferred_index": 0,
+    "candidates": [
+        {
+            "prompt": "Paris is in",
+            "continuation": " France.",
+            "prompt_token_ids": [
+                1224,
+                291,
+                13240
+            ],
+            "continuation_token_ids": [
+                35,
+                4648,
+                1509
+            ],
+            "continuation_tokens": [
+                " ",
+                "Franc",
+                "e."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -23.504710971745943,
+            "mean_log_probability": -7.834903657248648,
+            "mean_nll": 7.834903657248648,
+            "perplexity": 2527.2920113679784,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0008415899389887548,
+            "first_token_rank": 117,
+            "mean_token_rank": 656.6666666666666,
+            "median_token_rank": 344.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.0,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0008415899389887548,
+                    "log_probability": -7.080217670675913,
+                    "logit": 2.425766706466675,
+                    "rank": 117
+                },
+                {
+                    "position": 1,
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 0.00013609141324629848,
+                    "log_probability": -8.90218374180126,
+                    "logit": 0.5785714983940125,
+                    "rank": 1509
+                },
+                {
+                    "position": 2,
+                    "token_id": 1509,
+                    "token_text": "e.",
+                    "probability": 0.0005408819233256873,
+                    "log_probability": -7.52230955926877,
+                    "logit": 2.477308750152588,
+                    "rank": 344
+                }
+            ],
+            "candidate_index": 0
+        },
+        {
+            "prompt": "Paris is in",
+            "continuation": " London.",
+            "prompt_token_ids": [
+                1224,
+                291,
+                13240
+            ],
+            "continuation_token_ids": [
+                35,
+                7316,
+                49
+            ],
+            "continuation_tokens": [
+                " ",
+                "London",
+                "."
+            ],
+            "continuation_token_count": 3,
+            "sum_log_probability": -22.94102117571271,
+            "mean_log_probability": -7.647007058570903,
+            "mean_nll": 7.647007058570903,
+            "perplexity": 2094.367879303248,
+            "first_token_id": 35,
+            "first_token_text": " ",
+            "first_token_probability": 0.0008415899389887548,
+            "first_token_rank": 117,
+            "mean_token_rank": 943.3333333333334,
+            "median_token_rank": 120.0,
+            "top1_fraction": 0.0,
+            "top10_fraction": 0.0,
+            "top100_fraction": 0.0,
+            "token_results": [
+                {
+                    "position": 0,
+                    "token_id": 35,
+                    "token_text": " ",
+                    "probability": 0.0008415899389887548,
+                    "log_probability": -7.080217670675913,
+                    "logit": 2.425766706466675,
+                    "rank": 117
+                },
+                {
+                    "position": 1,
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 9.182408835191845e-05,
+                    "log_probability": -9.295635894411085,
+                    "logit": 0.18511934578418732,
+                    "rank": 2593
+                },
+                {
+                    "position": 2,
+                    "token_id": 49,
+                    "token_text": ".",
+                    "probability": 0.0014085878368299018,
+                    "log_probability": -6.5651676106257115,
+                    "logit": 3.4562411308288574,
+                    "rank": 120
+                }
+            ],
+            "candidate_index": 1
+        }
+    ],
+    "discriminative_analysis": {
+        "shared_prefix_token_count": 1,
+        "shared_prefix_token_ids": [
+            35
+        ],
+        "shared_prefix_tokens": [
+            " "
+        ],
+        "scoring_context_token_ids": [
+            1224,
+            291,
+            13240,
+            35
+        ],
+        "candidates": [
+            {
+                "candidate_index": 0,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 4648,
+                "token_text": "Franc",
+                "rank": 1509,
+                "probability": 0.00013609141324629848,
+                "log_probability": -8.90218374180126,
+                "logit": 0.5785714983940125
+            },
+            {
+                "candidate_index": 1,
+                "has_discriminative_token": true,
+                "token_position": 1,
+                "token_id": 7316,
+                "token_text": "London",
+                "rank": 2593,
+                "probability": 9.182408835191845e-05,
+                "log_probability": -9.295635894411085,
+                "logit": 0.18511934578418732
+            }
+        ]
+    },
+    "comparisons": [
+        {
+            "preferred_index": 0,
+            "comparison_index": 1,
+            "preferred_continuation": " France.",
+            "comparison_continuation": " London.",
+            "preferred_mean_nll": 7.834903657248648,
+            "comparison_mean_nll": 7.647007058570903,
+            "margin": -0.187896598677745,
+            "preferred_wins": false
+        }
+    ],
+    "checks": {
+        "candidate_count_positive": true,
+        "checkpoint_identity_valid": true,
+        "discriminative_analysis_created": true
+    }
+}

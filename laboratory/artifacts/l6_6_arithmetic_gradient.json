@@ -1,0 +1,572 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-08T14:38:53.881999+00:00",
+    "tool": {
+        "name": "gradient_attribution",
+        "version": "0.1",
+        "permission_level": "P2",
+        "evidence_level": "E2"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "objective": {
+        "type": "next_token_logit_margin",
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "rank": 4857,
+            "probability": 5.688314749353489e-05,
+            "logit": -0.3386191129684448
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "rank": 7687,
+            "probability": 3.516983571920058e-05,
+            "logit": -0.8194294571876526
+        },
+        "logit_margin": 0.48081034421920776
+    },
+    "attribution": {
+        "interpretation": "Gradient quantities represent local sensitivity of the preferred minus comparison logit margin. They are correlational/local and do not establish causality.",
+        "residual_stream": [
+            {
+                "stage": "embedding_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 0.5188007101855737,
+                "gradient_last_token_l2": 25.044663861803112,
+                "gradient_dot_activation": -0.09927921003889262,
+                "absolute_gradient_dot_activation": 0.09927921003889262,
+                "gradient_activation_cosine": -0.007640865302496515,
+                "mean_abs_gradient_x_activation": 0.02757746470125602,
+                "max_abs_gradient_x_activation": 0.27014427250493966,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_0.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 26.53485926914274,
+                "gradient_last_token_l2": 0.12557961434261947,
+                "gradient_dot_activation": 0.08439253408376857,
+                "absolute_gradient_dot_activation": 0.08439253408376857,
+                "gradient_activation_cosine": 0.025326086984220283,
+                "mean_abs_gradient_x_activation": 0.00877541914792956,
+                "max_abs_gradient_x_activation": 0.11997426883412032,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_1.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 39.3093223482823,
+                "gradient_last_token_l2": 0.12214329745360507,
+                "gradient_dot_activation": 0.0689867641448578,
+                "absolute_gradient_dot_activation": 0.0689867641448578,
+                "gradient_activation_cosine": 0.014368140868122763,
+                "mean_abs_gradient_x_activation": 0.011911584378375323,
+                "max_abs_gradient_x_activation": 0.1889289357601598,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_2.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 47.82825603373065,
+                "gradient_last_token_l2": 0.12106038142223804,
+                "gradient_dot_activation": 0.06342012063696995,
+                "absolute_gradient_dot_activation": 0.06342012063696995,
+                "gradient_activation_cosine": 0.010953186449386509,
+                "mean_abs_gradient_x_activation": 0.014064985047384692,
+                "max_abs_gradient_x_activation": 0.22223137667766935,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_3.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 54.71314804859399,
+                "gradient_last_token_l2": 0.12084971139569467,
+                "gradient_dot_activation": 0.018027945382971977,
+                "absolute_gradient_dot_activation": 0.018027945382971977,
+                "gradient_activation_cosine": 0.0027265214106480143,
+                "mean_abs_gradient_x_activation": 0.01570595294254857,
+                "max_abs_gradient_x_activation": 0.24068453556856895,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "block_4.output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 61.95451111865285,
+                "gradient_last_token_l2": 0.12077282130319794,
+                "gradient_dot_activation": 3.677214768238457e-07,
+                "absolute_gradient_dot_activation": 3.677214768238457e-07,
+                "gradient_activation_cosine": 4.914471825316883e-08,
+                "mean_abs_gradient_x_activation": 0.01772167730454883,
+                "max_abs_gradient_x_activation": 0.25661852645956884,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "stage": "final_layernorm",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 16.800216662372932,
+                "gradient_last_token_l2": 0.453918936606941,
+                "gradient_dot_activation": 0.4808104927319288,
+                "absolute_gradient_dot_activation": 0.4808104927319288,
+                "gradient_activation_cosine": 0.0630493702455202,
+                "mean_abs_gradient_x_activation": 0.01808780307611763,
+                "max_abs_gradient_x_activation": 0.2792511663109565,
+                "gradient_finite": true,
+                "activation_finite": true
+            }
+        ],
+        "subcomponents": [
+            {
+                "layer": 0,
+                "component": "attention_output",
+                "component_id": "block_0.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 1.9032744603394391,
+                "gradient_last_token_l2": 0.7045335073097542,
+                "gradient_dot_activation": 0.15006479664190467,
+                "absolute_gradient_dot_activation": 0.15006479664190467,
+                "gradient_activation_cosine": 0.11191176657442486,
+                "mean_abs_gradient_x_activation": 0.0033385948987922996,
+                "max_abs_gradient_x_activation": 0.017815793929261137,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 0,
+                "component": "mlp_output",
+                "component_id": "block_0.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 25.76399708123632,
+                "gradient_last_token_l2": 0.12557961434261947,
+                "gradient_dot_activation": 0.03168602767899106,
+                "absolute_gradient_dot_activation": 0.03168602767899106,
+                "gradient_activation_cosine": 0.009793443247754045,
+                "mean_abs_gradient_x_activation": 0.008547721377389881,
+                "max_abs_gradient_x_activation": 0.11881327692164234,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 1,
+                "component": "attention_output",
+                "component_id": "block_1.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 2.6387925435929898,
+                "gradient_last_token_l2": 0.12402814340941014,
+                "gradient_dot_activation": 0.011022404991179973,
+                "absolute_gradient_dot_activation": 0.011022404991179973,
+                "gradient_activation_cosine": 0.03367835520234807,
+                "mean_abs_gradient_x_activation": 0.0007900973933791474,
+                "max_abs_gradient_x_activation": 0.009949510543281748,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 1,
+                "component": "mlp_output",
+                "component_id": "block_1.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 14.685430612555153,
+                "gradient_last_token_l2": 0.12214329745360507,
+                "gradient_dot_activation": -0.026428304500270533,
+                "absolute_gradient_dot_activation": 0.026428304500270533,
+                "gradient_activation_cosine": -0.014733739128470561,
+                "mean_abs_gradient_x_activation": 0.004211280684184411,
+                "max_abs_gradient_x_activation": 0.07144698153455309,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 2,
+                "component": "attention_output",
+                "component_id": "block_2.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 1.9999865727497619,
+                "gradient_last_token_l2": 0.12229245381571936,
+                "gradient_dot_activation": 0.03862940606701965,
+                "absolute_gradient_dot_activation": 0.03862940606701965,
+                "gradient_activation_cosine": 0.15793969377015754,
+                "mean_abs_gradient_x_activation": 0.0006048309688054016,
+                "max_abs_gradient_x_activation": 0.004744891673902851,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 2,
+                "component": "mlp_output",
+                "component_id": "block_2.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 9.773135835347395,
+                "gradient_last_token_l2": 0.12106038142223804,
+                "gradient_dot_activation": -0.04419613387519142,
+                "absolute_gradient_dot_activation": 0.04419613387519142,
+                "gradient_activation_cosine": -0.03735496273751137,
+                "mean_abs_gradient_x_activation": 0.002787112899675911,
+                "max_abs_gradient_x_activation": 0.036050117485341815,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 3,
+                "component": "attention_output",
+                "component_id": "block_3.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 3.0455053143609034,
+                "gradient_last_token_l2": 0.12100838614530829,
+                "gradient_dot_activation": 0.004518505307073694,
+                "absolute_gradient_dot_activation": 0.004518505307073694,
+                "gradient_activation_cosine": 0.012260832689377013,
+                "mean_abs_gradient_x_activation": 0.0008005391098186965,
+                "max_abs_gradient_x_activation": 0.005302124502420957,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 3,
+                "component": "mlp_output",
+                "component_id": "block_3.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 7.089618282646217,
+                "gradient_last_token_l2": 0.12084971139569467,
+                "gradient_dot_activation": -0.04991070218529048,
+                "absolute_gradient_dot_activation": 0.04991070218529048,
+                "gradient_activation_cosine": -0.058253927327849675,
+                "mean_abs_gradient_x_activation": 0.002016673933659693,
+                "max_abs_gradient_x_activation": 0.02653773512905655,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 4,
+                "component": "attention_output",
+                "component_id": "block_4.attention_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 3.3043453788608184,
+                "gradient_last_token_l2": 0.12079087895501768,
+                "gradient_dot_activation": -0.008174577668221886,
+                "absolute_gradient_dot_activation": 0.008174577668221886,
+                "gradient_activation_cosine": -0.020480744908426173,
+                "mean_abs_gradient_x_activation": 0.0009903690509264589,
+                "max_abs_gradient_x_activation": 0.010380471675663583,
+                "gradient_finite": true,
+                "activation_finite": true
+            },
+            {
+                "layer": 4,
+                "component": "mlp_output",
+                "component_id": "block_4.mlp_output",
+                "shape": [
+                    1,
+                    6,
+                    256
+                ],
+                "activation_last_token_l2": 7.546130488872336,
+                "gradient_last_token_l2": 0.12077282130319794,
+                "gradient_dot_activation": -0.009852973530398188,
+                "absolute_gradient_dot_activation": 0.009852973530398188,
+                "gradient_activation_cosine": -0.010811197310483554,
+                "mean_abs_gradient_x_activation": 0.0021494824186865233,
+                "max_abs_gradient_x_activation": 0.01762286310075467,
+                "gradient_finite": true,
+                "activation_finite": true
+            }
+        ],
+        "residual_ranking_by_gradient_norm": [
+            {
+                "rank": 1,
+                "stage": "embedding_output",
+                "gradient_last_token_l2": 25.044663861803112,
+                "gradient_dot_activation": -0.09927921003889262
+            },
+            {
+                "rank": 2,
+                "stage": "final_layernorm",
+                "gradient_last_token_l2": 0.453918936606941,
+                "gradient_dot_activation": 0.4808104927319288
+            },
+            {
+                "rank": 3,
+                "stage": "block_0.output",
+                "gradient_last_token_l2": 0.12557961434261947,
+                "gradient_dot_activation": 0.08439253408376857
+            },
+            {
+                "rank": 4,
+                "stage": "block_1.output",
+                "gradient_last_token_l2": 0.12214329745360507,
+                "gradient_dot_activation": 0.0689867641448578
+            },
+            {
+                "rank": 5,
+                "stage": "block_2.output",
+                "gradient_last_token_l2": 0.12106038142223804,
+                "gradient_dot_activation": 0.06342012063696995
+            },
+            {
+                "rank": 6,
+                "stage": "block_3.output",
+                "gradient_last_token_l2": 0.12084971139569467,
+                "gradient_dot_activation": 0.018027945382971977
+            },
+            {
+                "rank": 7,
+                "stage": "block_4.output",
+                "gradient_last_token_l2": 0.12077282130319794,
+                "gradient_dot_activation": 3.677214768238457e-07
+            }
+        ],
+        "component_ranking_by_gradient_norm": [
+            {
+                "rank": 1,
+                "component_id": "block_0.attention_output",
+                "gradient_last_token_l2": 0.7045335073097542,
+                "gradient_dot_activation": 0.15006479664190467
+            },
+            {
+                "rank": 2,
+                "component_id": "block_0.mlp_output",
+                "gradient_last_token_l2": 0.12557961434261947,
+                "gradient_dot_activation": 0.03168602767899106
+            },
+            {
+                "rank": 3,
+                "component_id": "block_1.attention_output",
+                "gradient_last_token_l2": 0.12402814340941014,
+                "gradient_dot_activation": 0.011022404991179973
+            },
+            {
+                "rank": 4,
+                "component_id": "block_2.attention_output",
+                "gradient_last_token_l2": 0.12229245381571936,
+                "gradient_dot_activation": 0.03862940606701965
+            },
+            {
+                "rank": 5,
+                "component_id": "block_1.mlp_output",
+                "gradient_last_token_l2": 0.12214329745360507,
+                "gradient_dot_activation": -0.026428304500270533
+            },
+            {
+                "rank": 6,
+                "component_id": "block_2.mlp_output",
+                "gradient_last_token_l2": 0.12106038142223804,
+                "gradient_dot_activation": -0.04419613387519142
+            },
+            {
+                "rank": 7,
+                "component_id": "block_3.attention_output",
+                "gradient_last_token_l2": 0.12100838614530829,
+                "gradient_dot_activation": 0.004518505307073694
+            },
+            {
+                "rank": 8,
+                "component_id": "block_3.mlp_output",
+                "gradient_last_token_l2": 0.12084971139569467,
+                "gradient_dot_activation": -0.04991070218529048
+            },
+            {
+                "rank": 9,
+                "component_id": "block_4.attention_output",
+                "gradient_last_token_l2": 0.12079087895501768,
+                "gradient_dot_activation": -0.008174577668221886
+            },
+            {
+                "rank": 10,
+                "component_id": "block_4.mlp_output",
+                "gradient_last_token_l2": 0.12077282130319794,
+                "gradient_dot_activation": -0.009852973530398188
+            }
+        ],
+        "component_ranking_by_abs_gradient_dot_activation": [
+            {
+                "rank": 1,
+                "component_id": "block_0.attention_output",
+                "absolute_gradient_dot_activation": 0.15006479664190467,
+                "gradient_dot_activation": 0.15006479664190467
+            },
+            {
+                "rank": 2,
+                "component_id": "block_3.mlp_output",
+                "absolute_gradient_dot_activation": 0.04991070218529048,
+                "gradient_dot_activation": -0.04991070218529048
+            },
+            {
+                "rank": 3,
+                "component_id": "block_2.mlp_output",
+                "absolute_gradient_dot_activation": 0.04419613387519142,
+                "gradient_dot_activation": -0.04419613387519142
+            },
+            {
+                "rank": 4,
+                "component_id": "block_2.attention_output",
+                "absolute_gradient_dot_activation": 0.03862940606701965,
+                "gradient_dot_activation": 0.03862940606701965
+            },
+            {
+                "rank": 5,
+                "component_id": "block_0.mlp_output",
+                "absolute_gradient_dot_activation": 0.03168602767899106,
+                "gradient_dot_activation": 0.03168602767899106
+            },
+            {
+                "rank": 6,
+                "component_id": "block_1.mlp_output",
+                "absolute_gradient_dot_activation": 0.026428304500270533,
+                "gradient_dot_activation": -0.026428304500270533
+            },
+            {
+                "rank": 7,
+                "component_id": "block_1.attention_output",
+                "absolute_gradient_dot_activation": 0.011022404991179973,
+                "gradient_dot_activation": 0.011022404991179973
+            },
+            {
+                "rank": 8,
+                "component_id": "block_4.mlp_output",
+                "absolute_gradient_dot_activation": 0.009852973530398188,
+                "gradient_dot_activation": -0.009852973530398188
+            },
+            {
+                "rank": 9,
+                "component_id": "block_4.attention_output",
+                "absolute_gradient_dot_activation": 0.008174577668221886,
+                "gradient_dot_activation": -0.008174577668221886
+            },
+            {
+                "rank": 10,
+                "component_id": "block_3.attention_output",
+                "absolute_gradient_dot_activation": 0.004518505307073694,
+                "gradient_dot_activation": 0.004518505307073694
+            }
+        ]
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_2_arithmetic_score.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_6_arithmetic_gradient.json",
+        "raw_gradient_npz": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_6_arithmetic_gradient.npz",
+        "raw_gradient_npz_sha256": "2dacb02b3b45aea6edeec01a98c5bc4d22dbec45d45edc80e4f0bc75bcf3cfbf"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "scorer_checkpoint_matches": true,
+        "scorer_prompt_matches": true,
+        "shared_prefix_matches": true,
+        "preferred_and_comparison_distinct": true,
+        "residual_gradients_finite": true,
+        "component_gradients_finite": true,
+        "expected_residual_stage_count": true,
+        "expected_subcomponent_count": true
+    }
+}

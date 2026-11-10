@@ -1,0 +1,361 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T00:31:35.181696+00:00",
+    "tool": {
+        "name": "attention_head_ablation",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "targets": {
+        "preferred_token_id": 3996,
+        "preferred_token_text": "four",
+        "comparison_token_id": 11563,
+        "comparison_token_text": "fiv"
+    },
+    "layer": 4,
+    "heads_tested": [
+        0,
+        1,
+        2,
+        3
+    ],
+    "baseline": {
+        "preferred": {
+            "token_id": 3996,
+            "token_text": "four",
+            "probability": 5.688314749353489e-05,
+            "log_probability": -9.774511438319259,
+            "rank": 4857,
+            "logit": -0.3386191129684448
+        },
+        "comparison": {
+            "token_id": 11563,
+            "token_text": "fiv",
+            "probability": 3.516983571920058e-05,
+            "log_probability": -10.255321782538466,
+            "rank": 7687,
+            "logit": -0.8194294571876526
+        },
+        "logit_margin": 0.48081034421920776,
+        "probability_ratio": 1.6173845094897665,
+        "preferred_wins": true
+    },
+    "control_verification": {
+        "head": 0,
+        "scale": 1.0,
+        "exact": true,
+        "max_absolute_difference": 0.0
+    },
+    "results": [
+        {
+            "layer": 4,
+            "head": 0,
+            "head_id": "L4H0",
+            "attention_focus_mass": 0.15244031230031396,
+            "intervention": {
+                "head": 0,
+                "scale": 0.0,
+                "original_last_token_l2": 3.209219357399274,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.911850909821783e-05,
+                    "log_probability": -9.735966499872728,
+                    "rank": 4753,
+                    "logit": -0.2958301305770874
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.609337931738528e-05,
+                    "log_probability": -10.229401107855363,
+                    "rank": 7681,
+                    "logit": -0.7892647385597229
+                },
+                "logit_margin": 0.4934346079826355,
+                "probability_ratio": 1.6379322251419643,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": 0.012624263763427734,
+                "absolute_logit_margin_delta": 0.012624263763427734,
+                "preferred_rank_delta": -104,
+                "comparison_rank_delta": -6,
+                "causal_direction": "suppresses_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.0006177936868504413,
+                    "probability_l1_distance": 0.027746053453532045,
+                    "logit_l2_difference": 6.502030963436208,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 1,
+            "head_id": "L4H1",
+            "attention_focus_mass": 0.9704984591562731,
+            "intervention": {
+                "head": 1,
+                "scale": 0.0,
+                "original_last_token_l2": 2.191055550502576,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.757809086333356e-05,
+                    "log_probability": -9.762368429576302,
+                    "rank": 4821,
+                    "logit": -0.32431772351264954
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.5778904232752526e-05,
+                    "log_probability": -10.238152105485344,
+                    "rank": 7600,
+                    "logit": -0.8001013994216919
+                },
+                "logit_margin": 0.47578367590904236,
+                "probability_ratio": 1.6092748533820591,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.005026668310165405,
+                "absolute_logit_margin_delta": 0.005026668310165405,
+                "preferred_rank_delta": -36,
+                "comparison_rank_delta": -87,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 3.9026891218676496e-05,
+                    "probability_l1_distance": 0.007118937115009122,
+                    "logit_l2_difference": 1.3062024343140395,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 2,
+            "head_id": "L4H2",
+            "attention_focus_mass": 0.5489282086491585,
+            "intervention": {
+                "head": 2,
+                "scale": 0.0,
+                "original_last_token_l2": 1.8004590642712162,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.837381731321927e-05,
+                    "log_probability": -9.748643102339436,
+                    "rank": 4781,
+                    "logit": -0.3094036877155304
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.590719304029261e-05,
+                    "log_probability": -10.234572919300724,
+                    "rank": 7640,
+                    "logit": -0.7953335046768188
+                },
+                "logit_margin": 0.48592981696128845,
+                "probability_ratio": 1.6256858966312446,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": 0.0051194727420806885,
+                "absolute_logit_margin_delta": 0.0051194727420806885,
+                "preferred_rank_delta": -76,
+                "comparison_rank_delta": -47,
+                "causal_direction": "suppresses_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.00017941722047874493,
+                    "probability_l1_distance": 0.015226880872303922,
+                    "logit_l2_difference": 3.48993899428509,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 3,
+            "head_id": "L4H3",
+            "attention_focus_mass": 0.29435719549655914,
+            "intervention": {
+                "head": 3,
+                "scale": 0.0,
+                "original_last_token_l2": 1.854390872071278,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "probability": 5.760631989567904e-05,
+                    "log_probability": -9.761878275870178,
+                    "rank": 4830,
+                    "logit": -0.3239472210407257
+                },
+                "comparison": {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "probability": 3.579120160465019e-05,
+                    "log_probability": -10.237808459996078,
+                    "rank": 7627,
+                    "logit": -0.799877405166626
+                },
+                "logit_margin": 0.47593018412590027,
+                "probability_ratio": 1.609510642643373,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.004880160093307495,
+                "absolute_logit_margin_delta": 0.004880160093307495,
+                "preferred_rank_delta": -27,
+                "comparison_rank_delta": -60,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 9.927078977971801e-05,
+                    "probability_l1_distance": 0.011267935294488649,
+                    "logit_l2_difference": 2.384928904625955,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            }
+        }
+    ],
+    "rankings": {
+        "by_absolute_causal_margin_effect": [
+            {
+                "rank": 1,
+                "head_id": "L4H0",
+                "focus_mass": 0.15244031230031396,
+                "margin_delta": 0.012624263763427734,
+                "causal_direction": "suppresses_preferred_margin"
+            },
+            {
+                "rank": 2,
+                "head_id": "L4H2",
+                "focus_mass": 0.5489282086491585,
+                "margin_delta": 0.0051194727420806885,
+                "causal_direction": "suppresses_preferred_margin"
+            },
+            {
+                "rank": 3,
+                "head_id": "L4H1",
+                "focus_mass": 0.9704984591562731,
+                "margin_delta": -0.005026668310165405,
+                "causal_direction": "supports_preferred_margin"
+            },
+            {
+                "rank": 4,
+                "head_id": "L4H3",
+                "focus_mass": 0.29435719549655914,
+                "margin_delta": -0.004880160093307495,
+                "causal_direction": "supports_preferred_margin"
+            }
+        ],
+        "by_attention_focus_mass": [
+            {
+                "rank": 1,
+                "head_id": "L4H1",
+                "focus_mass": 0.9704984591562731,
+                "margin_delta": -0.005026668310165405
+            },
+            {
+                "rank": 2,
+                "head_id": "L4H2",
+                "focus_mass": 0.5489282086491585,
+                "margin_delta": 0.0051194727420806885
+            },
+            {
+                "rank": 3,
+                "head_id": "L4H3",
+                "focus_mass": 0.29435719549655914,
+                "margin_delta": -0.004880160093307495
+            },
+            {
+                "rank": 4,
+                "head_id": "L4H0",
+                "focus_mass": 0.15244031230031396,
+                "margin_delta": 0.012624263763427734
+            }
+        ]
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_2_arithmetic_score.json",
+        "attention_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_5_arithmetic_attention.json",
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/l6_8_block4_head_ablation.json"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "control_forward_matches_gpt": true,
+        "head_count_positive": true,
+        "all_head_ablations_zeroed": true,
+        "measurements_finite": true
+    }
+}

@@ -1,0 +1,161 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-09T02:28:40.482958+00:00",
+    "tool": {
+        "name": "attention_head_ablation",
+        "version": "0.1",
+        "permission_level": "P3",
+        "evidence_level": "E3"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Paris is in",
+        "prompt_token_ids": [
+            1224,
+            291,
+            13240
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            1224,
+            291,
+            13240,
+            35
+        ]
+    },
+    "targets": {
+        "preferred_token_id": 4648,
+        "preferred_token_text": "Franc",
+        "comparison_token_id": 7316,
+        "comparison_token_text": "London"
+    },
+    "layer": 0,
+    "heads_tested": [
+        1
+    ],
+    "baseline": {
+        "preferred": {
+            "token_id": 4648,
+            "token_text": "Franc",
+            "probability": 0.00013609141324629848,
+            "log_probability": -8.90218374180126,
+            "rank": 1509,
+            "logit": 0.5785714983940125
+        },
+        "comparison": {
+            "token_id": 7316,
+            "token_text": "London",
+            "probability": 9.182408835191845e-05,
+            "log_probability": -9.295635894411085,
+            "rank": 2593,
+            "logit": 0.18511934578418732
+        },
+        "logit_margin": 0.39345215260982513,
+        "probability_ratio": 1.4820883679751247,
+        "preferred_wins": true
+    },
+    "control_verification": {
+        "head": 1,
+        "scale": 1.0,
+        "exact": true,
+        "max_absolute_difference": 0.0
+    },
+    "results": [
+        {
+            "layer": 0,
+            "head": 1,
+            "head_id": "L0H1",
+            "attention_focus_mass": null,
+            "intervention": {
+                "head": 1,
+                "scale": 0.0,
+                "original_last_token_l2": 2.540320582902855,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 4648,
+                    "token_text": "Franc",
+                    "probability": 0.00011460543630195731,
+                    "log_probability": -9.074015317618889,
+                    "rank": 2040,
+                    "logit": 0.43295422196388245
+                },
+                "comparison": {
+                    "token_id": 7316,
+                    "token_text": "London",
+                    "probability": 8.792203944833445e-05,
+                    "log_probability": -9.339060051500839,
+                    "rank": 2916,
+                    "logit": 0.16790948808193207
+                },
+                "logit_margin": 0.2650447338819504,
+                "probability_ratio": 1.3034892846099504,
+                "preferred_wins": true
+            },
+            "effect": {
+                "logit_margin_delta": -0.12840741872787476,
+                "absolute_logit_margin_delta": 0.12840741872787476,
+                "preferred_rank_delta": 531,
+                "comparison_rank_delta": 323,
+                "causal_direction": "supports_preferred_margin",
+                "preferred_still_wins": true,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.025999117900184783,
+                    "probability_l1_distance": 0.1755265714183988,
+                    "logit_l2_difference": 24.161497299231744,
+                    "baseline_top1_token_id": 86,
+                    "intervention_top1_token_id": 86,
+                    "top1_changed": false
+                }
+            }
+        }
+    ],
+    "rankings": {
+        "by_absolute_causal_margin_effect": [
+            {
+                "rank": 1,
+                "head_id": "L0H1",
+                "focus_mass": null,
+                "margin_delta": -0.12840741872787476,
+                "causal_direction": "supports_preferred_margin"
+            }
+        ],
+        "by_attention_focus_mass": []
+    },
+    "artifacts": {
+        "scorer_artifact": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c04_score.json",
+        "attention_artifact": null,
+        "json": "/Users/steevecelestin/Documents/MathGPT Project/laboratory/artifacts/exp_0002_systematic/c04_l0h1_ablation.json"
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "control_forward_matches_gpt": true,
+        "head_count_positive": true,
+        "all_head_ablations_zeroed": true,
+        "measurements_finite": true
+    }
+}

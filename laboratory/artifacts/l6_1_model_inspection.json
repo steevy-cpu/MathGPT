@@ -1,0 +1,73 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-08T13:20:10.123351+00:00",
+    "tool": {
+        "name": "model_inspector",
+        "version": "0.1",
+        "permission_level": "P0",
+        "evidence_level": "E1"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining/general_pretraining_short_v0.1_20261105_112710/mathgpt_step_001000.npz",
+        "checkpoint_name": "mathgpt_step_001000.npz",
+        "checkpoint_sha256": "d6563949b9e3a8b429d0d916ab0544ea7dc11cd03a6e4debcd40f125410d00bb",
+        "training_step": 1000,
+        "tokens_seen": 1024000,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "architecture": {
+        "architecture": "decoder_only_gpt",
+        "normalization": "pre_layernorm",
+        "activation": "gelu",
+        "position_embedding": "learned",
+        "tie_embeddings": true,
+        "use_bias": true,
+        "dropout": 0.0,
+        "dtype": "float32"
+    },
+    "parameters": {
+        "array_count": 84,
+        "scalar_count": 8110848,
+        "all_finite": true,
+        "dtype_array_counts": {
+            "float32": 84
+        }
+    },
+    "forward_verification": {
+        "prompt": "Two plus two equals",
+        "exact": true,
+        "max_absolute_difference": 0.0,
+        "logit_shape": [
+            1,
+            5,
+            16000
+        ]
+    },
+    "checks": {
+        "parameter_count": true,
+        "checkpoint_parameter_count": true,
+        "vocab_size": true,
+        "context_length": true,
+        "d_model": true,
+        "num_layers": true,
+        "num_heads": true,
+        "d_ff": true,
+        "all_parameters_finite": true,
+        "parameter_traversal_count": true,
+        "lab_trace_matches_gpt_forward": true
+    }
+}

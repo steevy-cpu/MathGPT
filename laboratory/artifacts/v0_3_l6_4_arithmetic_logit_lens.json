@@ -1,0 +1,870 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-10T11:46:43.883986+00:00",
+    "tool": {
+        "name": "layerwise_logit_lens",
+        "version": "0.1",
+        "permission_level": "P2",
+        "evidence_level": "E2"
+    },
+    "status": "success",
+    "model": {
+        "checkpoint_path": "/Users/steevecelestin/Documents/MathGPT Project/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "input": {
+        "prompt": "Two plus two equals",
+        "prompt_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118
+        ],
+        "appended_token_ids": [
+            35
+        ],
+        "context_token_ids": [
+            6498,
+            5912,
+            722,
+            5001,
+            118,
+            35
+        ]
+    },
+    "targets": [
+        {
+            "target_index": 0,
+            "token_id": 3996,
+            "token_text": "four",
+            "preferred": true
+        },
+        {
+            "target_index": 1,
+            "token_id": 11563,
+            "token_text": "fiv",
+            "preferred": false
+        }
+    ],
+    "logit_lens": {
+        "method": "Intermediate residual streams are passed through the trained final LayerNorm and the tied token-embedding output projection.",
+        "stages": [
+            {
+                "stage": "embedding",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 10161,
+                        "probability": 3.190297143964196e-22,
+                        "log_probability": -49.49675798483219,
+                        "logit": -3.8671841621398926
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 1795,
+                        "probability": 2.7930909731785504e-20,
+                        "log_probability": -45.02455300159779,
+                        "logit": 0.6050208210945129
+                    }
+                ],
+                "target_winner_index": 1,
+                "target_winner_token_id": 11563,
+                "target_winner_text": "fiv",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": -4.4722049832344055,
+                        "log_probability_margin": -4.4722049832344055,
+                        "probability_ratio": 0.011422102518678878,
+                        "preferred_wins": false
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "logit": 45.629573822021484,
+                        "probability": 0.9999999993291835
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 11365,
+                        "token_text": " to ",
+                        "logit": 24.04246711730957,
+                        "probability": 4.215398897407122e-10
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 15518,
+                        "token_text": " The ",
+                        "logit": 23.388090133666992,
+                        "probability": 2.1910201141336115e-10
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 9536,
+                        "token_text": " is ",
+                        "logit": 20.944997787475586,
+                        "probability": 1.9038154187153588e-11
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 7850,
+                        "token_text": " B",
+                        "logit": 20.40424156188965,
+                        "probability": 1.1086064344752875e-11
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 579,
+                        "token_text": " and ",
+                        "logit": 14.739102363586426,
+                        "probability": 3.840950426249828e-14
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 602,
+                        "token_text": " (",
+                        "logit": 13.152741432189941,
+                        "probability": 7.861237245389675e-15
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 484,
+                        "token_text": "  ",
+                        "logit": 11.440640449523926,
+                        "probability": 1.4188448033254742e-15
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 269,
+                        "token_text": ", ",
+                        "logit": 10.103616714477539,
+                        "probability": 3.7262575034820027e-16
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 13593,
+                        "token_text": " and a ",
+                        "logit": 10.070658683776855,
+                        "probability": 3.6054491325753e-16
+                    }
+                ]
+            },
+            {
+                "stage": "block_0",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 819,
+                        "probability": 0.00013717414202500607,
+                        "log_probability": -8.894259329640537,
+                        "logit": 0.670525848865509
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 3423,
+                        "probability": 1.6026524547771855e-05,
+                        "log_probability": -11.041265424096256,
+                        "logit": -1.47648024559021
+                    }
+                ],
+                "target_winner_index": 0,
+                "target_winner_token_id": 3996,
+                "target_winner_text": "four",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": 2.147006094455719,
+                        "log_probability_margin": 2.147006094455719,
+                        "probability_ratio": 8.559194578719639,
+                        "preferred_wins": true
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 534,
+                        "token_text": "but ",
+                        "logit": 6.490062713623047,
+                        "probability": 0.046202449404657
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 262,
+                        "token_text": "in",
+                        "logit": 6.226513385772705,
+                        "probability": 0.03549825307972715
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 5.961431980133057,
+                        "probability": 0.027232254027222392
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 359,
+                        "token_text": "de",
+                        "logit": 5.688275337219238,
+                        "probability": 0.02072302576160579
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 423,
+                        "token_text": "tr",
+                        "logit": 5.678656101226807,
+                        "probability": 0.02052464176725567
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 290,
+                        "token_text": "at",
+                        "logit": 5.662962436676025,
+                        "probability": 0.02020504927241111
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 119,
+                        "token_text": "t",
+                        "logit": 5.192505359649658,
+                        "probability": 0.012622430884110334
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 410,
+                        "token_text": "sp",
+                        "logit": 5.093796730041504,
+                        "probability": 0.011436006359075676
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 343,
+                        "token_text": "for ",
+                        "logit": 4.899418830871582,
+                        "probability": 0.009415798136209238
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 1239,
+                        "token_text": "them",
+                        "logit": 4.795490264892578,
+                        "probability": 0.008486361669049173
+                    }
+                ]
+            },
+            {
+                "stage": "block_1",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 888,
+                        "probability": 0.00011390338615024269,
+                        "log_probability": -9.080159958802533,
+                        "logit": 0.32823851704597473
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 3185,
+                        "probability": 1.9206729533590163e-05,
+                        "log_probability": -10.860249843798947,
+                        "logit": -1.4518513679504395
+                    }
+                ],
+                "target_winner_index": 0,
+                "target_winner_token_id": 3996,
+                "target_winner_text": "four",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": 1.7800898849964142,
+                        "log_probability_margin": 1.7800898849964142,
+                        "probability_ratio": 5.930389447669367,
+                        "preferred_wins": true
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 262,
+                        "token_text": "in",
+                        "logit": 6.291842937469482,
+                        "probability": 0.04430952833991713
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 423,
+                        "token_text": "tr",
+                        "logit": 6.012695789337158,
+                        "probability": 0.0335169939558412
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 322,
+                        "token_text": "on ",
+                        "logit": 5.892085552215576,
+                        "probability": 0.02970877198851657
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 337,
+                        "token_text": "un",
+                        "logit": 5.63184118270874,
+                        "probability": 0.022901398666673355
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 359,
+                        "token_text": "de",
+                        "logit": 5.414890766143799,
+                        "probability": 0.018434936170606483
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 343,
+                        "token_text": "for ",
+                        "logit": 5.413212776184082,
+                        "probability": 0.01840402847146071
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 268,
+                        "token_text": "the ",
+                        "logit": 5.320256233215332,
+                        "probability": 0.01677035989667892
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 292,
+                        "token_text": "in ",
+                        "logit": 5.2323431968688965,
+                        "probability": 0.015358975096461985
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 534,
+                        "token_text": "but ",
+                        "logit": 5.147770404815674,
+                        "probability": 0.014113435385955216
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 5.0875091552734375,
+                        "probability": 0.013288060940184351
+                    }
+                ]
+            },
+            {
+                "stage": "block_2",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 2505,
+                        "probability": 2.700387456143946e-05,
+                        "log_probability": -10.519530199979876,
+                        "logit": -1.289139986038208
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 4509,
+                        "probability": 9.56778774996633e-06,
+                        "log_probability": -11.557108544324969,
+                        "logit": -2.326718330383301
+                    }
+                ],
+                "target_winner_index": 0,
+                "target_winner_token_id": 3996,
+                "target_winner_text": "four",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": 1.0375783443450928,
+                        "log_probability_margin": 1.0375783443450928,
+                        "probability_ratio": 2.822373914130201,
+                        "preferred_wins": true
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 262,
+                        "token_text": "in",
+                        "logit": 5.868462085723877,
+                        "probability": 0.03466834943759831
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 301,
+                        "token_text": "or ",
+                        "logit": 5.463519096374512,
+                        "probability": 0.023124303439622317
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 292,
+                        "token_text": "in ",
+                        "logit": 5.419418811798096,
+                        "probability": 0.02212667461489525
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 337,
+                        "token_text": "un",
+                        "logit": 5.35854434967041,
+                        "probability": 0.0208199032189558
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 322,
+                        "token_text": "on ",
+                        "logit": 5.326092720031738,
+                        "probability": 0.02015510860557215
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 102,
+                        "token_text": "c",
+                        "logit": 5.232743740081787,
+                        "probability": 0.018358795989393162
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 268,
+                        "token_text": "the ",
+                        "logit": 5.1296067237854,
+                        "probability": 0.016559695959017722
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 5.05108118057251,
+                        "probability": 0.015309081977817688
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 534,
+                        "token_text": "but ",
+                        "logit": 4.935643672943115,
+                        "probability": 0.013640028447180845
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 569,
+                        "token_text": "on the ",
+                        "logit": 4.885379791259766,
+                        "probability": 0.012971373050568204
+                    }
+                ]
+            },
+            {
+                "stage": "block_3",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 3209,
+                        "probability": 7.414786565047418e-06,
+                        "log_probability": -11.812034367003431,
+                        "logit": -2.4415783882141113
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 3577,
+                        "probability": 5.85940938726077e-06,
+                        "log_probability": -12.047461746611585,
+                        "logit": -2.6770057678222656
+                    }
+                ],
+                "target_winner_index": 0,
+                "target_winner_token_id": 3996,
+                "target_winner_text": "four",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": 0.2354273796081543,
+                        "log_probability_margin": 0.2354273796081543,
+                        "probability_ratio": 1.2654494804831815,
+                        "preferred_wins": true
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 7.584170341491699,
+                        "probability": 0.16758147345352317
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 119,
+                        "token_text": "t",
+                        "logit": 5.888236045837402,
+                        "probability": 0.030739096500731665
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 270,
+                        "token_text": "en",
+                        "logit": 5.727612495422363,
+                        "probability": 0.026177801892076333
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 268,
+                        "token_text": "the ",
+                        "logit": 5.533885955810547,
+                        "probability": 0.0215674504818267
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 345,
+                        "token_text": "em",
+                        "logit": 5.259546756744385,
+                        "probability": 0.01639286299595834
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 262,
+                        "token_text": "in",
+                        "logit": 5.176563739776611,
+                        "probability": 0.015087446492966824
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 292,
+                        "token_text": "in ",
+                        "logit": 5.111691951751709,
+                        "probability": 0.014139767985375567
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 357,
+                        "token_text": "are ",
+                        "logit": 5.092164039611816,
+                        "probability": 0.013866326399558187
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 122,
+                        "token_text": "w",
+                        "logit": 5.088046073913574,
+                        "probability": 0.01380934275196292
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 323,
+                        "token_text": "us",
+                        "logit": 5.087008953094482,
+                        "probability": 0.013795028219329873
+                    }
+                ]
+            },
+            {
+                "stage": "block_4",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 547,
+                        "probability": 0.00029888034039013157,
+                        "log_probability": -8.115467264038834,
+                        "logit": 1.390161156654358
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 293,
+                        "probability": 0.0005283744856479748,
+                        "log_probability": -7.545705272537979,
+                        "logit": 1.9599231481552124
+                    }
+                ],
+                "target_winner_index": 1,
+                "target_winner_token_id": 11563,
+                "target_winner_text": "fiv",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": -0.5697619915008545,
+                        "log_probability_margin": -0.5697619915008554,
+                        "probability_ratio": 0.5656600545796568,
+                        "preferred_wins": false
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "logit": 6.999863624572754,
+                        "probability": 0.08161315668529545
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 2406,
+                        "token_text": "equal ",
+                        "logit": 6.314070224761963,
+                        "probability": 0.0411077670534665
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 14693,
+                        "token_text": "each",
+                        "logit": 5.37734317779541,
+                        "probability": 0.016110480711777987
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 3093,
+                        "token_text": "win",
+                        "logit": 5.26395845413208,
+                        "probability": 0.014383551725191644
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 5.2330098152160645,
+                        "probability": 0.013945218274782666
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 549,
+                        "token_text": "x ",
+                        "logit": 5.173164367675781,
+                        "probability": 0.01313514189590202
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 4382,
+                        "token_text": "percent",
+                        "logit": 5.015013694763184,
+                        "probability": 0.011213748308526747
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 4001,
+                        "token_text": "vot",
+                        "logit": 4.975998878479004,
+                        "probability": 0.010784670597986361
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 13104,
+                        "token_text": "ratio",
+                        "logit": 4.780324935913086,
+                        "probability": 0.008868022191736335
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 5250,
+                        "token_text": "match",
+                        "logit": 4.759184837341309,
+                        "probability": 0.008682519014645135
+                    }
+                ]
+            },
+            {
+                "stage": "final_layernorm",
+                "targets": [
+                    {
+                        "target_index": 0,
+                        "token_id": 3996,
+                        "token_text": "four",
+                        "rank": 547,
+                        "probability": 0.00029888034039013157,
+                        "log_probability": -8.115467264038834,
+                        "logit": 1.390161156654358
+                    },
+                    {
+                        "target_index": 1,
+                        "token_id": 11563,
+                        "token_text": "fiv",
+                        "rank": 293,
+                        "probability": 0.0005283744856479748,
+                        "log_probability": -7.545705272537979,
+                        "logit": 1.9599231481552124
+                    }
+                ],
+                "target_winner_index": 1,
+                "target_winner_token_id": 11563,
+                "target_winner_text": "fiv",
+                "pairwise_against_preferred": [
+                    {
+                        "preferred_target_index": 0,
+                        "comparison_target_index": 1,
+                        "logit_margin": -0.5697619915008545,
+                        "log_probability_margin": -0.5697619915008554,
+                        "probability_ratio": 0.5656600545796568,
+                        "preferred_wins": false
+                    }
+                ],
+                "top_tokens": [
+                    {
+                        "rank": 1,
+                        "token_id": 5001,
+                        "token_text": "equal",
+                        "logit": 6.999863624572754,
+                        "probability": 0.08161315668529545
+                    },
+                    {
+                        "rank": 2,
+                        "token_id": 2406,
+                        "token_text": "equal ",
+                        "logit": 6.314070224761963,
+                        "probability": 0.0411077670534665
+                    },
+                    {
+                        "rank": 3,
+                        "token_id": 14693,
+                        "token_text": "each",
+                        "logit": 5.37734317779541,
+                        "probability": 0.016110480711777987
+                    },
+                    {
+                        "rank": 4,
+                        "token_id": 3093,
+                        "token_text": "win",
+                        "logit": 5.26395845413208,
+                        "probability": 0.014383551725191644
+                    },
+                    {
+                        "rank": 5,
+                        "token_id": 280,
+                        "token_text": "of ",
+                        "logit": 5.2330098152160645,
+                        "probability": 0.013945218274782666
+                    },
+                    {
+                        "rank": 6,
+                        "token_id": 549,
+                        "token_text": "x ",
+                        "logit": 5.173164367675781,
+                        "probability": 0.01313514189590202
+                    },
+                    {
+                        "rank": 7,
+                        "token_id": 4382,
+                        "token_text": "percent",
+                        "logit": 5.015013694763184,
+                        "probability": 0.011213748308526747
+                    },
+                    {
+                        "rank": 8,
+                        "token_id": 4001,
+                        "token_text": "vot",
+                        "logit": 4.975998878479004,
+                        "probability": 0.010784670597986361
+                    },
+                    {
+                        "rank": 9,
+                        "token_id": 13104,
+                        "token_text": "ratio",
+                        "logit": 4.780324935913086,
+                        "probability": 0.008868022191736335
+                    },
+                    {
+                        "rank": 10,
+                        "token_id": 5250,
+                        "token_text": "match",
+                        "logit": 4.759184837341309,
+                        "probability": 0.008682519014645135
+                    }
+                ]
+            }
+        ]
+    },
+    "consistency": {
+        "last_block_name": "block_4",
+        "last_block_norm_exact": true,
+        "last_block_norm_max_difference": 0.0,
+        "final_logits_exact": true,
+        "final_logits_max_difference": 0.0,
+        "l6_2_crosscheck": {
+            "available": true,
+            "passed": true,
+            "details": [
+                {
+                    "token_id": 3996,
+                    "token_text": "four",
+                    "rank_matches": true,
+                    "scorer_rank": 547,
+                    "lens_rank": 547,
+                    "probability_matches": true,
+                    "probability_difference": 0.0
+                },
+                {
+                    "token_id": 11563,
+                    "token_text": "fiv",
+                    "rank_matches": true,
+                    "scorer_rank": 293,
+                    "lens_rank": 293,
+                    "probability_matches": true,
+                    "probability_difference": 0.0
+                }
+            ],
+            "checkpoint_matches": true,
+            "prompt_matches": true,
+            "shared_prefix_matches_appended_tokens": true
+        }
+    },
+    "checks": {
+        "checkpoint_identity_valid": true,
+        "target_count_at_least_two": true,
+        "target_statistics_finite": true,
+        "last_block_manual_norm_matches_final_norm": true,
+        "final_logit_lens_matches_model_logits": true,
+        "l6_2_crosscheck": true
+    }
+}

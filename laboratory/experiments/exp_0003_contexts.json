@@ -1,0 +1,58 @@
+{
+    "experiment_id": "EXP-0003",
+    "title": "L0H1 causal vocabulary signature similarity",
+    "target_layer": 0,
+    "target_head": 1,
+    "contexts": [
+        {
+            "id": "A01",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a01_score.json"
+        },
+        {
+            "id": "A02",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a02_score.json"
+        },
+        {
+            "id": "A03",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a03_score.json"
+        },
+        {
+            "id": "A04",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a04_score.json"
+        },
+        {
+            "id": "A05",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a05_score.json"
+        },
+        {
+            "id": "A06",
+            "category": "addition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/a06_score.json"
+        },
+        {
+            "id": "C01",
+            "category": "numeric_nonaddition",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/c01_score.json"
+        },
+        {
+            "id": "C02",
+            "category": "ordinary_language_two",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/c02_score.json"
+        },
+        {
+            "id": "C03",
+            "category": "numeric_no_two",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/c03_score.json"
+        },
+        {
+            "id": "C04",
+            "category": "language_control",
+            "scorer_artifact": "laboratory/artifacts/exp_0002_systematic/c04_score.json"
+        }
+    ]
+}
