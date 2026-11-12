@@ -1,0 +1,62 @@
+{
+    "stage": "L9E",
+    "intake_version": "L9E.1",
+    "created_at_utc": "2026-11-11T13:17:58.398333+00:00",
+    "experiment_id": "EXP-0005",
+    "finding_id": "FND-0007",
+    "evidence_record_id": "EVR-EXP-0005",
+    "result_relationship": "supports",
+    "source_result": {
+        "path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+        "sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "frozen_identity": {
+        "plan_sha256": "443e60280abbde735153512226f8552f14e6b7cb5fb5b1256919434f084a0d36",
+        "execution_spec_sha256": "db09e6340234e8ec655de4286c09cb81db6216eaab65b035286eebc7fcb1e18d",
+        "approval_sha256": "97ec8c888ba3a34e84e6a56eb164ea2bbc38feba7ca060bf356bb72791a714be"
+    },
+    "knowledge_integration": {
+        "experiment_status": "completed",
+        "evidence_level": "E3",
+        "hypothesis_id": "HYP-V03-002",
+        "hypothesis_status_mutated": false,
+        "last_completed_experiment": "EXP-0005",
+        "next_recommended_experiment": null
+    },
+    "integrated_state_checks": {
+        "knowledge_store_valid": true,
+        "exp_0005_completed": true,
+        "exp_0005_evidence_level_e3": true,
+        "finding_registered": true,
+        "evidence_record_registered": true,
+        "evidence_sha_matches_result": true,
+        "finding_relation_reciprocal": true,
+        "hypothesis_status_unchanged_active": true,
+        "last_completed_experiment_exp_0005": true,
+        "next_recommendation_cleared": true,
+        "exp_0005_in_ingested_experiments": true
+    },
+    "scientist_context": {
+        "path": "laboratory/knowledge/scientist_context.json",
+        "sha256": "2025618f28aba7dba660c8836a3d9654cef6dbdebc33d9ca13efb6414a5a8f32",
+        "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
+        "validation": {
+            "checks": {
+                "snapshot_version": true,
+                "knowledge_schema_version": true,
+                "knowledge_fingerprint_present": true,
+                "research_question_present": true,
+                "hypothesis_section_present": true,
+                "experiment_section_present": true,
+                "evidence_inventory_present": true,
+                "model_inventory_present": true,
+                "source_fingerprints_present": true,
+                "finding_model_scope_contract": true,
+                "handoff_checks_passed": true
+            },
+            "passed": true
+        }
+    },
+    "passed": true
+}

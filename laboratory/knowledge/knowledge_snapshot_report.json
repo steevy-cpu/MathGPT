@@ -1,19 +1,19 @@
 {
     "stage": "L7D",
     "snapshot_version": "L7D.1",
-    "created_at_utc": "2026-11-10T22:30:33.138308+00:00",
+    "created_at_utc": "2026-11-11T13:17:58.397939+00:00",
     "snapshot_path": "laboratory/knowledge/scientist_context.json",
-    "snapshot_sha256": "c032a5d6266e9d11e0ef86f7901cc70e21f39edad5fedd1bb4a2934c6ef37ad0",
-    "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd",
+    "snapshot_sha256": "2025618f28aba7dba660c8836a3d9654cef6dbdebc33d9ca13efb6414a5a8f32",
+    "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
     "knowledge_counts": {
         "hypotheses": 2,
-        "findings": 6,
+        "findings": 7,
         "experiments": 4,
-        "evidence_records": 3
+        "evidence_records": 4
     },
     "active_hypothesis_count": 1,
     "open_question_count": 7,
-    "next_recommended_experiment": "EXP-0005",
+    "next_recommended_experiment": null,
     "snapshot_validation": {
         "checks": {
             "snapshot_version": true,

@@ -1,0 +1,45 @@
+{
+    "approval_version": "P3A.1",
+    "boundary_version": "L9D.1",
+    "approval_id": "APR-0FCF072F6F243479",
+    "created_at_utc": "2026-11-11T12:55:39.347518+00:00",
+    "decision": "approved",
+    "permission": "P3",
+    "approved_by": "human",
+    "scope": "temporary_causal_intervention_only",
+    "binding": {
+        "experiment_id": "EXP-0005",
+        "plan_id": "PLAN-8F8884D2BE306398",
+        "execution_spec_id": "SPEC-75B00B21CC378004",
+        "execution_spec_sha256": "db09e6340234e8ec655de4286c09cb81db6216eaab65b035286eebc7fcb1e18d",
+        "source_plan_sha256": "443e60280abbde735153512226f8552f14e6b7cb5fb5b1256919434f084a0d36",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "approved_action": {
+        "experiment_id": "EXP-0005",
+        "hypothesis_id": "HYP-V03-002",
+        "intervention_type": "attention_head_ablation",
+        "baseline_scale": 1.0,
+        "ablation_scale": 0.0,
+        "target_heads": [
+            "L1H0",
+            "L4H0",
+            "L3H3",
+            "L4H1"
+        ],
+        "probe_count": 12,
+        "persistent_weight_modification": false
+    },
+    "checks": {
+        "explicit_human_approval": true,
+        "confirmation_phrase_verified": true,
+        "binding_verified_before_approval": true,
+        "checkpoint_verified_before_approval": true,
+        "source_plan_verified_before_approval": true,
+        "execution_spec_verified_before_approval": true,
+        "approval_does_not_execute_experiment": true,
+        "approval_does_not_mutate_knowledge_store": true,
+        "approval_does_not_change_model_weights": true
+    },
+    "note": "This artifact authorizes only the exact temporary P3 causal intervention bound above. It does not itself execute the experiment."
+}

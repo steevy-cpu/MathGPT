@@ -1,8 +1,8 @@
 {
     "snapshot_version": "L7D.1",
     "knowledge_schema_version": "L7.1",
-    "generated_at_utc": "2026-11-10T22:30:33.136841+00:00",
-    "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd",
+    "generated_at_utc": "2026-11-11T13:17:58.396281+00:00",
+    "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
     "program": {
         "name": "MathGPT AI Scientist Laboratory",
         "stage": "L7",
@@ -11,14 +11,14 @@
     },
     "research_focus": {
         "current_question": "What internal causal mechanisms govern numerical next-token decisions in mature MathGPT v0.3?",
-        "last_completed_experiment": "EXP-0004",
-        "next_recommended_experiment": "EXP-0005"
+        "last_completed_experiment": "EXP-0005",
+        "next_recommended_experiment": null
     },
     "knowledge_counts": {
         "hypotheses": 2,
-        "findings": 6,
+        "findings": 7,
         "experiments": 4,
-        "evidence_records": 3
+        "evidence_records": 4
     },
     "hypotheses": {
         "active": [
@@ -104,6 +104,51 @@
                             "causal-pattern",
                             "mature-v0.3"
                         ]
+                    },
+                    {
+                        "finding_id": "FND-0007",
+                        "title": "EXP-0005 preregistered four-versus-five causal replication",
+                        "statement": "Across 12 preregistered fixed four-versus-five contexts, intact L1H0 causally favored four in all 12 probes while intact L4H0 causally favored five in all 12 probes, including both four-correct and five-correct contexts. L4H1 also passed the preregistered weak-control criterion.",
+                        "finding_type": "preregistered_causal_replication",
+                        "evidence_level": "E3",
+                        "model_scope": {
+                            "model": "MathGPT-General-v0.3",
+                            "stage": "general_pretraining_v0.3_300m",
+                            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                            "training_step": 292969,
+                            "tokens_seen": 300000256
+                        },
+                        "source_experiment_id": "EXP-0005",
+                        "source_artifacts": [
+                            "laboratory/artifacts/exp_0005_fixed_four_five_summary.json"
+                        ],
+                        "metrics": {
+                            "probe_count": 12,
+                            "L1H0_four_support_count": 12,
+                            "L1H0_four_support_rate": 1.0,
+                            "L4H0_five_support_count": 12,
+                            "L4H0_five_support_rate": 1.0,
+                            "L1H0_mean_delta": -1.0733899405846994,
+                            "L4H0_mean_delta": 0.4416076249132554,
+                            "L4H1_mean_absolute_delta": 0.034993128230174385,
+                            "L1H0_primary_test_pass": true,
+                            "L4H0_primary_test_pass": true,
+                            "L4H1_weak_control_pass": true,
+                            "primary_outcome_label": "supports_fixed_four_five_direction_hypothesis"
+                        },
+                        "supports_hypotheses": [
+                            "HYP-V03-002"
+                        ],
+                        "weakens_hypotheses": [],
+                        "tags": [
+                            "four-vs-five",
+                            "causal-replication",
+                            "preregistered",
+                            "attention-heads",
+                            "mature-v0.3",
+                            "EXP-0005"
+                        ]
                     }
                 ],
                 "weakening_findings": [],
@@ -152,13 +197,15 @@
                         "experiment_id": "EXP-0005",
                         "title": "Fixed four-vs-five causal context transfer",
                         "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-                        "status": "planned",
-                        "evidence_level": null,
-                        "summary_artifact": null,
+                        "status": "completed",
+                        "evidence_level": "E3",
+                        "summary_artifact": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
                         "hypothesis_ids": [
                             "HYP-V03-002"
                         ],
-                        "finding_ids": [],
+                        "finding_ids": [
+                            "FND-0007"
+                        ],
                         "model_scope": {
                             "model": "MathGPT-General-v0.3",
                             "stage": "general_pretraining_v0.3_300m",
@@ -167,8 +214,20 @@
                             "training_step": 292969,
                             "tokens_seen": 300000256
                         },
-                        "artifact_ingestion": null,
-                        "verified_evidence": null
+                        "artifact_ingestion": {
+                            "status": "verified",
+                            "evidence_record_id": "EVR-EXP-0005",
+                            "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+                            "adapter": "exp_0005_v1",
+                            "ingested_at_utc": "2026-11-11T13:17:58.385843+00:00"
+                        },
+                        "verified_evidence": {
+                            "evidence_record_id": "EVR-EXP-0005",
+                            "artifact_path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+                            "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                            "extraction_adapter": "exp_0005_v1"
+                        }
                     }
                 ]
             }
@@ -471,20 +530,20 @@
                     "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
                     "extraction_adapter": "exp_0004_v1"
                 }
-            }
-        ],
-        "planned": [
+            },
             {
                 "experiment_id": "EXP-0005",
                 "title": "Fixed four-vs-five causal context transfer",
                 "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-                "status": "planned",
-                "evidence_level": null,
-                "summary_artifact": null,
+                "status": "completed",
+                "evidence_level": "E3",
+                "summary_artifact": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
                 "hypothesis_ids": [
                     "HYP-V03-002"
                 ],
-                "finding_ids": [],
+                "finding_ids": [
+                    "FND-0007"
+                ],
                 "model_scope": {
                     "model": "MathGPT-General-v0.3",
                     "stage": "general_pretraining_v0.3_300m",
@@ -493,32 +552,24 @@
                     "training_step": 292969,
                     "tokens_seen": 300000256
                 },
-                "artifact_ingestion": null,
-                "verified_evidence": null
+                "artifact_ingestion": {
+                    "status": "verified",
+                    "evidence_record_id": "EVR-EXP-0005",
+                    "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+                    "adapter": "exp_0005_v1",
+                    "ingested_at_utc": "2026-11-11T13:17:58.385843+00:00"
+                },
+                "verified_evidence": {
+                    "evidence_record_id": "EVR-EXP-0005",
+                    "artifact_path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+                    "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "extraction_adapter": "exp_0005_v1"
+                }
             }
         ],
-        "next_recommended": {
-            "experiment_id": "EXP-0005",
-            "title": "Fixed four-vs-five causal context transfer",
-            "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-            "status": "planned",
-            "evidence_level": null,
-            "summary_artifact": null,
-            "hypothesis_ids": [
-                "HYP-V03-002"
-            ],
-            "finding_ids": [],
-            "model_scope": {
-                "model": "MathGPT-General-v0.3",
-                "stage": "general_pretraining_v0.3_300m",
-                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
-                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                "training_step": 292969,
-                "tokens_seen": 300000256
-            },
-            "artifact_ingestion": null,
-            "verified_evidence": null
-        }
+        "planned": [],
+        "next_recommended": null
     },
     "evidence_inventory": [
         {
@@ -547,6 +598,15 @@
             "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
             "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
             "extraction_adapter": "exp_0004_v1"
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0005",
+            "experiment_id": "EXP-0005",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+            "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "extraction_adapter": "exp_0005_v1"
         }
     ],
     "model_inventory": [
@@ -582,7 +642,8 @@
                 "FND-0003",
                 "FND-0004",
                 "FND-0005",
-                "FND-0006"
+                "FND-0006",
+                "FND-0007"
             ],
             "hypothesis_ids": [
                 "HYP-V03-001",
@@ -593,28 +654,28 @@
     "source_fingerprints": {
         "hypotheses": {
             "path": "laboratory/knowledge/hypotheses.json",
-            "sha256": "9207cd4528ff599bccc88a53a7dc8eb6204fa5c6d5f1426087a34545db69b61c",
-            "size_bytes": 3934
+            "sha256": "551dbf6cf60aaba04ca15dcb21d6a502139b78bd7fba0fb82ba443430d94c1e0",
+            "size_bytes": 3962
         },
         "findings": {
             "path": "laboratory/knowledge/findings.json",
-            "sha256": "61f8af75157b6953970192ebc879fde8c7b5ac847cfb9f01373224c8fb27dd67",
-            "size_bytes": 10731
+            "sha256": "ef40464cb8c4233a0b320cb3d7b1f42cfb95f6fa3f4917fdc20204ff60be236d",
+            "size_bytes": 13013
         },
         "experiments": {
             "path": "laboratory/knowledge/experiment_registry.json",
-            "sha256": "ee39880b9931a55906c7d2079363dd373e6638c6b5d0cb53484b34e09552312a",
-            "size_bytes": 5498
+            "sha256": "61f38d9ce437e9f330e6d95eaace36afb6a03bc5a2a3539f4455b069af07f86f",
+            "size_bytes": 5954
         },
         "research_state": {
             "path": "laboratory/knowledge/research_state.json",
-            "sha256": "0c67da0deae60755499cd9f2ba7815da97718b1a4b4c0ecae13ad99ce2337bcf",
-            "size_bytes": 1980
+            "sha256": "08b26b7d044fa4742341fa2967ff7f2b60f650ec3a199287070a91381b092a04",
+            "size_bytes": 1998
         },
         "evidence_ledger": {
             "path": "laboratory/knowledge/evidence_ledger.json",
-            "sha256": "b346409930d8b0b9b8486533c63a5f76723c1ca4c0071b1e51f0a51724cd28c1",
-            "size_bytes": 14005
+            "sha256": "b02e2a355d04eaa2685df9185fce3054113a27428832f753295ce45f34fec336",
+            "size_bytes": 40465
         }
     },
     "scientist_handoff_contract": {

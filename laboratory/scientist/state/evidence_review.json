@@ -1,11 +1,11 @@
 {
     "engine_version": "L8A.1",
-    "created_at_utc": "2026-11-10T22:31:51.647054+00:00",
+    "created_at_utc": "2026-11-11T13:21:06.763216+00:00",
     "mode": "deterministic_qualitative_evidence_review",
     "scientist_context": {
         "path": "laboratory/knowledge/scientist_context.json",
-        "sha256": "c032a5d6266e9d11e0ef86f7901cc70e21f39edad5fedd1bb4a2934c6ef37ad0",
-        "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd",
+        "sha256": "2025618f28aba7dba660c8836a3d9654cef6dbdebc33d9ca13efb6414a5a8f32",
+        "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
         "snapshot_version": "L7D.1"
     },
     "policy": {
@@ -38,13 +38,13 @@
             },
             "evidence_profile": {
                 "classification": "support_only",
-                "supporting_count": 1,
+                "supporting_count": 2,
                 "weakening_count": 0,
                 "supporting_by_level": {
                     "E0": 0,
                     "E1": 0,
                     "E2": 0,
-                    "E3": 1
+                    "E3": 2
                 },
                 "weakening_by_level": {
                     "E0": 0,
@@ -114,6 +114,68 @@
                         "evidence_record_id": "EVR-EXP-0004",
                         "artifact_path": "laboratory/artifacts/exp_0004_competing_heads_summary.json",
                         "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
+                        "finding_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                        "experiment_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                        "evidence_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                        "hypothesis_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                        "experiment_completed": true,
+                        "evidence_verified": true,
+                        "checkpoint_consistent": true,
+                        "provenance_complete": true
+                    }
+                },
+                {
+                    "finding": {
+                        "finding_id": "FND-0007",
+                        "title": "EXP-0005 preregistered four-versus-five causal replication",
+                        "statement": "Across 12 preregistered fixed four-versus-five contexts, intact L1H0 causally favored four in all 12 probes while intact L4H0 causally favored five in all 12 probes, including both four-correct and five-correct contexts. L4H1 also passed the preregistered weak-control criterion.",
+                        "finding_type": "preregistered_causal_replication",
+                        "evidence_level": "E3",
+                        "model_scope": {
+                            "model": "MathGPT-General-v0.3",
+                            "stage": "general_pretraining_v0.3_300m",
+                            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                            "training_step": 292969,
+                            "tokens_seen": 300000256
+                        },
+                        "source_experiment_id": "EXP-0005",
+                        "source_artifacts": [
+                            "laboratory/artifacts/exp_0005_fixed_four_five_summary.json"
+                        ],
+                        "metrics": {
+                            "probe_count": 12,
+                            "L1H0_four_support_count": 12,
+                            "L1H0_four_support_rate": 1.0,
+                            "L4H0_five_support_count": 12,
+                            "L4H0_five_support_rate": 1.0,
+                            "L1H0_mean_delta": -1.0733899405846994,
+                            "L4H0_mean_delta": 0.4416076249132554,
+                            "L4H1_mean_absolute_delta": 0.034993128230174385,
+                            "L1H0_primary_test_pass": true,
+                            "L4H0_primary_test_pass": true,
+                            "L4H1_weak_control_pass": true,
+                            "primary_outcome_label": "supports_fixed_four_five_direction_hypothesis"
+                        },
+                        "supports_hypotheses": [
+                            "HYP-V03-002"
+                        ],
+                        "weakens_hypotheses": [],
+                        "tags": [
+                            "four-vs-five",
+                            "causal-replication",
+                            "preregistered",
+                            "attention-heads",
+                            "mature-v0.3",
+                            "EXP-0005"
+                        ]
+                    },
+                    "provenance": {
+                        "experiment_id": "EXP-0005",
+                        "experiment_status": "completed",
+                        "evidence_record_id": "EVR-EXP-0005",
+                        "artifact_path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+                        "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
                         "finding_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
                         "experiment_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
                         "evidence_checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",

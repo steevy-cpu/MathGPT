@@ -1,7 +1,7 @@
 {
     "schema_version": "L7.1",
     "collection": "findings",
-    "updated_at_utc": "2026-11-10T22:02:07.657926+00:00",
+    "updated_at_utc": "2026-11-11T13:17:58.385843+00:00",
     "records": [
         {
             "finding_id": "FND-0001",
@@ -225,6 +225,52 @@
                 "mature-v0.3"
             ],
             "created_at_utc": "2026-11-10T22:02:07.657926+00:00"
+        },
+        {
+            "finding_id": "FND-0007",
+            "title": "EXP-0005 preregistered four-versus-five causal replication",
+            "statement": "Across 12 preregistered fixed four-versus-five contexts, intact L1H0 causally favored four in all 12 probes while intact L4H0 causally favored five in all 12 probes, including both four-correct and five-correct contexts. L4H1 also passed the preregistered weak-control criterion.",
+            "finding_type": "preregistered_causal_replication",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "evidence_level": "E3",
+            "source_experiment_id": "EXP-0005",
+            "source_artifacts": [
+                "laboratory/artifacts/exp_0005_fixed_four_five_summary.json"
+            ],
+            "metrics": {
+                "probe_count": 12,
+                "L1H0_four_support_count": 12,
+                "L1H0_four_support_rate": 1.0,
+                "L4H0_five_support_count": 12,
+                "L4H0_five_support_rate": 1.0,
+                "L1H0_mean_delta": -1.0733899405846994,
+                "L4H0_mean_delta": 0.4416076249132554,
+                "L4H1_mean_absolute_delta": 0.034993128230174385,
+                "L1H0_primary_test_pass": true,
+                "L4H0_primary_test_pass": true,
+                "L4H1_weak_control_pass": true,
+                "primary_outcome_label": "supports_fixed_four_five_direction_hypothesis"
+            },
+            "supports_hypotheses": [
+                "HYP-V03-002"
+            ],
+            "weakens_hypotheses": [],
+            "tags": [
+                "four-vs-five",
+                "causal-replication",
+                "preregistered",
+                "attention-heads",
+                "mature-v0.3",
+                "EXP-0005"
+            ],
+            "created_at_utc": "2026-11-11T13:17:58.385843+00:00"
         }
     ]
 }

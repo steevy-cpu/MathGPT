@@ -1,7 +1,7 @@
 {
     "schema_version": "L7.1",
     "collection": "evidence_ledger",
-    "updated_at_utc": "2026-11-10T22:06:14.159918+00:00",
+    "updated_at_utc": "2026-11-11T13:17:58.385843+00:00",
     "records": [
         {
             "evidence_record_id": "EVR-EXP-0002",
@@ -278,6 +278,520 @@
                     "all_selected_probes_completed": true,
                     "expected_effect_record_count": true,
                     "all_effects_finite": true
+                }
+            }
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0005",
+            "experiment_id": "EXP-0005",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0005_fixed_four_five_summary.json",
+            "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "source_created_at_utc": "2026-11-11T12:59:56.822967+00:00",
+            "ingested_at_utc": "2026-11-11T13:17:58.385843+00:00",
+            "extraction_adapter": "exp_0005_v1",
+            "facts": {
+                "plan_id": "PLAN-8F8884D2BE306398",
+                "execution_spec_id": "SPEC-75B00B21CC378004",
+                "execution_spec_sha256": "db09e6340234e8ec655de4286c09cb81db6216eaab65b035286eebc7fcb1e18d",
+                "approval_id": "APR-0FCF072F6F243479",
+                "probe_count": 12,
+                "head_count": 4,
+                "heads": [
+                    {
+                        "layer": 1,
+                        "head": 0,
+                        "head_id": "L1H0",
+                        "role": "primary_four_direction_candidate"
+                    },
+                    {
+                        "layer": 4,
+                        "head": 0,
+                        "head_id": "L4H0",
+                        "role": "primary_five_direction_candidate"
+                    },
+                    {
+                        "layer": 3,
+                        "head": 3,
+                        "head_id": "L3H3",
+                        "role": "secondary_context_sensitive_candidate"
+                    },
+                    {
+                        "layer": 4,
+                        "head": 1,
+                        "head_id": "L4H1",
+                        "role": "weak_control"
+                    }
+                ],
+                "head_summaries": {
+                    "L1H0": {
+                        "role": "primary_four_direction_candidate",
+                        "all": {
+                            "count": 12,
+                            "mean_delta": -1.0733899405846994,
+                            "median_delta": -1.0567123889923096,
+                            "mean_absolute_delta": 1.0733899405846994,
+                            "four_support_count": 12,
+                            "five_support_count": 0,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 1.0,
+                            "five_support_rate": 0.0
+                        },
+                        "four_correct": {
+                            "count": 6,
+                            "mean_delta": -1.087258007377386,
+                            "median_delta": -1.1168253421783447,
+                            "mean_absolute_delta": 1.087258007377386,
+                            "four_support_count": 6,
+                            "five_support_count": 0,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 1.0,
+                            "five_support_rate": 0.0
+                        },
+                        "five_correct": {
+                            "count": 6,
+                            "mean_delta": -1.0595218737920125,
+                            "median_delta": -1.0026897192001343,
+                            "mean_absolute_delta": 1.0595218737920125,
+                            "four_support_count": 6,
+                            "five_support_count": 0,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 1.0,
+                            "five_support_rate": 0.0
+                        },
+                        "by_category": {
+                            "arithmetic_symbolic": {
+                                "count": 2,
+                                "mean_delta": -1.0567123889923096,
+                                "median_delta": -1.0567123889923096,
+                                "mean_absolute_delta": 1.0567123889923096,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "arithmetic_words": {
+                                "count": 4,
+                                "mean_delta": -0.7494851369410753,
+                                "median_delta": -0.7630698420107365,
+                                "mean_absolute_delta": 0.7494851369410753,
+                                "four_support_count": 4,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "number_sequence": {
+                                "count": 2,
+                                "mean_delta": -1.6414369344711304,
+                                "median_delta": -1.6414369344711304,
+                                "mean_absolute_delta": 1.6414369344711304,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "numeric_successor": {
+                                "count": 2,
+                                "mean_delta": -0.819902315735817,
+                                "median_delta": -0.819902315735817,
+                                "mean_absolute_delta": 0.819902315735817,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "quantity_language": {
+                                "count": 2,
+                                "mean_delta": -1.4233177304267883,
+                                "median_delta": -1.4233177304267883,
+                                "mean_absolute_delta": 1.4233177304267883,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            }
+                        }
+                    },
+                    "L4H0": {
+                        "role": "primary_five_direction_candidate",
+                        "all": {
+                            "count": 12,
+                            "mean_delta": 0.4416076249132554,
+                            "median_delta": 0.46158266067504883,
+                            "mean_absolute_delta": 0.4416076249132554,
+                            "four_support_count": 0,
+                            "five_support_count": 12,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.0,
+                            "five_support_rate": 1.0
+                        },
+                        "four_correct": {
+                            "count": 6,
+                            "mean_delta": 0.4503207790354888,
+                            "median_delta": 0.48020654916763306,
+                            "mean_absolute_delta": 0.4503207790354888,
+                            "four_support_count": 0,
+                            "five_support_count": 6,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.0,
+                            "five_support_rate": 1.0
+                        },
+                        "five_correct": {
+                            "count": 6,
+                            "mean_delta": 0.432894470791022,
+                            "median_delta": 0.4371134713292122,
+                            "mean_absolute_delta": 0.432894470791022,
+                            "four_support_count": 0,
+                            "five_support_count": 6,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.0,
+                            "five_support_rate": 1.0
+                        },
+                        "by_category": {
+                            "arithmetic_symbolic": {
+                                "count": 2,
+                                "mean_delta": 0.3571157455444336,
+                                "median_delta": 0.3571157455444336,
+                                "mean_absolute_delta": 0.3571157455444336,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "arithmetic_words": {
+                                "count": 4,
+                                "mean_delta": 0.47974860668182373,
+                                "median_delta": 0.4792906641960144,
+                                "mean_absolute_delta": 0.47974860668182373,
+                                "four_support_count": 0,
+                                "five_support_count": 4,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "number_sequence": {
+                                "count": 2,
+                                "mean_delta": 0.4657071828842163,
+                                "median_delta": 0.4657071828842163,
+                                "mean_absolute_delta": 0.4657071828842163,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "numeric_successor": {
+                                "count": 2,
+                                "mean_delta": 0.47311199083924294,
+                                "median_delta": 0.47311199083924294,
+                                "mean_absolute_delta": 0.47311199083924294,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "quantity_language": {
+                                "count": 2,
+                                "mean_delta": 0.39421361684799194,
+                                "median_delta": 0.39421361684799194,
+                                "mean_absolute_delta": 0.39421361684799194,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            }
+                        }
+                    },
+                    "L3H3": {
+                        "role": "secondary_context_sensitive_candidate",
+                        "all": {
+                            "count": 12,
+                            "mean_delta": 0.2459071584356328,
+                            "median_delta": 0.2437935620546341,
+                            "mean_absolute_delta": 0.31259071252619225,
+                            "four_support_count": 2,
+                            "five_support_count": 10,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.16666666666666666,
+                            "five_support_rate": 0.8333333333333334
+                        },
+                        "four_correct": {
+                            "count": 6,
+                            "mean_delta": 0.24209281957397857,
+                            "median_delta": 0.22866223752498627,
+                            "mean_absolute_delta": 0.2733001097415884,
+                            "four_support_count": 1,
+                            "five_support_count": 5,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.16666666666666666,
+                            "five_support_rate": 0.8333333333333334
+                        },
+                        "five_correct": {
+                            "count": 6,
+                            "mean_delta": 0.249721497297287,
+                            "median_delta": 0.311117559671402,
+                            "mean_absolute_delta": 0.3518813153107961,
+                            "four_support_count": 1,
+                            "five_support_count": 5,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.16666666666666666,
+                            "five_support_rate": 0.8333333333333334
+                        },
+                        "by_category": {
+                            "arithmetic_symbolic": {
+                                "count": 2,
+                                "mean_delta": 0.4543219208717346,
+                                "median_delta": 0.4543219208717346,
+                                "mean_absolute_delta": 0.4543219208717346,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "arithmetic_words": {
+                                "count": 4,
+                                "mean_delta": 0.4437348172068596,
+                                "median_delta": 0.461300790309906,
+                                "mean_absolute_delta": 0.4437348172068596,
+                                "four_support_count": 0,
+                                "five_support_count": 4,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "number_sequence": {
+                                "count": 2,
+                                "mean_delta": 0.15111398696899414,
+                                "median_delta": 0.15111398696899414,
+                                "mean_absolute_delta": 0.15111398696899414,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "numeric_successor": {
+                                "count": 2,
+                                "mean_delta": -0.20005066227167845,
+                                "median_delta": -0.20005066227167845,
+                                "mean_absolute_delta": 0.20005066227167845,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "quantity_language": {
+                                "count": 2,
+                                "mean_delta": 0.18258807063102722,
+                                "median_delta": 0.18258807063102722,
+                                "mean_absolute_delta": 0.18258807063102722,
+                                "four_support_count": 0,
+                                "five_support_count": 2,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            }
+                        }
+                    },
+                    "L4H1": {
+                        "role": "weak_control",
+                        "all": {
+                            "count": 12,
+                            "mean_delta": -0.009441804140806198,
+                            "median_delta": -0.016813695430755615,
+                            "mean_absolute_delta": 0.034993128230174385,
+                            "four_support_count": 7,
+                            "five_support_count": 5,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.5833333333333334,
+                            "five_support_rate": 0.4166666666666667
+                        },
+                        "four_correct": {
+                            "count": 6,
+                            "mean_delta": -0.005113172034422557,
+                            "median_delta": -0.009472765028476715,
+                            "mean_absolute_delta": 0.03388374795516332,
+                            "four_support_count": 3,
+                            "five_support_count": 3,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.5,
+                            "five_support_rate": 0.5
+                        },
+                        "five_correct": {
+                            "count": 6,
+                            "mean_delta": -0.01377043624718984,
+                            "median_delta": -0.016813695430755615,
+                            "mean_absolute_delta": 0.03610250850518545,
+                            "four_support_count": 4,
+                            "five_support_count": 2,
+                            "zero_effect_count": 0,
+                            "four_support_rate": 0.6666666666666666,
+                            "five_support_rate": 0.3333333333333333
+                        },
+                        "by_category": {
+                            "arithmetic_symbolic": {
+                                "count": 2,
+                                "mean_delta": -0.02822577953338623,
+                                "median_delta": -0.02822577953338623,
+                                "mean_absolute_delta": 0.02822577953338623,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "arithmetic_words": {
+                                "count": 4,
+                                "mean_delta": 0.03544364124536514,
+                                "median_delta": 0.03738917410373688,
+                                "mean_absolute_delta": 0.03544364124536514,
+                                "four_support_count": 0,
+                                "five_support_count": 4,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.0,
+                                "five_support_rate": 1.0
+                            },
+                            "number_sequence": {
+                                "count": 2,
+                                "mean_delta": -0.060869574546813965,
+                                "median_delta": -0.060869574546813965,
+                                "mean_absolute_delta": 0.060869574546813965,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "numeric_successor": {
+                                "count": 2,
+                                "mean_delta": -0.038826487958431244,
+                                "median_delta": -0.038826487958431244,
+                                "mean_absolute_delta": 0.038826487958431244,
+                                "four_support_count": 2,
+                                "five_support_count": 0,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 1.0,
+                                "five_support_rate": 0.0
+                            },
+                            "quantity_language": {
+                                "count": 2,
+                                "mean_delta": 0.00038373470306396484,
+                                "median_delta": 0.00038373470306396484,
+                                "mean_absolute_delta": 0.01114964485168457,
+                                "four_support_count": 1,
+                                "five_support_count": 1,
+                                "zero_effect_count": 0,
+                                "four_support_rate": 0.5,
+                                "five_support_rate": 0.5
+                            }
+                        }
+                    }
+                },
+                "subset_summaries": {
+                    "four_correct_probe_ids": [
+                        "F01",
+                        "F04",
+                        "F05",
+                        "F07",
+                        "F09",
+                        "F11"
+                    ],
+                    "five_correct_probe_ids": [
+                        "F02",
+                        "F03",
+                        "F06",
+                        "F08",
+                        "F10",
+                        "F12"
+                    ],
+                    "categories": {
+                        "arithmetic_symbolic": [
+                            "F11",
+                            "F12"
+                        ],
+                        "arithmetic_words": [
+                            "F01",
+                            "F02",
+                            "F03",
+                            "F04"
+                        ],
+                        "number_sequence": [
+                            "F07",
+                            "F08"
+                        ],
+                        "numeric_successor": [
+                            "F05",
+                            "F06"
+                        ],
+                        "quantity_language": [
+                            "F09",
+                            "F10"
+                        ]
+                    }
+                },
+                "preregistered_tests": {
+                    "minimum_consistent_probes": 9,
+                    "total_probe_count": 12,
+                    "directional_consistency_threshold": 0.75,
+                    "L1H0_primary_four_direction": {
+                        "observed_four_support_count": 12,
+                        "observed_four_support_rate": 1.0,
+                        "pass": true
+                    },
+                    "L4H0_primary_five_direction": {
+                        "observed_five_support_count": 12,
+                        "observed_five_support_rate": 1.0,
+                        "pass": true
+                    },
+                    "L4H1_weak_control": {
+                        "L4H1_mean_absolute_delta": 0.034993128230174385,
+                        "L1H0_mean_absolute_delta": 1.0733899405846994,
+                        "L4H0_mean_absolute_delta": 0.4416076249132554,
+                        "pass": true
+                    },
+                    "primary_outcome_label": "supports_fixed_four_five_direction_hypothesis"
+                },
+                "hypothesis_diagnostics": {
+                    "L1H0_fixed_four_direction_pass": true,
+                    "L4H0_fixed_five_direction_pass": true,
+                    "both_primary_heads_pass": true,
+                    "weak_control_pass": true,
+                    "outcome_label": "supports_fixed_four_five_direction_hypothesis",
+                    "L1H0_four_support_rate_four_correct": 1.0,
+                    "L1H0_four_support_rate_five_correct": 1.0,
+                    "L4H0_five_support_rate_four_correct": 1.0,
+                    "L4H0_five_support_rate_five_correct": 1.0
+                },
+                "interpretation_rule": {
+                    "canonical_margin": "FOUR logit minus FIVE logit at the first discriminative token.",
+                    "negative_ablation_delta": "The intact head causally supports FOUR relative to FIVE.",
+                    "positive_ablation_delta": "The intact head causally supports FIVE relative to FOUR."
+                },
+                "integrity_checks": {
+                    "execution_spec_verified": true,
+                    "p3_approval_verified": true,
+                    "checkpoint_sha256_verified": true,
+                    "runtime_identity": true,
+                    "frozen_probe_order_preserved": true,
+                    "frozen_head_order_preserved": true,
+                    "all_probes_completed": true,
+                    "expected_effect_record_count": true,
+                    "all_scale_1_controls_exact": true,
+                    "all_effects_finite": true,
+                    "all_heads_zeroed": true,
+                    "fixed_candidate_orientation_preserved": true,
+                    "no_persistent_weight_modification": true
                 }
             }
         }
