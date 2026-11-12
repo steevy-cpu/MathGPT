@@ -1,6 +1,6 @@
 {
     "engine_version": "L8D.1",
-    "created_at_utc": "2026-11-10T22:49:54.831015+00:00",
+    "created_at_utc": "2026-11-12T23:25:10.748062+00:00",
     "mode": "deterministic_safe_research_action_handoff",
     "policy": {
         "executes_experiment": false,
@@ -19,54 +19,33 @@
         "knowledge_state_present": true
     },
     "handoff": {
-        "request_id": "REQ-23A15E5CAF62E136",
+        "request_id": "REQ-F0392293A03F67CA",
         "hypothesis": {
-            "hypothesis_id": "HYP-V03-002",
-            "title": "Four-versus-five causal token preference",
+            "hypothesis_id": "HYP-V03-004",
+            "title": "L3H3 four-versus-five specialized causal bias",
             "current_status": "active",
             "proposed_status": "active",
             "evidence_classification": "support_only"
         },
         "research_action": {
-            "action": "execute_registered_discriminating_test",
-            "priority": "high",
-            "reason": "A planned experiment is already registered for this hypothesis and should be completed before stronger epistemic claims are made."
+            "action": "design_replication_experiment",
+            "priority": "medium",
+            "reason": "Support exists but has not met the conservative replication requirement."
         },
         "experiment": {
-            "experiment_id": "EXP-0005",
-            "registered": true,
-            "record": {
-                "experiment_id": "EXP-0005",
-                "title": "Fixed four-vs-five causal context transfer",
-                "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-                "status": "planned",
-                "evidence_level": null,
-                "summary_artifact": null,
-                "hypothesis_ids": [
-                    "HYP-V03-002"
-                ],
-                "finding_ids": [],
-                "model_scope": {
-                    "model": "MathGPT-General-v0.3",
-                    "stage": "general_pretraining_v0.3_300m",
-                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
-                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                    "training_step": 292969,
-                    "tokens_seen": 300000256
-                },
-                "artifact_ingestion": null,
-                "verified_evidence": null
-            }
+            "experiment_id": null,
+            "registered": false,
+            "record": null
         },
         "permission_gate": {
-            "required_permission": "P3",
-            "resolution_source": "conservative_action_default",
-            "conservative_default_used": true,
-            "human_approval_required": true,
-            "approval_status": "awaiting_human_approval"
+            "required_permission": null,
+            "resolution_source": "no_execution_permission_resolved",
+            "conservative_default_used": false,
+            "human_approval_required": false,
+            "approval_status": "not_applicable"
         },
         "execution_gate": {
-            "status": "blocked_pending_approval",
+            "status": "experiment_design_required",
             "may_execute_now": false,
             "execution_attempted": false,
             "knowledge_store_mutated": false,
@@ -74,8 +53,8 @@
         },
         "source_decision": {
             "engine_version": "L8C.1",
-            "decision_sha256": "8d51d63e8e3ae35174001932efc5455ded0c8b6d4c155d7c641b745de0ac3793",
-            "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd"
+            "decision_sha256": "94e12ea82774f5dc967dd352056268d2206ad85674072c9c0b16115d6c3317f3",
+            "knowledge_state_sha256": "e2f9b6b4eea3736c2eb9fe523efdfa40a0214233fc473ba8b20fd799ce02ea5f"
         }
     },
     "overall_checks": {

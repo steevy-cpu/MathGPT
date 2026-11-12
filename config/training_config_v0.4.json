@@ -1,0 +1,88 @@
+{
+    "version": "0.4",
+
+    "experiment": "general_pretraining_v0.4_data_scale_300m",
+
+    "experiment_type": "unique_data_scaling",
+
+    "data": {
+        "train_binary": "data/tokenized/general_v0_4_train.bin",
+        "train_metadata": "data/tokenized/general_v0_4_train_metadata.json",
+
+        "validation_binary": "data/tokenized/general_v0_4_validation.bin",
+        "validation_metadata": "data/tokenized/general_v0_4_validation_metadata.json",
+
+        "dataset_version": "general_pretraining_v0.4",
+        "dataset_stage": "15D",
+        "encoding_validation_stage": "15E.1",
+        "leakage_validation_stage": "15E.2",
+
+        "tokenizer": "tokenizer_50m_v0.2",
+
+        "training_tokens": 251490827,
+        "validation_tokens": 27928209,
+
+        "training_documents": 270366,
+        "validation_documents": 30289,
+
+        "train_binary_sha256": "93560fc03217b2eeee95f9da9e5bc4482127d7e83adfdf0d0d25a6a609b2db64",
+        "validation_binary_sha256": "9a8d489330e4bbd9e747689b450f3500445180a80bb684a8d95d6136d3926069",
+
+        "exact_train_duplicates": 0,
+        "exact_validation_duplicates": 0,
+        "exact_train_validation_overlap": 0
+    },
+
+    "training": {
+        "batch_size": 4,
+        "context_length": 256,
+        "tokens_per_step": 1024,
+
+        "seed": 42,
+
+        "max_steps": 292969,
+
+        "requested_token_exposures": 300000000,
+        "target_token_exposures": 300000256
+    },
+
+    "optimizer": {
+        "name": "adamw",
+
+        "learning_rate": 0.0003,
+
+        "beta1": 0.9,
+        "beta2": 0.999,
+
+        "epsilon": 1e-8,
+
+        "weight_decay": 0.01
+    },
+
+    "scheduler": {
+        "name": "warmup_cosine",
+
+        "warmup_steps": 14294,
+
+        "min_learning_rate": 0.00003
+    },
+
+    "gradient_clipping": {
+        "enabled": true,
+        "max_norm": 1.0
+    },
+
+    "logging": {
+        "log_every_steps": 5
+    },
+
+    "validation": {
+        "eval_every_steps": 5000,
+        "eval_batches": 20
+    },
+
+    "checkpointing": {
+        "save_every_steps": 25000,
+        "directory": "checkpoints/general_pretraining_v0.4"
+    }
+}

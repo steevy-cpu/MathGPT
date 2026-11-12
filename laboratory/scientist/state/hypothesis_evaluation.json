@@ -1,13 +1,13 @@
 {
     "engine_version": "L8B.1",
-    "created_at_utc": "2026-11-11T13:28:49.496870+00:00",
+    "created_at_utc": "2026-11-12T23:24:27.342187+00:00",
     "mode": "deterministic_conservative_hypothesis_evaluation",
     "inputs": {
         "scientist_context_path": "laboratory/knowledge/scientist_context.json",
-        "scientist_context_sha256": "2025618f28aba7dba660c8836a3d9654cef6dbdebc33d9ca13efb6414a5a8f32",
-        "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
+        "scientist_context_sha256": "d20d64da217dddbae85214a8baaf993538974e4fad425c9ce7615b0f65ef4744",
+        "knowledge_state_sha256": "e2f9b6b4eea3736c2eb9fe523efdfa40a0214233fc473ba8b20fd799ce02ea5f",
         "evidence_review_path": "laboratory/scientist/state/evidence_review.json",
-        "evidence_review_sha256": "fb4ddb860a60e609d75e9f4acee7b15feda2c4f9520b8b9431339903378d88e8"
+        "evidence_review_sha256": "3f2611860fd5a6d887c9b71f98ae2906947de6299bbe6f992e302aa56ccefa82"
     },
     "policy": {
         "mutates_knowledge_store": false,
@@ -18,13 +18,59 @@
         "falsified_requires_distinct_completed_weakening_sources": 2,
         "replicated_causal_evidence_required_for_terminal_status": true
     },
-    "hypothesis_evaluation_count": 2,
+    "hypothesis_evaluation_count": 3,
     "hypothesis_evaluations": [
+        {
+            "hypothesis_id": "HYP-V03-004",
+            "title": "L3H3 four-versus-five specialized causal bias",
+            "statement": "In mature MathGPT v0.3, L3H3 exhibits a comparatively four-versus-five-specific causal candidate-selection effect that does not generalize as broadly across adjacent numerical candidate pairs.",
+            "current_status": "active",
+            "evidence_summary": {
+                "classification": "support_only",
+                "supporting_findings": 1,
+                "weakening_findings": 0,
+                "support_source_experiments": [
+                    "EXP-0006"
+                ],
+                "weakening_source_experiments": [],
+                "support_source_count": 1,
+                "weakening_source_count": 0,
+                "support_e3_finding_count": 1,
+                "weakening_e3_finding_count": 0,
+                "strongest_supporting_level": "E3",
+                "strongest_weakening_level": null
+            },
+            "evaluation": {
+                "proposed_status": "active",
+                "decision": "retain_active",
+                "reason_code": "SUPPORT_PRESENT_REPLICATION_NEEDED",
+                "reason": "Verified support exists, but it has not yet been replicated across enough independent completed experiments to promote the hypothesis.",
+                "generated_confidence_score": null
+            },
+            "planned_tests": [],
+            "next_action": {
+                "action": "design_replication_experiment",
+                "priority": "medium",
+                "experiment_id": null,
+                "reason": "Support exists but has not met the conservative replication requirement."
+            },
+            "open_questions": [
+                "Does the L3H3 four/five effect replicate across new prompt families while four and five are held fixed?",
+                "Does L3H3 respond similarly to other semantically or lexically related token pairs?",
+                "Is the apparent specialization caused by token identity, pair contrast, or prompt context?"
+            ],
+            "checks": {
+                "source_review_provenance_complete": true,
+                "source_review_checkpoint_consistent": true,
+                "no_generated_confidence": true,
+                "knowledge_not_mutated": true
+            }
+        },
         {
             "hypothesis_id": "HYP-V03-002",
             "title": "Four-versus-five causal token preference",
             "statement": "In mature MathGPT v0.3, L1H0 may causally bias the four-versus-five decision toward 'four', while L4H0 may bias the same decision toward 'five', across multiple numerical contexts.",
-            "current_status": "active",
+            "current_status": "supported",
             "evidence_summary": {
                 "classification": "support_only",
                 "supporting_findings": 2,
@@ -68,43 +114,44 @@
             }
         },
         {
-            "hypothesis_id": "HYP-V03-001",
-            "title": "General arithmetic competing-head circuit",
-            "statement": "Across addition contexts, L1H0 generally supports the preferred arithmetic answer while L3H3 and L4H0 generally suppress the preferred arithmetic answer.",
-            "current_status": "weakened",
+            "hypothesis_id": "HYP-V03-003",
+            "title": "Cross-pair numerical candidate-selection bias",
+            "statement": "In mature MathGPT v0.3, L1H0 and L4H0 participate in candidate-token or candidate-pair selection mechanisms whose causal directions generalize across multiple numerical candidate pairs more reliably than they track arithmetic correctness.",
+            "current_status": "supported",
             "evidence_summary": {
-                "classification": "mixed",
-                "supporting_findings": 1,
-                "weakening_findings": 1,
+                "classification": "support_only",
+                "supporting_findings": 2,
+                "weakening_findings": 0,
                 "support_source_experiments": [
-                    "EXP-0004"
+                    "EXP-0006",
+                    "EXP-0007"
                 ],
-                "weakening_source_experiments": [
-                    "EXP-0004"
-                ],
-                "support_source_count": 1,
-                "weakening_source_count": 1,
-                "support_e3_finding_count": 1,
-                "weakening_e3_finding_count": 1,
+                "weakening_source_experiments": [],
+                "support_source_count": 2,
+                "weakening_source_count": 0,
+                "support_e3_finding_count": 2,
+                "weakening_e3_finding_count": 0,
                 "strongest_supporting_level": "E3",
-                "strongest_weakening_level": "E3"
+                "strongest_weakening_level": null
             },
             "evaluation": {
-                "proposed_status": "weakened",
-                "decision": "retain_weakened",
-                "reason_code": "MIXED_VERIFIED_EVIDENCE",
-                "reason": "Both supporting and weakening verified evidence exist. The hypothesis should remain or become weakened until a discriminating experiment resolves the conflict.",
+                "proposed_status": "supported",
+                "decision": "promote",
+                "reason_code": "REPLICATED_CAUSAL_SUPPORT",
+                "reason": "The hypothesis has support-only evidence from at least two distinct completed experiments, including replicated E3 causal support.",
                 "generated_confidence_score": null
             },
             "planned_tests": [],
             "next_action": {
-                "action": "design_discriminating_experiment",
-                "priority": "high",
+                "action": "monitor",
+                "priority": "low",
                 "experiment_id": null,
-                "reason": "Mixed evidence requires an experiment designed to distinguish competing explanations."
+                "reason": "No immediate epistemic action is required under the current deterministic policy."
             },
             "open_questions": [
-                "Are the observed head effects tied to candidate token identity rather than arithmetic correctness?"
+                "Does each head preserve a consistent lower/upper or token-identity direction across number pairs outside P23/P34/P45/P56?",
+                "Are the effects tied to lexical number tokens, numerical magnitude, candidate ordering, or pair identity?",
+                "Do the same candidate-selection biases appear in non-arithmetic contexts using the same number tokens?"
             ],
             "checks": {
                 "source_review_provenance_complete": true,

@@ -1,0 +1,72 @@
+{
+    "stage": "L9F",
+    "commit_version": "L9F.1",
+    "created_at_utc": "2026-11-12T17:04:16.840114+00:00",
+    "source_evaluation": "laboratory/scientist/state/hypothesis_evaluation.json",
+    "old_knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
+    "new_knowledge_state_sha256": "4bf751a197721bfa38b9141a410412bec68ad01ffd6ab4800173f8eb82123de0",
+    "transition_count": 1,
+    "transitions": [
+        {
+            "hypothesis_id": "HYP-V03-002",
+            "from_status": "active",
+            "to_status": "supported",
+            "decision": "promote",
+            "reason_code": "REPLICATED_CAUSAL_SUPPORT",
+            "reason": "The hypothesis has support-only evidence from at least two distinct completed experiments, including replicated E3 causal support.",
+            "evidence_summary": {
+                "classification": "support_only",
+                "supporting_findings": 2,
+                "weakening_findings": 0,
+                "support_source_experiments": [
+                    "EXP-0004",
+                    "EXP-0005"
+                ],
+                "weakening_source_experiments": [],
+                "support_source_count": 2,
+                "weakening_source_count": 0,
+                "support_e3_finding_count": 2,
+                "weakening_e3_finding_count": 0,
+                "strongest_supporting_level": "E3",
+                "strongest_weakening_level": null
+            }
+        }
+    ],
+    "retained": [
+        {
+            "hypothesis_id": "HYP-V03-001",
+            "status": "weakened",
+            "decision": "retain_weakened",
+            "reason_code": "MIXED_VERIFIED_EVIDENCE"
+        }
+    ],
+    "policy": {
+        "numerical_confidence_generated": false,
+        "only_evaluator_proposed_transitions_committed": true,
+        "transactional_rollback": true
+    },
+    "committed_state_checks": {
+        "knowledge_store_valid": true,
+        "no_numerical_confidence_scores": true,
+        "HYP-V03-002_status_committed": true,
+        "HYP-V03-002_state_membership": true,
+        "HYP-V03-002_not_active": true
+    },
+    "snapshot_validation": {
+        "checks": {
+            "snapshot_version": true,
+            "knowledge_schema_version": true,
+            "knowledge_fingerprint_present": true,
+            "research_question_present": true,
+            "hypothesis_section_present": true,
+            "experiment_section_present": true,
+            "evidence_inventory_present": true,
+            "model_inventory_present": true,
+            "source_fingerprints_present": true,
+            "finding_model_scope_contract": true,
+            "handoff_checks_passed": true
+        },
+        "passed": true
+    },
+    "passed": true
+}

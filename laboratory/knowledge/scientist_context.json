@@ -1,8 +1,8 @@
 {
     "snapshot_version": "L7D.1",
     "knowledge_schema_version": "L7.1",
-    "generated_at_utc": "2026-11-11T13:17:58.396281+00:00",
-    "knowledge_state_sha256": "22d115ef57ae1225abcf8a6d15eab3925401ae570c3a411337cc5f8e11eaf0a1",
+    "generated_at_utc": "2026-11-12T23:08:07.695722+00:00",
+    "knowledge_state_sha256": "e2f9b6b4eea3736c2eb9fe523efdfa40a0214233fc473ba8b20fd799ce02ea5f",
     "program": {
         "name": "MathGPT AI Scientist Laboratory",
         "stage": "L7",
@@ -10,28 +10,114 @@
         "scientist_status": "manual_orchestration"
     },
     "research_focus": {
-        "current_question": "What internal causal mechanisms govern numerical next-token decisions in mature MathGPT v0.3?",
-        "last_completed_experiment": "EXP-0005",
+        "current_question": "Across previously untested numerical candidate pairs, do L1H0 and L4H0 exhibit context-stable causal pair/token directions that generalize more reliably than arithmetic correctness?",
+        "last_completed_experiment": "EXP-0007",
         "next_recommended_experiment": null
     },
     "knowledge_counts": {
-        "hypotheses": 2,
-        "findings": 7,
-        "experiments": 4,
-        "evidence_records": 4
+        "hypotheses": 4,
+        "findings": 11,
+        "experiments": 6,
+        "evidence_records": 6
     },
     "hypotheses": {
         "active": [
             {
-                "hypothesis_id": "HYP-V03-002",
-                "title": "Four-versus-five causal token preference",
-                "statement": "In mature MathGPT v0.3, L1H0 may causally bias the four-versus-five decision toward 'four', while L4H0 may bias the same decision toward 'five', across multiple numerical contexts.",
+                "hypothesis_id": "HYP-V03-004",
+                "title": "L3H3 four-versus-five specialized causal bias",
+                "statement": "In mature MathGPT v0.3, L3H3 exhibits a comparatively four-versus-five-specific causal candidate-selection effect that does not generalize as broadly across adjacent numerical candidate pairs.",
                 "status": "active",
                 "confidence": {
                     "score": null,
-                    "label": "preliminary",
-                    "method": "L8_pending",
-                    "note": "Pattern observed in four fixed four/five comparisons. Requires a dedicated controlled experiment."
+                    "label": "unscored",
+                    "method": "L11B_registered_from_synthesis",
+                    "note": "Registered from an evidence-grounded L11A synthesis proposal. No calibrated confidence score has been assigned."
+                },
+                "model_scope": {
+                    "model": "MathGPT-General-v0.3",
+                    "stage": "general_pretraining_v0.3_300m",
+                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "training_step": 292969,
+                    "tokens_seen": 300000256
+                },
+                "tags": [
+                    "four-vs-five",
+                    "pair-specific",
+                    "L3H3",
+                    "candidate-selection",
+                    "attention-heads",
+                    "causal",
+                    "mature-v0.3"
+                ],
+                "open_questions": [
+                    "Does the L3H3 four/five effect replicate across new prompt families while four and five are held fixed?",
+                    "Does L3H3 respond similarly to other semantically or lexically related token pairs?",
+                    "Is the apparent specialization caused by token identity, pair contrast, or prompt context?"
+                ],
+                "supporting_findings": [
+                    {
+                        "finding_id": "FND-0010",
+                        "title": "L3H3 four-versus-five-specific fixed-pair signal",
+                        "statement": "EXP-0006 identified L3H3 as a four-versus-five-specific fixed-pair causal signal rather than a broadly generalizing arithmetic-correctness head.",
+                        "finding_type": "derived_causal_pattern",
+                        "evidence_level": "E3",
+                        "model_scope": {
+                            "model": "MathGPT-General-v0.3",
+                            "stage": "general_pretraining_v0.3_300m",
+                            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                            "training_step": 292969,
+                            "tokens_seen": 300000256
+                        },
+                        "source_experiment_id": "EXP-0006",
+                        "source_artifacts": [
+                            "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json"
+                        ],
+                        "metrics": {
+                            "four_five_specific_signal_heads": [
+                                "L3H3"
+                            ],
+                            "L3H3_non_control_fixed_pair_count": 1,
+                            "L3H3_P45_fixed_pair_direction": {
+                                "direction": "upper",
+                                "pass": true,
+                                "negative_delta_count": 0,
+                                "positive_delta_count": 4,
+                                "minimum_consistent": 3
+                            }
+                        },
+                        "supports_hypotheses": [
+                            "HYP-V03-004"
+                        ],
+                        "weakens_hypotheses": [
+                            "HYP-V03-001"
+                        ],
+                        "tags": [
+                            "EXP-0006",
+                            "four-vs-five",
+                            "L3H3",
+                            "pair-specific",
+                            "mature-v0.3"
+                        ]
+                    }
+                ],
+                "weakening_findings": [],
+                "tested_by": []
+            }
+        ],
+        "weakened": [],
+        "supported": [
+            {
+                "hypothesis_id": "HYP-V03-002",
+                "title": "Four-versus-five causal token preference",
+                "statement": "In mature MathGPT v0.3, L1H0 may causally bias the four-versus-five decision toward 'four', while L4H0 may bias the same decision toward 'five', across multiple numerical contexts.",
+                "status": "supported",
+                "confidence": {
+                    "score": null,
+                    "label": "replicated_causal_support",
+                    "method": "L8B.1_deterministic_policy",
+                    "note": "The hypothesis has support-only evidence from at least two distinct completed experiments, including replicated E3 causal support."
                 },
                 "model_scope": {
                     "model": "MathGPT-General-v0.3",
@@ -230,19 +316,17 @@
                         }
                     }
                 ]
-            }
-        ],
-        "weakened": [
+            },
             {
-                "hypothesis_id": "HYP-V03-001",
-                "title": "General arithmetic competing-head circuit",
-                "statement": "Across addition contexts, L1H0 generally supports the preferred arithmetic answer while L3H3 and L4H0 generally suppress the preferred arithmetic answer.",
-                "status": "weakened",
+                "hypothesis_id": "HYP-V03-003",
+                "title": "Cross-pair numerical candidate-selection bias",
+                "statement": "In mature MathGPT v0.3, L1H0 and L4H0 participate in candidate-token or candidate-pair selection mechanisms whose causal directions generalize across multiple numerical candidate pairs more reliably than they track arithmetic correctness.",
+                "status": "supported",
                 "confidence": {
                     "score": null,
                     "label": "unscored",
-                    "method": "L8_pending",
-                    "note": "The knowledge layer does not assign calibrated confidence scores yet."
+                    "method": "L11B_registered_from_synthesis",
+                    "note": "Registered from an evidence-grounded L11A synthesis proposal. No calibrated confidence score has been assigned."
                 },
                 "model_scope": {
                     "model": "MathGPT-General-v0.3",
@@ -253,20 +337,26 @@
                     "tokens_seen": 300000256
                 },
                 "tags": [
-                    "arithmetic",
+                    "numerical",
+                    "candidate-selection",
+                    "token-bias",
                     "attention-heads",
+                    "L1H0",
+                    "L4H0",
                     "causal",
                     "mature-v0.3"
                 ],
                 "open_questions": [
-                    "Are the observed head effects tied to candidate token identity rather than arithmetic correctness?"
+                    "Does each head preserve a consistent lower/upper or token-identity direction across number pairs outside P23/P34/P45/P56?",
+                    "Are the effects tied to lexical number tokens, numerical magnitude, candidate ordering, or pair identity?",
+                    "Do the same candidate-selection biases appear in non-arithmetic contexts using the same number tokens?"
                 ],
                 "supporting_findings": [
                     {
-                        "finding_id": "FND-0003",
-                        "title": "Mature v0.3 2+2 competing-head anchor",
-                        "statement": "For 'Two plus two equals' with four versus five at the first discriminative token, L1H0 supported four while L3H3 and L4H0 suppressed four. L4H1 had a much smaller effect.",
-                        "finding_type": "causal",
+                        "finding_id": "FND-0009",
+                        "title": "Broader fixed-pair token-bias signals in L1H0 and L4H0",
+                        "statement": "EXP-0006 found broader fixed candidate-pair causal direction signals for L1H0 and L4H0 across multiple non-control number pairs, indicating that their effects are better described by candidate-token or pair identity than by a stable arithmetic-correctness role.",
+                        "finding_type": "derived_causal_pattern",
                         "evidence_level": "E3",
                         "model_scope": {
                             "model": "MathGPT-General-v0.3",
@@ -276,86 +366,100 @@
                             "training_step": 292969,
                             "tokens_seen": 300000256
                         },
-                        "source_experiment_id": "EXP-0004",
+                        "source_experiment_id": "EXP-0006",
                         "source_artifacts": [
-                            "laboratory/artifacts/exp_0004_competing_heads/a03_competing_heads.json",
-                            "laboratory/artifacts/exp_0004_competing_heads_summary.json"
+                            "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json"
                         ],
                         "metrics": {
-                            "baseline_margin": -0.5697602033615112,
-                            "L1H0_ablation_margin_delta": -0.5050597786903381,
-                            "L3H3_ablation_margin_delta": 0.49808311462402344,
-                            "L4H0_ablation_margin_delta": 0.4733119010925293,
-                            "L4H1_ablation_margin_delta": 0.04903137683868408
+                            "broader_token_bias_signal_heads": [
+                                "L1H0",
+                                "L4H0"
+                            ],
+                            "L1H0_non_control_fixed_pair_count": 3,
+                            "L4H0_non_control_fixed_pair_count": 2,
+                            "minimum_non_control_pairs_for_signal": 2
                         },
                         "supports_hypotheses": [
-                            "HYP-V03-001"
+                            "HYP-V03-003"
                         ],
-                        "weakens_hypotheses": [],
-                        "tags": [
-                            "2+2",
-                            "four-vs-five",
-                            "attention-heads",
-                            "mature-v0.3"
-                        ]
-                    }
-                ],
-                "weakening_findings": [
-                    {
-                        "finding_id": "FND-0004",
-                        "title": "Competing-head roles do not generalize by arithmetic correctness",
-                        "statement": "Across six addition probes, the A03 head-role pattern did not generalize consistently. L1H0 supported the preferred answer in only 2 of 6 addition probes, L3H3 in 3 of 6, and L4H0 in 4 of 6.",
-                        "finding_type": "causal_synthesis",
-                        "evidence_level": "E3",
-                        "model_scope": {
-                            "model": "MathGPT-General-v0.3",
-                            "stage": "general_pretraining_v0.3_300m",
-                            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
-                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                            "training_step": 292969,
-                            "tokens_seen": 300000256
-                        },
-                        "source_experiment_id": "EXP-0004",
-                        "source_artifacts": [
-                            "laboratory/artifacts/exp_0004_competing_heads_summary.json"
-                        ],
-                        "metrics": {
-                            "L1H0_addition_support_rate": 0.3333333333333333,
-                            "L3H3_addition_support_rate": 0.5,
-                            "L4H0_addition_support_rate": 0.6666666666666666,
-                            "L1H0_addition_mean_delta": 0.17256971914321184,
-                            "L3H3_addition_mean_delta": -0.06815508908281724,
-                            "L4H0_addition_mean_delta": -0.12598871967444816
-                        },
-                        "supports_hypotheses": [],
                         "weakens_hypotheses": [
                             "HYP-V03-001"
                         ],
                         "tags": [
-                            "generalization",
-                            "arithmetic",
-                            "hypothesis-revision",
+                            "EXP-0006",
+                            "token-bias",
+                            "candidate-pair",
+                            "L1H0",
+                            "L4H0",
                             "mature-v0.3"
+                        ]
+                    },
+                    {
+                        "finding_id": "FND-0011",
+                        "title": "EXP-0007 independent cross-pair candidate-selection replication",
+                        "statement": "In mature MathGPT v0.3, EXP-0007 independently replicated cross-pair causal candidate-selection behavior for L1H0 and L4H0 on four previously untested numerical candidate pairs. Both heads passed within-pair directional stability on 4/4 new pairs, while strong arithmetic-correctness tracking did not pass (L1H0 10/16; L4H0 8/16). The P45 positive control and L4H1 weak-control criterion both passed, and both primary heads showed pair-dependent rather than uniform lower/upper orientation.",
+                        "finding_type": "preregistered_causal_replication",
+                        "evidence_level": "E3",
+                        "model_scope": {
+                            "model": "MathGPT-General-v0.3",
+                            "stage": "general_pretraining_v0.3_300m",
+                            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                            "training_step": 292969,
+                            "tokens_seen": 300000256
+                        },
+                        "source_experiment_id": "EXP-0007",
+                        "source_artifacts": [
+                            "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json"
+                        ],
+                        "metrics": {
+                            "probe_count": 20,
+                            "primary_probe_count": 16,
+                            "causal_effect_count": 60,
+                            "positive_control_pass": true,
+                            "L1H0_stable_pair_count": 4,
+                            "L4H0_stable_pair_count": 4,
+                            "L1H0_cross_pair_pass": true,
+                            "L4H0_cross_pair_pass": true,
+                            "L1H0_correctness_positive_count": 10,
+                            "L4H0_correctness_positive_count": 8,
+                            "L1H0_strong_correctness_pass": false,
+                            "L4H0_strong_correctness_pass": false,
+                            "weak_control_pass": true,
+                            "L1H0_orientation": "pair_dependent_signal",
+                            "L4H0_orientation": "pair_dependent_signal",
+                            "preregistered_outcome": "replicates_cross_pair_candidate_selection_bias"
+                        },
+                        "supports_hypotheses": [
+                            "HYP-V03-003"
+                        ],
+                        "weakens_hypotheses": [],
+                        "tags": [
+                            "cross-pair",
+                            "candidate-selection",
+                            "numerical-candidates",
+                            "causal-replication",
+                            "preregistered",
+                            "attention-heads",
+                            "mature-v0.3",
+                            "EXP-0007"
                         ]
                     }
                 ],
+                "weakening_findings": [],
                 "tested_by": [
                     {
-                        "experiment_id": "EXP-0004",
-                        "title": "Mature v0.3 competing attention-head generalization",
-                        "question": "Do the competing causal head directions observed on Two plus two equals generalize across arithmetic and control contexts?",
+                        "experiment_id": "EXP-0007",
+                        "title": "Independent cross-pair numerical candidate-selection replication",
+                        "question": "Across previously untested numerical candidate pairs, do L1H0 and L4H0 exhibit context-stable causal pair/token directions that generalize more reliably than arithmetic correctness?",
                         "status": "completed",
                         "evidence_level": "E3",
-                        "summary_artifact": "laboratory/artifacts/exp_0004_competing_heads_summary.json",
+                        "summary_artifact": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
                         "hypothesis_ids": [
-                            "HYP-V03-001",
-                            "HYP-V03-002"
+                            "HYP-V03-003"
                         ],
                         "finding_ids": [
-                            "FND-0003",
-                            "FND-0004",
-                            "FND-0005",
-                            "FND-0006"
+                            "FND-0011"
                         ],
                         "model_scope": {
                             "model": "MathGPT-General-v0.3",
@@ -367,23 +471,22 @@
                         },
                         "artifact_ingestion": {
                             "status": "verified",
-                            "evidence_record_id": "EVR-EXP-0004",
-                            "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
-                            "adapter": "exp_0004_v1",
-                            "ingested_at_utc": "2026-11-10T22:06:14.159918+00:00"
+                            "evidence_record_id": "EVR-EXP-0007",
+                            "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+                            "adapter": "exp_0007_v1",
+                            "ingested_at_utc": "2026-11-12T22:51:18.792451+00:00"
                         },
                         "verified_evidence": {
-                            "evidence_record_id": "EVR-EXP-0004",
-                            "artifact_path": "laboratory/artifacts/exp_0004_competing_heads_summary.json",
-                            "artifact_sha256": "e7a1345d658896f1614dd5d9d0b677991a3728de8d6f9de0bd376cf56443e410",
+                            "evidence_record_id": "EVR-EXP-0007",
+                            "artifact_path": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+                            "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
                             "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                            "extraction_adapter": "exp_0004_v1"
+                            "extraction_adapter": "exp_0007_v1"
                         }
                     }
                 ]
             }
         ],
-        "supported": [],
         "falsified": []
     },
     "open_questions": [
@@ -404,11 +507,6 @@
         },
         {
             "source_type": "hypothesis",
-            "source_id": "HYP-V03-001",
-            "question": "Are the observed head effects tied to candidate token identity rather than arithmetic correctness?"
-        },
-        {
-            "source_type": "hypothesis",
             "source_id": "HYP-V03-002",
             "question": "Does L1H0 continue to favor four when prompt semantics change while four/five candidates remain fixed?"
         },
@@ -421,6 +519,36 @@
             "source_type": "hypothesis",
             "source_id": "HYP-V03-002",
             "question": "Is the effect lexical, numerical-semantic, or task-dependent?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-003",
+            "question": "Does each head preserve a consistent lower/upper or token-identity direction across number pairs outside P23/P34/P45/P56?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-003",
+            "question": "Are the effects tied to lexical number tokens, numerical magnitude, candidate ordering, or pair identity?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-003",
+            "question": "Do the same candidate-selection biases appear in non-arithmetic contexts using the same number tokens?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-004",
+            "question": "Does the L3H3 four/five effect replicate across new prompt families while four and five are held fixed?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-004",
+            "question": "Does L3H3 respond similarly to other semantically or lexically related token pairs?"
+        },
+        {
+            "source_type": "hypothesis",
+            "source_id": "HYP-V03-004",
+            "question": "Is the apparent specialization caused by token identity, pair contrast, or prompt context?"
         }
     ],
     "experiments": {
@@ -566,6 +694,80 @@
                     "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
                     "extraction_adapter": "exp_0005_v1"
                 }
+            },
+            {
+                "experiment_id": "EXP-0006",
+                "title": "Cross-pair numerical candidate identity versus arithmetic correctness",
+                "question": "Across multiple fixed numerical candidate pairs, do the causal effects of L1H0, L3H3, and L4H0 track the semantically correct arithmetic answer, or do they track particular candidate-token identities?",
+                "status": "completed",
+                "evidence_level": "E3",
+                "summary_artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json",
+                "hypothesis_ids": [
+                    "HYP-V03-001"
+                ],
+                "finding_ids": [
+                    "FND-0008",
+                    "FND-0009",
+                    "FND-0010"
+                ],
+                "model_scope": {
+                    "model": "MathGPT-General-v0.3",
+                    "stage": "general_pretraining_v0.3_300m",
+                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "training_step": 292969,
+                    "tokens_seen": 300000256
+                },
+                "artifact_ingestion": {
+                    "status": "verified",
+                    "evidence_record_id": "EVR-EXP-0006",
+                    "artifact_sha256": "24f042ccd0fcb371efb8f588ee575afbf4540625289dc7d03e24ff76d2c3ff6a",
+                    "adapter": "exp_0006_v1",
+                    "ingested_at_utc": "2026-11-12T18:53:23.798639+00:00"
+                },
+                "verified_evidence": {
+                    "evidence_record_id": "EVR-EXP-0006",
+                    "artifact_path": "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json",
+                    "artifact_sha256": "24f042ccd0fcb371efb8f588ee575afbf4540625289dc7d03e24ff76d2c3ff6a",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "extraction_adapter": "exp_0006_v1"
+                }
+            },
+            {
+                "experiment_id": "EXP-0007",
+                "title": "Independent cross-pair numerical candidate-selection replication",
+                "question": "Across previously untested numerical candidate pairs, do L1H0 and L4H0 exhibit context-stable causal pair/token directions that generalize more reliably than arithmetic correctness?",
+                "status": "completed",
+                "evidence_level": "E3",
+                "summary_artifact": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+                "hypothesis_ids": [
+                    "HYP-V03-003"
+                ],
+                "finding_ids": [
+                    "FND-0011"
+                ],
+                "model_scope": {
+                    "model": "MathGPT-General-v0.3",
+                    "stage": "general_pretraining_v0.3_300m",
+                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "training_step": 292969,
+                    "tokens_seen": 300000256
+                },
+                "artifact_ingestion": {
+                    "status": "verified",
+                    "evidence_record_id": "EVR-EXP-0007",
+                    "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+                    "adapter": "exp_0007_v1",
+                    "ingested_at_utc": "2026-11-12T22:51:18.792451+00:00"
+                },
+                "verified_evidence": {
+                    "evidence_record_id": "EVR-EXP-0007",
+                    "artifact_path": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+                    "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "extraction_adapter": "exp_0007_v1"
+                }
             }
         ],
         "planned": [],
@@ -607,6 +809,24 @@
             "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
             "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
             "extraction_adapter": "exp_0005_v1"
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0006",
+            "experiment_id": "EXP-0006",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json",
+            "artifact_sha256": "24f042ccd0fcb371efb8f588ee575afbf4540625289dc7d03e24ff76d2c3ff6a",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "extraction_adapter": "exp_0006_v1"
+        },
+        {
+            "evidence_record_id": "EVR-EXP-0007",
+            "experiment_id": "EXP-0007",
+            "evidence_level": "E3",
+            "artifact_path": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+            "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "extraction_adapter": "exp_0007_v1"
         }
     ],
     "model_inventory": [
@@ -636,46 +856,54 @@
             "tokens_seen": 300000256,
             "experiment_ids": [
                 "EXP-0004",
-                "EXP-0005"
+                "EXP-0005",
+                "EXP-0006",
+                "EXP-0007"
             ],
             "finding_ids": [
                 "FND-0003",
                 "FND-0004",
                 "FND-0005",
                 "FND-0006",
-                "FND-0007"
+                "FND-0007",
+                "FND-0008",
+                "FND-0009",
+                "FND-0010",
+                "FND-0011"
             ],
             "hypothesis_ids": [
                 "HYP-V03-001",
-                "HYP-V03-002"
+                "HYP-V03-002",
+                "HYP-V03-003",
+                "HYP-V03-004"
             ]
         }
     ],
     "source_fingerprints": {
         "hypotheses": {
             "path": "laboratory/knowledge/hypotheses.json",
-            "sha256": "551dbf6cf60aaba04ca15dcb21d6a502139b78bd7fba0fb82ba443430d94c1e0",
-            "size_bytes": 3962
+            "sha256": "9f9baa9e65bcd730b245d6fe4c633c9ed8020b0b598d39b522fac3da5f2ff614",
+            "size_bytes": 11009
         },
         "findings": {
             "path": "laboratory/knowledge/findings.json",
-            "sha256": "ef40464cb8c4233a0b320cb3d7b1f42cfb95f6fa3f4917fdc20204ff60be236d",
-            "size_bytes": 13013
+            "sha256": "1f3a9dbe648c48617fb225194d500747d6958bc2e7240c37f234718f17e4e14b",
+            "size_bytes": 21748
         },
         "experiments": {
             "path": "laboratory/knowledge/experiment_registry.json",
-            "sha256": "61f38d9ce437e9f330e6d95eaace36afb6a03bc5a2a3539f4455b069af07f86f",
-            "size_bytes": 5954
+            "sha256": "46082d747b6a43d4e458d1010cf98839949a588595063759105f9fac87d85e00",
+            "size_bytes": 9598
         },
         "research_state": {
             "path": "laboratory/knowledge/research_state.json",
-            "sha256": "08b26b7d044fa4742341fa2967ff7f2b60f650ec3a199287070a91381b092a04",
-            "size_bytes": 1998
+            "sha256": "e51adad7e0fb4bbb270ab1a82df65b0a29cdd5d3856d2c02ef684515c232c476",
+            "size_bytes": 3728
         },
         "evidence_ledger": {
             "path": "laboratory/knowledge/evidence_ledger.json",
-            "sha256": "b02e2a355d04eaa2685df9185fce3054113a27428832f753295ce45f34fec336",
-            "size_bytes": 40465
+            "sha256": "0651d66d06b498f0deb7e694a33bc2d9a847f8e58402d2b6daba6366b461f3c7",
+            "size_bytes": 141784
         }
     },
     "scientist_handoff_contract": {
@@ -685,7 +913,7 @@
         "confidence_scores_may_be_null": true,
         "finding_model_scope_required": true,
         "confidence_engine_status": "not_built",
-        "experiment_planner_status": "not_built",
+        "experiment_planner_status": "idle",
         "evidence_reviewer_status": "not_built",
         "requirements_for_future_reasoning": [
             "Distinguish verified raw evidence from curated scientific findings.",

@@ -1,7 +1,7 @@
 {
     "schema_version": "L7.1",
     "collection": "findings",
-    "updated_at_utc": "2026-11-11T13:17:58.385843+00:00",
+    "updated_at_utc": "2026-11-12T22:51:18.792451+00:00",
     "records": [
         {
             "finding_id": "FND-0001",
@@ -271,6 +271,189 @@
                 "EXP-0005"
             ],
             "created_at_utc": "2026-11-11T13:17:58.385843+00:00"
+        },
+        {
+            "finding_id": "FND-0008",
+            "title": "EXP-0006 cross-pair arithmetic correctness hypothesis failure",
+            "statement": "With the P45 four-versus-five positive control passing, none of the three preregistered primary heads met both the global and cross-pair criteria for the proposed general arithmetic competing-head circuit. EXP-0006 therefore further weakens HYP-V03-001.",
+            "finding_type": "preregistered_causal_disconfirmation",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "evidence_level": "E3",
+            "source_experiment_id": "EXP-0006",
+            "source_artifacts": [
+                "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json"
+            ],
+            "metrics": {
+                "positive_control_pass": true,
+                "primary_pass_count": 0,
+                "L1H0_global_consistent_count": 9,
+                "L1H0_pair_sign_pass_count": 1,
+                "L3H3_global_consistent_count": 8,
+                "L3H3_pair_sign_pass_count": 4,
+                "L4H0_global_consistent_count": 8,
+                "L4H0_pair_sign_pass_count": 2,
+                "outcome_label": "further_weakens_general_arithmetic_competing_head_circuit"
+            },
+            "supports_hypotheses": [],
+            "weakens_hypotheses": [
+                "HYP-V03-001"
+            ],
+            "tags": [
+                "EXP-0006",
+                "arithmetic-correctness",
+                "causal-disconfirmation",
+                "cross-pair",
+                "mature-v0.3"
+            ],
+            "created_at_utc": "2026-11-12T18:53:23.798639+00:00"
+        },
+        {
+            "finding_id": "FND-0009",
+            "title": "Broader fixed-pair token-bias signals in L1H0 and L4H0",
+            "statement": "EXP-0006 found broader fixed candidate-pair causal direction signals for L1H0 and L4H0 across multiple non-control number pairs, indicating that their effects are better described by candidate-token or pair identity than by a stable arithmetic-correctness role.",
+            "finding_type": "derived_causal_pattern",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "evidence_level": "E3",
+            "source_experiment_id": "EXP-0006",
+            "source_artifacts": [
+                "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json"
+            ],
+            "metrics": {
+                "broader_token_bias_signal_heads": [
+                    "L1H0",
+                    "L4H0"
+                ],
+                "L1H0_non_control_fixed_pair_count": 3,
+                "L4H0_non_control_fixed_pair_count": 2,
+                "minimum_non_control_pairs_for_signal": 2
+            },
+            "supports_hypotheses": [
+                "HYP-V03-003"
+            ],
+            "weakens_hypotheses": [
+                "HYP-V03-001"
+            ],
+            "tags": [
+                "EXP-0006",
+                "token-bias",
+                "candidate-pair",
+                "L1H0",
+                "L4H0",
+                "mature-v0.3"
+            ],
+            "created_at_utc": "2026-11-12T18:53:23.798639+00:00"
+        },
+        {
+            "finding_id": "FND-0010",
+            "title": "L3H3 four-versus-five-specific fixed-pair signal",
+            "statement": "EXP-0006 identified L3H3 as a four-versus-five-specific fixed-pair causal signal rather than a broadly generalizing arithmetic-correctness head.",
+            "finding_type": "derived_causal_pattern",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "evidence_level": "E3",
+            "source_experiment_id": "EXP-0006",
+            "source_artifacts": [
+                "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json"
+            ],
+            "metrics": {
+                "four_five_specific_signal_heads": [
+                    "L3H3"
+                ],
+                "L3H3_non_control_fixed_pair_count": 1,
+                "L3H3_P45_fixed_pair_direction": {
+                    "direction": "upper",
+                    "pass": true,
+                    "negative_delta_count": 0,
+                    "positive_delta_count": 4,
+                    "minimum_consistent": 3
+                }
+            },
+            "supports_hypotheses": [
+                "HYP-V03-004"
+            ],
+            "weakens_hypotheses": [
+                "HYP-V03-001"
+            ],
+            "tags": [
+                "EXP-0006",
+                "four-vs-five",
+                "L3H3",
+                "pair-specific",
+                "mature-v0.3"
+            ],
+            "created_at_utc": "2026-11-12T18:53:23.798639+00:00"
+        },
+        {
+            "finding_id": "FND-0011",
+            "title": "EXP-0007 independent cross-pair candidate-selection replication",
+            "statement": "In mature MathGPT v0.3, EXP-0007 independently replicated cross-pair causal candidate-selection behavior for L1H0 and L4H0 on four previously untested numerical candidate pairs. Both heads passed within-pair directional stability on 4/4 new pairs, while strong arithmetic-correctness tracking did not pass (L1H0 10/16; L4H0 8/16). The P45 positive control and L4H1 weak-control criterion both passed, and both primary heads showed pair-dependent rather than uniform lower/upper orientation.",
+            "finding_type": "preregistered_causal_replication",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "evidence_level": "E3",
+            "source_experiment_id": "EXP-0007",
+            "source_artifacts": [
+                "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json"
+            ],
+            "metrics": {
+                "probe_count": 20,
+                "primary_probe_count": 16,
+                "causal_effect_count": 60,
+                "positive_control_pass": true,
+                "L1H0_stable_pair_count": 4,
+                "L4H0_stable_pair_count": 4,
+                "L1H0_cross_pair_pass": true,
+                "L4H0_cross_pair_pass": true,
+                "L1H0_correctness_positive_count": 10,
+                "L4H0_correctness_positive_count": 8,
+                "L1H0_strong_correctness_pass": false,
+                "L4H0_strong_correctness_pass": false,
+                "weak_control_pass": true,
+                "L1H0_orientation": "pair_dependent_signal",
+                "L4H0_orientation": "pair_dependent_signal",
+                "preregistered_outcome": "replicates_cross_pair_candidate_selection_bias"
+            },
+            "supports_hypotheses": [
+                "HYP-V03-003"
+            ],
+            "weakens_hypotheses": [],
+            "tags": [
+                "cross-pair",
+                "candidate-selection",
+                "numerical-candidates",
+                "causal-replication",
+                "preregistered",
+                "attention-heads",
+                "mature-v0.3",
+                "EXP-0007"
+            ],
+            "created_at_utc": "2026-11-12T22:51:18.792451+00:00"
         }
     ]
 }

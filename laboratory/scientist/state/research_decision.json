@@ -1,13 +1,13 @@
 {
     "engine_version": "L8C.1",
-    "created_at_utc": "2026-11-10T22:42:21.787313+00:00",
+    "created_at_utc": "2026-11-12T23:24:31.308788+00:00",
     "mode": "deterministic_single_action_research_selection",
     "inputs": {
         "scientist_context_path": "laboratory/knowledge/scientist_context.json",
-        "scientist_context_sha256": "c032a5d6266e9d11e0ef86f7901cc70e21f39edad5fedd1bb4a2934c6ef37ad0",
-        "knowledge_state_sha256": "6e367c91abc026296c72af4162978d5e39bb75d577fd1485852e7bcc0b7c5dfd",
+        "scientist_context_sha256": "d20d64da217dddbae85214a8baaf993538974e4fad425c9ce7615b0f65ef4744",
+        "knowledge_state_sha256": "e2f9b6b4eea3736c2eb9fe523efdfa40a0214233fc473ba8b20fd799ce02ea5f",
         "hypothesis_evaluation_path": "laboratory/scientist/state/hypothesis_evaluation.json",
-        "hypothesis_evaluation_sha256": "14c5b11117d125070abffa5af2c8c1699e745bdccd88bacfba2148ecb0ca43a7"
+        "hypothesis_evaluation_sha256": "d8e147560e4496c7dbf380144fe1ebddf078aa93e427721cd889c87f739f2f4d"
     },
     "policy": {
         "mutates_knowledge_store": false,
@@ -44,137 +44,133 @@
             "retired": 6
         }
     },
-    "candidate_count": 2,
+    "candidate_count": 3,
     "candidates": [
         {
-            "hypothesis_id": "HYP-V03-002",
-            "hypothesis_title": "Four-versus-five causal token preference",
+            "hypothesis_id": "HYP-V03-004",
+            "hypothesis_title": "L3H3 four-versus-five specialized causal bias",
             "current_status": "active",
             "proposed_status": "active",
             "evidence_classification": "support_only",
-            "action": "execute_registered_discriminating_test",
-            "priority": "high",
-            "experiment_id": "EXP-0005",
-            "registered_experiment": {
-                "experiment_id": "EXP-0005",
-                "title": "Fixed four-vs-five causal context transfer",
-                "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-                "status": "planned",
-                "evidence_level": null,
-                "summary_artifact": null,
-                "hypothesis_ids": [
-                    "HYP-V03-002"
-                ],
-                "finding_ids": [],
-                "model_scope": {
-                    "model": "MathGPT-General-v0.3",
-                    "stage": "general_pretraining_v0.3_300m",
-                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
-                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                    "training_step": 292969,
-                    "tokens_seen": 300000256
-                },
-                "artifact_ingestion": null,
-                "verified_evidence": null
-            },
-            "matches_research_state_recommendation": true,
-            "action_reason": "A planned experiment is already registered for this hypothesis and should be completed before stronger epistemic claims are made.",
+            "action": "design_replication_experiment",
+            "priority": "medium",
+            "experiment_id": null,
+            "registered_experiment": null,
+            "matches_research_state_recommendation": false,
+            "action_reason": "Support exists but has not met the conservative replication requirement.",
             "decision_key": [
+                1,
+                2,
+                1,
                 0,
-                0,
-                0,
-                0,
+                "HYP-V03-004"
+            ]
+        },
+        {
+            "hypothesis_id": "HYP-V03-002",
+            "hypothesis_title": "Four-versus-five causal token preference",
+            "current_status": "supported",
+            "proposed_status": "supported",
+            "evidence_classification": "support_only",
+            "action": "monitor",
+            "priority": "low",
+            "experiment_id": null,
+            "registered_experiment": null,
+            "matches_research_state_recommendation": false,
+            "action_reason": "No immediate epistemic action is required under the current deterministic policy.",
+            "decision_key": [
+                2,
+                5,
+                1,
+                4,
                 "HYP-V03-002"
             ]
         },
         {
-            "hypothesis_id": "HYP-V03-001",
-            "hypothesis_title": "General arithmetic competing-head circuit",
-            "current_status": "weakened",
-            "proposed_status": "weakened",
-            "evidence_classification": "mixed",
-            "action": "design_discriminating_experiment",
-            "priority": "high",
+            "hypothesis_id": "HYP-V03-003",
+            "hypothesis_title": "Cross-pair numerical candidate-selection bias",
+            "current_status": "supported",
+            "proposed_status": "supported",
+            "evidence_classification": "support_only",
+            "action": "monitor",
+            "priority": "low",
             "experiment_id": null,
             "registered_experiment": null,
             "matches_research_state_recommendation": false,
-            "action_reason": "Mixed evidence requires an experiment designed to distinguish competing explanations.",
+            "action_reason": "No immediate epistemic action is required under the current deterministic policy.",
             "decision_key": [
-                0,
+                2,
+                5,
                 1,
-                1,
-                3,
-                "HYP-V03-001"
+                4,
+                "HYP-V03-003"
             ]
         }
     ],
     "selected_action": {
-        "hypothesis_id": "HYP-V03-002",
-        "hypothesis_title": "Four-versus-five causal token preference",
+        "hypothesis_id": "HYP-V03-004",
+        "hypothesis_title": "L3H3 four-versus-five specialized causal bias",
         "current_status": "active",
         "proposed_status": "active",
         "evidence_classification": "support_only",
-        "action": "execute_registered_discriminating_test",
-        "priority": "high",
-        "experiment_id": "EXP-0005",
-        "registered_experiment": {
-            "experiment_id": "EXP-0005",
-            "title": "Fixed four-vs-five causal context transfer",
-            "question": "When the candidate tokens four and five are held fixed while prompt semantics change, do L1H0 and L4H0 retain opposing causal directions?",
-            "status": "planned",
-            "evidence_level": null,
-            "summary_artifact": null,
-            "hypothesis_ids": [
-                "HYP-V03-002"
-            ],
-            "finding_ids": [],
-            "model_scope": {
-                "model": "MathGPT-General-v0.3",
-                "stage": "general_pretraining_v0.3_300m",
-                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
-                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
-                "training_step": 292969,
-                "tokens_seen": 300000256
-            },
-            "artifact_ingestion": null,
-            "verified_evidence": null
-        },
-        "matches_research_state_recommendation": true,
-        "action_reason": "A planned experiment is already registered for this hypothesis and should be completed before stronger epistemic claims are made.",
+        "action": "design_replication_experiment",
+        "priority": "medium",
+        "experiment_id": null,
+        "registered_experiment": null,
+        "matches_research_state_recommendation": false,
+        "action_reason": "Support exists but has not met the conservative replication requirement.",
         "decision_key": [
+            1,
+            2,
+            1,
             0,
-            0,
-            0,
-            0,
-            "HYP-V03-002"
+            "HYP-V03-004"
         ]
     },
     "selection_rationale": [
-        "The selected action has deterministic priority 'high'.",
-        "It is executable through an already registered planned experiment rather than requiring a new experiment design.",
-        "The registered experiment matches the current research-state recommendation.",
+        "The selected action has deterministic priority 'medium'.",
         "It advances an active hypothesis rather than a lower-priority lifecycle state.",
         "Other candidate actions remain recorded as alternatives and are not discarded."
     ],
     "alternative_actions": [
         {
-            "hypothesis_id": "HYP-V03-001",
-            "hypothesis_title": "General arithmetic competing-head circuit",
-            "current_status": "weakened",
-            "proposed_status": "weakened",
-            "evidence_classification": "mixed",
-            "action": "design_discriminating_experiment",
-            "priority": "high",
+            "hypothesis_id": "HYP-V03-002",
+            "hypothesis_title": "Four-versus-five causal token preference",
+            "current_status": "supported",
+            "proposed_status": "supported",
+            "evidence_classification": "support_only",
+            "action": "monitor",
+            "priority": "low",
             "experiment_id": null,
             "registered_experiment": null,
             "matches_research_state_recommendation": false,
-            "action_reason": "Mixed evidence requires an experiment designed to distinguish competing explanations.",
+            "action_reason": "No immediate epistemic action is required under the current deterministic policy.",
             "decision_key": [
-                0,
+                2,
+                5,
                 1,
+                4,
+                "HYP-V03-002"
+            ]
+        },
+        {
+            "hypothesis_id": "HYP-V03-003",
+            "hypothesis_title": "Cross-pair numerical candidate-selection bias",
+            "current_status": "supported",
+            "proposed_status": "supported",
+            "evidence_classification": "support_only",
+            "action": "monitor",
+            "priority": "low",
+            "experiment_id": null,
+            "registered_experiment": null,
+            "matches_research_state_recommendation": false,
+            "action_reason": "No immediate epistemic action is required under the current deterministic policy.",
+            "decision_key": [
+                2,
+                5,
                 1,
-                3,
-                "HYP-V03-001"
+                4,
+                "HYP-V03-003"
             ]
         }
     ],

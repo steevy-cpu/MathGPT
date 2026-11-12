@@ -1,0 +1,202 @@
+{
+    "engine_version": "L12A.1",
+    "created_at_utc": "2026-11-12T21:36:19.998008+00:00",
+    "mode": "replication_proposal_and_planned_experiment_registration",
+    "inputs": {
+        "scientist_context_path": "laboratory/knowledge/scientist_context.json",
+        "scientist_context_sha256": "e6c52d2f5f74762d1e0c1c8c6f73eb096c6a01857903e0f0670f289798d26413",
+        "knowledge_state_sha256": "fd31ce850a1911d50afccef80aabd7b478f7007fa0a55e756c0ba1a331c22440",
+        "research_decision_path": "laboratory/scientist/state/research_decision.json",
+        "research_decision_sha256": "74a3c17b115a3dff8116b955c8bf1e3df350fd8532a18fe7cf41877e17720bef",
+        "research_action_handoff_path": "laboratory/scientist/state/research_action_handoff.json",
+        "research_action_handoff_sha256": "b1d32c85230a41f93e983578518e1eebacd63b402aa5854863dfaac6197f1c42"
+    },
+    "policy": {
+        "registers_planned_experiment": true,
+        "mutates_hypothesis_status": false,
+        "creates_evidence": false,
+        "creates_findings": false,
+        "freezes_exact_plan": false,
+        "loads_model": false,
+        "executes_experiment": false,
+        "authorizes_p3": false,
+        "requires_future_plan_builder": true,
+        "requires_future_execution_spec": true,
+        "requires_human_p3_approval_before_execution": true
+    },
+    "proposal": {
+        "proposal_id": "PROP-8E7FB86CBDFF9DE6",
+        "experiment_id": "EXP-0007",
+        "title": "Independent cross-pair numerical candidate-selection replication",
+        "question": "Across previously untested numerical candidate pairs, do L1H0 and L4H0 exhibit context-stable causal pair/token directions that generalize more reliably than arithmetic correctness?",
+        "target_hypothesis_id": "HYP-V03-003",
+        "model_scope": {
+            "model": "MathGPT-General-v0.3",
+            "stage": "general_pretraining_v0.3_300m",
+            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "training_step": 292969,
+            "tokens_seen": 300000256
+        },
+        "required_permission_when_executed": "P3",
+        "evidence_level_if_successfully_executed": "E3",
+        "design": {
+            "replication_target": "Test whether L1H0 and L4H0 show context-stable causal candidate-pair directions on new numerical candidate pairs more reliably than they track arithmetic correctness.",
+            "primary_heads": [
+                "L1H0",
+                "L4H0"
+            ],
+            "weak_control_heads": [
+                "L4H1"
+            ],
+            "excluded_from_primary_analysis": [
+                "L3H3"
+            ],
+            "exclusion_reason": "L3H3 is the primary mechanistic target of HYP-V03-004 and should receive a separate dedicated replication experiment.",
+            "preferred_primary_candidate_pairs": [
+                {
+                    "pair_id": "P12",
+                    "lower_candidate": "one",
+                    "upper_candidate": "two"
+                },
+                {
+                    "pair_id": "P67",
+                    "lower_candidate": "six",
+                    "upper_candidate": "seven"
+                },
+                {
+                    "pair_id": "P78",
+                    "lower_candidate": "seven",
+                    "upper_candidate": "eight"
+                },
+                {
+                    "pair_id": "P89",
+                    "lower_candidate": "eight",
+                    "upper_candidate": "nine"
+                }
+            ],
+            "primary_pair_requirements": {
+                "pair_count": 4,
+                "must_not_reuse_exp_0006_primary_pairs": [
+                    "P23",
+                    "P34",
+                    "P45",
+                    "P56"
+                ],
+                "tokenizer_feasibility_must_be_verified": true,
+                "silent_pair_substitution_allowed": false
+            },
+            "primary_probe_structure": {
+                "probes_per_pair": 4,
+                "word_lower_correct": 1,
+                "word_upper_correct": 1,
+                "symbol_lower_correct": 1,
+                "symbol_upper_correct": 1,
+                "balanced_correctness_per_pair": true,
+                "expected_primary_probe_count": 16
+            },
+            "positive_control": {
+                "pair_id": "P45",
+                "candidate_pair": [
+                    "four",
+                    "five"
+                ],
+                "purpose": "Verify that the known mature v0.3 L1H0-four and L4H0-five causal directions remain detectable in the same run.",
+                "excluded_from_primary_replication_metrics": true,
+                "preferred_probe_count": 4
+            },
+            "canonical_margin": "logit(lower discriminative token) - logit(upper discriminative token)",
+            "ablation_delta": "ablated_margin - baseline_margin",
+            "direction_interpretation": {
+                "negative_delta": "intact head supports LOWER relative to UPPER",
+                "positive_delta": "intact head supports UPPER relative to LOWER"
+            },
+            "correctness_effect": {
+                "lower_correct": "-ablation_delta",
+                "upper_correct": "+ablation_delta",
+                "positive": "intact head supports the semantically correct answer",
+                "negative": "intact head suppresses the semantically correct answer"
+            },
+            "replication_metrics_to_freeze_in_plan": {
+                "pair_direction_stability": "Within each head × pair cell, measure whether at least 3/4 raw ablation deltas share the same sign.",
+                "pair_generalization": "For each primary head, count how many of the four new pairs pass pair-direction stability.",
+                "correctness_tracking": "For each primary head, count positive correctness effects across the 16 primary probes.",
+                "weak_control": "L4H1 mean absolute ablation delta should remain below each primary head."
+            },
+            "candidate_thresholds_for_plan_freeze": {
+                "pair_direction_stability": ">= 3/4 probes same raw-delta sign",
+                "pair_generalization": ">= 3/4 new pairs stable",
+                "strong_correctness_tracking": ">= 12/16 positive correctness effects",
+                "hypothesis_replication_intent": "Both primary heads should show pair-direction stability across new pairs without both meeting the strong arithmetic-correctness tracking criterion."
+            },
+            "competing_explanations": [
+                {
+                    "label": "A",
+                    "name": "candidate_pair_or_token_bias",
+                    "prediction": "Raw ablation-delta direction is stable within candidate pairs even when which candidate is arithmetically correct changes."
+                },
+                {
+                    "label": "B",
+                    "name": "arithmetic_correctness_circuit",
+                    "prediction": "Ablation-delta direction switches with correctness so correctness effects remain consistently positive or negative across pairs."
+                },
+                {
+                    "label": "C",
+                    "name": "candidate_order_artifact",
+                    "prediction": "Effects primarily follow lower/upper orientation rather than pair identity."
+                },
+                {
+                    "label": "D",
+                    "name": "intervention_or_measurement_artifact",
+                    "prediction": "Positive control fails or weak-control effects become comparable to primary heads."
+                }
+            ],
+            "possible_outcomes": [
+                "replicates_cross_pair_candidate_selection_bias",
+                "partial_replication",
+                "fails_cross_pair_replication",
+                "inconclusive_positive_control_failure"
+            ],
+            "exact_pairs_frozen": false,
+            "exact_probes_frozen": false,
+            "exact_token_ids_frozen": false,
+            "exact_thresholds_frozen": false,
+            "plan_builder_required": true
+        },
+        "scientific_constraints": [
+            "Primary replication pairs must not reuse EXP-0006 primary pair identities P23/P34/P45/P56.",
+            "Lower-correct and upper-correct conditions must be balanced within every primary pair.",
+            "Word-form and symbol-form arithmetic contexts must both be represented within every primary pair.",
+            "P45 may be reused only as an explicit positive control and must be excluded from primary replication metrics.",
+            "L1H0 and L4H0 are primary heads; L4H1 is a weak control.",
+            "No persistent model parameter modification is permitted.",
+            "Exact tokenization and first discriminative-token identity must be verified before the plan can be frozen."
+        ],
+        "execution_authorized": false,
+        "human_approval_required_before_execution": true
+    },
+    "input_checks": {
+        "snapshot_version": true,
+        "snapshot_checks_passed": true,
+        "decision_version": true,
+        "decision_checks_passed": true,
+        "handoff_version": true,
+        "handoff_checks_passed": true,
+        "knowledge_matches_decision": true,
+        "knowledge_matches_handoff": true,
+        "snapshot_sha_matches_decision": true,
+        "selected_hypothesis": true,
+        "selected_action": true,
+        "decision_has_no_experiment": true,
+        "handoff_hypothesis": true,
+        "handoff_action": true,
+        "handoff_has_no_experiment": true,
+        "handoff_design_required": true,
+        "handoff_never_executed": true,
+        "next_recommended_experiment_empty": true,
+        "target_hypothesis_active": true,
+        "target_model_scope": true,
+        "target_checkpoint": true,
+        "fnd_0009_support_present": true
+    }
+}

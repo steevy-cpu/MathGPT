@@ -1,0 +1,46 @@
+{
+    "engine_version": "L12G.1",
+    "commit_id": "HSC-04DF506C657C7826",
+    "created_at_utc": "2026-11-12T23:08:07.697973+00:00",
+    "hypothesis_id": "HYP-V03-003",
+    "transition": {
+        "from": "active",
+        "to": "supported",
+        "reason_code": "REPLICATED_CAUSAL_SUPPORT",
+        "decision": "promote"
+    },
+    "evaluator_binding": {
+        "knowledge_state_sha256": "49de0303b4ec7cd3d7d00348cdf680a51b360866a434728069cc75227f2c472f",
+        "scientist_context_sha256": "724198190a408071d39d562e4972ff3883f66471f462caa5be112e6e41bfd4cc",
+        "hypothesis_evaluation_sha256": "eadb4f4eae04eb8e0413f150605ececeed530325a7968cfffb790136855ef38e",
+        "support_source_experiments": [
+            "EXP-0006",
+            "EXP-0007"
+        ]
+    },
+    "knowledge_state": {
+        "old": "49de0303b4ec7cd3d7d00348cdf680a51b360866a434728069cc75227f2c472f",
+        "new": "e2f9b6b4eea3736c2eb9fe523efdfa40a0214233fc473ba8b20fd799ce02ea5f"
+    },
+    "policy": {
+        "evidence_mutated": false,
+        "findings_mutated": false,
+        "experiments_mutated": false,
+        "hypothesis_evidence_links_mutated": false,
+        "hypothesis_status_mutated": true,
+        "research_state_index_mutated": true
+    },
+    "final_checks": {
+        "store_validation": true,
+        "target_status_supported": true,
+        "support_evidence_preserved": true,
+        "no_weakening_evidence": true,
+        "active_index_updated": true,
+        "supported_index_updated": true,
+        "snapshot_validation": true,
+        "findings_unchanged": true,
+        "experiments_unchanged": true,
+        "evidence_ledger_unchanged": true
+    },
+    "passed": true
+}

@@ -1,0 +1,56 @@
+{
+    "stage": "L11B",
+    "engine_version": "L11B.1",
+    "created_at_utc": "2026-11-12T21:23:20.021856+00:00",
+    "proposal_id": "HSP-8D2C82C869A14686",
+    "proposal_sha256": "60dd894e0dedcd6e0896f7b574a71d4489d99ae53f9e568e73ca01c2c7de14b0",
+    "confirmation_phrase_verified": true,
+    "old_knowledge_state_sha256": "3d8ddfd49c6d5b3b30e93d75271cea1d37d443f5271be791f926298584d50895",
+    "new_knowledge_state_sha256": "fd31ce850a1911d50afccef80aabd7b478f7007fa0a55e756c0ba1a331c22440",
+    "registration": {
+        "registered_active_hypotheses": [
+            "HYP-V03-003",
+            "HYP-V03-004"
+        ],
+        "retired_hypothesis": "HYP-V03-001",
+        "source_evidence_preserved": true,
+        "source_marked_falsified": false,
+        "new_hypotheses_tested_by": {
+            "HYP-V03-003": [],
+            "HYP-V03-004": []
+        }
+    },
+    "knowledge_counts": {
+        "hypotheses": 4,
+        "findings": 10,
+        "experiments": 5,
+        "evidence_records": 5
+    },
+    "snapshot": {
+        "path": "laboratory/knowledge/scientist_context.json",
+        "sha256": "e6c52d2f5f74762d1e0c1c8c6f73eb096c6a01857903e0f0670f289798d26413",
+        "validation": {
+            "checks": {
+                "snapshot_version": true,
+                "knowledge_schema_version": true,
+                "knowledge_fingerprint_present": true,
+                "research_question_present": true,
+                "hypothesis_section_present": true,
+                "experiment_section_present": true,
+                "evidence_inventory_present": true,
+                "model_inventory_present": true,
+                "source_fingerprints_present": true,
+                "finding_model_scope_contract": true,
+                "handoff_checks_passed": true
+            },
+            "passed": true
+        }
+    },
+    "policy": {
+        "model_loaded": false,
+        "experiment_executed": false,
+        "experiment_registry_mutated": false,
+        "confidence_scores_generated": false
+    },
+    "passed": true
+}

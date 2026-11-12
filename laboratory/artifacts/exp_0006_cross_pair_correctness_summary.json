@@ -1,0 +1,2257 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-12T17:50:59.902520+00:00",
+    "experiment_id": "EXP-0006",
+    "hypothesis_id": "HYP-V03-001",
+    "title": "Cross-pair numerical candidate identity versus arithmetic correctness",
+    "question": "Across multiple fixed numerical candidate pairs, do the causal effects of L1H0, L3H3, and L4H0 track the semantically correct arithmetic answer, or do they track particular candidate-token identities?",
+    "status": "success",
+    "tool_version": "0.1",
+    "runner_version": "L10D.1",
+    "evidence_level": "E3",
+    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+    "model": {
+        "checkpoint_path": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "plan_id": "PLAN-279F4F2808C046E4",
+    "execution_spec_id": "SPEC-FF2D2AC010B6A43B",
+    "execution_spec_sha256": "294ad0367df88c6f433d54e859d3b9df5581f632b652ddf83bfbc313483e36a1",
+    "approval_id": "APR-9E6A4303F4421BA0",
+    "candidate_pairs": [
+        {
+            "pair_id": "P23",
+            "label": "two_vs_three",
+            "lower_label": "two",
+            "upper_label": "three",
+            "lower_candidate": " two.",
+            "upper_candidate": " three.",
+            "role": "non_control_pair",
+            "word_lower_prompt": "One plus one equals",
+            "word_upper_prompt": "One plus two equals",
+            "symbol_lower_prompt": "1 + 1 =",
+            "symbol_upper_prompt": "1 + 2 ="
+        },
+        {
+            "pair_id": "P34",
+            "label": "three_vs_four",
+            "lower_label": "three",
+            "upper_label": "four",
+            "lower_candidate": " three.",
+            "upper_candidate": " four.",
+            "role": "non_control_pair",
+            "word_lower_prompt": "One plus two equals",
+            "word_upper_prompt": "Two plus two equals",
+            "symbol_lower_prompt": "1 + 2 =",
+            "symbol_upper_prompt": "2 + 2 ="
+        },
+        {
+            "pair_id": "P45",
+            "label": "four_vs_five",
+            "lower_label": "four",
+            "upper_label": "five",
+            "lower_candidate": " four.",
+            "upper_candidate": " five.",
+            "role": "positive_control_pair",
+            "word_lower_prompt": "Two plus two equals",
+            "word_upper_prompt": "Two plus three equals",
+            "symbol_lower_prompt": "2 + 2 =",
+            "symbol_upper_prompt": "2 + 3 ="
+        },
+        {
+            "pair_id": "P56",
+            "label": "five_vs_six",
+            "lower_label": "five",
+            "upper_label": "six",
+            "lower_candidate": " five.",
+            "upper_candidate": " six.",
+            "role": "non_control_pair",
+            "word_lower_prompt": "Two plus three equals",
+            "word_upper_prompt": "Three plus three equals",
+            "symbol_lower_prompt": "2 + 3 =",
+            "symbol_upper_prompt": "3 + 3 ="
+        }
+    ],
+    "selected_probe_ids": [
+        "P23-W-L",
+        "P23-W-U",
+        "P23-S-L",
+        "P23-S-U",
+        "P34-W-L",
+        "P34-W-U",
+        "P34-S-L",
+        "P34-S-U",
+        "P45-W-L",
+        "P45-W-U",
+        "P45-S-L",
+        "P45-S-U",
+        "P56-W-L",
+        "P56-W-U",
+        "P56-S-L",
+        "P56-S-U"
+    ],
+    "probe_count": 16,
+    "head_count": 4,
+    "heads": [
+        {
+            "layer": 1,
+            "head": 0,
+            "head_id": "L1H0",
+            "hypothesis_role": "predicted_correct_answer_supporter"
+        },
+        {
+            "layer": 3,
+            "head": 3,
+            "head_id": "L3H3",
+            "hypothesis_role": "predicted_correct_answer_suppressor"
+        },
+        {
+            "layer": 4,
+            "head": 0,
+            "head_id": "L4H0",
+            "hypothesis_role": "predicted_correct_answer_suppressor"
+        },
+        {
+            "layer": 4,
+            "head": 1,
+            "head_id": "L4H1",
+            "hypothesis_role": "weak_control"
+        }
+    ],
+    "probes": [
+        {
+            "probe_id": "P23-W-L",
+            "pair_id": "P23",
+            "pair_label": "two_vs_three",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "One plus one equals",
+            "semantically_correct": "two",
+            "correct_side": "lower",
+            "candidate_lower": " two.",
+            "candidate_upper": " three.",
+            "lower_token_id": 9316,
+            "upper_token_id": 2495,
+            "baseline_lower_minus_upper_margin": -0.023721843957901,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p23-w-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -1.5356883108615875,
+                    "correctness_effect": 1.5356883108615875
+                },
+                "L3H3": {
+                    "ablation_delta": -0.4743286669254303,
+                    "correctness_effect": 0.4743286669254303
+                },
+                "L4H0": {
+                    "ablation_delta": -0.05009855329990387,
+                    "correctness_effect": 0.05009855329990387
+                },
+                "L4H1": {
+                    "ablation_delta": -0.07568076252937317,
+                    "correctness_effect": 0.07568076252937317
+                }
+            }
+        },
+        {
+            "probe_id": "P23-W-U",
+            "pair_id": "P23",
+            "pair_label": "two_vs_three",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "One plus two equals",
+            "semantically_correct": "three",
+            "correct_side": "upper",
+            "candidate_lower": " two.",
+            "candidate_upper": " three.",
+            "lower_token_id": 9316,
+            "upper_token_id": 2495,
+            "baseline_lower_minus_upper_margin": 0.42763856053352356,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p23-w-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -2.8921986520290375,
+                    "correctness_effect": -2.8921986520290375
+                },
+                "L3H3": {
+                    "ablation_delta": -0.7977138459682465,
+                    "correctness_effect": -0.7977138459682465
+                },
+                "L4H0": {
+                    "ablation_delta": -0.007774055004119873,
+                    "correctness_effect": -0.007774055004119873
+                },
+                "L4H1": {
+                    "ablation_delta": -0.03919488191604614,
+                    "correctness_effect": -0.03919488191604614
+                }
+            }
+        },
+        {
+            "probe_id": "P23-S-L",
+            "pair_id": "P23",
+            "pair_label": "two_vs_three",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "1 + 1 =",
+            "semantically_correct": "two",
+            "correct_side": "lower",
+            "candidate_lower": " two.",
+            "candidate_upper": " three.",
+            "lower_token_id": 9316,
+            "upper_token_id": 2495,
+            "baseline_lower_minus_upper_margin": -0.9843714237213135,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p23-s-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -2.239018678665161,
+                    "correctness_effect": 2.239018678665161
+                },
+                "L3H3": {
+                    "ablation_delta": 0.14413213729858398,
+                    "correctness_effect": -0.14413213729858398
+                },
+                "L4H0": {
+                    "ablation_delta": 0.05896353721618652,
+                    "correctness_effect": -0.05896353721618652
+                },
+                "L4H1": {
+                    "ablation_delta": -0.0233457088470459,
+                    "correctness_effect": 0.0233457088470459
+                }
+            }
+        },
+        {
+            "probe_id": "P23-S-U",
+            "pair_id": "P23",
+            "pair_label": "two_vs_three",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "1 + 2 =",
+            "semantically_correct": "three",
+            "correct_side": "upper",
+            "candidate_lower": " two.",
+            "candidate_upper": " three.",
+            "lower_token_id": 9316,
+            "upper_token_id": 2495,
+            "baseline_lower_minus_upper_margin": -1.0138542652130127,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p23-s-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -2.5182077884674072,
+                    "correctness_effect": -2.5182077884674072
+                },
+                "L3H3": {
+                    "ablation_delta": 0.16000914573669434,
+                    "correctness_effect": 0.16000914573669434
+                },
+                "L4H0": {
+                    "ablation_delta": 0.07269585132598877,
+                    "correctness_effect": 0.07269585132598877
+                },
+                "L4H1": {
+                    "ablation_delta": -0.041284799575805664,
+                    "correctness_effect": -0.041284799575805664
+                }
+            }
+        },
+        {
+            "probe_id": "P34-W-L",
+            "pair_id": "P34",
+            "pair_label": "three_vs_four",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "One plus two equals",
+            "semantically_correct": "three",
+            "correct_side": "lower",
+            "candidate_lower": " three.",
+            "candidate_upper": " four.",
+            "lower_token_id": 2495,
+            "upper_token_id": 3996,
+            "baseline_lower_minus_upper_margin": -0.6411577761173248,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p34-w-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.34963146038353443,
+                    "correctness_effect": -0.34963146038353443
+                },
+                "L3H3": {
+                    "ablation_delta": 0.14567101001739502,
+                    "correctness_effect": -0.14567101001739502
+                },
+                "L4H0": {
+                    "ablation_delta": -0.3795175552368164,
+                    "correctness_effect": 0.3795175552368164
+                },
+                "L4H1": {
+                    "ablation_delta": 0.07159110903739929,
+                    "correctness_effect": -0.07159110903739929
+                }
+            }
+        },
+        {
+            "probe_id": "P34-W-U",
+            "pair_id": "P34",
+            "pair_label": "three_vs_four",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "Two plus two equals",
+            "semantically_correct": "four",
+            "correct_side": "upper",
+            "candidate_lower": " three.",
+            "candidate_upper": " four.",
+            "lower_token_id": 2495,
+            "upper_token_id": 3996,
+            "baseline_lower_minus_upper_margin": -0.8771814107894897,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p34-w-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.6780975461006165,
+                    "correctness_effect": 0.6780975461006165
+                },
+                "L3H3": {
+                    "ablation_delta": 0.04577922821044922,
+                    "correctness_effect": 0.04577922821044922
+                },
+                "L4H0": {
+                    "ablation_delta": -0.37278127670288086,
+                    "correctness_effect": -0.37278127670288086
+                },
+                "L4H1": {
+                    "ablation_delta": 0.04147951304912567,
+                    "correctness_effect": 0.04147951304912567
+                }
+            }
+        },
+        {
+            "probe_id": "P34-S-L",
+            "pair_id": "P34",
+            "pair_label": "three_vs_four",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "1 + 2 =",
+            "semantically_correct": "three",
+            "correct_side": "lower",
+            "candidate_lower": " three.",
+            "candidate_upper": " four.",
+            "lower_token_id": 2495,
+            "upper_token_id": 3996,
+            "baseline_lower_minus_upper_margin": 0.5514094829559326,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p34-s-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 1.1316015720367432,
+                    "correctness_effect": -1.1316015720367432
+                },
+                "L3H3": {
+                    "ablation_delta": -0.4689342975616455,
+                    "correctness_effect": 0.4689342975616455
+                },
+                "L4H0": {
+                    "ablation_delta": -0.25287508964538574,
+                    "correctness_effect": 0.25287508964538574
+                },
+                "L4H1": {
+                    "ablation_delta": 0.0112839937210083,
+                    "correctness_effect": -0.0112839937210083
+                }
+            }
+        },
+        {
+            "probe_id": "P34-S-U",
+            "pair_id": "P34",
+            "pair_label": "three_vs_four",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "2 + 2 =",
+            "semantically_correct": "four",
+            "correct_side": "upper",
+            "candidate_lower": " three.",
+            "candidate_upper": " four.",
+            "lower_token_id": 2495,
+            "upper_token_id": 3996,
+            "baseline_lower_minus_upper_margin": 0.43997836112976074,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p34-s-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.9537580013275146,
+                    "correctness_effect": 0.9537580013275146
+                },
+                "L3H3": {
+                    "ablation_delta": -0.5536947250366211,
+                    "correctness_effect": -0.5536947250366211
+                },
+                "L4H0": {
+                    "ablation_delta": -0.3396557569503784,
+                    "correctness_effect": -0.3396557569503784
+                },
+                "L4H1": {
+                    "ablation_delta": 0.0026514530181884766,
+                    "correctness_effect": 0.0026514530181884766
+                }
+            }
+        },
+        {
+            "probe_id": "P45-W-L",
+            "pair_id": "P45",
+            "pair_label": "four_vs_five",
+            "pair_role": "positive_control_pair",
+            "format": "words",
+            "prompt": "Two plus two equals",
+            "semantically_correct": "four",
+            "correct_side": "lower",
+            "candidate_lower": " four.",
+            "candidate_upper": " five.",
+            "lower_token_id": 3996,
+            "upper_token_id": 11563,
+            "baseline_lower_minus_upper_margin": -0.5697602033615112,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p45-w-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -0.5050597786903381,
+                    "correctness_effect": 0.5050597786903381
+                },
+                "L3H3": {
+                    "ablation_delta": 0.49808311462402344,
+                    "correctness_effect": -0.49808311462402344
+                },
+                "L4H0": {
+                    "ablation_delta": 0.4733119010925293,
+                    "correctness_effect": -0.4733119010925293
+                },
+                "L4H1": {
+                    "ablation_delta": 0.04903137683868408,
+                    "correctness_effect": -0.04903137683868408
+                }
+            }
+        },
+        {
+            "probe_id": "P45-W-U",
+            "pair_id": "P45",
+            "pair_label": "four_vs_five",
+            "pair_role": "positive_control_pair",
+            "format": "words",
+            "prompt": "Two plus three equals",
+            "semantically_correct": "five",
+            "correct_side": "upper",
+            "candidate_lower": " four.",
+            "candidate_upper": " five.",
+            "lower_token_id": 3996,
+            "upper_token_id": 11563,
+            "baseline_lower_minus_upper_margin": -0.6178529262542725,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p45-w-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -0.9667401313781738,
+                    "correctness_effect": -0.9667401313781738
+                },
+                "L3H3": {
+                    "ablation_delta": 0.42451632022857666,
+                    "correctness_effect": 0.42451632022857666
+                },
+                "L4H0": {
+                    "ablation_delta": 0.48275113105773926,
+                    "correctness_effect": 0.48275113105773926
+                },
+                "L4H1": {
+                    "ablation_delta": 0.06006157398223877,
+                    "correctness_effect": 0.06006157398223877
+                }
+            }
+        },
+        {
+            "probe_id": "P45-S-L",
+            "pair_id": "P45",
+            "pair_label": "four_vs_five",
+            "pair_role": "positive_control_pair",
+            "format": "symbols",
+            "prompt": "2 + 2 =",
+            "semantically_correct": "four",
+            "correct_side": "lower",
+            "candidate_lower": " four.",
+            "candidate_upper": " five.",
+            "lower_token_id": 3996,
+            "upper_token_id": 11563,
+            "baseline_lower_minus_upper_margin": -1.0565731525421143,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p45-s-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -1.0747902393341064,
+                    "correctness_effect": 1.0747902393341064
+                },
+                "L3H3": {
+                    "ablation_delta": 0.4538005590438843,
+                    "correctness_effect": -0.4538005590438843
+                },
+                "L4H0": {
+                    "ablation_delta": 0.34788715839385986,
+                    "correctness_effect": -0.34788715839385986
+                },
+                "L4H1": {
+                    "ablation_delta": -0.03359174728393555,
+                    "correctness_effect": 0.03359174728393555
+                }
+            }
+        },
+        {
+            "probe_id": "P45-S-U",
+            "pair_id": "P45",
+            "pair_label": "four_vs_five",
+            "pair_role": "positive_control_pair",
+            "format": "symbols",
+            "prompt": "2 + 3 =",
+            "semantically_correct": "five",
+            "correct_side": "upper",
+            "candidate_lower": " four.",
+            "candidate_upper": " five.",
+            "lower_token_id": 3996,
+            "upper_token_id": 11563,
+            "baseline_lower_minus_upper_margin": -1.173163890838623,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p45-s-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -1.0386314392089844,
+                    "correctness_effect": -1.0386314392089844
+                },
+                "L3H3": {
+                    "ablation_delta": 0.45484697818756104,
+                    "correctness_effect": 0.45484697818756104
+                },
+                "L4H0": {
+                    "ablation_delta": 0.36633992195129395,
+                    "correctness_effect": 0.36633992195129395
+                },
+                "L4H1": {
+                    "ablation_delta": -0.022863388061523438,
+                    "correctness_effect": -0.022863388061523438
+                }
+            }
+        },
+        {
+            "probe_id": "P56-W-L",
+            "pair_id": "P56",
+            "pair_label": "five_vs_six",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "Two plus three equals",
+            "semantically_correct": "five",
+            "correct_side": "lower",
+            "candidate_lower": " five.",
+            "candidate_upper": " six.",
+            "lower_token_id": 11563,
+            "upper_token_id": 9262,
+            "baseline_lower_minus_upper_margin": 1.0323264598846436,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p56-w-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": -0.09792566299438477,
+                    "correctness_effect": 0.09792566299438477
+                },
+                "L3H3": {
+                    "ablation_delta": -0.8932715654373169,
+                    "correctness_effect": 0.8932715654373169
+                },
+                "L4H0": {
+                    "ablation_delta": -0.5096714496612549,
+                    "correctness_effect": 0.5096714496612549
+                },
+                "L4H1": {
+                    "ablation_delta": 0.007473111152648926,
+                    "correctness_effect": -0.007473111152648926
+                }
+            }
+        },
+        {
+            "probe_id": "P56-W-U",
+            "pair_id": "P56",
+            "pair_label": "five_vs_six",
+            "pair_role": "non_control_pair",
+            "format": "words",
+            "prompt": "Three plus three equals",
+            "semantically_correct": "six",
+            "correct_side": "upper",
+            "candidate_lower": " five.",
+            "candidate_upper": " six.",
+            "lower_token_id": 11563,
+            "upper_token_id": 9262,
+            "baseline_lower_minus_upper_margin": 1.130487084388733,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p56-w-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.045970141887664795,
+                    "correctness_effect": 0.045970141887664795
+                },
+                "L3H3": {
+                    "ablation_delta": -0.886906623840332,
+                    "correctness_effect": -0.886906623840332
+                },
+                "L4H0": {
+                    "ablation_delta": -0.511547327041626,
+                    "correctness_effect": -0.511547327041626
+                },
+                "L4H1": {
+                    "ablation_delta": -0.005213350057601929,
+                    "correctness_effect": -0.005213350057601929
+                }
+            }
+        },
+        {
+            "probe_id": "P56-S-L",
+            "pair_id": "P56",
+            "pair_label": "five_vs_six",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "2 + 3 =",
+            "semantically_correct": "five",
+            "correct_side": "lower",
+            "candidate_lower": " five.",
+            "candidate_upper": " six.",
+            "lower_token_id": 11563,
+            "upper_token_id": 9262,
+            "baseline_lower_minus_upper_margin": 1.6921954154968262,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p56-s-l_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.6605024337768555,
+                    "correctness_effect": -0.6605024337768555
+                },
+                "L3H3": {
+                    "ablation_delta": -0.6593364477157593,
+                    "correctness_effect": 0.6593364477157593
+                },
+                "L4H0": {
+                    "ablation_delta": -0.5116909742355347,
+                    "correctness_effect": 0.5116909742355347
+                },
+                "L4H1": {
+                    "ablation_delta": 0.02387547492980957,
+                    "correctness_effect": -0.02387547492980957
+                }
+            }
+        },
+        {
+            "probe_id": "P56-S-U",
+            "pair_id": "P56",
+            "pair_label": "five_vs_six",
+            "pair_role": "non_control_pair",
+            "format": "symbols",
+            "prompt": "3 + 3 =",
+            "semantically_correct": "six",
+            "correct_side": "upper",
+            "candidate_lower": " five.",
+            "candidate_upper": " six.",
+            "lower_token_id": 11563,
+            "upper_token_id": 9262,
+            "baseline_lower_minus_upper_margin": 1.8355512619018555,
+            "artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness/p56-s-u_cross_pair_heads.json",
+            "head_effects": {
+                "L1H0": {
+                    "ablation_delta": 0.42056965827941895,
+                    "correctness_effect": 0.42056965827941895
+                },
+                "L3H3": {
+                    "ablation_delta": -0.6841851472854614,
+                    "correctness_effect": -0.6841851472854614
+                },
+                "L4H0": {
+                    "ablation_delta": -0.534374475479126,
+                    "correctness_effect": -0.534374475479126
+                },
+                "L4H1": {
+                    "ablation_delta": 0.021892428398132324,
+                    "correctness_effect": 0.021892428398132324
+                }
+            }
+        }
+    ],
+    "head_summaries": {
+        "L1H0": {
+            "hypothesis_role": "predicted_correct_answer_supporter",
+            "all": {
+                "count": 16,
+                "mean_delta": -0.5392581167398021,
+                "median_delta": -0.30149272084236145,
+                "mean_absolute_delta": 1.0692744684638456,
+                "negative_delta_count": 9,
+                "positive_delta_count": 7,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5625,
+                "positive_delta_rate": 0.4375,
+                "mean_correctness_effect": -0.12541471619624645,
+                "median_correctness_effect": 0.07194790244102478,
+                "supports_correct_count": 9,
+                "suppresses_correct_count": 7,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5625,
+                "suppresses_correct_rate": 0.4375
+            },
+            "lower_correct": {
+                "count": 8,
+                "mean_delta": -0.4138434005435556,
+                "median_delta": -0.30149272084236145,
+                "mean_absolute_delta": 0.9492772670928389,
+                "negative_delta_count": 5,
+                "positive_delta_count": 3,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.625,
+                "positive_delta_rate": 0.375,
+                "mean_correctness_effect": 0.4138434005435556,
+                "median_correctness_effect": 0.30149272084236145,
+                "supports_correct_count": 5,
+                "suppresses_correct_count": 3,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.625,
+                "suppresses_correct_rate": 0.375
+            },
+            "upper_correct": {
+                "count": 8,
+                "mean_delta": -0.6646728329360485,
+                "median_delta": -0.4603849947452545,
+                "mean_absolute_delta": 1.1892716698348522,
+                "negative_delta_count": 4,
+                "positive_delta_count": 4,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5,
+                "positive_delta_rate": 0.5,
+                "mean_correctness_effect": -0.6646728329360485,
+                "median_correctness_effect": -0.4603849947452545,
+                "supports_correct_count": 4,
+                "suppresses_correct_count": 4,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "by_pair": {
+                "P23": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -2.2962783575057983,
+                        "median_delta": -2.378613233566284,
+                        "mean_absolute_delta": 2.2962783575057983,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.408924862742424,
+                        "median_correctness_effect": -0.49125973880290985,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P34": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.7782721449621022,
+                        "median_delta": 0.8159277737140656,
+                        "mean_absolute_delta": 0.7782721449621022,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": 0.03765562875196338,
+                        "median_correctness_effect": 0.164233042858541,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P45": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.8963053971529007,
+                        "median_delta": -1.002685785293579,
+                        "mean_absolute_delta": 0.8963053971529007,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.1063803881406784,
+                        "median_correctness_effect": -0.23084017634391785,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P56": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.2572791427373886,
+                        "median_delta": 0.23326990008354187,
+                        "mean_absolute_delta": 0.306241974234581,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.25,
+                        "positive_delta_rate": 0.75,
+                        "mean_correctness_effect": -0.02400924265384674,
+                        "median_correctness_effect": 0.07194790244102478,
+                        "supports_correct_count": 3,
+                        "suppresses_correct_count": 1,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.75,
+                        "suppresses_correct_rate": 0.25
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "minimum_consistent": 3
+                    }
+                }
+            },
+            "by_format": {
+                "words": {
+                    "count": 8,
+                    "mean_delta": -0.6154891734477133,
+                    "median_delta": -0.30149272084236145,
+                    "mean_absolute_delta": 0.8839139605406672,
+                    "negative_delta_count": 5,
+                    "positive_delta_count": 3,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.625,
+                    "positive_delta_rate": 0.375,
+                    "mean_correctness_effect": -0.16822860040701926,
+                    "median_correctness_effect": 0.07194790244102478,
+                    "supports_correct_count": 5,
+                    "suppresses_correct_count": 3,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.625,
+                    "suppresses_correct_rate": 0.375
+                },
+                "symbols": {
+                    "count": 8,
+                    "mean_delta": -0.46302706003189087,
+                    "median_delta": -0.3090308904647827,
+                    "mean_absolute_delta": 1.254634976387024,
+                    "negative_delta_count": 4,
+                    "positive_delta_count": 4,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.5,
+                    "positive_delta_rate": 0.5,
+                    "mean_correctness_effect": -0.08260083198547363,
+                    "median_correctness_effect": -0.11996638774871826,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                }
+            }
+        },
+        "L3H3": {
+            "hypothesis_role": "predicted_correct_answer_suppressor",
+            "all": {
+                "count": 16,
+                "mean_delta": -0.1932208016514778,
+                "median_delta": -0.21157753467559814,
+                "mean_absolute_delta": 0.4840756133198738,
+                "negative_delta_count": 8,
+                "positive_delta_count": 8,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5,
+                "positive_delta_rate": 0.5,
+                "mean_correctness_effect": -0.036447782069444656,
+                "median_correctness_effect": -0.04917645454406738,
+                "supports_correct_count": 8,
+                "suppresses_correct_count": 8,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "lower_correct": {
+                "count": 8,
+                "mean_delta": -0.15677301958203316,
+                "median_delta": -0.16240108013153076,
+                "mean_absolute_delta": 0.46719472482800484,
+                "negative_delta_count": 4,
+                "positive_delta_count": 4,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5,
+                "positive_delta_rate": 0.5,
+                "mean_correctness_effect": 0.15677301958203316,
+                "median_correctness_effect": 0.16240108013153076,
+                "supports_correct_count": 4,
+                "suppresses_correct_count": 4,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "upper_correct": {
+                "count": 8,
+                "mean_delta": -0.22966858372092247,
+                "median_delta": -0.25395774841308594,
+                "mean_absolute_delta": 0.5009565018117428,
+                "negative_delta_count": 4,
+                "positive_delta_count": 4,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5,
+                "positive_delta_rate": 0.5,
+                "mean_correctness_effect": -0.22966858372092247,
+                "median_correctness_effect": -0.25395774841308594,
+                "supports_correct_count": 4,
+                "suppresses_correct_count": 4,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "by_pair": {
+                "P23": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.2419753074645996,
+                        "median_delta": -0.16509826481342316,
+                        "mean_absolute_delta": 0.39404594898223877,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": -0.07687704265117645,
+                        "median_correctness_effect": 0.007938504219055176,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P34": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.2077946960926056,
+                        "median_delta": -0.21157753467559814,
+                        "mean_absolute_delta": 0.3035198152065277,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": -0.04616305232048035,
+                        "median_correctness_effect": -0.0499458909034729,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P45": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.45781174302101135,
+                        "median_delta": 0.45432376861572266,
+                        "mean_absolute_delta": 0.45781174302101135,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": -0.018130093812942505,
+                        "median_correctness_effect": -0.014642119407653809,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P56": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.7809249460697174,
+                        "median_delta": -0.7855458855628967,
+                        "mean_absolute_delta": 0.7809249460697174,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.004620939493179321,
+                        "median_correctness_effect": -0.012424349784851074,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                }
+            },
+            "by_format": {
+                "words": {
+                    "count": 8,
+                    "mean_delta": -0.24227137863636017,
+                    "median_delta": -0.21427471935749054,
+                    "mean_absolute_delta": 0.5207837969064713,
+                    "negative_delta_count": 4,
+                    "positive_delta_count": 4,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.5,
+                    "positive_delta_rate": 0.5,
+                    "mean_correctness_effect": -0.061309851706027985,
+                    "median_correctness_effect": -0.0499458909034729,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                },
+                "symbols": {
+                    "count": 8,
+                    "mean_delta": -0.14417022466659546,
+                    "median_delta": -0.16240108013153076,
+                    "mean_absolute_delta": 0.44736742973327637,
+                    "negative_delta_count": 4,
+                    "positive_delta_count": 4,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.5,
+                    "positive_delta_rate": 0.5,
+                    "mean_correctness_effect": -0.011585712432861328,
+                    "median_correctness_effect": 0.007938504219055176,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                }
+            }
+        },
+        "L4H0": {
+            "hypothesis_role": "predicted_correct_answer_suppressor",
+            "all": {
+                "count": 16,
+                "mean_delta": -0.10425231326371431,
+                "median_delta": -0.1514868214726448,
+                "mean_absolute_delta": 0.329496000893414,
+                "negative_delta_count": 10,
+                "positive_delta_count": 6,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.625,
+                "positive_delta_rate": 0.375,
+                "mean_correctness_effect": -0.0012909350916743279,
+                "median_correctness_effect": 0.021162249147892,
+                "supports_correct_count": 8,
+                "suppresses_correct_count": 8,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "lower_correct": {
+                "count": 8,
+                "mean_delta": -0.10296137817203999,
+                "median_delta": -0.1514868214726448,
+                "mean_absolute_delta": 0.3230020273476839,
+                "negative_delta_count": 5,
+                "positive_delta_count": 3,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.625,
+                "positive_delta_rate": 0.375,
+                "mean_correctness_effect": 0.10296137817203999,
+                "median_correctness_effect": 0.1514868214726448,
+                "supports_correct_count": 5,
+                "suppresses_correct_count": 3,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.625,
+                "suppresses_correct_rate": 0.375
+            },
+            "upper_correct": {
+                "count": 8,
+                "mean_delta": -0.10554324835538864,
+                "median_delta": -0.17371490597724915,
+                "mean_absolute_delta": 0.33598997443914413,
+                "negative_delta_count": 5,
+                "positive_delta_count": 3,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.625,
+                "positive_delta_rate": 0.375,
+                "mean_correctness_effect": -0.10554324835538864,
+                "median_correctness_effect": -0.17371490597724915,
+                "supports_correct_count": 3,
+                "suppresses_correct_count": 5,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.375,
+                "suppresses_correct_rate": 0.625
+            },
+            "by_pair": {
+                "P23": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.018446695059537888,
+                        "median_delta": 0.025594741106033325,
+                        "mean_absolute_delta": 0.04738299921154976,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": 0.01401420310139656,
+                        "median_correctness_effect": 0.021162249147892,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P34": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.33620741963386536,
+                        "median_delta": -0.35621851682662964,
+                        "mean_absolute_delta": 0.33620741963386536,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.020011097192764282,
+                        "median_correctness_effect": -0.04339033365249634,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P45": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.4175725281238556,
+                        "median_delta": 0.4198259115219116,
+                        "mean_absolute_delta": 0.4175725281238556,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": 0.006972998380661011,
+                        "median_correctness_effect": 0.009226381778717041,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P56": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.5168210566043854,
+                        "median_delta": -0.5116191506385803,
+                        "mean_absolute_delta": 0.5168210566043854,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.006139844655990601,
+                        "median_correctness_effect": -0.0009379386901855469,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                }
+            },
+            "by_format": {
+                "words": {
+                    "count": 8,
+                    "mean_delta": -0.10941589809954166,
+                    "median_delta": -0.21143991500139236,
+                    "mean_absolute_delta": 0.3484316561371088,
+                    "negative_delta_count": 6,
+                    "positive_delta_count": 2,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.75,
+                    "positive_delta_rate": 0.25,
+                    "mean_correctness_effect": 0.007078016176819801,
+                    "median_correctness_effect": 0.021162249147892,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                },
+                "symbols": {
+                    "count": 8,
+                    "mean_delta": -0.09908872842788696,
+                    "median_delta": -0.09695577621459961,
+                    "mean_absolute_delta": 0.31056034564971924,
+                    "negative_delta_count": 4,
+                    "positive_delta_count": 4,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.5,
+                    "positive_delta_rate": 0.5,
+                    "mean_correctness_effect": -0.009659886360168457,
+                    "median_correctness_effect": 0.006866157054901123,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                }
+            }
+        },
+        "L4H1": {
+            "hypothesis_role": "weak_control",
+            "all": {
+                "count": 16,
+                "mean_delta": 0.0030103372409939766,
+                "median_delta": 0.005062282085418701,
+                "mean_absolute_delta": 0.03315716702491045,
+                "negative_delta_count": 7,
+                "positive_delta_count": 9,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.4375,
+                "positive_delta_rate": 0.5625,
+                "mean_correctness_effect": -0.000819268636405468,
+                "median_correctness_effect": -0.006343230605125427,
+                "supports_correct_count": 7,
+                "suppresses_correct_count": 9,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.4375,
+                "suppresses_correct_rate": 0.5625
+            },
+            "lower_correct": {
+                "count": 8,
+                "mean_delta": 0.0038296058773994446,
+                "median_delta": 0.009378552436828613,
+                "mean_absolute_delta": 0.0369841605424881,
+                "negative_delta_count": 3,
+                "positive_delta_count": 5,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.375,
+                "positive_delta_rate": 0.625,
+                "mean_correctness_effect": -0.0038296058773994446,
+                "median_correctness_effect": -0.009378552436828613,
+                "supports_correct_count": 3,
+                "suppresses_correct_count": 5,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.375,
+                "suppresses_correct_rate": 0.625
+            },
+            "upper_correct": {
+                "count": 8,
+                "mean_delta": 0.0021910686045885086,
+                "median_delta": -0.001280948519706726,
+                "mean_absolute_delta": 0.029330173507332802,
+                "negative_delta_count": 4,
+                "positive_delta_count": 4,
+                "zero_delta_count": 0,
+                "negative_delta_rate": 0.5,
+                "positive_delta_rate": 0.5,
+                "mean_correctness_effect": 0.0021910686045885086,
+                "median_correctness_effect": -0.001280948519706726,
+                "supports_correct_count": 4,
+                "suppresses_correct_count": 4,
+                "zero_correctness_count": 0,
+                "supports_correct_rate": 0.5,
+                "suppresses_correct_rate": 0.5
+            },
+            "by_pair": {
+                "P23": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.04487653821706772,
+                        "median_delta": -0.0402398407459259,
+                        "mean_absolute_delta": 0.04487653821706772,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": 0.004636697471141815,
+                        "median_correctness_effect": -0.007924586534500122,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P34": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.031751517206430435,
+                        "median_delta": 0.026381753385066986,
+                        "mean_absolute_delta": 0.031751517206430435,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": -0.009686034172773361,
+                        "median_correctness_effect": -0.004316270351409912,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P45": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.013159453868865967,
+                        "median_delta": 0.013083994388580322,
+                        "mean_absolute_delta": 0.04138702154159546,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": 0.005439639091491699,
+                        "median_correctness_effect": 0.005364179611206055,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "P56": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.012006916105747223,
+                        "median_delta": 0.014682769775390625,
+                        "mean_absolute_delta": 0.014613591134548187,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.25,
+                        "positive_delta_rate": 0.75,
+                        "mean_correctness_effect": -0.003667376935482025,
+                        "median_correctness_effect": -0.006343230605125427,
+                        "supports_correct_count": 1,
+                        "suppresses_correct_count": 3,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.25,
+                        "suppresses_correct_rate": 0.75
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "minimum_consistent": 3
+                    }
+                }
+            },
+            "by_format": {
+                "words": {
+                    "count": 8,
+                    "mean_delta": 0.013693461194634438,
+                    "median_delta": 0.0244763121008873,
+                    "mean_absolute_delta": 0.04371570982038975,
+                    "negative_delta_count": 3,
+                    "positive_delta_count": 5,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.375,
+                    "positive_delta_rate": 0.625,
+                    "mean_correctness_effect": 0.0005897525697946548,
+                    "median_correctness_effect": -0.006343230605125427,
+                    "supports_correct_count": 3,
+                    "suppresses_correct_count": 5,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.375,
+                    "suppresses_correct_rate": 0.625
+                },
+                "symbols": {
+                    "count": 8,
+                    "mean_delta": -0.007672786712646484,
+                    "median_delta": -0.01010596752166748,
+                    "mean_absolute_delta": 0.022598624229431152,
+                    "negative_delta_count": 4,
+                    "positive_delta_count": 4,
+                    "zero_delta_count": 0,
+                    "negative_delta_rate": 0.5,
+                    "positive_delta_rate": 0.5,
+                    "mean_correctness_effect": -0.002228289842605591,
+                    "median_correctness_effect": -0.004316270351409912,
+                    "supports_correct_count": 4,
+                    "suppresses_correct_count": 4,
+                    "zero_correctness_count": 0,
+                    "supports_correct_rate": 0.5,
+                    "suppresses_correct_rate": 0.5
+                }
+            }
+        }
+    },
+    "pair_summaries": {
+        "P23": {
+            "probe_ids": [
+                "P23-W-L",
+                "P23-W-U",
+                "P23-S-L",
+                "P23-S-U"
+            ],
+            "head_summaries": {
+                "L1H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -2.2962783575057983,
+                        "median_delta": -2.378613233566284,
+                        "mean_absolute_delta": 2.2962783575057983,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.408924862742424,
+                        "median_correctness_effect": -0.49125973880290985,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L3H3": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.2419753074645996,
+                        "median_delta": -0.16509826481342316,
+                        "mean_absolute_delta": 0.39404594898223877,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": -0.07687704265117645,
+                        "median_correctness_effect": 0.007938504219055176,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.018446695059537888,
+                        "median_delta": 0.025594741106033325,
+                        "mean_absolute_delta": 0.04738299921154976,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": 0.01401420310139656,
+                        "median_correctness_effect": 0.021162249147892,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H1": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.04487653821706772,
+                        "median_delta": -0.0402398407459259,
+                        "mean_absolute_delta": 0.04487653821706772,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": 0.004636697471141815,
+                        "median_correctness_effect": -0.007924586534500122,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                }
+            }
+        },
+        "P34": {
+            "probe_ids": [
+                "P34-W-L",
+                "P34-W-U",
+                "P34-S-L",
+                "P34-S-U"
+            ],
+            "head_summaries": {
+                "L1H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.7782721449621022,
+                        "median_delta": 0.8159277737140656,
+                        "mean_absolute_delta": 0.7782721449621022,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": 0.03765562875196338,
+                        "median_correctness_effect": 0.164233042858541,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L3H3": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.2077946960926056,
+                        "median_delta": -0.21157753467559814,
+                        "mean_absolute_delta": 0.3035198152065277,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": -0.04616305232048035,
+                        "median_correctness_effect": -0.0499458909034729,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.33620741963386536,
+                        "median_delta": -0.35621851682662964,
+                        "mean_absolute_delta": 0.33620741963386536,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.020011097192764282,
+                        "median_correctness_effect": -0.04339033365249634,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H1": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.031751517206430435,
+                        "median_delta": 0.026381753385066986,
+                        "mean_absolute_delta": 0.031751517206430435,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": -0.009686034172773361,
+                        "median_correctness_effect": -0.004316270351409912,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                }
+            }
+        },
+        "P45": {
+            "probe_ids": [
+                "P45-W-L",
+                "P45-W-U",
+                "P45-S-L",
+                "P45-S-U"
+            ],
+            "head_summaries": {
+                "L1H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.8963053971529007,
+                        "median_delta": -1.002685785293579,
+                        "mean_absolute_delta": 0.8963053971529007,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.1063803881406784,
+                        "median_correctness_effect": -0.23084017634391785,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L3H3": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.45781174302101135,
+                        "median_delta": 0.45432376861572266,
+                        "mean_absolute_delta": 0.45781174302101135,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": -0.018130093812942505,
+                        "median_correctness_effect": -0.014642119407653809,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.4175725281238556,
+                        "median_delta": 0.4198259115219116,
+                        "mean_absolute_delta": 0.4175725281238556,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.0,
+                        "positive_delta_rate": 1.0,
+                        "mean_correctness_effect": 0.006972998380661011,
+                        "median_correctness_effect": 0.009226381778717041,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H1": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.013159453868865967,
+                        "median_delta": 0.013083994388580322,
+                        "mean_absolute_delta": 0.04138702154159546,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.5,
+                        "positive_delta_rate": 0.5,
+                        "mean_correctness_effect": 0.005439639091491699,
+                        "median_correctness_effect": 0.005364179611206055,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    }
+                }
+            }
+        },
+        "P56": {
+            "probe_ids": [
+                "P56-W-L",
+                "P56-W-U",
+                "P56-S-L",
+                "P56-S-U"
+            ],
+            "head_summaries": {
+                "L1H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.2572791427373886,
+                        "median_delta": 0.23326990008354187,
+                        "mean_absolute_delta": 0.306241974234581,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.25,
+                        "positive_delta_rate": 0.75,
+                        "mean_correctness_effect": -0.02400924265384674,
+                        "median_correctness_effect": 0.07194790244102478,
+                        "supports_correct_count": 3,
+                        "suppresses_correct_count": 1,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.75,
+                        "suppresses_correct_rate": 0.25
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L3H3": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.7809249460697174,
+                        "median_delta": -0.7855458855628967,
+                        "mean_absolute_delta": 0.7809249460697174,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.004620939493179321,
+                        "median_correctness_effect": -0.012424349784851074,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H0": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": -0.5168210566043854,
+                        "median_delta": -0.5116191506385803,
+                        "mean_absolute_delta": 0.5168210566043854,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 1.0,
+                        "positive_delta_rate": 0.0,
+                        "mean_correctness_effect": -0.006139844655990601,
+                        "median_correctness_effect": -0.0009379386901855469,
+                        "supports_correct_count": 2,
+                        "suppresses_correct_count": 2,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.5,
+                        "suppresses_correct_rate": 0.5
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "L4H1": {
+                    "summary": {
+                        "count": 4,
+                        "mean_delta": 0.012006916105747223,
+                        "median_delta": 0.014682769775390625,
+                        "mean_absolute_delta": 0.014613591134548187,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "zero_delta_count": 0,
+                        "negative_delta_rate": 0.25,
+                        "positive_delta_rate": 0.75,
+                        "mean_correctness_effect": -0.003667376935482025,
+                        "median_correctness_effect": -0.006343230605125427,
+                        "supports_correct_count": 1,
+                        "suppresses_correct_count": 3,
+                        "zero_correctness_count": 0,
+                        "supports_correct_rate": 0.25,
+                        "suppresses_correct_rate": 0.75
+                    },
+                    "fixed_pair_direction": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "minimum_consistent": 3
+                    }
+                }
+            }
+        }
+    },
+    "correctness_summaries": {
+        "lower_correct_probe_ids": [
+            "P23-W-L",
+            "P23-S-L",
+            "P34-W-L",
+            "P34-S-L",
+            "P45-W-L",
+            "P45-S-L",
+            "P56-W-L",
+            "P56-S-L"
+        ],
+        "upper_correct_probe_ids": [
+            "P23-W-U",
+            "P23-S-U",
+            "P34-W-U",
+            "P34-S-U",
+            "P45-W-U",
+            "P45-S-U",
+            "P56-W-U",
+            "P56-S-U"
+        ]
+    },
+    "format_summaries": {
+        "word_probe_ids": [
+            "P23-W-L",
+            "P23-W-U",
+            "P34-W-L",
+            "P34-W-U",
+            "P45-W-L",
+            "P45-W-U",
+            "P56-W-L",
+            "P56-W-U"
+        ],
+        "symbol_probe_ids": [
+            "P23-S-L",
+            "P23-S-U",
+            "P34-S-L",
+            "P34-S-U",
+            "P45-S-L",
+            "P45-S-U",
+            "P56-S-L",
+            "P56-S-U"
+        ]
+    },
+    "preregistered_tests": {
+        "positive_control": {
+            "pair_id": "P45",
+            "minimum_consistent": 3,
+            "L1H0": {
+                "expected_delta_sign": "negative",
+                "observed_negative_count": 4,
+                "pass": true
+            },
+            "L4H0": {
+                "expected_delta_sign": "positive",
+                "observed_positive_count": 4,
+                "pass": true
+            },
+            "pass": true
+        },
+        "primary_tests": {
+            "L1H0": {
+                "expected_correctness_effect_sign": "positive",
+                "observed_global_consistent_count": 9,
+                "minimum_global_consistent": 12,
+                "global_pass": false,
+                "pair_sign_pass_count": 1,
+                "minimum_pairs_consistent": 3,
+                "pair_generalization_pass": false,
+                "pass": false
+            },
+            "L3H3": {
+                "expected_correctness_effect_sign": "negative",
+                "observed_global_consistent_count": 8,
+                "minimum_global_consistent": 12,
+                "global_pass": false,
+                "pair_sign_pass_count": 4,
+                "minimum_pairs_consistent": 3,
+                "pair_generalization_pass": true,
+                "pass": false
+            },
+            "L4H0": {
+                "expected_correctness_effect_sign": "negative",
+                "observed_global_consistent_count": 8,
+                "minimum_global_consistent": 12,
+                "global_pass": false,
+                "pair_sign_pass_count": 2,
+                "minimum_pairs_consistent": 3,
+                "pair_generalization_pass": false,
+                "pass": false
+            }
+        },
+        "primary_pass_count": 0,
+        "weak_control": {
+            "head_id": "L4H1",
+            "mean_absolute_delta": 0.03315716702491045,
+            "primary_mean_absolute_deltas": {
+                "L1H0": 1.0692744684638456,
+                "L3H3": 0.4840756133198738,
+                "L4H0": 0.329496000893414
+            },
+            "pass": true
+        },
+        "primary_outcome_label": "further_weakens_general_arithmetic_competing_head_circuit"
+    },
+    "positive_control": {
+        "pair_id": "P45",
+        "minimum_consistent": 3,
+        "L1H0": {
+            "expected_delta_sign": "negative",
+            "observed_negative_count": 4,
+            "pass": true
+        },
+        "L4H0": {
+            "expected_delta_sign": "positive",
+            "observed_positive_count": 4,
+            "pass": true
+        },
+        "pass": true
+    },
+    "token_bias_diagnostics": {
+        "by_head": {
+            "L1H0": {
+                "pair_directions": {
+                    "P23": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    },
+                    "P34": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    },
+                    "P45": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    },
+                    "P56": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 1,
+                        "positive_delta_count": 3,
+                        "minimum_consistent": 3
+                    }
+                },
+                "non_control_fixed_pair_count": 3,
+                "broader_token_bias_signal": true,
+                "four_five_specific_signal": false
+            },
+            "L3H3": {
+                "pair_directions": {
+                    "P23": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    },
+                    "P34": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    },
+                    "P45": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    },
+                    "P56": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "non_control_fixed_pair_count": 1,
+                "broader_token_bias_signal": false,
+                "four_five_specific_signal": true
+            },
+            "L4H0": {
+                "pair_directions": {
+                    "P23": {
+                        "direction": "none",
+                        "pass": false,
+                        "negative_delta_count": 2,
+                        "positive_delta_count": 2,
+                        "minimum_consistent": 3
+                    },
+                    "P34": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    },
+                    "P45": {
+                        "direction": "upper",
+                        "pass": true,
+                        "negative_delta_count": 0,
+                        "positive_delta_count": 4,
+                        "minimum_consistent": 3
+                    },
+                    "P56": {
+                        "direction": "lower",
+                        "pass": true,
+                        "negative_delta_count": 4,
+                        "positive_delta_count": 0,
+                        "minimum_consistent": 3
+                    }
+                },
+                "non_control_fixed_pair_count": 2,
+                "broader_token_bias_signal": true,
+                "four_five_specific_signal": false
+            }
+        },
+        "broader_token_bias_signal_heads": [
+            "L1H0",
+            "L4H0"
+        ],
+        "four_five_specific_signal_heads": [
+            "L3H3"
+        ]
+    },
+    "hypothesis_diagnostics": {
+        "positive_control_pass": true,
+        "primary_pass_count": 0,
+        "all_three_primary_heads_pass": false,
+        "no_primary_heads_pass": true,
+        "weak_control_pass": true,
+        "broader_token_bias_signal_heads": [
+            "L1H0",
+            "L4H0"
+        ],
+        "four_five_specific_signal_heads": [
+            "L3H3"
+        ],
+        "outcome_label": "further_weakens_general_arithmetic_competing_head_circuit"
+    },
+    "interpretation_rule": {
+        "canonical_margin": "LOWER candidate logit minus UPPER candidate logit at the first discriminative token.",
+        "negative_ablation_delta": "The intact head causally supports the LOWER candidate relative to the UPPER candidate.",
+        "positive_ablation_delta": "The intact head causally supports the UPPER candidate relative to the LOWER candidate.",
+        "positive_correctness_effect": "The intact head causally supports the semantically correct candidate.",
+        "negative_correctness_effect": "The intact head causally suppresses the semantically correct candidate."
+    },
+    "checks": {
+        "execution_spec_verified": true,
+        "p3_approval_verified": true,
+        "checkpoint_sha256_verified": true,
+        "runtime_identity": true,
+        "frozen_pair_order_preserved": true,
+        "frozen_probe_order_preserved": true,
+        "frozen_head_order_preserved": true,
+        "all_probes_completed": true,
+        "expected_effect_record_count": true,
+        "all_scale_1_controls_exact": true,
+        "all_effects_finite": true,
+        "all_heads_zeroed": true,
+        "fixed_candidate_orientation_preserved": true,
+        "positive_control_evaluated": true,
+        "no_persistent_weight_modification": true,
+        "knowledge_store_not_mutated": true
+    }
+}

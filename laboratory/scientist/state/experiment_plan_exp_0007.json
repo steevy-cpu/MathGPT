@@ -1,0 +1,753 @@
+{
+    "engine_version": "L12B.1",
+    "plan_version": "L12B.1",
+    "mode": "frozen_preregistered_replication_plan",
+    "plan_id": "PLAN-5825AD67CA0D2EC0",
+    "plan": {
+        "plan_id": "PLAN-5825AD67CA0D2EC0",
+        "experiment_id": "EXP-0007",
+        "target_hypothesis_id": "HYP-V03-003",
+        "title": "Independent cross-pair numerical candidate-selection replication",
+        "question": "Across four previously untested numerical candidate pairs, do L1H0 and L4H0 preserve context-stable causal pair/token directions more reliably than they track arithmetic correctness?",
+        "proposal": {
+            "proposal_id": "PROP-8E7FB86CBDFF9DE6",
+            "proposal_path": "laboratory/scientist/state/experiment_proposal_exp_0007.json",
+            "proposal_sha256": "b2d178d00fd216a856e61791d85faec8d37f6177f90ecf4eeffa1081c2d57fc8"
+        },
+        "knowledge_state": {
+            "knowledge_state_sha256": "aaea4cfae9f270fe9f0f8560f288b1e459c397c5eaf77eefb10ab396e97d51f6",
+            "scientist_context_path": "laboratory/knowledge/scientist_context.json",
+            "scientist_context_sha256": "2ee73b013b214923d9d0324c8538cb8378f5d3929dcc32285e6a5cf8b3cf7653"
+        },
+        "model_scope": {
+            "model": "MathGPT-General-v0.3",
+            "stage": "general_pretraining_v0.3_300m",
+            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "training_step": 292969,
+            "tokens_seen": 300000256
+        },
+        "checkpoint_binding": {
+            "path": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+            "sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+        },
+        "tokenizer_binding": {
+            "artifact": "tokenizer_50m_v0.2",
+            "directory": "tokenizer/artifacts/tokenizer_50m_v0.2",
+            "config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142",
+            "encoding_protocol": "Prompt and candidate continuation are encoded separately without BOS/EOS."
+        },
+        "frozen_heads": {
+            "primary": [
+                "L1H0",
+                "L4H0"
+            ],
+            "weak_control": [
+                "L4H1"
+            ]
+        },
+        "frozen_pairs": [
+            {
+                "pair_id": "P12",
+                "role": "primary_replication",
+                "lower_label": "one",
+                "upper_label": "two",
+                "tokenization": {
+                    "lower_continuation": " one.",
+                    "upper_continuation": " two.",
+                    "lower_token_ids": [
+                        35,
+                        267,
+                        1509
+                    ],
+                    "upper_token_ids": [
+                        35,
+                        9316,
+                        49
+                    ],
+                    "first_discriminative_index": 1,
+                    "lower_discriminative_token": {
+                        "token_id": 267,
+                        "utf8_text": "on",
+                        "bytes_hex": "6f6e"
+                    },
+                    "upper_discriminative_token": {
+                        "token_id": 9316,
+                        "utf8_text": "two",
+                        "bytes_hex": "74776f"
+                    },
+                    "scoring_protocol": "Prompt and continuation are encoded separately. The causal margin is evaluated at the first continuation-token position where lower and upper tokenizations differ."
+                },
+                "probe_count": 4,
+                "probes": [
+                    {
+                        "probe_id": "P12-W-L",
+                        "form": "word",
+                        "correct_candidate": "lower",
+                        "prompt": "Zero plus one equals",
+                        "prompt_token_ids": [
+                            93,
+                            14922,
+                            5912,
+                            491,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " one.",
+                        "upper_continuation": " two.",
+                        "lower_discriminative_token_id": 267,
+                        "upper_discriminative_token_id": 9316,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P12-W-U",
+                        "form": "word",
+                        "correct_candidate": "upper",
+                        "prompt": "One plus one equals",
+                        "prompt_token_ids": [
+                            2800,
+                            5912,
+                            491,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " one.",
+                        "upper_continuation": " two.",
+                        "lower_discriminative_token_id": 267,
+                        "upper_discriminative_token_id": 9316,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P12-S-L",
+                        "form": "symbol",
+                        "correct_candidate": "lower",
+                        "prompt": "0 + 1 =",
+                        "prompt_token_ids": [
+                            478,
+                            771,
+                            524,
+                            64
+                        ],
+                        "lower_continuation": " one.",
+                        "upper_continuation": " two.",
+                        "lower_discriminative_token_id": 267,
+                        "upper_discriminative_token_id": 9316,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P12-S-U",
+                        "form": "symbol",
+                        "correct_candidate": "upper",
+                        "prompt": "1 + 1 =",
+                        "prompt_token_ids": [
+                            7676,
+                            524,
+                            64
+                        ],
+                        "lower_continuation": " one.",
+                        "upper_continuation": " two.",
+                        "lower_discriminative_token_id": 267,
+                        "upper_discriminative_token_id": 9316,
+                        "first_discriminative_index": 1
+                    }
+                ]
+            },
+            {
+                "pair_id": "P67",
+                "role": "primary_replication",
+                "lower_label": "six",
+                "upper_label": "seven",
+                "tokenization": {
+                    "lower_continuation": " six.",
+                    "upper_continuation": " seven.",
+                    "lower_token_ids": [
+                        35,
+                        9262,
+                        49
+                    ],
+                    "upper_token_ids": [
+                        35,
+                        15254,
+                        49
+                    ],
+                    "first_discriminative_index": 1,
+                    "lower_discriminative_token": {
+                        "token_id": 9262,
+                        "utf8_text": "six",
+                        "bytes_hex": "736978"
+                    },
+                    "upper_discriminative_token": {
+                        "token_id": 15254,
+                        "utf8_text": "seven",
+                        "bytes_hex": "736576656e"
+                    },
+                    "scoring_protocol": "Prompt and continuation are encoded separately. The causal margin is evaluated at the first continuation-token position where lower and upper tokenizations differ."
+                },
+                "probe_count": 4,
+                "probes": [
+                    {
+                        "probe_id": "P67-W-L",
+                        "form": "word",
+                        "correct_candidate": "lower",
+                        "prompt": "Three plus three equals",
+                        "prompt_token_ids": [
+                            14635,
+                            5912,
+                            1349,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " six.",
+                        "upper_continuation": " seven.",
+                        "lower_discriminative_token_id": 9262,
+                        "upper_discriminative_token_id": 15254,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P67-W-U",
+                        "form": "word",
+                        "correct_candidate": "upper",
+                        "prompt": "Three plus four equals",
+                        "prompt_token_ids": [
+                            14635,
+                            5912,
+                            2215,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " six.",
+                        "upper_continuation": " seven.",
+                        "lower_discriminative_token_id": 9262,
+                        "upper_discriminative_token_id": 15254,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P67-S-L",
+                        "form": "symbol",
+                        "correct_candidate": "lower",
+                        "prompt": "3 + 3 =",
+                        "prompt_token_ids": [
+                            12372,
+                            702,
+                            64
+                        ],
+                        "lower_continuation": " six.",
+                        "upper_continuation": " seven.",
+                        "lower_discriminative_token_id": 9262,
+                        "upper_discriminative_token_id": 15254,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P67-S-U",
+                        "form": "symbol",
+                        "correct_candidate": "upper",
+                        "prompt": "3 + 4 =",
+                        "prompt_token_ids": [
+                            12372,
+                            748,
+                            64
+                        ],
+                        "lower_continuation": " six.",
+                        "upper_continuation": " seven.",
+                        "lower_discriminative_token_id": 9262,
+                        "upper_discriminative_token_id": 15254,
+                        "first_discriminative_index": 1
+                    }
+                ]
+            },
+            {
+                "pair_id": "P78",
+                "role": "primary_replication",
+                "lower_label": "seven",
+                "upper_label": "eight",
+                "tokenization": {
+                    "lower_continuation": " seven.",
+                    "upper_continuation": " eight.",
+                    "lower_token_ids": [
+                        35,
+                        15254,
+                        49
+                    ],
+                    "upper_token_ids": [
+                        35,
+                        104,
+                        1112,
+                        49
+                    ],
+                    "first_discriminative_index": 1,
+                    "lower_discriminative_token": {
+                        "token_id": 15254,
+                        "utf8_text": "seven",
+                        "bytes_hex": "736576656e"
+                    },
+                    "upper_discriminative_token": {
+                        "token_id": 104,
+                        "utf8_text": "e",
+                        "bytes_hex": "65"
+                    },
+                    "scoring_protocol": "Prompt and continuation are encoded separately. The causal margin is evaluated at the first continuation-token position where lower and upper tokenizations differ."
+                },
+                "probe_count": 4,
+                "probes": [
+                    {
+                        "probe_id": "P78-W-L",
+                        "form": "word",
+                        "correct_candidate": "lower",
+                        "prompt": "Three plus four equals",
+                        "prompt_token_ids": [
+                            14635,
+                            5912,
+                            2215,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " seven.",
+                        "upper_continuation": " eight.",
+                        "lower_discriminative_token_id": 15254,
+                        "upper_discriminative_token_id": 104,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P78-W-U",
+                        "form": "word",
+                        "correct_candidate": "upper",
+                        "prompt": "Four plus four equals",
+                        "prompt_token_ids": [
+                            73,
+                            616,
+                            5912,
+                            2215,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " seven.",
+                        "upper_continuation": " eight.",
+                        "lower_discriminative_token_id": 15254,
+                        "upper_discriminative_token_id": 104,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P78-S-L",
+                        "form": "symbol",
+                        "correct_candidate": "lower",
+                        "prompt": "3 + 4 =",
+                        "prompt_token_ids": [
+                            12372,
+                            748,
+                            64
+                        ],
+                        "lower_continuation": " seven.",
+                        "upper_continuation": " eight.",
+                        "lower_discriminative_token_id": 15254,
+                        "upper_discriminative_token_id": 104,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P78-S-U",
+                        "form": "symbol",
+                        "correct_candidate": "upper",
+                        "prompt": "4 + 4 =",
+                        "prompt_token_ids": [
+                            748,
+                            771,
+                            748,
+                            64
+                        ],
+                        "lower_continuation": " seven.",
+                        "upper_continuation": " eight.",
+                        "lower_discriminative_token_id": 15254,
+                        "upper_discriminative_token_id": 104,
+                        "first_discriminative_index": 1
+                    }
+                ]
+            },
+            {
+                "pair_id": "P89",
+                "role": "primary_replication",
+                "lower_label": "eight",
+                "upper_label": "nine",
+                "tokenization": {
+                    "lower_continuation": " eight.",
+                    "upper_continuation": " nine.",
+                    "lower_token_ids": [
+                        35,
+                        104,
+                        1112,
+                        49
+                    ],
+                    "upper_token_ids": [
+                        35,
+                        10786,
+                        1509
+                    ],
+                    "first_discriminative_index": 1,
+                    "lower_discriminative_token": {
+                        "token_id": 104,
+                        "utf8_text": "e",
+                        "bytes_hex": "65"
+                    },
+                    "upper_discriminative_token": {
+                        "token_id": 10786,
+                        "utf8_text": "nin",
+                        "bytes_hex": "6e696e"
+                    },
+                    "scoring_protocol": "Prompt and continuation are encoded separately. The causal margin is evaluated at the first continuation-token position where lower and upper tokenizations differ."
+                },
+                "probe_count": 4,
+                "probes": [
+                    {
+                        "probe_id": "P89-W-L",
+                        "form": "word",
+                        "correct_candidate": "lower",
+                        "prompt": "Four plus four equals",
+                        "prompt_token_ids": [
+                            73,
+                            616,
+                            5912,
+                            2215,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " eight.",
+                        "upper_continuation": " nine.",
+                        "lower_discriminative_token_id": 104,
+                        "upper_discriminative_token_id": 10786,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P89-W-U",
+                        "form": "word",
+                        "correct_candidate": "upper",
+                        "prompt": "Four plus five equals",
+                        "prompt_token_ids": [
+                            73,
+                            616,
+                            5912,
+                            2853,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " eight.",
+                        "upper_continuation": " nine.",
+                        "lower_discriminative_token_id": 104,
+                        "upper_discriminative_token_id": 10786,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P89-S-L",
+                        "form": "symbol",
+                        "correct_candidate": "lower",
+                        "prompt": "4 + 4 =",
+                        "prompt_token_ids": [
+                            748,
+                            771,
+                            748,
+                            64
+                        ],
+                        "lower_continuation": " eight.",
+                        "upper_continuation": " nine.",
+                        "lower_discriminative_token_id": 104,
+                        "upper_discriminative_token_id": 10786,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P89-S-U",
+                        "form": "symbol",
+                        "correct_candidate": "upper",
+                        "prompt": "4 + 5 =",
+                        "prompt_token_ids": [
+                            748,
+                            771,
+                            701,
+                            64
+                        ],
+                        "lower_continuation": " eight.",
+                        "upper_continuation": " nine.",
+                        "lower_discriminative_token_id": 104,
+                        "upper_discriminative_token_id": 10786,
+                        "first_discriminative_index": 1
+                    }
+                ]
+            },
+            {
+                "pair_id": "P45",
+                "role": "positive_control",
+                "lower_label": "four",
+                "upper_label": "five",
+                "tokenization": {
+                    "lower_continuation": " four.",
+                    "upper_continuation": " five.",
+                    "lower_token_ids": [
+                        35,
+                        3996,
+                        49
+                    ],
+                    "upper_token_ids": [
+                        35,
+                        11563,
+                        1509
+                    ],
+                    "first_discriminative_index": 1,
+                    "lower_discriminative_token": {
+                        "token_id": 3996,
+                        "utf8_text": "four",
+                        "bytes_hex": "666f7572"
+                    },
+                    "upper_discriminative_token": {
+                        "token_id": 11563,
+                        "utf8_text": "fiv",
+                        "bytes_hex": "666976"
+                    },
+                    "scoring_protocol": "Prompt and continuation are encoded separately. The causal margin is evaluated at the first continuation-token position where lower and upper tokenizations differ."
+                },
+                "probe_count": 4,
+                "probes": [
+                    {
+                        "probe_id": "P45-W-L",
+                        "form": "word",
+                        "correct_candidate": "lower",
+                        "prompt": "Two plus two equals",
+                        "prompt_token_ids": [
+                            6498,
+                            5912,
+                            722,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " four.",
+                        "upper_continuation": " five.",
+                        "lower_discriminative_token_id": 3996,
+                        "upper_discriminative_token_id": 11563,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P45-W-U",
+                        "form": "word",
+                        "correct_candidate": "upper",
+                        "prompt": "Two plus three equals",
+                        "prompt_token_ids": [
+                            6498,
+                            5912,
+                            1349,
+                            5001,
+                            118
+                        ],
+                        "lower_continuation": " four.",
+                        "upper_continuation": " five.",
+                        "lower_discriminative_token_id": 3996,
+                        "upper_discriminative_token_id": 11563,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P45-S-L",
+                        "form": "symbol",
+                        "correct_candidate": "lower",
+                        "prompt": "2 + 2 =",
+                        "prompt_token_ids": [
+                            7785,
+                            522,
+                            64
+                        ],
+                        "lower_continuation": " four.",
+                        "upper_continuation": " five.",
+                        "lower_discriminative_token_id": 3996,
+                        "upper_discriminative_token_id": 11563,
+                        "first_discriminative_index": 1
+                    },
+                    {
+                        "probe_id": "P45-S-U",
+                        "form": "symbol",
+                        "correct_candidate": "upper",
+                        "prompt": "2 + 3 =",
+                        "prompt_token_ids": [
+                            7785,
+                            702,
+                            64
+                        ],
+                        "lower_continuation": " four.",
+                        "upper_continuation": " five.",
+                        "lower_discriminative_token_id": 3996,
+                        "upper_discriminative_token_id": 11563,
+                        "first_discriminative_index": 1
+                    }
+                ]
+            }
+        ],
+        "primary_pair_ids": [
+            "P12",
+            "P67",
+            "P78",
+            "P89"
+        ],
+        "positive_control_pair_id": "P45",
+        "primary_probe_count": 16,
+        "total_probe_count": 20,
+        "analysis_policy": {
+            "canonical_margin": "logit(lower discriminative token) - logit(upper discriminative token)",
+            "ablation_delta": "ablated_margin - baseline_margin",
+            "raw_direction": {
+                "negative_delta": "intact head supports LOWER relative to UPPER",
+                "positive_delta": "intact head supports UPPER relative to LOWER"
+            },
+            "correctness_effect": {
+                "lower_correct": "-ablation_delta",
+                "upper_correct": "+ablation_delta",
+                "positive_effect": "intact head supports the correct candidate",
+                "negative_effect": "intact head suppresses the correct candidate"
+            },
+            "primary_replication_tests": {
+                "within_pair_direction_stability": {
+                    "unit": "head × primary pair",
+                    "pass_rule": "At least 3 of 4 raw ablation deltas have the same non-zero sign.",
+                    "threshold": "3/4"
+                },
+                "cross_pair_generalization": {
+                    "unit": "primary head",
+                    "pass_rule": "Within-pair direction stability passes on at least 3 of the 4 new primary pairs.",
+                    "threshold": "3/4 pairs"
+                },
+                "strong_correctness_tracking": {
+                    "unit": "primary head",
+                    "pass_rule": "At least 12 of 16 primary correctness effects are positive.",
+                    "threshold": "12/16",
+                    "interpretation": "Passing this test is evidence for a strong arithmetic-correctness account and therefore works against the candidate-selection replication claim."
+                }
+            },
+            "positive_control_tests": {
+                "L1H0": {
+                    "expected_raw_delta_sign": "negative",
+                    "threshold": ">= 3/4 P45 probes"
+                },
+                "L4H0": {
+                    "expected_raw_delta_sign": "positive",
+                    "threshold": ">= 3/4 P45 probes"
+                },
+                "overall_pass": "Both L1H0 and L4H0 positive-control tests pass."
+            },
+            "weak_control_test": {
+                "head": "L4H1",
+                "metric": "mean absolute raw ablation delta across the 16 primary replication probes",
+                "pass_rule": "L4H1 mean absolute delta is strictly lower than the mean absolute delta of each primary head on the same probes."
+            },
+            "orientation_diagnostic": {
+                "purpose": "Distinguish pair/token-specific stability from a trivial global LOWER-versus-UPPER ordering bias.",
+                "metric": "For each primary head, compare the dominant raw-delta sign across the stable primary pairs.",
+                "global_order_bias_signal": "The same dominant raw-delta sign occurs in every stable primary pair.",
+                "pair_dependent_signal": "At least two stable primary pairs have opposite dominant raw-delta signs.",
+                "note": "This diagnostic does not alter the preregistered primary replication pass/fail result; it refines mechanism interpretation."
+            },
+            "outcome_policy": [
+                {
+                    "outcome": "inconclusive_positive_control_failure",
+                    "condition": "P45 overall positive control fails."
+                },
+                {
+                    "outcome": "replicates_cross_pair_candidate_selection_bias",
+                    "condition": "Positive control passes; both L1H0 and L4H0 pass cross-pair generalization; neither primary head passes strong correctness tracking; and the L4H1 weak-control criterion passes."
+                },
+                {
+                    "outcome": "partial_replication",
+                    "condition": "Positive control passes and exactly one of L1H0/L4H0 passes cross-pair generalization, or both pass but one also passes strong correctness tracking, with weak-control behavior still acceptable."
+                },
+                {
+                    "outcome": "fails_cross_pair_replication",
+                    "condition": "Positive control passes but neither primary head passes cross-pair generalization, or the weak-control criterion fails."
+                }
+            ]
+        },
+        "intervention_policy": {
+            "instrument": "attention_head_ablation",
+            "intervention": "Temporarily zero the selected attention head output for one forward pass.",
+            "ablation_scale": 0.0,
+            "persistent_weight_modification": false,
+            "primary_heads": [
+                "L1H0",
+                "L4H0"
+            ],
+            "weak_control_heads": [
+                "L4H1"
+            ],
+            "all_heads": [
+                "L1H0",
+                "L4H0",
+                "L4H1"
+            ],
+            "effects_per_probe": 3,
+            "expected_total_probe_count": 20,
+            "expected_total_causal_effects": 60,
+            "required_permission": "P3",
+            "human_approval_required": true,
+            "execution_authorized": false
+        },
+        "design_constraints": [
+            "P12/P67/P78/P89 are the only primary replication pairs.",
+            "P45 is a positive control only and cannot contribute to primary replication success.",
+            "Each primary pair has exactly two lower-correct and two upper-correct probes.",
+            "Each primary pair has exactly two word-form and two symbol-form probes.",
+            "L1H0 and L4H0 are the only primary heads.",
+            "L4H1 is the only weak-control head.",
+            "L3H3 is excluded because it is reserved for HYP-V03-004.",
+            "No prompt, candidate pair, head, token ID, threshold, or outcome rule may change after this plan is frozen without creating a new plan identity."
+        ],
+        "execution_authorized": false,
+        "p3_approval_present": false
+    },
+    "input_checks": {
+        "proposal_version": true,
+        "proposal_checks_passed": true,
+        "proposal_id": true,
+        "proposal_experiment": true,
+        "proposal_hypothesis": true,
+        "proposal_execution_blocked": true,
+        "proposal_exact_probes_unfrozen": true,
+        "knowledge_state_advanced_after_registration": true,
+        "snapshot_exp_0007_planned": true,
+        "snapshot_hypothesis_link": true,
+        "snapshot_evidence_none": true,
+        "snapshot_no_findings": true,
+        "snapshot_model_scope": true,
+        "snapshot_checkpoint_sha": true,
+        "registry_exp_0007_present": true,
+        "registry_status_planned": true,
+        "registry_hypothesis_link": true,
+        "registry_evidence_none": true,
+        "registry_permission_p3": true,
+        "registry_no_findings": true,
+        "registry_proposal_id_matches": true,
+        "registry_exact_probes_unfrozen": true,
+        "registry_execution_blocked": true,
+        "registry_model_scope": true,
+        "registry_checkpoint_sha": true,
+        "snapshot_registry_status_agree": true,
+        "snapshot_registry_model_scope_agree": true,
+        "next_recommended_exp_0007": true
+    },
+    "design_checks": {
+        "five_total_pairs": true,
+        "four_primary_pairs": true,
+        "primary_pair_ids_exact": true,
+        "primary_pairs_new": true,
+        "one_positive_control": true,
+        "four_probes_per_pair": true,
+        "sixteen_primary_probes": true,
+        "twenty_total_probes": true,
+        "primary_correctness_balanced": true,
+        "primary_form_balanced": true,
+        "all_discriminative_tokens_distinct": true,
+        "all_candidate_roundtrips_verified": true,
+        "primary_heads_exact": true,
+        "weak_control_exact": true
+    },
+    "policy_checks": {
+        "model_not_loaded": true,
+        "experiment_not_executed": true,
+        "knowledge_store_not_mutated": true,
+        "evidence_not_created": true,
+        "findings_not_created": true,
+        "hypothesis_status_not_mutated": true,
+        "execution_not_authorized": true,
+        "p3_approval_not_created": true
+    }
+}

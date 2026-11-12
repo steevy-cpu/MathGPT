@@ -1,0 +1,452 @@
+{
+    "engine_version": "L10B.1",
+    "created_at_utc": "2026-11-12T17:29:05.319572+00:00",
+    "mode": "preregistered_discriminating_experiment_plan",
+    "source_proposal": {
+        "path": "laboratory/scientist/state/experiment_proposal.json",
+        "sha256": "0dc1d381745b9c2ecfeec01a807866adf7feb5e27268c825542a6a023402151f",
+        "proposal_id": "PROP-A87C1A2261714689",
+        "source_knowledge_state_sha256": "0b12c8299cc53cf4bc72a4523518684c43fffc0b0f7b144292611f427e73a912"
+    },
+    "experiment_plan": {
+        "plan_id": "PLAN-279F4F2808C046E4",
+        "plan_fingerprint_sha256": "279f4f2808c046e43922167ef80007beecd685154e00b262fc403fd617b47b54",
+        "plan": {
+            "experiment_id": "EXP-0006",
+            "title": "Cross-pair numerical candidate identity versus arithmetic correctness",
+            "question": "Across multiple fixed numerical candidate pairs, do the causal effects of L1H0, L3H3, and L4H0 track the semantically correct arithmetic answer, or do they track particular candidate-token identities?",
+            "hypothesis_id": "HYP-V03-001",
+            "hypothesis_statement": "Across addition contexts, L1H0 generally supports the preferred arithmetic answer while L3H3 and L4H0 generally suppress the preferred arithmetic answer.",
+            "hypothesis_status_at_preregistration": "weakened",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "required_permission": "P3",
+            "target_heads": [
+                {
+                    "layer": 1,
+                    "head": 0,
+                    "head_id": "L1H0",
+                    "hypothesis_role": "predicted_correct_answer_supporter"
+                },
+                {
+                    "layer": 3,
+                    "head": 3,
+                    "head_id": "L3H3",
+                    "hypothesis_role": "predicted_correct_answer_suppressor"
+                },
+                {
+                    "layer": 4,
+                    "head": 0,
+                    "head_id": "L4H0",
+                    "hypothesis_role": "predicted_correct_answer_suppressor"
+                },
+                {
+                    "layer": 4,
+                    "head": 1,
+                    "head_id": "L4H1",
+                    "hypothesis_role": "weak_control"
+                }
+            ],
+            "candidate_pair_design": {
+                "pair_count": 4,
+                "positive_control_pair": "P45",
+                "non_control_pair_count": 3,
+                "pairs": [
+                    {
+                        "pair_id": "P23",
+                        "label": "two_vs_three",
+                        "lower_label": "two",
+                        "upper_label": "three",
+                        "lower_candidate": " two.",
+                        "upper_candidate": " three.",
+                        "role": "non_control_pair",
+                        "word_lower_prompt": "One plus one equals",
+                        "word_upper_prompt": "One plus two equals",
+                        "symbol_lower_prompt": "1 + 1 =",
+                        "symbol_upper_prompt": "1 + 2 ="
+                    },
+                    {
+                        "pair_id": "P34",
+                        "label": "three_vs_four",
+                        "lower_label": "three",
+                        "upper_label": "four",
+                        "lower_candidate": " three.",
+                        "upper_candidate": " four.",
+                        "role": "non_control_pair",
+                        "word_lower_prompt": "One plus two equals",
+                        "word_upper_prompt": "Two plus two equals",
+                        "symbol_lower_prompt": "1 + 2 =",
+                        "symbol_upper_prompt": "2 + 2 ="
+                    },
+                    {
+                        "pair_id": "P45",
+                        "label": "four_vs_five",
+                        "lower_label": "four",
+                        "upper_label": "five",
+                        "lower_candidate": " four.",
+                        "upper_candidate": " five.",
+                        "role": "positive_control_pair",
+                        "word_lower_prompt": "Two plus two equals",
+                        "word_upper_prompt": "Two plus three equals",
+                        "symbol_lower_prompt": "2 + 2 =",
+                        "symbol_upper_prompt": "2 + 3 ="
+                    },
+                    {
+                        "pair_id": "P56",
+                        "label": "five_vs_six",
+                        "lower_label": "five",
+                        "upper_label": "six",
+                        "lower_candidate": " five.",
+                        "upper_candidate": " six.",
+                        "role": "non_control_pair",
+                        "word_lower_prompt": "Two plus three equals",
+                        "word_upper_prompt": "Three plus three equals",
+                        "symbol_lower_prompt": "2 + 3 =",
+                        "symbol_upper_prompt": "3 + 3 ="
+                    }
+                ]
+            },
+            "probe_design": {
+                "design_type": "balanced_cross_pair_correctness_vs_token_identity",
+                "probe_count": 16,
+                "lower_correct_count": 8,
+                "upper_correct_count": 8,
+                "word_probe_count": 8,
+                "symbol_probe_count": 8,
+                "probes": [
+                    {
+                        "probe_id": "P23-W-L",
+                        "pair_id": "P23",
+                        "pair_label": "two_vs_three",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "One plus one equals",
+                        "lower_candidate": " two.",
+                        "upper_candidate": " three.",
+                        "semantically_correct": "two",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P23-W-U",
+                        "pair_id": "P23",
+                        "pair_label": "two_vs_three",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "One plus two equals",
+                        "lower_candidate": " two.",
+                        "upper_candidate": " three.",
+                        "semantically_correct": "three",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P23-S-L",
+                        "pair_id": "P23",
+                        "pair_label": "two_vs_three",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "1 + 1 =",
+                        "lower_candidate": " two.",
+                        "upper_candidate": " three.",
+                        "semantically_correct": "two",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P23-S-U",
+                        "pair_id": "P23",
+                        "pair_label": "two_vs_three",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "1 + 2 =",
+                        "lower_candidate": " two.",
+                        "upper_candidate": " three.",
+                        "semantically_correct": "three",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P34-W-L",
+                        "pair_id": "P34",
+                        "pair_label": "three_vs_four",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "One plus two equals",
+                        "lower_candidate": " three.",
+                        "upper_candidate": " four.",
+                        "semantically_correct": "three",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P34-W-U",
+                        "pair_id": "P34",
+                        "pair_label": "three_vs_four",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "Two plus two equals",
+                        "lower_candidate": " three.",
+                        "upper_candidate": " four.",
+                        "semantically_correct": "four",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P34-S-L",
+                        "pair_id": "P34",
+                        "pair_label": "three_vs_four",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "1 + 2 =",
+                        "lower_candidate": " three.",
+                        "upper_candidate": " four.",
+                        "semantically_correct": "three",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P34-S-U",
+                        "pair_id": "P34",
+                        "pair_label": "three_vs_four",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "2 + 2 =",
+                        "lower_candidate": " three.",
+                        "upper_candidate": " four.",
+                        "semantically_correct": "four",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P45-W-L",
+                        "pair_id": "P45",
+                        "pair_label": "four_vs_five",
+                        "pair_role": "positive_control_pair",
+                        "format": "words",
+                        "prompt": "Two plus two equals",
+                        "lower_candidate": " four.",
+                        "upper_candidate": " five.",
+                        "semantically_correct": "four",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P45-W-U",
+                        "pair_id": "P45",
+                        "pair_label": "four_vs_five",
+                        "pair_role": "positive_control_pair",
+                        "format": "words",
+                        "prompt": "Two plus three equals",
+                        "lower_candidate": " four.",
+                        "upper_candidate": " five.",
+                        "semantically_correct": "five",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P45-S-L",
+                        "pair_id": "P45",
+                        "pair_label": "four_vs_five",
+                        "pair_role": "positive_control_pair",
+                        "format": "symbols",
+                        "prompt": "2 + 2 =",
+                        "lower_candidate": " four.",
+                        "upper_candidate": " five.",
+                        "semantically_correct": "four",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P45-S-U",
+                        "pair_id": "P45",
+                        "pair_label": "four_vs_five",
+                        "pair_role": "positive_control_pair",
+                        "format": "symbols",
+                        "prompt": "2 + 3 =",
+                        "lower_candidate": " four.",
+                        "upper_candidate": " five.",
+                        "semantically_correct": "five",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P56-W-L",
+                        "pair_id": "P56",
+                        "pair_label": "five_vs_six",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "Two plus three equals",
+                        "lower_candidate": " five.",
+                        "upper_candidate": " six.",
+                        "semantically_correct": "five",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P56-W-U",
+                        "pair_id": "P56",
+                        "pair_label": "five_vs_six",
+                        "pair_role": "non_control_pair",
+                        "format": "words",
+                        "prompt": "Three plus three equals",
+                        "lower_candidate": " five.",
+                        "upper_candidate": " six.",
+                        "semantically_correct": "six",
+                        "correct_side": "upper"
+                    },
+                    {
+                        "probe_id": "P56-S-L",
+                        "pair_id": "P56",
+                        "pair_label": "five_vs_six",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "2 + 3 =",
+                        "lower_candidate": " five.",
+                        "upper_candidate": " six.",
+                        "semantically_correct": "five",
+                        "correct_side": "lower"
+                    },
+                    {
+                        "probe_id": "P56-S-U",
+                        "pair_id": "P56",
+                        "pair_label": "five_vs_six",
+                        "pair_role": "non_control_pair",
+                        "format": "symbols",
+                        "prompt": "3 + 3 =",
+                        "lower_candidate": " five.",
+                        "upper_candidate": " six.",
+                        "semantically_correct": "six",
+                        "correct_side": "upper"
+                    }
+                ]
+            },
+            "measurement_definition": {
+                "canonical_pair_margin": "logit(lower_candidate_discriminative_token) - logit(upper_candidate_discriminative_token)",
+                "ablation_delta": "ablated_canonical_pair_margin - baseline_canonical_pair_margin",
+                "negative_delta_interpretation": "The intact head causally supports the lower candidate relative to the upper candidate.",
+                "positive_delta_interpretation": "The intact head causally supports the upper candidate relative to the lower candidate.",
+                "correctness_effect": "If lower is correct: -delta. If upper is correct: +delta.",
+                "positive_correctness_effect_interpretation": "The intact head causally supports the semantically correct candidate.",
+                "negative_correctness_effect_interpretation": "The intact head causally suppresses the semantically correct candidate.",
+                "fixed_pair_direction": "Within one candidate pair, a head shows fixed-pair direction when its delta sign remains the same even when semantic correctness flips.",
+                "tokenization_rule": "For each candidate pair, measure the first tokenizer position where the lower and upper candidate continuations differ. The execution stage must verify that both candidates have a valid discriminative position before running interventions."
+            },
+            "intervention": {
+                "type": "attention_head_ablation",
+                "baseline_scale": 1.0,
+                "ablation_scale": 0.0,
+                "scale_one_exactness_control": true,
+                "persistent_weight_modification": false,
+                "model_reload_between_heads": false,
+                "model_reload_between_probes": false
+            },
+            "decision_rules": {
+                "global_probe_count": 16,
+                "global_directional_threshold": 0.75,
+                "minimum_global_consistent_probes": 12,
+                "per_pair_probe_count": 4,
+                "per_pair_directional_threshold": 0.75,
+                "minimum_per_pair_consistent_probes": 3,
+                "positive_control": {
+                    "pair_id": "P45",
+                    "L1H0_expected_delta_sign": "negative",
+                    "L4H0_expected_delta_sign": "positive",
+                    "criterion": "L1H0 must have negative delta on at least 3 of 4 P45 probes and L4H0 must have positive delta on at least 3 of 4 P45 probes.",
+                    "failure_outcome": "inconclusive_positive_control_failure"
+                },
+                "hypothesis_primary_tests": {
+                    "L1H0": {
+                        "prediction": "Supports the semantically correct arithmetic answer.",
+                        "passing_correctness_effect": "positive",
+                        "global_criterion": "Positive correctness_effect on at least 12 of 16 probes.",
+                        "pair_generalization_criterion": "Mean correctness_effect is positive in at least 3 of 4 candidate pairs."
+                    },
+                    "L3H3": {
+                        "prediction": "Suppresses the semantically correct arithmetic answer.",
+                        "passing_correctness_effect": "negative",
+                        "global_criterion": "Negative correctness_effect on at least 12 of 16 probes.",
+                        "pair_generalization_criterion": "Mean correctness_effect is negative in at least 3 of 4 candidate pairs."
+                    },
+                    "L4H0": {
+                        "prediction": "Suppresses the semantically correct arithmetic answer.",
+                        "passing_correctness_effect": "negative",
+                        "global_criterion": "Negative correctness_effect on at least 12 of 16 probes.",
+                        "pair_generalization_criterion": "Mean correctness_effect is negative in at least 3 of 4 candidate pairs."
+                    }
+                },
+                "primary_head_pass_rule": "A primary head passes only if both its global criterion and its pair-generalization criterion pass.",
+                "hypothesis_outcomes": {
+                    "all_three_primary_heads_pass": "supports_general_arithmetic_competing_head_circuit",
+                    "one_or_two_primary_heads_pass": "partial_support_general_arithmetic_competing_head_circuit",
+                    "zero_primary_heads_pass": "further_weakens_general_arithmetic_competing_head_circuit"
+                },
+                "pair_specific_token_bias_diagnostic": {
+                    "criterion": "For a given head and candidate pair, at least 3 of 4 probes share the same delta sign even though correctness is balanced 2 lower / 2 upper.",
+                    "broader_token_bias_signal": "At least two of the three non-control pairs show a fixed-pair direction for the same primary head.",
+                    "four_five_specific_signal": "The P45 positive control shows its preregistered fixed directions while fewer than two non-control pairs show analogous fixed-pair direction."
+                },
+                "weak_control": {
+                    "head_id": "L4H1",
+                    "criterion": "Global mean absolute delta for L4H1 must be smaller than the global mean absolute delta of each primary head: L1H0, L3H3, and L4H0.",
+                    "role": "Quality-control diagnostic only; it does not independently decide the HYP-V03-001 outcome."
+                }
+            },
+            "scientific_interpretation_guardrails": [
+                "Do not interpret EXP-0006 if the P45 positive control fails.",
+                "Do not infer a general arithmetic circuit from one candidate pair.",
+                "Do not treat fixed-pair direction as arithmetic correctness support.",
+                "Keep candidate-pair orientation fixed as lower-minus-upper for every baseline and intervention.",
+                "Do not change prompts, candidate strings, head order, thresholds, or outcome rules after execution begins.",
+                "L4H1 is a weak-control diagnostic and is not a primary hypothesis head."
+            ],
+            "execution_policy": {
+                "execution_authorized": false,
+                "human_approval_required": true,
+                "approval_must_bind_exact_plan": true,
+                "approval_must_bind_exact_execution_spec": true,
+                "plan_does_not_execute": true,
+                "plan_does_not_mutate_knowledge_store": true,
+                "plan_does_not_create_evidence": true
+            }
+        }
+    },
+    "source_checks": {
+        "proposal_version": true,
+        "proposal_checks_present": true,
+        "proposal_checks_passed": true,
+        "proposal_is_exp_0006": true,
+        "proposal_targets_hyp_001": true,
+        "proposal_requires_p3": true,
+        "proposal_does_not_authorize_execution": true,
+        "proposal_was_registered": true,
+        "experiment_exists": true,
+        "experiment_planned": true,
+        "experiment_has_no_evidence": true,
+        "experiment_proposal_binding": true,
+        "hypothesis_exists": true,
+        "hypothesis_still_weakened": true,
+        "hypothesis_tested_by_exp_0006": true,
+        "research_state_recommends_exp_0006": true,
+        "model_scope_match": true
+    },
+    "design_checks": {
+        "pair_ids_unique": true,
+        "probe_ids_unique": true,
+        "pair_count_is_4": true,
+        "probe_count_is_16": true,
+        "four_probes_per_pair": true,
+        "lower_correct_count_is_8": true,
+        "upper_correct_count_is_8": true,
+        "word_count_is_8": true,
+        "symbol_count_is_8": true,
+        "exactly_one_positive_control_pair": true,
+        "three_non_control_pairs": true,
+        "all_candidates_nonempty": true,
+        "all_prompts_nonempty": true,
+        "all_correct_sides_valid": true
+    },
+    "overall_checks": {
+        "sources_valid": true,
+        "design_valid": true,
+        "plan_valid": true,
+        "execution_not_authorized": true,
+        "model_not_loaded": true,
+        "intervention_not_performed": true,
+        "knowledge_store_not_mutated": true,
+        "evidence_not_created": true
+    }
+}

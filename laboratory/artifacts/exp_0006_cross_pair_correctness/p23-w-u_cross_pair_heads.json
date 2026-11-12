@@ -1,0 +1,473 @@
+{
+    "mars_protocol": "MARS-0.1",
+    "created_at_utc": "2026-11-12T17:50:58.488070+00:00",
+    "experiment_id": "EXP-0006",
+    "hypothesis_id": "HYP-V03-001",
+    "plan_id": "PLAN-279F4F2808C046E4",
+    "execution_spec_id": "SPEC-FF2D2AC010B6A43B",
+    "approval_id": "APR-9E6A4303F4421BA0",
+    "status": "success",
+    "evidence_level": "E3",
+    "model": {
+        "checkpoint_path": "/home/scelestin/Steeve_project/MathGPT/checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+        "checkpoint_name": "mathgpt_step_292969.npz",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+        "training_step": 292969,
+        "tokens_seen": 300000256,
+        "parameter_count": 8110848,
+        "vocab_size": 16000,
+        "context_length": 256,
+        "d_model": 256,
+        "num_layers": 5,
+        "num_heads": 4,
+        "head_dim": 64,
+        "d_ff": 1024,
+        "tokenizer": "tokenizer_50m_v0.2",
+        "tokenizer_fingerprints": {
+            "tokenizer_config_sha256": "55f05c09e3c1a4946ce568ed0ad1681e3c4ebd9262ad9d49610f59ef503ae637",
+            "merges_sha256": "2048752e8d3adad34b9fa65fc5faef439104b66f0f04e1d5a60e4c8dd7095b8b",
+            "vocab_sha256": "39e61e2cf5942400fd7ba36e6174134007a5e39954b638de281e9fa07925f142"
+        }
+    },
+    "probe": {
+        "probe_id": "P23-W-U",
+        "pair_id": "P23",
+        "pair_label": "two_vs_three",
+        "pair_role": "non_control_pair",
+        "format": "words",
+        "prompt": "One plus two equals",
+        "lower_candidate": " two.",
+        "upper_candidate": " three.",
+        "semantically_correct": "three",
+        "correct_side": "upper"
+    },
+    "candidate_pair": {
+        "pair_id": "P23",
+        "lower": " two.",
+        "upper": " three."
+    },
+    "continuation_scoring": {
+        "candidates": [
+            {
+                "prompt": "One plus two equals",
+                "continuation": " two.",
+                "prompt_token_ids": [
+                    2800,
+                    5912,
+                    722,
+                    5001,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    9316,
+                    49
+                ],
+                "continuation_tokens": [
+                    " ",
+                    "two",
+                    "."
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -25.13323112499915,
+                "mean_log_probability": -8.37774370833305,
+                "mean_nll": 8.37774370833305,
+                "perplexity": 4349.184817880262,
+                "first_token_id": 35,
+                "first_token_text": " ",
+                "first_token_probability": 1.634167858946267e-05,
+                "first_token_rank": 1439,
+                "mean_token_rank": 865.0,
+                "median_token_rank": 1119.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "probability": 1.634167858946267e-05,
+                        "log_probability": -11.02179174495538,
+                        "logit": 1.3527950048446655,
+                        "rank": 1439
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 9316,
+                        "token_text": "two",
+                        "probability": 0.00012509625073982758,
+                        "log_probability": -8.986427111045817,
+                        "logit": 0.5669933557510376,
+                        "rank": 1119
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 49,
+                        "token_text": ".",
+                        "probability": 0.005946144402791058,
+                        "log_probability": -5.125012268997953,
+                        "logit": 7.844875812530518,
+                        "rank": 37
+                    }
+                ],
+                "candidate_index": 0
+            },
+            {
+                "prompt": "One plus two equals",
+                "continuation": " three.",
+                "prompt_token_ids": [
+                    2800,
+                    5912,
+                    722,
+                    5001,
+                    118
+                ],
+                "continuation_token_ids": [
+                    35,
+                    2495,
+                    1509
+                ],
+                "continuation_tokens": [
+                    " ",
+                    "thre",
+                    "e."
+                ],
+                "continuation_token_count": 3,
+                "sum_log_probability": -25.02264347589904,
+                "mean_log_probability": -8.340881158633014,
+                "mean_nll": 8.340881158633014,
+                "perplexity": 4191.781739276093,
+                "first_token_id": 35,
+                "first_token_text": " ",
+                "first_token_probability": 1.634167858946267e-05,
+                "first_token_rank": 1439,
+                "mean_token_rank": 1018.0,
+                "median_token_rank": 1439.0,
+                "top1_fraction": 0.0,
+                "top10_fraction": 0.0,
+                "top100_fraction": 0.3333333333333333,
+                "token_results": [
+                    {
+                        "position": 0,
+                        "token_id": 35,
+                        "token_text": " ",
+                        "probability": 1.634167858946267e-05,
+                        "log_probability": -11.02179174495538,
+                        "logit": 1.3527950048446655,
+                        "rank": 1439
+                    },
+                    {
+                        "position": 1,
+                        "token_id": 2495,
+                        "token_text": "thre",
+                        "probability": 8.156864097946065e-05,
+                        "log_probability": -9.41406567157934,
+                        "logit": 0.13935479521751404,
+                        "rank": 1604
+                    },
+                    {
+                        "position": 2,
+                        "token_id": 1509,
+                        "token_text": "e.",
+                        "probability": 0.010185541550226145,
+                        "log_probability": -4.586786059364322,
+                        "logit": 10.440524101257324,
+                        "rank": 11
+                    }
+                ],
+                "candidate_index": 1
+            }
+        ],
+        "discriminative_analysis": {
+            "shared_prefix_token_count": 1,
+            "shared_prefix_token_ids": [
+                35
+            ],
+            "shared_prefix_tokens": [
+                " "
+            ],
+            "scoring_context_token_ids": [
+                2800,
+                5912,
+                722,
+                5001,
+                118,
+                35
+            ],
+            "candidates": [
+                {
+                    "candidate_index": 0,
+                    "has_discriminative_token": true,
+                    "token_position": 1,
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "rank": 1119,
+                    "probability": 0.00012509625073982758,
+                    "log_probability": -8.986427111045817,
+                    "logit": 0.5669933557510376
+                },
+                {
+                    "candidate_index": 1,
+                    "has_discriminative_token": true,
+                    "token_position": 1,
+                    "token_id": 2495,
+                    "token_text": "thre",
+                    "rank": 1604,
+                    "probability": 8.156864097946065e-05,
+                    "log_probability": -9.41406567157934,
+                    "logit": 0.13935479521751404
+                }
+            ]
+        }
+    },
+    "baseline": {
+        "preferred": {
+            "token_id": 9316,
+            "token_text": "two",
+            "probability": 0.00012509625073982758,
+            "log_probability": -8.986427111045817,
+            "rank": 1119,
+            "logit": 0.5669933557510376
+        },
+        "comparison": {
+            "token_id": 2495,
+            "token_text": "thre",
+            "probability": 8.156864097946065e-05,
+            "log_probability": -9.41406567157934,
+            "rank": 1604,
+            "logit": 0.13935479521751404
+        },
+        "logit_margin": 0.42763856053352356,
+        "probability_ratio": 1.5336316657688018,
+        "preferred_wins": true
+    },
+    "canonical_lower_minus_upper_margin": 0.42763856053352356,
+    "head_results": [
+        {
+            "layer": 1,
+            "head": 0,
+            "head_id": "L1H0",
+            "hypothesis_role": "predicted_correct_answer_supporter",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 0,
+                "scale": 0.0,
+                "original_last_token_l2": 4.397904410243533,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "probability": 2.435479022445909e-06,
+                    "log_probability": -12.925367096980223,
+                    "rank": 6720,
+                    "logit": -2.7745893001556396
+                },
+                "comparison": {
+                    "token_id": 2495,
+                    "token_text": "thre",
+                    "probability": 2.8637113530952645e-05,
+                    "log_probability": -10.460807005484709,
+                    "rank": 2111,
+                    "logit": -0.31002920866012573
+                },
+                "logit_margin": -2.464560091495514,
+                "probability_ratio": 0.08504624671105565,
+                "preferred_wins": false
+            },
+            "effect": {
+                "baseline_lower_minus_upper_margin": 0.42763856053352356,
+                "ablated_lower_minus_upper_margin": -2.464560091495514,
+                "ablation_delta": -2.8921986520290375,
+                "absolute_ablation_delta": 2.8921986520290375,
+                "pair_causal_direction": "intact_head_supports_lower",
+                "correctness_effect": -2.8921986520290375,
+                "correctness_direction": "intact_head_suppresses_correct",
+                "lower_rank_delta": 5601,
+                "upper_rank_delta": 507,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.9093429414772336,
+                    "probability_l1_distance": 1.0360223626847813,
+                    "logit_l2_difference": 181.4372327781529,
+                    "baseline_top1_token_id": 5001,
+                    "intervention_top1_token_id": 14693,
+                    "top1_changed": true
+                }
+            }
+        },
+        {
+            "layer": 3,
+            "head": 3,
+            "head_id": "L3H3",
+            "hypothesis_role": "predicted_correct_answer_suppressor",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 3,
+                "scale": 0.0,
+                "original_last_token_l2": 5.144671842313575,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "probability": 6.859075341457032e-05,
+                    "log_probability": -9.587352822192475,
+                    "rank": 2403,
+                    "logit": -0.2544309198856354
+                },
+                "comparison": {
+                    "token_id": 2495,
+                    "token_text": "thre",
+                    "probability": 9.930868418014172e-05,
+                    "log_probability": -9.217277536757752,
+                    "rank": 1750,
+                    "logit": 0.11564436554908752
+                },
+                "logit_margin": -0.3700752854347229,
+                "probability_ratio": 0.6906823303604508,
+                "preferred_wins": false
+            },
+            "effect": {
+                "baseline_lower_minus_upper_margin": 0.42763856053352356,
+                "ablated_lower_minus_upper_margin": -0.3700752854347229,
+                "ablation_delta": -0.7977138459682465,
+                "absolute_ablation_delta": 0.7977138459682465,
+                "pair_causal_direction": "intact_head_supports_lower",
+                "correctness_effect": -0.7977138459682465,
+                "correctness_direction": "intact_head_suppresses_correct",
+                "lower_rank_delta": 1284,
+                "upper_rank_delta": 146,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.31424101843777985,
+                    "probability_l1_distance": 0.6161489845181889,
+                    "logit_l2_difference": 100.09187416663873,
+                    "baseline_top1_token_id": 5001,
+                    "intervention_top1_token_id": 5001,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 0,
+            "head_id": "L4H0",
+            "hypothesis_role": "predicted_correct_answer_suppressor",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 0,
+                "scale": 0.0,
+                "original_last_token_l2": 2.437731049640261,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "probability": 0.00013239026703246295,
+                    "log_probability": -8.929756429002897,
+                    "rank": 1120,
+                    "logit": 0.5905769467353821
+                },
+                "comparison": {
+                    "token_id": 2495,
+                    "token_text": "thre",
+                    "probability": 8.699839093051296e-05,
+                    "log_probability": -9.3496209345323,
+                    "rank": 1620,
+                    "logit": 0.1707124412059784
+                },
+                "logit_margin": 0.4198645055294037,
+                "probability_ratio": 1.521755352213413,
+                "preferred_wins": true
+            },
+            "effect": {
+                "baseline_lower_minus_upper_margin": 0.42763856053352356,
+                "ablated_lower_minus_upper_margin": 0.4198645055294037,
+                "ablation_delta": -0.007774055004119873,
+                "absolute_ablation_delta": 0.007774055004119873,
+                "pair_causal_direction": "intact_head_supports_lower",
+                "correctness_effect": -0.007774055004119873,
+                "correctness_direction": "intact_head_suppresses_correct",
+                "lower_rank_delta": 1,
+                "upper_rank_delta": 16,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.015620696074412016,
+                    "probability_l1_distance": 0.13907614530278695,
+                    "logit_l2_difference": 26.502795159667574,
+                    "baseline_top1_token_id": 5001,
+                    "intervention_top1_token_id": 5001,
+                    "top1_changed": false
+                }
+            }
+        },
+        {
+            "layer": 4,
+            "head": 1,
+            "head_id": "L4H1",
+            "hypothesis_role": "weak_control",
+            "control_scale_1_exact": true,
+            "control_scale_1_max_difference": 0.0,
+            "intervention": {
+                "head": 1,
+                "scale": 0.0,
+                "original_last_token_l2": 0.9919122917543547,
+                "intervened_last_token_l2": 0.0
+            },
+            "ablated": {
+                "preferred": {
+                    "token_id": 9316,
+                    "token_text": "two",
+                    "probability": 9.8898540396885e-05,
+                    "log_probability": -9.22141607781777,
+                    "rank": 1412,
+                    "logit": 0.25880399346351624
+                },
+                "comparison": {
+                    "token_id": 2495,
+                    "token_text": "thre",
+                    "probability": 6.706422896986181e-05,
+                    "log_probability": -9.609859756435247,
+                    "rank": 1944,
+                    "logit": -0.12963968515396118
+                },
+                "logit_margin": 0.3884436786174774,
+                "probability_ratio": 1.4746839248883232,
+                "preferred_wins": true
+            },
+            "effect": {
+                "baseline_lower_minus_upper_margin": 0.42763856053352356,
+                "ablated_lower_minus_upper_margin": 0.3884436786174774,
+                "ablation_delta": -0.03919488191604614,
+                "absolute_ablation_delta": 0.03919488191604614,
+                "pair_causal_direction": "intact_head_supports_lower",
+                "correctness_effect": -0.03919488191604614,
+                "correctness_direction": "intact_head_suppresses_correct",
+                "lower_rank_delta": 293,
+                "upper_rank_delta": 340,
+                "distribution_change": {
+                    "kl_baseline_to_intervention": 0.0048114531595234026,
+                    "probability_l1_distance": 0.07849191949801895,
+                    "logit_l2_difference": 11.785759496535222,
+                    "baseline_top1_token_id": 5001,
+                    "intervention_top1_token_id": 5001,
+                    "top1_changed": false
+                }
+            }
+        }
+    ],
+    "checks": {
+        "runtime_identity": true,
+        "two_discriminative_candidates": true,
+        "fixed_candidate_orientation": true,
+        "correct_side_valid": true,
+        "all_scale_1_controls_exact": true,
+        "all_effects_finite": true,
+        "all_heads_zeroed": true
+    }
+}

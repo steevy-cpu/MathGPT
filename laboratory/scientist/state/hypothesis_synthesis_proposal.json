@@ -1,0 +1,223 @@
+{
+    "engine_version": "L11A.1",
+    "created_at_utc": "2026-11-12T21:16:34.503205+00:00",
+    "mode": "deterministic_evidence_grounded_successor_hypothesis_proposal",
+    "proposal_id": "HSP-8D2C82C869A14686",
+    "inputs": {
+        "scientist_context_path": "laboratory/knowledge/scientist_context.json",
+        "scientist_context_sha256": "cd10e4cf789687b1b519df204c61364ab9819963c9a26d8b5039373aa09f067d",
+        "knowledge_state_sha256": "3d8ddfd49c6d5b3b30e93d75271cea1d37d443f5271be791f926298584d50895",
+        "hypothesis_evaluation_path": "laboratory/scientist/state/hypothesis_evaluation.json",
+        "hypothesis_evaluation_sha256": "fc67363b3632ca1fab609a8f08805f4d1a391e87af60cf5688c4a0b578eac9fb",
+        "research_action_handoff_path": "laboratory/scientist/state/research_action_handoff.json",
+        "research_action_handoff_sha256": "590fd05c02f6634b8d8b3eb470b8d84ea5ce9bd75f4f60c711786ec57af0e828"
+    },
+    "policy": {
+        "mutates_knowledge_store": false,
+        "registers_hypotheses": false,
+        "changes_hypothesis_status": false,
+        "registers_experiments": false,
+        "executes_experiments": false,
+        "generates_confidence_score": false,
+        "proposal_requires_future_registration": true
+    },
+    "input_checks": {
+        "snapshot_version": true,
+        "snapshot_handoff_checks": true,
+        "evaluation_version": true,
+        "evaluation_checks": true,
+        "handoff_version": true,
+        "handoff_checks": true,
+        "knowledge_state_matches_evaluation": true,
+        "knowledge_state_matches_handoff": true,
+        "handoff_selected_hypothesis_matches": true,
+        "handoff_selected_action_matches": true,
+        "snapshot_sha_matches_evaluation": true,
+        "source_hypothesis_exists": true,
+        "source_hypothesis_weakened": true,
+        "source_evaluation_exists": true,
+        "source_evidence_mixed": true,
+        "source_action_requests_discrimination": true,
+        "exp_0006_completed": true,
+        "exp_0006_e3": true,
+        "expected_findings_present": true,
+        "expected_findings_e3": true,
+        "expected_findings_from_exp_0006": true,
+        "finding_0009_has_broader_signal": true,
+        "finding_0010_has_l3h3_specific_signal": true,
+        "no_planned_successor_experiment": true
+    },
+    "candidate_checks": {
+        "two_candidates": true,
+        "candidate_ids_unique": true,
+        "candidate_fingerprints_unique": true,
+        "source_hypothesis_is_hyp_001": true,
+        "all_candidates_proposed_only": true,
+        "all_source_findings_exist": true,
+        "all_primary_support_is_e3": true,
+        "all_model_scopes_match_source": true,
+        "no_confidence_scores": true,
+        "registration_not_authorized": true,
+        "experiment_design_not_authorized": true,
+        "execution_not_authorized": true,
+        "candidate_003_targets_l1h0_l4h0": true,
+        "candidate_004_targets_l3h3": true
+    },
+    "hypothesis_synthesis": {
+        "proposal_id": "HSP-8D2C82C869A14686",
+        "source_hypothesis_id": "HYP-V03-001",
+        "source_hypothesis_status": "weakened",
+        "trigger": {
+            "reason": "Existing hypothesis remains mixed/weakened after a completed discriminating E3 experiment, while EXP-0006 produced alternative mechanistic findings.",
+            "last_completed_experiment": "EXP-0006",
+            "trigger_finding_ids": [
+                "FND-0008",
+                "FND-0009",
+                "FND-0010"
+            ],
+            "current_l8_action": "design_discriminating_experiment"
+        },
+        "revision_recommendation": {
+            "source_hypothesis": "HYP-V03-001",
+            "recommended_future_lifecycle_action": "consider_retirement_after_successor_registration",
+            "status_change_authorized": false,
+            "rationale": "EXP-0006 directly tested the general arithmetic-correctness interpretation and produced stronger alternative candidate-selection patterns."
+        },
+        "candidate_count": 2,
+        "candidates": [
+            {
+                "proposed_hypothesis_id": "HYP-V03-003",
+                "title": "Cross-pair numerical candidate-selection bias",
+                "statement": "In mature MathGPT v0.3, L1H0 and L4H0 participate in candidate-token or candidate-pair selection mechanisms whose causal directions generalize across multiple numerical candidate pairs more reliably than they track arithmetic correctness.",
+                "model_scope": {
+                    "model": "MathGPT-General-v0.3",
+                    "stage": "general_pretraining_v0.3_300m",
+                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "training_step": 292969,
+                    "tokens_seen": 300000256
+                },
+                "proposed_status": "proposed",
+                "relationship_to_source": "successor_revision_of_HYP-V03-001",
+                "source_hypothesis_id": "HYP-V03-001",
+                "source_finding_ids": [
+                    "FND-0004",
+                    "FND-0008",
+                    "FND-0009"
+                ],
+                "primary_supporting_finding_ids": [
+                    "FND-0009"
+                ],
+                "motivating_disconfirmation_ids": [
+                    "FND-0004",
+                    "FND-0008"
+                ],
+                "mechanistic_targets": [
+                    "L1H0",
+                    "L4H0"
+                ],
+                "open_questions": [
+                    "Does each head preserve a consistent lower/upper or token-identity direction across number pairs outside P23/P34/P45/P56?",
+                    "Are the effects tied to lexical number tokens, numerical magnitude, candidate ordering, or pair identity?",
+                    "Do the same candidate-selection biases appear in non-arithmetic contexts using the same number tokens?"
+                ],
+                "tags": [
+                    "numerical",
+                    "candidate-selection",
+                    "token-bias",
+                    "attention-heads",
+                    "L1H0",
+                    "L4H0",
+                    "causal",
+                    "mature-v0.3"
+                ],
+                "confidence": {
+                    "score": null,
+                    "label": "unscored",
+                    "method": "proposal_only",
+                    "note": "L11A does not assign a confidence score. Candidate requires registration and dedicated testing."
+                },
+                "candidate_rank": 1,
+                "candidate_fingerprint": "SYN-13D02DB6ABAF7577",
+                "source_experiment_ids": [
+                    "EXP-0004",
+                    "EXP-0006"
+                ],
+                "registration_authorized": false,
+                "experiment_design_authorized": false,
+                "execution_authorized": false
+            },
+            {
+                "proposed_hypothesis_id": "HYP-V03-004",
+                "title": "L3H3 four-versus-five specialized causal bias",
+                "statement": "In mature MathGPT v0.3, L3H3 exhibits a comparatively four-versus-five-specific causal candidate-selection effect that does not generalize as broadly across adjacent numerical candidate pairs.",
+                "model_scope": {
+                    "model": "MathGPT-General-v0.3",
+                    "stage": "general_pretraining_v0.3_300m",
+                    "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                    "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                    "training_step": 292969,
+                    "tokens_seen": 300000256
+                },
+                "proposed_status": "proposed",
+                "relationship_to_source": "mechanistic_branch_from_HYP-V03-001",
+                "source_hypothesis_id": "HYP-V03-001",
+                "source_finding_ids": [
+                    "FND-0003",
+                    "FND-0008",
+                    "FND-0010"
+                ],
+                "primary_supporting_finding_ids": [
+                    "FND-0010"
+                ],
+                "motivating_disconfirmation_ids": [
+                    "FND-0008"
+                ],
+                "mechanistic_targets": [
+                    "L3H3"
+                ],
+                "open_questions": [
+                    "Does the L3H3 four/five effect replicate across new prompt families while four and five are held fixed?",
+                    "Does L3H3 respond similarly to other semantically or lexically related token pairs?",
+                    "Is the apparent specialization caused by token identity, pair contrast, or prompt context?"
+                ],
+                "tags": [
+                    "four-vs-five",
+                    "pair-specific",
+                    "L3H3",
+                    "candidate-selection",
+                    "attention-heads",
+                    "causal",
+                    "mature-v0.3"
+                ],
+                "confidence": {
+                    "score": null,
+                    "label": "unscored",
+                    "method": "proposal_only",
+                    "note": "L11A does not assign a confidence score. Candidate requires registration and dedicated testing."
+                },
+                "candidate_rank": 2,
+                "candidate_fingerprint": "SYN-80462F71670F3E24",
+                "source_experiment_ids": [
+                    "EXP-0004",
+                    "EXP-0006"
+                ],
+                "registration_authorized": false,
+                "experiment_design_authorized": false,
+                "execution_authorized": false
+            }
+        ]
+    },
+    "overall_checks": {
+        "inputs_valid": true,
+        "candidate_design_valid": true,
+        "source_status_not_mutated": true,
+        "hypotheses_not_registered": true,
+        "experiment_registry_not_mutated": true,
+        "knowledge_store_not_mutated": true,
+        "confidence_scores_not_generated": true,
+        "model_not_loaded": true,
+        "intervention_not_performed": true,
+        "execution_not_authorized": true
+    }
+}

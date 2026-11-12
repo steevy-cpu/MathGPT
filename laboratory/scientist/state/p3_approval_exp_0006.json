@@ -1,0 +1,54 @@
+{
+    "approval_version": "P3A.1",
+    "boundary_version": "L10E.1",
+    "approval_id": "APR-9E6A4303F4421BA0",
+    "created_at_utc": "2026-11-12T17:49:49.590234+00:00",
+    "decision": "approved",
+    "permission": "P3",
+    "approved_by": "human",
+    "scope": "temporary_causal_intervention_only",
+    "binding": {
+        "experiment_id": "EXP-0006",
+        "hypothesis_id": "HYP-V03-001",
+        "plan_id": "PLAN-279F4F2808C046E4",
+        "execution_spec_id": "SPEC-FF2D2AC010B6A43B",
+        "execution_spec_sha256": "294ad0367df88c6f433d54e859d3b9df5581f632b652ddf83bfbc313483e36a1",
+        "source_plan_sha256": "94fc0225cf07da86f6c6c757be45e551fd88d7b1262555384eba2b1a12cb1963",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "approved_action": {
+        "experiment_id": "EXP-0006",
+        "hypothesis_id": "HYP-V03-001",
+        "intervention_type": "attention_head_ablation",
+        "baseline_scale": 1.0,
+        "ablation_scale": 0.0,
+        "target_heads": [
+            "L1H0",
+            "L3H3",
+            "L4H0",
+            "L4H1"
+        ],
+        "candidate_pair_ids": [
+            "P23",
+            "P34",
+            "P45",
+            "P56"
+        ],
+        "probe_count": 16,
+        "expected_causal_effect_count": 64,
+        "positive_control_pair": "P45",
+        "persistent_weight_modification": false
+    },
+    "checks": {
+        "explicit_human_approval": true,
+        "confirmation_phrase_verified": true,
+        "binding_verified_before_approval": true,
+        "checkpoint_verified_before_approval": true,
+        "source_plan_verified_before_approval": true,
+        "execution_spec_verified_before_approval": true,
+        "approval_does_not_execute_experiment": true,
+        "approval_does_not_mutate_knowledge_store": true,
+        "approval_does_not_change_model_weights": true
+    },
+    "note": "This artifact authorizes only the exact temporary EXP-0006 P3 causal intervention bound above. It does not itself execute the experiment."
+}

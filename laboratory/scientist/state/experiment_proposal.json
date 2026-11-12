@@ -1,0 +1,125 @@
+{
+    "engine_version": "L10A.1",
+    "created_at_utc": "2026-11-12T17:19:49.182202+00:00",
+    "proposal_id": "PROP-A87C1A2261714689",
+    "mode": "deterministic_experiment_proposal",
+    "source_handoff": {
+        "path": "laboratory/scientist/state/research_action_handoff.json",
+        "sha256": "a14ed3390f09f905eec15bbcdaea605687f59cd735e62c6d86752377ce6569d1",
+        "request_id": "REQ-23482A790AEC1DCC",
+        "knowledge_state_sha256": "4bf751a197721bfa38b9141a410412bec68ad01ffd6ab4800173f8eb82123de0"
+    },
+    "proposal": {
+        "experiment_id": "EXP-0006",
+        "title": "Cross-pair numerical candidate identity versus arithmetic correctness",
+        "question": "Across multiple fixed numerical candidate pairs, do the causal effects of L1H0, L3H3, and L4H0 track the semantically correct arithmetic answer, or do they track particular candidate-token identities?",
+        "target_hypothesis_id": "HYP-V03-001",
+        "target_hypothesis_statement": "Across addition contexts, L1H0 generally supports the preferred arithmetic answer while L3H3 and L4H0 generally suppress the preferred arithmetic answer.",
+        "model_scope": {
+            "model": "MathGPT-General-v0.3",
+            "stage": "general_pretraining_v0.3_300m",
+            "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+            "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+            "training_step": 292969,
+            "tokens_seen": 300000256
+        },
+        "scientific_problem": {
+            "supporting_anchor": {
+                "finding_id": "FND-0003",
+                "summary": "On the mature v0.3 2+2 anchor, L1H0 supported four while L3H3 and L4H0 opposed the preferred margin."
+            },
+            "weakening_generalization": {
+                "finding_id": "FND-0004",
+                "summary": "Across six addition contexts, those head roles did not generalize consistently with arithmetic correctness."
+            },
+            "established_positive_control": {
+                "finding_id": "FND-0007",
+                "summary": "EXP-0005 established that L1H0 consistently favored four and L4H0 consistently favored five across 12 fixed four-versus-five contexts."
+            }
+        },
+        "competing_explanations": [
+            {
+                "explanation_id": "A_ARITHMETIC_CORRECTNESS",
+                "statement": "The selected heads form a general arithmetic correctness circuit. Their causal effects should systematically follow which candidate is the correct numerical answer, even when candidate-token identity changes."
+            },
+            {
+                "explanation_id": "B_PAIR_SPECIFIC_TOKEN_BIAS",
+                "statement": "The apparent arithmetic roles are largely driven by candidate-token identity. The strong L1H0-four and L4H0-five directions should be strongest for the four-versus-five pair and should not generally follow correctness for other number pairs."
+            },
+            {
+                "explanation_id": "C_BROADER_NUMBER_TOKEN_BIAS",
+                "statement": "The network contains a broader number-token selection mechanism, but individual causal directions are associated with token identities or candidate pairs rather than semantic correctness."
+            }
+        ],
+        "design_constraints_for_next_stage": {
+            "must_include_positive_control_pair": "four_vs_five",
+            "must_include_non_four_five_pairs": true,
+            "candidate_pairs_should_be_fixed_within_probe_family": true,
+            "semantic_correctness_must_be_balanced": true,
+            "same_target_heads_as_prior_work": [
+                "L1H0",
+                "L3H3",
+                "L4H0",
+                "L4H1"
+            ],
+            "L4H1_role": "weak_control",
+            "measurement_type": "temporary_attention_head_ablation",
+            "required_permission_when_executed": "P3",
+            "exact_probes_frozen_here": false,
+            "decision_thresholds_frozen_here": false,
+            "note": "L10A proposes and registers the scientific experiment. The next planning stage must freeze exact candidate pairs, prompts, orientation, measurements, and decision thresholds before execution."
+        },
+        "expected_discrimination": {
+            "supports_general_arithmetic_circuit_if": "Across multiple number pairs, head effects systematically track the semantically correct candidate rather than a fixed token identity.",
+            "further_weakens_general_arithmetic_circuit_if": "Effects remain tied to specific candidate identities or pairs and fail to follow semantic correctness across new number pairs.",
+            "supports_broader_token_bias_followup_if": "Stable pair- or token-specific directions emerge for several number pairs, suggesting a broader numerical token-selection mechanism."
+        },
+        "required_permission": "P3",
+        "proposal_only": true,
+        "registered_status": "planned",
+        "execution_authorized": false,
+        "planning_complete": false
+    },
+    "policy": {
+        "registers_planned_experiment": true,
+        "executes_experiment": false,
+        "loads_model": false,
+        "performs_intervention": false,
+        "creates_evidence": false,
+        "changes_hypothesis_status": false,
+        "grants_permission": false,
+        "freezes_exact_experiment_plan": false
+    },
+    "registration": {
+        "registered": true,
+        "experiment_status": "planned",
+        "evidence_created": false,
+        "hypothesis_status_changed": false,
+        "old_knowledge_state_sha256": "4bf751a197721bfa38b9141a410412bec68ad01ffd6ab4800173f8eb82123de0",
+        "new_knowledge_state_sha256": "0b12c8299cc53cf4bc72a4523518684c43fffc0b0f7b144292611f427e73a912",
+        "checks": {
+            "knowledge_store_valid": true,
+            "exp_0006_registered": true,
+            "exp_0006_planned": true,
+            "exp_0006_has_no_evidence": true,
+            "exp_0006_targets_hyp_001": true,
+            "exp_0006_proposal_bound": true,
+            "hypothesis_status_unchanged": true,
+            "hypothesis_tested_by_exp_0006": true,
+            "research_state_recommends_exp_0006": true,
+            "no_exp_0006_evidence_record": true
+        }
+    },
+    "overall_checks": {
+        "handoff_valid": true,
+        "scientific_context_valid": true,
+        "registration_valid": true,
+        "snapshot_valid": true,
+        "experiment_not_executed": true,
+        "model_not_loaded": true,
+        "intervention_not_performed": true,
+        "evidence_not_created": true,
+        "hypothesis_status_not_changed": true,
+        "exact_plan_not_frozen": true
+    }
+}

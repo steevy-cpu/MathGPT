@@ -1,7 +1,7 @@
 {
     "schema_version": "L7.1",
     "collection": "hypotheses",
-    "updated_at_utc": "2026-11-11T13:17:58.385843+00:00",
+    "updated_at_utc": "2026-11-12T23:08:07.687612+00:00",
     "records": [
         {
             "hypothesis_id": "HYP-V03-001",
@@ -15,7 +15,7 @@
                 "training_step": 292969,
                 "tokens_seen": 300000256
             },
-            "status": "weakened",
+            "status": "retired",
             "confidence": {
                 "score": null,
                 "label": "unscored",
@@ -24,13 +24,17 @@
             },
             "created_from": "EXP-0004",
             "tested_by": [
-                "EXP-0004"
+                "EXP-0004",
+                "EXP-0006"
             ],
             "evidence_for": [
                 "FND-0003"
             ],
             "evidence_against": [
-                "FND-0004"
+                "FND-0004",
+                "FND-0008",
+                "FND-0009",
+                "FND-0010"
             ],
             "open_questions": [
                 "Are the observed head effects tied to candidate token identity rather than arithmetic correctness?"
@@ -42,7 +46,18 @@
                 "mature-v0.3"
             ],
             "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
-            "updated_at_utc": "2026-11-10T22:02:07.657926+00:00"
+            "updated_at_utc": "2026-11-12T21:23:20.011570+00:00",
+            "retirement": {
+                "reason": "Superseded by more specific candidate-selection hypotheses after EXP-0006 directly weakened the general arithmetic-correctness interpretation.",
+                "proposal_id": "HSP-8D2C82C869A14686",
+                "successor_hypothesis_ids": [
+                    "HYP-V03-003",
+                    "HYP-V03-004"
+                ],
+                "retired_at_utc": "2026-11-12T21:23:20.011570+00:00",
+                "evidence_preserved": true,
+                "falsified": false
+            }
         },
         {
             "hypothesis_id": "HYP-V03-002",
@@ -56,12 +71,12 @@
                 "training_step": 292969,
                 "tokens_seen": 300000256
             },
-            "status": "active",
+            "status": "supported",
             "confidence": {
                 "score": null,
-                "label": "preliminary",
-                "method": "L8_pending",
-                "note": "Pattern observed in four fixed four/five comparisons. Requires a dedicated controlled experiment."
+                "label": "replicated_causal_support",
+                "method": "L8B.1_deterministic_policy",
+                "note": "The hypothesis has support-only evidence from at least two distinct completed experiments, including replicated E3 causal support."
             },
             "created_from": "EXP-0004",
             "tested_by": [
@@ -86,7 +101,144 @@
                 "mature-v0.3"
             ],
             "created_at_utc": "2026-11-10T22:02:07.657926+00:00",
-            "updated_at_utc": "2026-11-11T13:17:58.385843+00:00"
+            "updated_at_utc": "2026-11-12T17:04:16.817773+00:00"
+        },
+        {
+            "hypothesis_id": "HYP-V03-003",
+            "title": "Cross-pair numerical candidate-selection bias",
+            "statement": "In mature MathGPT v0.3, L1H0 and L4H0 participate in candidate-token or candidate-pair selection mechanisms whose causal directions generalize across multiple numerical candidate pairs more reliably than they track arithmetic correctness.",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "status": "supported",
+            "confidence": {
+                "score": null,
+                "label": "unscored",
+                "method": "L11B_registered_from_synthesis",
+                "note": "Registered from an evidence-grounded L11A synthesis proposal. No calibrated confidence score has been assigned."
+            },
+            "created_from": "HSP-8D2C82C869A14686",
+            "tested_by": [
+                "EXP-0007"
+            ],
+            "evidence_for": [
+                "FND-0009",
+                "FND-0011"
+            ],
+            "evidence_against": [],
+            "open_questions": [
+                "Does each head preserve a consistent lower/upper or token-identity direction across number pairs outside P23/P34/P45/P56?",
+                "Are the effects tied to lexical number tokens, numerical magnitude, candidate ordering, or pair identity?",
+                "Do the same candidate-selection biases appear in non-arithmetic contexts using the same number tokens?"
+            ],
+            "tags": [
+                "numerical",
+                "candidate-selection",
+                "token-bias",
+                "attention-heads",
+                "L1H0",
+                "L4H0",
+                "causal",
+                "mature-v0.3"
+            ],
+            "synthesis_provenance": {
+                "proposal_id": "HSP-8D2C82C869A14686",
+                "source_hypothesis_id": "HYP-V03-001",
+                "relationship_to_source": "successor_revision_of_HYP-V03-001",
+                "source_finding_ids": [
+                    "FND-0004",
+                    "FND-0008",
+                    "FND-0009"
+                ],
+                "primary_supporting_finding_ids": [
+                    "FND-0009"
+                ],
+                "motivating_disconfirmation_ids": [
+                    "FND-0004",
+                    "FND-0008"
+                ],
+                "candidate_fingerprint": "SYN-13D02DB6ABAF7577"
+            },
+            "created_at_utc": "2026-11-12T21:23:20.011570+00:00",
+            "updated_at_utc": "2026-11-12T23:08:07.687612+00:00",
+            "lifecycle_commit": {
+                "engine_version": "L12G.1",
+                "transition": "active->supported",
+                "reason_code": "REPLICATED_CAUSAL_SUPPORT",
+                "supporting_experiments": [
+                    "EXP-0006",
+                    "EXP-0007"
+                ],
+                "supporting_findings": [
+                    "FND-0009",
+                    "FND-0011"
+                ],
+                "committed_at_utc": "2026-11-12T23:08:07.687612+00:00"
+            }
+        },
+        {
+            "hypothesis_id": "HYP-V03-004",
+            "title": "L3H3 four-versus-five specialized causal bias",
+            "statement": "In mature MathGPT v0.3, L3H3 exhibits a comparatively four-versus-five-specific causal candidate-selection effect that does not generalize as broadly across adjacent numerical candidate pairs.",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "status": "active",
+            "confidence": {
+                "score": null,
+                "label": "unscored",
+                "method": "L11B_registered_from_synthesis",
+                "note": "Registered from an evidence-grounded L11A synthesis proposal. No calibrated confidence score has been assigned."
+            },
+            "created_from": "HSP-8D2C82C869A14686",
+            "tested_by": [],
+            "evidence_for": [
+                "FND-0010"
+            ],
+            "evidence_against": [],
+            "open_questions": [
+                "Does the L3H3 four/five effect replicate across new prompt families while four and five are held fixed?",
+                "Does L3H3 respond similarly to other semantically or lexically related token pairs?",
+                "Is the apparent specialization caused by token identity, pair contrast, or prompt context?"
+            ],
+            "tags": [
+                "four-vs-five",
+                "pair-specific",
+                "L3H3",
+                "candidate-selection",
+                "attention-heads",
+                "causal",
+                "mature-v0.3"
+            ],
+            "synthesis_provenance": {
+                "proposal_id": "HSP-8D2C82C869A14686",
+                "source_hypothesis_id": "HYP-V03-001",
+                "relationship_to_source": "mechanistic_branch_from_HYP-V03-001",
+                "source_finding_ids": [
+                    "FND-0003",
+                    "FND-0008",
+                    "FND-0010"
+                ],
+                "primary_supporting_finding_ids": [
+                    "FND-0010"
+                ],
+                "motivating_disconfirmation_ids": [
+                    "FND-0008"
+                ],
+                "candidate_fingerprint": "SYN-80462F71670F3E24"
+            },
+            "created_at_utc": "2026-11-12T21:23:20.011570+00:00",
+            "updated_at_utc": "2026-11-12T21:23:20.011570+00:00"
         }
     ]
 }

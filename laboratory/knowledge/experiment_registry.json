@@ -1,7 +1,7 @@
 {
     "schema_version": "L7.1",
     "collection": "experiments",
-    "updated_at_utc": "2026-11-11T13:17:58.385843+00:00",
+    "updated_at_utc": "2026-11-12T22:51:18.792451+00:00",
     "records": [
         {
             "experiment_id": "EXP-0002",
@@ -119,6 +119,77 @@
                 "artifact_sha256": "e300815cf350edf9111464f6f422331902bf02c058c4d7a6ae40d10b4f894f23",
                 "adapter": "exp_0005_v1",
                 "ingested_at_utc": "2026-11-11T13:17:58.385843+00:00"
+            }
+        },
+        {
+            "experiment_id": "EXP-0006",
+            "title": "Cross-pair numerical candidate identity versus arithmetic correctness",
+            "question": "Across multiple fixed numerical candidate pairs, do the causal effects of L1H0, L3H3, and L4H0 track the semantically correct arithmetic answer, or do they track particular candidate-token identities?",
+            "status": "completed",
+            "evidence_level": "E3",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "summary_artifact": "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json",
+            "hypothesis_ids": [
+                "HYP-V03-001"
+            ],
+            "finding_ids": [
+                "FND-0008",
+                "FND-0009",
+                "FND-0010"
+            ],
+            "required_permission": "P3",
+            "proposal_id": "PROP-A87C1A2261714689",
+            "created_at_utc": "2026-11-12T17:19:49.185775+00:00",
+            "artifact_ingestion": {
+                "status": "verified",
+                "evidence_record_id": "EVR-EXP-0006",
+                "artifact_sha256": "24f042ccd0fcb371efb8f588ee575afbf4540625289dc7d03e24ff76d2c3ff6a",
+                "adapter": "exp_0006_v1",
+                "ingested_at_utc": "2026-11-12T18:53:23.798639+00:00"
+            }
+        },
+        {
+            "experiment_id": "EXP-0007",
+            "title": "Independent cross-pair numerical candidate-selection replication",
+            "question": "Across previously untested numerical candidate pairs, do L1H0 and L4H0 exhibit context-stable causal pair/token directions that generalize more reliably than arithmetic correctness?",
+            "status": "completed",
+            "evidence_level": "E3",
+            "required_permission": "P3",
+            "model_scope": {
+                "model": "MathGPT-General-v0.3",
+                "stage": "general_pretraining_v0.3_300m",
+                "checkpoint": "checkpoints/general_pretraining_v0.3/general_pretraining_v0_3_300m_full/mathgpt_step_292969.npz",
+                "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3",
+                "training_step": 292969,
+                "tokens_seen": 300000256
+            },
+            "summary_artifact": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+            "hypothesis_ids": [
+                "HYP-V03-003"
+            ],
+            "finding_ids": [
+                "FND-0011"
+            ],
+            "proposal": {
+                "proposal_id": "PROP-8E7FB86CBDFF9DE6",
+                "proposal_artifact": "laboratory/scientist/state/experiment_proposal_exp_0007.json",
+                "exact_probes_frozen": false,
+                "execution_authorized": false
+            },
+            "created_at_utc": "2026-11-12T21:36:19.999519+00:00",
+            "artifact_ingestion": {
+                "status": "verified",
+                "evidence_record_id": "EVR-EXP-0007",
+                "artifact_sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+                "adapter": "exp_0007_v1",
+                "ingested_at_utc": "2026-11-12T22:51:18.792451+00:00"
             }
         }
     ]

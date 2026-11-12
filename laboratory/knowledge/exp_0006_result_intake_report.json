@@ -1,0 +1,66 @@
+{
+    "stage": "L10F",
+    "intake_version": "L10F.1",
+    "created_at_utc": "2026-11-12T18:53:23.809552+00:00",
+    "experiment_id": "EXP-0006",
+    "finding_ids": [
+        "FND-0008",
+        "FND-0009",
+        "FND-0010"
+    ],
+    "evidence_record_id": "EVR-EXP-0006",
+    "source_result": {
+        "path": "laboratory/artifacts/exp_0006_cross_pair_correctness_summary.json",
+        "sha256": "24f042ccd0fcb371efb8f588ee575afbf4540625289dc7d03e24ff76d2c3ff6a",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "frozen_identity": {
+        "plan_sha256": "94fc0225cf07da86f6c6c757be45e551fd88d7b1262555384eba2b1a12cb1963",
+        "execution_spec_sha256": "294ad0367df88c6f433d54e859d3b9df5581f632b652ddf83bfbc313483e36a1",
+        "approval_sha256": "f8e37ea41c12b46a67bbef364645c5fc1c778c9da272b5a5254f6bc5a42fa1d0"
+    },
+    "knowledge_integration": {
+        "experiment_status": "completed",
+        "evidence_level": "E3",
+        "hypothesis_id": "HYP-V03-001",
+        "hypothesis_status_mutated": false,
+        "last_completed_experiment": "EXP-0006",
+        "next_recommended_experiment": null
+    },
+    "integrated_state_checks": {
+        "knowledge_store_valid": true,
+        "exp_0006_completed": true,
+        "exp_0006_evidence_level_e3": true,
+        "all_findings_registered": true,
+        "all_findings_weaken_hypothesis": true,
+        "all_hypothesis_links_present": true,
+        "evidence_record_registered": true,
+        "evidence_sha_matches_result": true,
+        "hypothesis_status_unchanged_weakened": true,
+        "last_completed_experiment_exp_0006": true,
+        "next_recommendation_cleared": true,
+        "exp_0006_in_ingested_experiments": true
+    },
+    "scientist_context": {
+        "path": "laboratory/knowledge/scientist_context.json",
+        "sha256": "cd10e4cf789687b1b519df204c61364ab9819963c9a26d8b5039373aa09f067d",
+        "knowledge_state_sha256": "3d8ddfd49c6d5b3b30e93d75271cea1d37d443f5271be791f926298584d50895",
+        "validation": {
+            "checks": {
+                "snapshot_version": true,
+                "knowledge_schema_version": true,
+                "knowledge_fingerprint_present": true,
+                "research_question_present": true,
+                "hypothesis_section_present": true,
+                "experiment_section_present": true,
+                "evidence_inventory_present": true,
+                "model_inventory_present": true,
+                "source_fingerprints_present": true,
+                "finding_model_scope_contract": true,
+                "handoff_checks_passed": true
+            },
+            "passed": true
+        }
+    },
+    "passed": true
+}

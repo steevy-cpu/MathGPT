@@ -1,0 +1,75 @@
+{
+    "approval_version": "L12E.1",
+    "engine_version": "L12E.1",
+    "approval_id": "APR-BD41561B679379A4",
+    "created_at_utc": "2026-11-12T22:06:30.517438+00:00",
+    "approval_type": "explicit_human",
+    "human_statement": "I APPROVE EXP-0007 P3",
+    "experiment_id": "EXP-0007",
+    "target_hypothesis_id": "HYP-V03-003",
+    "permission": "P3",
+    "execution_authorized": true,
+    "bindings": {
+        "execution_spec_id": "SPEC-F220BBDF2ABECA3E",
+        "execution_spec_path": "laboratory/scientist/state/experiment_execution_spec_exp_0007.json",
+        "execution_spec_sha256": "062b41f1bb535cf0427d9bc4464a27455fd250d0b90ae47d988d29ac887303c9",
+        "plan_id": "PLAN-5825AD67CA0D2EC0",
+        "plan_path": "laboratory/scientist/state/experiment_plan_exp_0007.json",
+        "plan_sha256": "3bb6eebe7da92546170e97decc9768388b483d08b06b07fb922ca3a3e30ef8cb",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "authorized_scope": {
+        "intervention": "temporary_attention_head_ablation",
+        "head_scale": 0.0,
+        "maximum_causal_effects": 60,
+        "allowed_heads": [
+            "L1H0",
+            "L4H0",
+            "L4H1"
+        ],
+        "allowed_primary_pairs": [
+            "P12",
+            "P67",
+            "P78",
+            "P89"
+        ],
+        "allowed_positive_control_pair": "P45",
+        "persistent_weight_modification": false,
+        "optimizer_step_allowed": false,
+        "checkpoint_write_allowed": false,
+        "knowledge_store_write_allowed": false,
+        "experiment_registry_write_allowed": false,
+        "result_artifact_write_allowed": true,
+        "authorization_limit": "This approval applies only to the exact frozen EXP-0007 execution specification and does not authorize any other experiment, checkpoint, plan, head, pair, scale, or persistent model change."
+    },
+    "policy": {
+        "approval_creates_evidence": false,
+        "approval_executes_experiment": false,
+        "approval_loads_model": false,
+        "approval_mutates_model": false,
+        "approval_mutates_knowledge_store": false,
+        "approval_mutates_experiment_registry": false,
+        "runner_must_revalidate_all_bindings": true
+    },
+    "binding_checks": {
+        "spec_id": true,
+        "spec_sha256": true,
+        "plan_id": true,
+        "plan_sha256": true,
+        "spec_plan_binding": true,
+        "experiment_id": true,
+        "hypothesis_id": true,
+        "checkpoint_sha": true,
+        "permission_p3": true,
+        "human_approval_required": true,
+        "spec_execution_not_authorized": true,
+        "plan_execution_not_authorized": true,
+        "effect_count_60": true,
+        "head_scale_zero": true,
+        "optimizer_step_blocked": true,
+        "checkpoint_write_blocked": true,
+        "knowledge_write_blocked": true,
+        "registry_write_blocked": true,
+        "persistent_weight_modification_blocked": true
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "stage": "L12F",
+    "intake_version": "L12F.1",
+    "created_at_utc": "2026-11-12T22:51:18.804101+00:00",
+    "experiment_id": "EXP-0007",
+    "finding_id": "FND-0011",
+    "evidence_record_id": "EVR-EXP-0007",
+    "result_relationship": "supports",
+    "source_result": {
+        "path": "laboratory/artifacts/exp_0007_cross_pair_replication_summary.json",
+        "sha256": "69cfde879a548ecfc3f56991db111c7b5aef36824875faed13a67d602cd7304c",
+        "checkpoint_sha256": "4cd9b8f1c68e4079449519fd601b573f8ea48137bc74172c7b37e108c9707cf3"
+    },
+    "frozen_identity": {
+        "plan_id": "PLAN-5825AD67CA0D2EC0",
+        "plan_sha256": "3bb6eebe7da92546170e97decc9768388b483d08b06b07fb922ca3a3e30ef8cb",
+        "execution_spec_id": "SPEC-F220BBDF2ABECA3E",
+        "execution_spec_sha256": "062b41f1bb535cf0427d9bc4464a27455fd250d0b90ae47d988d29ac887303c9",
+        "approval_id": "APR-BD41561B679379A4",
+        "approval_sha256": "1e29bb8979bac3af1383e0396c3d13bc19d3df03fabccfa37a9c133b94e5b4a3"
+    },
+    "knowledge_integration": {
+        "experiment_status": "completed",
+        "evidence_level": "E3",
+        "hypothesis_id": "HYP-V03-003",
+        "hypothesis_status_mutated": false,
+        "last_completed_experiment": "EXP-0007",
+        "next_recommended_experiment": null
+    },
+    "integrated_state_checks": {
+        "knowledge_store_valid": true,
+        "exp_0007_completed": true,
+        "exp_0007_evidence_level_e3": true,
+        "finding_registered": true,
+        "evidence_record_registered": true,
+        "evidence_sha_matches_result": true,
+        "support_relation_reciprocal": true,
+        "hypothesis_status_unchanged_active": true,
+        "last_completed_experiment_exp_0007": true,
+        "next_recommendation_cleared": true,
+        "exp_0007_in_ingested_experiments": true
+    },
+    "scientist_context": {
+        "path": "laboratory/knowledge/scientist_context.json",
+        "sha256": "724198190a408071d39d562e4972ff3883f66471f462caa5be112e6e41bfd4cc",
+        "knowledge_state_sha256": "49de0303b4ec7cd3d7d00348cdf680a51b360866a434728069cc75227f2c472f",
+        "validation": {
+            "checks": {
+                "snapshot_version": true,
+                "knowledge_schema_version": true,
+                "knowledge_fingerprint_present": true,
+                "research_question_present": true,
+                "hypothesis_section_present": true,
+                "experiment_section_present": true,
+                "evidence_inventory_present": true,
+                "model_inventory_present": true,
+                "source_fingerprints_present": true,
+                "finding_model_scope_contract": true,
+                "handoff_checks_passed": true
+            },
+            "passed": true
+        }
+    },
+    "passed": true
+}
